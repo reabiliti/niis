@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cer_number: MyString
+  cer_blank_number: MyString
+  cer_validity_from: 2018-01-22 16:10:13
+  cer_validity_to: 2018-01-22 16:10:13
+  cer_org_registration: MyString
+  cer_product_name: MyString
+
+two:
+  cer_number: MyString
+  cer_blank_number: MyString
+  cer_validity_from: 2018-01-22 16:10:13
+  cer_validity_to: 2018-01-22 16:10:13
+  cer_org_registration: MyString
+  cer_product_name: MyString
