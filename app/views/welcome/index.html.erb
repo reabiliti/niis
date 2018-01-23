@@ -1,2 +1,4 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<% provide(:title, "Home") %>
+<h1>Home</h1>
+<%= link_to 'Certificates', controller: 'certificates' %> |
+<%= link_to 'New certificate', new_certificate_path %>

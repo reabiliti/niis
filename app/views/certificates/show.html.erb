@@ -1,0 +1,34 @@
+<% provide(:title, "Certificate #{@certificate.cer_number}") %>
+<h1>Certificate <%= @certificate.cer_number %></h1>
+<br>
+
+<page size="A4">
+
+  jfdksjgkjvbgkjsb kjsbkjfsbk jbdskjf vbdksjvf kbkjlb kjz
+
+</page>
+
+<br>
+<div class="table-responsive">
+  <table class="table">
+    <tr>
+      <th>#</th>
+      <th>Certificate number</th>
+      <th>Blank certificatte</th>
+      <th>Date from</th>
+      <th>Date to</th>
+      <th>Organ certification</th>
+    </tr>
+    <tr>
+      <td><%= @certificate.id %></td>
+      <td><%= @certificate.cer_number %></td>
+      <td><%= @certificate.cer_blank_number %></td>
+      <td><%= (@certificate.cer_validity_from).strftime("%d.%m.%Y") unless (@certificate.cer_validity_from).nil? %></td>
+      <td><%= (@certificate.cer_validity_to).strftime("%d.%m.%Y") unless (@certificate.cer_validity_to).nil? %></td>
+      <td><%= @certificate.cer_org_registration %></td>
+    </tr>
+  </table>
+</div>
+
+<%= link_to 'Edit', edit_certificate_path(@certificate) %> |
+<%= link_to 'Back', certificates_path %>

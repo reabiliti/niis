@@ -1,40 +1,6 @@
+<% provide(:title, "New Certificate") %>
 <h1>New Certificate</h1>
-<%= form_with scope: :certificate, url: certificates_path, local: true do |f| %>
-  <p>
-    <%= f.label :cer_number %><br>
-    <%= f.text_field :cer_number %>
-  </p>
 
-  <p>
-    <%= f.label :cer_blank_number %><br>
-    <%= f.text_field :cer_blank_number %>
-  </p>
+<%= render 'form' %>
 
-  <p>
-    <%= f.label :cer_validity_from %><br>
-    <%= f.text_field :cer_validity_from %>
-  </p>
-
-  <p>
-    <%= f.label :cer_validity_to %><br>
-    <%= f.text_field :cer_validity_to %>
-  </p>
-
-  <p>
-    <%= f.label :cer_org_registration %><br>
-    <%= f.text_field :cer_org_registration %>
-  </p>
-
-  <p>
-    <%= f.label :cer_product_name %><br>
-    <%= f.text_field :cer_product_name %>
-  </p>
-  
-  <p>
-    <%= f.submit %>
-  </p>
-
-
-
-
-<% end %>
+<%= link_to 'Back', certificates_path %>

@@ -1,0 +1,38 @@
+<% provide(:title, "Certificates") %>
+<h1>Certificates</h1>
+<br>
+<div class="table-responsive">
+  <table class="table">
+    <tr>
+      <th>#</th>
+      <th>Certificate number</th>
+      <th>Blank certificatte</th>
+      <th>Date from</th>
+      <th>Date to</th>
+      <th>Organ certification</th>
+      <th>#</th>
+      <th>#</th>
+      <th>#</th>
+    </tr>
+
+    <% @certificates.each do |certificate| %>
+      <tr>
+        <td><%= certificate.id %></td>
+        <td><%= certificate.cer_number %></td>
+        <td><%= certificate.cer_blank_number %></td>
+        <td><%= (certificate.cer_validity_from).strftime("%d.%m.%Y") unless (certificate.cer_validity_from).nil? %></td>
+        <td><%= (certificate.cer_validity_to).strftime("%d.%m.%Y") unless (certificate.cer_validity_to).nil? %></td>
+        <td><%= certificate.cer_org_registration %></td>
+        <td><%= link_to 'Show', certificate_path(certificate) %></td>
+        <td><%= link_to 'Edit', edit_certificate_path(certificate) %></td>
+        <td><%= link_to 'Destroy', certificate_path(certificate),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+
+  </table>
+
+  <%= link_to 'Home', root_path %>
+
+</div>
