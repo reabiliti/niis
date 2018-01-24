@@ -2,13 +2,6 @@
 <h1>Certificate <%= @certificate.cer_number %></h1>
 <br>
 
-<page size="A4">
-
-  jfdksjgkjvbgkjsb kjsbkjfsbk jbdskjf vbdksjvf kbkjlb kjz
-
-</page>
-
-<br>
 <div class="table-responsive">
   <table class="table">
     <tr>
@@ -18,6 +11,7 @@
       <th>Date from</th>
       <th>Date to</th>
       <th>Organ certification</th>
+      <th>#</th>
     </tr>
     <tr>
       <td><%= @certificate.id %></td>
@@ -26,6 +20,7 @@
       <td><%= (@certificate.cer_validity_from).strftime("%d.%m.%Y") unless (@certificate.cer_validity_from).nil? %></td>
       <td><%= (@certificate.cer_validity_to).strftime("%d.%m.%Y") unless (@certificate.cer_validity_to).nil? %></td>
       <td><%= @certificate.cer_org_registration %></td>
+      <td><%= link_to 'Print PDF', certificate_path(@certificate, format: 'pdf'), target: "_blank" %></td>
     </tr>
   </table>
 </div>

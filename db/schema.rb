@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180122131013) do
+ActiveRecord::Schema.define(version: 20180124125806) do
 
   create_table "certificates", force: :cascade do |t|
     t.string "cer_number"
@@ -18,9 +18,18 @@ ActiveRecord::Schema.define(version: 20180122131013) do
     t.datetime "cer_validity_from"
     t.datetime "cer_validity_to"
     t.string "cer_org_registration"
-    t.string "cer_product_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "cer_product_name"
+    t.string "cer_code_okp"
+    t.string "cer_code_tn_ved"
+    t.text "cer_regulation"
+    t.text "cer_manufacturer"
+    t.text "cer_certificate_issued"
+    t.text "cer_based"
+    t.text "cer_more_info"
+    t.string "cer_org_chief"
+    t.string "cer_org_expert"
   end
 
 end

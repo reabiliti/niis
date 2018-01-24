@@ -6,6 +6,17 @@ class CertificatesController < ApplicationController
 
   def show
     @certificate = certificate_find
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = OrderPdf.new(@certificate)
+        send_data pdf.render,
+                  filename: "order_#{@certificate.cer_number}",
+                  type: 'application/pdf',
+                  disposition: 'inline',
+                  page_layout: 'landscape'
+      end
+    end
   end
 
   def new
@@ -43,9 +54,14 @@ class CertificatesController < ApplicationController
   private
 
     def certificate_params
-      params.require(:certificate).permit(:cer_number, :cer_blank_number, 
-                                          :cer_validity_from, :cer_validity_to, 
-                                          :cer_org_registration)
+      params.require(:certificate).permit(:cer_number, :cer_blank_number,
+                                          :cer_validity_from, :cer_validity_to,
+                                          :cer_org_registration, :cer_product_name,
+                                          :cer_code_okp, :cer_code_tn_ved,
+                                          :cer_regulation, :cer_manufacturer,
+                                          :cer_certificate_issued,
+                                          :cer_based, :cer_more_info,
+                                          :cer_org_chief, :cer_org_expert)
     end
 
     def certificate_find
