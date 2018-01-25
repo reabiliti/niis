@@ -33,6 +33,27 @@ class OrderPdf < Prawn::Document
       at_h -= 12
     end
 
+    at_h = 299
+    @certificate.cer_certificate_issued.split("\r\n").each_with_index do |cci, index|
+      index == 0 ? (draw_text cci, :at => [190, at_h], size: 12, style: :bold) : (draw_text cci, :at => [59, at_h], size: 12, style: :bold)
+      at_h -= 12
+    end
+
+    at_h = 247
+    @certificate.cer_based.split("\r\n").each_with_index do |cbased, index|
+      index == 0 ? (draw_text cbased, :at => [165, at_h], size: 12, style: :bold) : (draw_text cbased, :at => [59, at_h], size: 12, style: :bold)
+      at_h -= 12
+    end
+
+    at_h = 146
+    @certificate.cer_more_info.split("\r\n").each_with_index do |cmi, index|
+      index == 0 ? (draw_text cmi, :at => [276, at_h], size: 12, style: :bold) : (draw_text cmi, :at => [59, at_h], size: 12, style: :bold)
+      at_h -= 12
+    end
+
+    draw_text @certificate.cer_org_chief, :at => [428,85], size: 12, style: :bold
+    draw_text @certificate.cer_org_expert, :at => [428,60], size: 12, style: :bold
+
   end
 
   def bg_setup

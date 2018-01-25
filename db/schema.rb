@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180124125806) do
+ActiveRecord::Schema.define(version: 20180125120416) do
 
   create_table "certificates", force: :cascade do |t|
     t.string "cer_number"
@@ -30,6 +30,20 @@ ActiveRecord::Schema.define(version: 20180124125806) do
     t.text "cer_more_info"
     t.string "cer_org_chief"
     t.string "cer_org_expert"
+  end
+
+  create_table "organization_certs", force: :cascade do |t|
+    t.string "org_cert_name"
+    t.string "string"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "set_org_name"
+    t.integer "set_indent_down"
   end
 
 end

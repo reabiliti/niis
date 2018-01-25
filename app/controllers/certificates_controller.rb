@@ -29,20 +29,12 @@ class CertificatesController < ApplicationController
 
   def create
     @certificate = Certificate.new(certificate_params)
-    if @certificate.save
-      redirect_to @certificate
-    else
-      render 'new'
-    end
+    @certificate.save ? (redirect_to @certificate) : (render 'new')
   end
 
   def update
     @certificate = certificate_find
-    if @certificate.update(certificate_params)
-      redirect_to @certificate
-    else
-      render 'edit'
-    end
+    @certificate.update(certificate_params) ? (redirect_to @certificate) : (render 'edit')
   end
 
   def destroy

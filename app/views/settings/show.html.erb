@@ -1,0 +1,21 @@
+<% provide(:title, "Setting DB") %>
+<h1>Setting DB</h1>
+<br>
+
+<div class="table-responsive">
+  <table class="table">
+    <tr>
+      <th>#</th>
+      <th>Organization of Certification</th>
+      <th>Indent down</th>
+    </tr>
+    <tr>
+      <td><%= @setting.id %></td>
+      <td><%= @setting.set_org_name %></td>
+      <td><%= @setting.set_indent_down %></td>
+    </tr>
+  </table>
+</div>
+
+<%= link_to 'Edit', edit_setting_path(@setting) %> |
+<%= link_to 'Back', settings_path %>
