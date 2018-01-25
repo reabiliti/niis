@@ -15,8 +15,11 @@
     <% end %>
 
     <%= form_with model: @setting, local: true do |f| %>
-      <%= f.label :set_org_name %><br>
-      <%= f.text_area :set_org_name, rows: 5, class: "form-control" %>
+      <%= f.label :set_name %><br>
+      <%= f.text_field :set_name, class: "form-control" %>
+
+      <%= f.label :set_organization %><br>
+      <%= f.text_area :set_organization, rows: 5, class: "form-control" %>
 
       <%= f.label :set_indent_down %><br>
       <%= f.text_field :set_indent_down, class: "form-control" %>

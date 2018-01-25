@@ -1,7 +1,8 @@
 class OrderPdf < Prawn::Document
-  def initialize(certificate)
+  def initialize(certificate, setting)
     super(margin: [0,0,0,0])
     @certificate = certificate
+    @setting = setting
     bg_setup
     font_setup
     cer_number
@@ -9,8 +10,14 @@ class OrderPdf < Prawn::Document
 
   def cer_number
     draw_text @certificate.cer_number, :at => [230,652], size: 12, style: :bold
-    draw_text (@certificate.cer_validity_from).strftime("%d.%m.%Y"), :at => [315,630], size: 12, style: :bold
-    draw_text (@certificate.cer_validity_to).strftime("%d.%m.%Y"), :at => [443,630], size: 12, style: :bold
+    draw_text (@certificate.cer_validity_from).strftime("%d.%m.%Y"), :at => [315,630], size: 12, style: :bold unless @certificate.cer_validity_from.nil?
+    draw_text (@certificate.cer_validity_to).strftime("%d.%m.%Y"), :at => [443,630], size: 12, style: :bold unless @certificate.cer_validity_to.nil?
+
+    at_h = 590
+    @setting.set_organization.split("\r\n").each_with_index do |sorg, index|
+      index == 0 ? (draw_text sorg, :at => [230, at_h], size: 12, style: :bold) : (draw_text sorg, :at => [59, at_h], size: 12, style: :bold)
+      at_h -= 12
+    end
 
     at_h = 519
     @certificate.cer_product_name.split("\r\n").each_with_index do |cpn, index|

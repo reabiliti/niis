@@ -6,10 +6,12 @@ class CertificatesController < ApplicationController
 
   def show
     @certificate = certificate_find
+    @setting = setting_find
+
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = OrderPdf.new(@certificate)
+        pdf = OrderPdf.new(@certificate, @setting)
         send_data pdf.render,
                   filename: "order_#{@certificate.cer_number}",
                   type: 'application/pdf',
@@ -21,10 +23,12 @@ class CertificatesController < ApplicationController
 
   def new
     @certificate = Certificate.new
+    @settings = setting_all
   end
 
   def edit
     @certificate = certificate_find
+    @settings = setting_all
   end
 
   def create
@@ -53,11 +57,20 @@ class CertificatesController < ApplicationController
                                           :cer_regulation, :cer_manufacturer,
                                           :cer_certificate_issued,
                                           :cer_based, :cer_more_info,
-                                          :cer_org_chief, :cer_org_expert)
+                                          :cer_org_chief, :cer_org_expert,
+                                          :setting_id)
     end
 
     def certificate_find
       Certificate.find(params[:id])
+    end
+
+    def setting_find
+      Setting.find(@certificate.setting_id)
+    end
+
+    def setting_all
+      Setting.all
     end
 
 end

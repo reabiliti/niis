@@ -15,6 +15,15 @@
     <% end %>
 
     <%= form_with model: @certificate, local: true do |f| %>
+
+
+      <% unless @settings.nil? %>
+        <%= f.select(:setting_id) do %>
+          <% @settings.each do |s| %>
+            <%= content_tag(:option, s.set_name, value: s.id) %>
+          <% end %>
+        <% end %>
+      <% end %>
       <%= f.label :cer_number %><br>
       <%= f.text_field :cer_number, class: "form-control" %>
 
