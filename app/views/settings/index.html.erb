@@ -5,9 +5,7 @@
   <table class="table">
     <tr>
       <th>#</th>
-      <th>Name</th>
-      <th>Organization</th>
-      <th>Indent down</th>
+      <th>Name Setting</th>
       <th>#</th>
       <th>#</th>
       <th>#</th>
@@ -17,8 +15,6 @@
       <tr>
         <td><%= setting.id %></td>
         <td><%= setting.set_name %></td>
-        <td><%= setting.set_organization %></td>
-        <td><%= setting.set_indent_down %></td>
         <td><%= link_to 'Show', setting_path(setting) %></td>
         <td><%= link_to 'Edit', edit_setting_path(setting) %></td>
         <td><%= link_to 'Destroy', setting_path(setting),
@@ -29,10 +25,6 @@
 
   </table>
 
-  <%= link_to 'Home', root_path %>
-  <% unless @settings.first %>
-    |
   <%= link_to 'New Setting', new_setting_path %>
-  <% end %>
 
 </div>

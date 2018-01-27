@@ -7,17 +7,14 @@
     <tr>
       <th>#</th>
       <th>Name</th>
-      <th>Organization</th>
-      <th>Indent down</th>
+      <th>#</th>
     </tr>
     <tr>
       <td><%= @setting.id %></td>
       <td><%= @setting.set_name %></td>
-      <td><%= @setting.set_organization %></td>
-      <td><%= @setting.set_indent_down %></td>
+      <td><%= link_to 'Edit', edit_setting_path(@setting) %></td>
     </tr>
   </table>
 </div>
 
-<%= link_to 'Edit', edit_setting_path(@setting) %> |
 <%= link_to 'Back', settings_path %>

@@ -10,7 +10,7 @@
       <th>Blank certificatte</th>
       <th>Date from</th>
       <th>Date to</th>
-      <th>Organ certification</th>
+      <th>#</th>
       <th>#</th>
     </tr>
     <tr>
@@ -19,11 +19,10 @@
       <td><%= @certificate.cer_blank_number %></td>
       <td><%= (@certificate.cer_validity_from).strftime("%d.%m.%Y") unless (@certificate.cer_validity_from).nil? %></td>
       <td><%= (@certificate.cer_validity_to).strftime("%d.%m.%Y") unless (@certificate.cer_validity_to).nil? %></td>
-      <td><%= @certificate.cer_org_registration %></td>
+      <td><%= link_to 'Edit', edit_certificate_path(@certificate) %></td>
       <td><%= link_to 'Print PDF', certificate_path(@certificate, format: 'pdf'), target: "_blank" %></td>
     </tr>
   </table>
 </div>
 
-<%= link_to 'Edit', edit_certificate_path(@certificate) %> |
 <%= link_to 'Back', certificates_path %>

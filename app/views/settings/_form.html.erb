@@ -21,10 +21,15 @@
       <%= f.label :set_organization %><br>
       <%= f.text_area :set_organization, rows: 5, class: "form-control" %>
 
-      <%= f.label :set_indent_down %><br>
-      <%= f.text_field :set_indent_down, class: "form-control" %>
+      <%= f.label :set_at_x %><br>
+      <%= f.text_field :set_at_x, class: "form-control" %>
+
+      <%= f.label :set_at_y %><br>
+      <%= f.text_field :set_at_y, class: "form-control" %>
+
+      <br>
       <p>
-        <%= f.submit class: "btn btn-primary" %>
+        <%= f.submit class: "btn btn-primary btn-block" %>
       </p>
     <% end %>
   </div>

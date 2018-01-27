@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180125165132) do
+ActiveRecord::Schema.define(version: 20180126195751) do
 
   create_table "certificates", force: :cascade do |t|
     t.string "cer_number"
     t.string "cer_blank_number"
     t.datetime "cer_validity_from"
     t.datetime "cer_validity_to"
-    t.string "cer_org_registration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "cer_product_name"
@@ -38,9 +37,10 @@ ActiveRecord::Schema.define(version: 20180125165132) do
   create_table "settings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "set_indent_down"
     t.string "set_name"
     t.text "set_organization"
+    t.integer "set_at_x"
+    t.integer "set_at_y"
   end
 
 end

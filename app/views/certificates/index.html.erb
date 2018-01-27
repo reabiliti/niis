@@ -1,5 +1,13 @@
 <% provide(:title, "Certificates") %>
 <h1>Certificates</h1>
+<div class="row">
+  <div class="col-lg-12">
+      <%= form_tag(certificates_path, method: :get, class: "form-inline pull-right") do %>
+        <%= text_field_tag :cer_search, params[:cer_search], class: "form-control" %>
+        <%= submit_tag 'Search', name: nil, class: "btn btn-secondary" %>
+      <% end %>
+  </div>
+</div>
 <br>
 <div class="table-responsive">
   <table class="table">
@@ -9,7 +17,6 @@
       <th>Blank certificatte</th>
       <th>Date from</th>
       <th>Date to</th>
-      <th>Organ certification</th>
       <th>#</th>
       <th>#</th>
       <th>#</th>
@@ -22,7 +29,6 @@
         <td><%= certificate.cer_blank_number %></td>
         <td><%= (certificate.cer_validity_from).strftime("%d.%m.%Y") unless (certificate.cer_validity_from).nil? %></td>
         <td><%= (certificate.cer_validity_to).strftime("%d.%m.%Y") unless (certificate.cer_validity_to).nil? %></td>
-        <td><%= certificate.cer_org_registration %></td>
         <td><%= link_to 'Show', certificate_path(certificate) %></td>
         <td><%= link_to 'Edit', edit_certificate_path(certificate) %></td>
         <td><%= link_to 'Destroy', certificate_path(certificate),
@@ -33,7 +39,6 @@
 
   </table>
 
-  <%= link_to 'Home', root_path %> |
   <%= link_to 'New Certificate', new_certificate_path %>
 
 </div>

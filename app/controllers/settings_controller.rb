@@ -33,7 +33,7 @@ class SettingsController < ApplicationController
 
   private
     def setting_params
-      params.require(:setting).permit(:set_name, :set_organization, :set_indent_down)
+      params.require(:setting).permit(:set_name, :set_organization, :set_at_x, :set_at_y)
     end
 
     def setting_find

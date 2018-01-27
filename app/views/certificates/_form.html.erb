@@ -18,11 +18,7 @@
 
 
       <% unless @settings.nil? %>
-        <%= f.select(:setting_id) do %>
-          <% @settings.each do |s| %>
-            <%= content_tag(:option, s.set_name, value: s.id) %>
-          <% end %>
-        <% end %>
+        <%= f.select(:setting_id, @settings.collect{ |s| [s.set_name, s.id] }) %>
       <% end %>
       <%= f.label :cer_number %><br>
       <%= f.text_field :cer_number, class: "form-control" %>
@@ -35,9 +31,6 @@
 
       <%= f.label :cer_validity_to %><br>
       <%= f.text_field :cer_validity_to, class: "form-control" %>
-
-      <%= f.label :cer_org_registration %><br>
-      <%= f.text_field :cer_org_registration, class: "form-control" %>
 
       <%= f.label :cer_product_name %><br>
       <%= f.text_area :cer_product_name, rows: 3, class: "form-control" %>
@@ -69,10 +62,9 @@
       <%= f.label :cer_org_expert %><br>
       <%= f.text_field :cer_org_expert, class: "form-control" %>
 
-
-
+      <br>
       <p>
-        <%= f.submit class: "btn btn-primary" %>
+        <%= f.submit class: "btn btn-primary btn-block" %>
       </p>
     <% end %>
   </div>

@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
   root 'welcome#index'
-  
-  resources :certificates
+
   resources :settings
+  resources :certificates
+
 
   get 'welcome/index'
 
