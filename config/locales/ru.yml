@@ -1,0 +1,79 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+ru:
+  link:
+    back: "Назад"
+    show: "Просмотр"
+    destroy: "Удалить"
+    new: "Создать"
+    edit: "Изменить"
+    home: "Главная"
+    print_PDF: "Печать PDF"
+    settings: "Настройки"
+    certificates: "Сертификаты"
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'Возникли ошибки: %{errors}'
+        restrict_dependent_destroy:
+          has_one: 'Невозможно удалить запись, так как существует зависимость: %{record}'
+          has_many: 'Невозможно удалить запись, так как существуют зависимости: %{record}'
+    models:
+      certificate: "Сертификат"
+      setting: "Настройки"
+    attributes:
+      certificate:
+        cer_number: "Номер сертификата"
+        setting_id: "Файл настроек"
+        cer_blank_number: "Номер бланка сертификата"
+        cer_validity_from: "Начальный срок дествия"
+        cer_validity_to: "Конечный срок действия"
+        cer_product_name: "Продукция"
+        cer_code_okp: "код ОК 006 (ОКП)"
+        cer_code_tn_ved: "код ТН ВЭД России"
+        cer_regulation: "Соответствует требованиям нормативных документов"
+        cer_manufacturer: "Изготовитель"
+        cer_certificate_issued: "Сертификат выдан"
+        cer_based: "На основании"
+        cer_more_info: "Дополнительная информация"
+        cer_org_chief: "Руководитель органа"
+        cer_org_expert: "Эксперт"
+      setting:
+        set_name: "Наименование настройки"
+        set_organization: "Наименование организации"
+        set_at_x: "Смещение по оси Х"
+        set_at_y: "Смещение по оси Y"
+
+
+# Template
+  form:
+    search: "Поиск"

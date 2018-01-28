@@ -1,20 +1,20 @@
-<% provide(:title, "Setting DB") %>
-<h1>Setting DB</h1>
+<% provide(:title, "Настройка #{@setting.set_name}") %>
+<h1>Настройка <%= @setting.set_name %></h1>
 <br>
 
 <div class="table-responsive">
   <table class="table">
     <tr>
       <th>#</th>
-      <th>Name</th>
+      <th>Имя</th>
       <th>#</th>
     </tr>
     <tr>
       <td><%= @setting.id %></td>
       <td><%= @setting.set_name %></td>
-      <td><%= link_to 'Edit', edit_setting_path(@setting) %></td>
+      <td><%= link_to t('link.edit'), edit_setting_path(@setting) %></td>
     </tr>
   </table>
 </div>
 
-<%= link_to 'Back', settings_path %>
+<%= link_to t('link.back'), settings_path %>

@@ -16,51 +16,82 @@
 
     <%= form_with model: @certificate, local: true do |f| %>
 
+      <div class="form-group">
+        <% unless @settings.nil? %>
+          <%= f.label :setting_id %>
+          <%= f.select(:setting_id, @settings.collect { |s| [s.set_name, s.id] }, {}, { class: "form-control" }) %>
+        <% end %>
+      </div>
 
-      <% unless @settings.nil? %>
-        <%= f.select(:setting_id, @settings.collect{ |s| [s.set_name, s.id] }) %>
-      <% end %>
-      <%= f.label :cer_number %><br>
-      <%= f.text_field :cer_number, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :cer_number %><br>
+        <%= f.text_field :cer_number, class: "form-control" %>
+      </div>
 
-      <%= f.label :cer_blank_number %><br>
-      <%= f.text_field :cer_blank_number, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :cer_blank_number %><br>
+        <%= f.text_field :cer_blank_number, class: "form-control" %>
+      </div>
 
-      <%= f.label :cer_validity_from %><br>
-      <%= f.text_field :cer_validity_from, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :cer_validity_from %><br>
+        <%= f.date_field :cer_validity_from, class: "form-control" %>
+      </div>
 
-      <%= f.label :cer_validity_to %><br>
-      <%= f.text_field :cer_validity_to, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :cer_validity_to %><br>
+        <%= f.date_field :cer_validity_to, class: "form-control" %>
+      </div>
 
-      <%= f.label :cer_product_name %><br>
-      <%= f.text_area :cer_product_name, rows: 3, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :cer_product_name %><br>
+        <%= f.text_area :cer_product_name, rows: 3, class: "form-control" %>
+      </div>
 
-      <%= f.label :cer_code_okp %><br>
-      <%= f.text_field :cer_code_okp, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :cer_code_okp %><br>
+        <%= f.text_field :cer_code_okp, class: "form-control" %>
+      </div>
 
-      <%= f.label :cer_code_tn_ved %><br>
-      <%= f.text_field :cer_code_tn_ved, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :cer_code_tn_ved %><br>
+        <%= f.text_field :cer_code_tn_ved, class: "form-control" %>
+      </div>
 
-      <%= f.label :cer_regulation %><br>
-      <%= f.text_area :cer_regulation, rows: 3, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :cer_regulation %><br>
+        <%= f.text_area :cer_regulation, rows: 3, class: "form-control" %>
+      </div>
 
-      <%= f.label :cer_manufacturer %><br>
-      <%= f.text_area :cer_manufacturer, rows: 3, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :cer_manufacturer %><br>
+        <%= f.text_area :cer_manufacturer, rows: 3, class: "form-control" %>
+      </div>
 
-      <%= f.label :cer_certificate_issued %><br>
-      <%= f.text_area :cer_certificate_issued, rows: 3, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :cer_certificate_issued %><br>
+        <%= f.text_area :cer_certificate_issued, rows: 3, class: "form-control" %>
+      </div>
 
-      <%= f.label :cer_based %><br>
-      <%= f.text_area :cer_based, rows: 3, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :cer_based %><br>
+        <%= f.text_area :cer_based, rows: 3, class: "form-control" %>
+      </div>
 
-      <%= f.label :cer_more_info %><br>
-      <%= f.text_area :cer_more_info, rows: 3, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :cer_more_info %><br>
+        <%= f.text_area :cer_more_info, rows: 3, class: "form-control" %>
+      </div>
 
-      <%= f.label :cer_org_chief %><br>
-      <%= f.text_field :cer_org_chief, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :cer_org_chief %><br>
+        <%= f.text_field :cer_org_chief, class: "form-control" %>
+      </div>
 
-      <%= f.label :cer_org_expert %><br>
-      <%= f.text_field :cer_org_expert, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :cer_org_expert %><br>
+        <%= f.text_field :cer_org_expert, class: "form-control" %>
+      </div>
 
       <br>
       <p>

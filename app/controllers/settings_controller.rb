@@ -1,10 +1,11 @@
 class SettingsController < ApplicationController
+  before_action :setting_find, only: [:show, :edit, :update, :destroy]
+
   def index
     @settings = Setting.all
   end
 
   def show
-    @setting = setting_find
   end
 
   def new
@@ -12,7 +13,6 @@ class SettingsController < ApplicationController
   end
 
   def edit
-    @setting = setting_find
   end
 
   def create
@@ -21,12 +21,10 @@ class SettingsController < ApplicationController
   end
 
   def update
-    @setting = setting_find
     @setting.update(setting_params) ? (redirect_to @setting) : (render 'edit')
   end
 
   def destroy
-    @setting = setting_find
     @setting.destroy
     redirect_to settings_path
   end
@@ -37,7 +35,7 @@ class SettingsController < ApplicationController
     end
 
     def setting_find
-      Setting.find(params[:id])
+      @setting = Setting.find(params[:id])
     end
 
 end

@@ -1,15 +1,15 @@
-<% provide(:title, "Certificate #{@certificate.cer_number}") %>
-<h1>Certificate <%= @certificate.cer_number %></h1>
+<% provide(:title, "Сертификат #{@certificate.cer_number}") %>
+<h1>Сертификат <%= @certificate.cer_number %></h1>
 <br>
 
 <div class="table-responsive">
   <table class="table">
     <tr>
       <th>#</th>
-      <th>Certificate number</th>
-      <th>Blank certificatte</th>
-      <th>Date from</th>
-      <th>Date to</th>
+      <th>Номер Сертификата</th>
+      <th>Номер бланка</th>
+      <th>Дата начала</th>
+      <th>Дата окончания</th>
       <th>#</th>
       <th>#</th>
     </tr>
@@ -19,10 +19,10 @@
       <td><%= @certificate.cer_blank_number %></td>
       <td><%= (@certificate.cer_validity_from).strftime("%d.%m.%Y") unless (@certificate.cer_validity_from).nil? %></td>
       <td><%= (@certificate.cer_validity_to).strftime("%d.%m.%Y") unless (@certificate.cer_validity_to).nil? %></td>
-      <td><%= link_to 'Edit', edit_certificate_path(@certificate) %></td>
-      <td><%= link_to 'Print PDF', certificate_path(@certificate, format: 'pdf'), target: "_blank" %></td>
+      <td><%= link_to t('link.edit'), edit_certificate_path(@certificate) %></td>
+      <td><%= link_to t('link.print_PDF'), certificate_path(@certificate, format: 'pdf'), target: "_blank" %></td>
     </tr>
   </table>
 </div>
 
-<%= link_to 'Back', certificates_path %>
+<%= link_to t('link.back'), certificates_path %>

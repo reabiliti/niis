@@ -1,13 +1,13 @@
 class CertificatesController < ApplicationController
+  before_action :certificate_find, only: [:show, :edit, :update, :destroy]
+  before_action :setting_all, only: [:new, :edit, :update, :create]
 
   def index
     @certificates = Certificate.search(params[:cer_search])
   end
 
   def show
-    @certificate = certificate_find
     @setting = setting_find
-
     respond_to do |format|
       format.html
       format.pdf do
@@ -23,12 +23,9 @@ class CertificatesController < ApplicationController
 
   def new
     @certificate = Certificate.new
-    @settings = setting_all
   end
 
   def edit
-    @certificate = certificate_find
-    @settings = setting_all
   end
 
   def create
@@ -37,13 +34,10 @@ class CertificatesController < ApplicationController
   end
 
   def update
-    @certificate = certificate_find
-    @settings = setting_all
     @certificate.update(certificate_params) ? (redirect_to @certificate) : (render 'edit')
   end
 
   def destroy
-    @certificate = certificate_find
     @certificate.destroy
     redirect_to certificates_path
   end
@@ -67,7 +61,7 @@ class CertificatesController < ApplicationController
     end
 
     def certificate_find
-      Certificate.find(params[:id])
+      @certificate = Certificate.find(params[:id])
     end
 
     def setting_find
@@ -75,7 +69,7 @@ class CertificatesController < ApplicationController
     end
 
     def setting_all
-      Setting.all
+      @settings = Setting.all
     end
 
 end
