@@ -7,7 +7,7 @@ class CertificatesController < ApplicationController
   end
 
   def show
-    @setting = setting_find
+    @setting = setting_find unless @certificate.setting_id.nil?
     respond_to do |format|
       format.html
       format.pdf do

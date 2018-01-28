@@ -18,6 +18,7 @@ gem 'jquery-rails'
 #gem 'bootstrap',    '~> 4.0.0'
 gem 'bootstrap-sass'
 gem 'rails-i18n', '~> 5.0.0'
+gem 'simple_form'
 
 gem 'prawn'
 gem 'responders'
