@@ -69,7 +69,7 @@ ru:
         cer_org_expert: "Эксперт"
       setting:
         set_name: "Наименование настройки"
-        set_organization: "Наименование организации"
+        set_organization: "Наименование органа по сертификации"
         set_at_x: "Смещение по оси Х"
         set_at_y: "Смещение по оси Y"
 
