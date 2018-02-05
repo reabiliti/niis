@@ -39,6 +39,7 @@ ru:
     home: "Главная"
     print_PDF: "Печать PDF"
     settings: "Настройки"
+    proposals: "Заявки"
     certificates: "Сертификаты"
   activerecord:
     errors:
