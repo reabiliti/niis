@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :settings
   resources :certificates
 
+  resources :proposals
 
   get 'welcome/index'
 

@@ -2,9 +2,10 @@
   <div class="container">
     <%= link_to 'Certification', root_path, id: "logo" %>
     <nav>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right no-print">
         <li><%= link_to t('link.home'), root_path %></li>
         <li><%= link_to t('link.settings'), settings_path %></li>
+        <li><%= link_to t('link.proposals'), proposals_path %></li>
         <li><%= link_to t('link.certificates'), certificates_path %></li>
       </ul>
     </nav>

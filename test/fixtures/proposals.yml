@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prop_number: MyString
+  prop_date_from: 2018-02-03 19:29:23
+  prop_cert_system: MyString
+
+two:
+  prop_number: MyString
+  prop_date_from: 2018-02-03 19:29:23
+  prop_cert_system: MyString

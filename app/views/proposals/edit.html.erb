@@ -1,0 +1,5 @@
+<% provide(:title, "Заявка № #{@proposal.prop_number}") %>
+<h1>Заявка № <%= @proposal.prop_number %></h1>
+<%= render 'form' %>
+
+<%= link_to t('link.back'), proposals_path %>

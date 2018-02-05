@@ -1,0 +1,132 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <% if @proposal.errors.any? %>
+      <div class="error text-danger">
+        <p>
+          <%= pluralize(@proposal.errors.count, "error") %> prohibited
+          this proposal from being saved:
+        </p>
+        <ul>
+          <% @proposal.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= simple_form_for @proposal, html: { class: "form-horizontal" }, wrapper: :horizontal_form do |f| %>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :prop_number, class: 'col-sm-6 control-label' %>
+            <div class="col-sm-6">
+              <%= f.input_field :prop_number, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <%= f.label :prop_date_from, class: 'col-sm-3 control-label' %>
+          <div class="col-sm-9">
+            <%= f.input_field :prop_date_from, as: :date, start_year: Date.today.year - 10,
+                                                             end_year: Date.today.year + 10 %>
+          </div>
+        </div>
+      </div>
+      <%= f.input :prop_cert_system %>
+      <%= f.input :prop_applic_name %>
+      <%= f.input :prop_applic_reg_doc %>
+      <hr class="col-xs-12">
+      <h2>Юридический адрес заявителя</h2>
+      <%= f.input :prop_applic_address %>
+      <%= f.input :prop_applic_postcode %>
+      <%= f.input :prop_applic_bank_detail, as: :text, input_html: { rows: 2 } %>
+      <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <%= f.label :prop_applic_phone, class: 'col-sm-3 control-label' %>
+              <div class="col-sm-9">
+                <%= f.input_field :prop_applic_phone, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <%= f.label :prop_applic_fax, class: 'col-sm-3 control-label' %>
+              <div class="col-sm-9">
+                <%= f.input_field :prop_applic_fax, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <%= f.label :prop_applic_email, class: 'col-sm-3 control-label' %>
+              <div class="col-sm-9">
+                <%= f.input_field :prop_applic_email, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+      </div>
+      <hr class="col-xs-12">
+      <h2>Поисковые реквизиты заявителя</h2>
+      <%= f.input :prop_applic_code_okato %>
+      <%= f.input :prop_applic_type_own, collection: [ "государственная", "негосударственная", "муниципальная", "смешанная", "частная" ] %>
+      <%= f.input :prop_applic_code_okonh %>
+      <%= f.input :prop_applic_code_okved %>
+      <%= f.input :prop_applic_code_okpo %>
+      <%= f.input :prop_applic_inn %>
+      <%= f.input :prop_applic_kpp %>
+      <%= f.input :prop_applic_chief %>
+      <hr class="col-xs-12">
+      <%= f.input :prop_applic_name_product, as: :text, input_html: {rows: 5 } %>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+          <%= f.label :prop_applic_code_okp, class: 'col-sm-6 control-label' %>
+            <div class="col-sm-6">
+              <%= f.input_field :prop_applic_code_okp, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :prop_applic_code_tn_ved, class: 'col-sm-6 control-label' %>
+            <div class="col-sm-6">
+              <%= f.input_field :prop_applic_code_tn_ved, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= f.input :prop_applic_from_issue, collection: [ "серийный выпуск", "партия", "единичное изделие" ] %>
+      <%= f.input :prop_manuf_name %>
+      <hr class="col-xs-12">
+      <h2>Фактический адрес изготовителя</h2>
+      <%= f.input :prop_manuf_address %>
+      <%= f.input :prop_manuf_postcode %>
+      <hr class="col-xs-12">
+      <%= f.input :prop_manuf_doc %>
+      <hr class="col-xs-12">
+      <h2>Поисковые реквизиты изготовителя</h2>
+      <%= f.input :prop_manuf_code_okato %>
+      <%= f.input :prop_manuf_type_own, collection: [ "государственная", "негосударственная", "муниципальная", "смешанная", "частная" ] %>
+      <%= f.input :prop_manuf_code_okonh %>
+      <%= f.input :prop_manuf_code_okved %>
+      <%= f.input :prop_manuf_code_okpo %>
+      <%= f.input :prop_manuf_inn %>
+      <hr class="col-xs-12">
+      <%= f.input :prop_manuf_regulations %>
+      <hr class="col-xs-12">
+      <h2>Дополнительные сведения о продукции и заявителе</h2>
+      <%= f.input :prop_manuf_scheme_cert, collection: [ "1", "2", "3" ] %>
+      <%= f.input :prop_manuf_count_sort_cert %>
+      <hr class="col-xs-12">
+      <%= f.input :prop_manuf_group_complexity, collection: [ "1", "2", "3" ] %>
+      <%= f.input :prop_manuf_list_doc, as: :text, input_html: { rows: 3 } %>
+      <%= f.input :prop_manuf_add_info, as: :text, input_html: { rows: 3 } %>
+      <%= f.input :prop_manuf_chief_org %>
+      <%= f.input :prop_manuf_chief_accountant %>
+
+      <%= f.button :submit, class: 'btn btn-primary center-block' %>
+    <% end %>
+  </div>
+</div>

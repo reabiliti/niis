@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126195751) do
+ActiveRecord::Schema.define(version: 20180204140534) do
 
   create_table "certificates", force: :cascade do |t|
     t.string "cer_number"
@@ -34,6 +34,52 @@ ActiveRecord::Schema.define(version: 20180126195751) do
     t.index ["setting_id"], name: "index_certificates_on_setting_id"
   end
 
+  create_table "proposals", force: :cascade do |t|
+    t.string "prop_number"
+    t.datetime "prop_date_from"
+    t.string "prop_cert_system"
+    t.string "prop_applic_name"
+    t.string "prop_applic_reg_doc"
+    t.string "prop_applic_address"
+    t.text "prop_applic_bank_detail"
+    t.string "prop_applic_phone"
+    t.string "prop_applic_fax"
+    t.string "prop_applic_email"
+    t.string "prop_applic_code_okato"
+    t.string "prop_applic_type_own"
+    t.string "prop_applic_code_okonh"
+    t.string "prop_applic_code_okved"
+    t.string "prop_applic_code_okpo"
+    t.string "prop_applic_chief"
+    t.text "prop_applic_name_product"
+    t.string "prop_applic_from_issue"
+    t.string "prop_manuf_name"
+    t.string "prop_manuf_address"
+    t.string "prop_manuf_doc"
+    t.string "prop_manuf_code_okato"
+    t.string "prop_manuf_type_own"
+    t.string "prop_manuf_code_okonh"
+    t.string "prop_manuf_code_okved"
+    t.string "prop_manuf_code_okpo"
+    t.string "prop_manuf_regulations"
+    t.text "prop_manuf_list_doc"
+    t.text "prop_manuf_add_info"
+    t.string "prop_manuf_chief_org"
+    t.string "prop_manuf_chief_accountant"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "prop_applic_postcode"
+    t.string "prop_applic_inn"
+    t.string "prop_applic_kpp"
+    t.string "prop_applic_code_okp"
+    t.string "prop_applic_code_tn_ved"
+    t.string "prop_manuf_postcode"
+    t.string "prop_manuf_inn"
+    t.string "prop_manuf_scheme_cert"
+    t.string "prop_manuf_count_sort_cert"
+    t.string "prop_manuf_group_complexity"
+  end
+
   create_table "settings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -41,6 +87,7 @@ ActiveRecord::Schema.define(version: 20180126195751) do
     t.text "set_organization"
     t.integer "set_at_x"
     t.integer "set_at_y"
+    t.string "set_address"
   end
 
 end

@@ -70,9 +70,56 @@ ru:
       setting:
         set_name: "Наименование настройки"
         set_organization: "Наименование органа по сертификации"
+        set_address: "Адрес органа по сертификации"
         set_at_x: "Смещение по оси Х"
         set_at_y: "Смещение по оси Y"
 
+  simple_form:
+    labels:
+      proposal:
+        prop_number: "Номер заявки"
+        prop_date_from: "от"
+        prop_cert_system: "Система сертификации"
+        prop_applic_name: "Наименование организации-изготовителя, продавца или индивидуального предпринимателя (далее-заявитель)"
+        prop_applic_reg_doc: "Код по ОКПО или номер регистрационного документа индивидуального предпринимателя"
+        prop_applic_address: "Название улицы, номер дома, номер помещения; название населенного пункта (города,
+                              поселка и т.п.); название района; название республики, края, области, автономного округа (области)"
+        prop_applic_postcode: "Почтовый индекс"
+        prop_applic_bank_detail: "Банковские реквизиты"
+        prop_applic_phone: "Телефон"
+        prop_applic_fax: "Факс"
+        prop_applic_email: "Почта"
+        prop_applic_code_okato: "Код по ОКАТО"
+        prop_applic_type_own: "Форма собственности"
+        prop_applic_code_okonh: "Код по ОКОНХ"
+        prop_applic_code_okved: "Код по ОКВЭД"
+        prop_applic_code_okpo: "Код по ОКПО"
+        prop_applic_inn: "ИНН"
+        prop_applic_kpp: "КПП"
+        prop_applic_chief: "ФИО руководителя"
+        prop_applic_name_product: "Наименование продукции"
+        prop_applic_code_okp: "Код ОК 005-93 (ОКП)"
+        prop_applic_code_tn_ved: "Код ТН ВЭД"
+        prop_applic_from_issue: "Серийный выпуск, или партия определенного размера, или единица продукции"
+        prop_manuf_name: "Наименовани изготовителя"
+        prop_manuf_address: "Название улицы, номер дома, номер помещения; название населенного пункта (города,
+                             поселка и т.п.); название района; название республики, края, области, автономного округа (области)"
+        prop_manuf_postcode: "Почтовый индекс"
+        prop_manuf_doc: "Наименование и обозначение документации изготовителя (стандарт, ТУ, КД, образец-эталон)"
+        prop_manuf_code_okato: "Код по ОКАТО"
+        prop_manuf_type_own: "Форма собственности"
+        prop_manuf_code_okonh: "Код по ОКОНХ"
+        prop_manuf_code_okved: "Код по ОКВЭД"
+        prop_manuf_code_okpo: "Код по ОКПО"
+        prop_manuf_inn: "ИНН"
+        prop_manuf_regulations: "Наименование и обозначение нормативных документов"
+        prop_manuf_scheme_cert: "Схема сертификации"
+        prop_manuf_count_sort_cert: "Количество видов сертифицируемой продукции"
+        prop_manuf_group_complexity: "Группа сложности сертификации продукции"
+        prop_manuf_list_doc: "Перечень представленных документов, подтверждающих соответствие продукции установленным требованиям"
+        prop_manuf_add_info: "Дополнительная информация"
+        prop_manuf_chief_org: "Руководитель организации"
+        prop_manuf_chief_accountant: "Главный бухгалтер"
 
 # Template
   form:

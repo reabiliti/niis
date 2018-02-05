@@ -17,6 +17,7 @@
     <%= simple_form_for @setting do |f| %>
       <%= f.input :set_name %>
       <%= f.input :set_organization, as: :text, input_html: { rows: 6 } %>
+      <%= f.input :set_address %>
       <%= f.input :set_at_x %>
       <%= f.input :set_at_y %>
       <%= f.button :submit %>
