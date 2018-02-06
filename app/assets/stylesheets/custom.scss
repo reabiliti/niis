@@ -4,6 +4,7 @@
 
 $gray-medium-light: #eaeaea;
 $black-line: #262626;
+$width-page: 670px;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -97,9 +98,16 @@ footer {
 
 /* forms */
 
+.contant {
+  width: 950px;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+
 .page-body {
-  width: 21cm;
-  font-size: 16px;
+  width: $width-page;
+  font-size: 14px;
 }
 
 .paragraph {
@@ -111,7 +119,7 @@ footer {
   border-bottom: 1px solid $black-line;
   padding-left: 10px;
   padding-right: 10px;
-  min-height: 18px;
+  min-height: 24px;
   min-width: 10%;
   width: 100%;
 }
@@ -139,12 +147,10 @@ footer {
 
 .div-table {
   display: table;
-  width: 100%;
 }
 
 .div-table-row {
   display: table-row;
-  width: 100%;
 }
 
 .div-table-col-l {
@@ -153,7 +159,6 @@ footer {
   color: #00008b;
   padding-left: 10px;
   padding-right: 10px;
-  width: 30%;
   border-bottom: 1px solid $black-line;
 }
 
@@ -162,22 +167,13 @@ footer {
   background-color: $gray-lighter;
   padding-left: 10px;
   padding-right: 10px;
-  width: 70%;
   border-bottom: 1px solid $black-line;
 }
 
 .div-table-col {
-  display: inline-block;
+  display: table-cell;
   padding-left: 10px;
   padding-right: 10px;
-}
-
-.div-table-col-at {
-  display: inline-block;
-  width: 300px;
-  padding-left: 10px;
-  padding-right: 10px;
-  vertical-align: top;
 }
 
 .div-table-col-hr {
@@ -187,8 +183,60 @@ footer {
   padding-right: 10px;
 }
 
+.col-align-bot {
+  vertical-align: bottom;
+}
+
+.col-align-top {
+  vertical-align: top;
+}
+
+.col-width-1 {
+  width: $width-page/12*1;
+}
+
+.col-width-2 {
+  width: $width-page/12*2;
+}
+
 .col-width-3 {
-  width: 300px;
+  width: $width-page/12*3;
+}
+
+.col-width-4 {
+  width: $width-page/12*4;
+}
+
+.col-width-5 {
+  width: $width-page/12*5;
+}
+
+.col-width-6 {
+  width: $width-page/12*6;
+}
+
+.col-width-7 {
+  width: $width-page/12*7;
+}
+
+.col-width-8 {
+  width: $width-page/12*8;
+}
+
+.col-width-9 {
+  width: $width-page/12*9;
+}
+
+.col-width-10 {
+  width: $width-page/12*10;
+}
+
+.col-width-11 {
+  width: $width-page/12*11;
+}
+
+.col-width-12 {
+  width: $width-page;
 }
 
 @media print

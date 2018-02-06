@@ -50,58 +50,58 @@
   </div>
   <div class="div-table no-print">
     <div class="div-table-row">
-      <div class="div-table-col-l">
+      <div class="div-table-col-l col-width-4">
         код по ОКАТО
       </div>
-      <div class="div-table-col-r">
+      <div class="div-table-col-r col-width-8">
         <%= @proposal.prop_applic_code_okato %>
       </div>
     </div>
     <div class="div-table-row">
-      <div class="div-table-col-l">
+      <div class="div-table-col-l col-width-4">
         Форма собственности
       </div>
-      <div class="div-table-col-r">
+      <div class="div-table-col-r col-width-8">
         <%= @proposal.prop_applic_type_own %>
       </div>
     </div>
     <div class="div-table-row">
-      <div class="div-table-col-l">
+      <div class="div-table-col-l col-width-4">
         код по ОКОНХ
       </div>
-      <div class="div-table-col-r">
+      <div class="div-table-col-r col-width-8">
         <%= @proposal.prop_applic_code_okonh %>
       </div>
     </div>
     <div class="div-table-row">
-      <div class="div-table-col-l">
+      <div class="div-table-col-l col-width-4">
         код по ОКВЭД
       </div>
-      <div class="div-table-col-r">
+      <div class="div-table-col-r col-width-8">
         <%= @proposal.prop_applic_code_okved %>
       </div>
     </div>
     <div class="div-table-row">
-      <div class="div-table-col-l">
+      <div class="div-table-col-l col-width-4">
         код по ОКПО
       </div>
-      <div class="div-table-col-r">
+      <div class="div-table-col-r col-width-8">
         <%= @proposal.prop_applic_code_okpo %>
       </div>
     </div>
     <div class="div-table-row">
-      <div class="div-table-col-l">
+      <div class="div-table-col-l col-width-4">
         ИНН
       </div>
-      <div class="div-table-col-r">
+      <div class="div-table-col-r col-width-8">
         <%= @proposal.prop_applic_inn %>
       </div>
     </div>
     <div class="div-table-row">
-      <div class="div-table-col-l">
+      <div class="div-table-col-l col-width-4">
         КПП
       </div>
-      <div class="div-table-col-r">
+      <div class="div-table-col-r col-width-8">
         <%= @proposal.prop_applic_kpp %>
       </div>
     </div>
@@ -124,16 +124,16 @@
   </div>
   <div class="div-table">
     <div class="div-table-row">
-      <div class="div-table-col">
+      <div class="div-table-col col-width-3">
         Код ОК 005-93 (ОКП)
       </div>
-      <div class="div-table-col-hr">
+      <div class="div-table-col-hr col-width-2">
         <b><%= @proposal.prop_applic_code_okp %></b>
       </div>
-      <div class="div-table-col">
+      <div class="div-table-col col-width-2">
         Код ТН ВЭД
       </div>
-      <div class="div-table-col-hr">
+      <div class="div-table-col-hr col-width-2">
         <b><%= @proposal.prop_applic_code_tn_ved %></b>
       </div>
     </div>
@@ -167,10 +167,10 @@
   </div>
   <div class="div-table no-print">
     <div class="div-table-row">
-      <div class="div-table-col-l">
+      <div class="div-table-col-l col-width-4">
         код по ОКАТО
       </div>
-      <div class="div-table-col-r">
+      <div class="div-table-col-r col-width-8">
         <%= @proposal.prop_manuf_code_okato %>
       </div>
     </div>
@@ -232,10 +232,10 @@
   </div>
   <div class="div-table no-print">
     <div class="div-table-row">
-      <div class="div-table-col-l">
+      <div class="div-table-col-l col-width-8">
         Количество видов сертифицируемой продукции
       </div>
-      <div class="div-table-col-r">
+      <div class="div-table-col-r col-width-4">
         <%= @proposal.prop_manuf_count_sort_cert %>
       </div>
     </div>
@@ -273,17 +273,17 @@
   </div>
   <div class="div-table">
     <div class="div-table-row">
-      <div class="div-table-col-at">
+      <div class="div-table-col col-width-4 col-align-top">
         Руководитель организации
       </div>
-      <div class="div-table-col">
+      <div class="div-table-col col-width-2 col-align-bot">
         <div class="line">
         </div>
         <div class="hint">
           подпись
         </div>
       </div>
-      <div class="div-table-col">
+      <div class="div-table-col col-width-4">
         <div class="line">
           <b><%= @proposal.prop_manuf_chief_org %></b>
         </div>
@@ -293,17 +293,17 @@
       </div>
     </div>
     <div class="div-table-row">
-      <div class="div-table-col-at">
+      <div class="div-table-col col-width-4 col-align-top">
         Главный бухгалтер
       </div>
-      <div class="div-table-col">
+      <div class="div-table-col col-width-2 col-align-bot">
         <div class="line">
         </div>
         <div class="hint">
           подпись
         </div>
       </div>
-      <div class="div-table-col">
+      <div class="div-table-col col-width-4">
         <div class="line">
           <b><%= @proposal.prop_manuf_chief_accountant %></b>
         </div>
@@ -315,10 +315,10 @@
   </div>
   <div class="div-table">
     <div class="div-table-row">
-      <div class="div-table-col col-width-3">
+      <div class="div-table-col col-width-4 col-align-top">
         М.П.
       </div>
-      <div class="div-table-col">
+      <div class="div-table-col col-width-4 col-align-bot">
         <b><%= @proposal.prop_date_from.strftime("%d.%m.%Y") %></b>
       </div>
     </div>
