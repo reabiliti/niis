@@ -1,6 +1,15 @@
 <% provide(:title, "Заявка № #{@proposal.prop_number}") %>
+<div class="paragraph no-print">
+  <%= link_to t('link.edit'), edit_proposal_path %> | 
+  <%= link_to t('link.back'), proposals_path %> | 
+  <%= link_to t('link.destroy'), proposal_path(@proposal),
+      method: :delete,
+      data: { confirm: 'Are you sure?' } %>
+  <% if @proposal.solution_proposal.nil? %>
+     | <%= link_to t('link.new_solution_proposal'), new_proposal_solution_proposal_path(@proposal) %>
+  <% end %>
+</div>
 <h1 class="no-print">Заявка № <%= @proposal.prop_number %></h1>
-
 <div class="page-body">
   <div class="line">
     <% @setting.set_organization.split("\r\n").each do |set_org| %>
@@ -124,7 +133,7 @@
   </div>
   <div class="div-table">
     <div class="div-table-row">
-      <div class="div-table-col col-width-3">
+      <div class="div-table-col col-width-4">
         Код ОК 005-93 (ОКП)
       </div>
       <div class="div-table-col-hr col-width-2">
@@ -283,7 +292,7 @@
           подпись
         </div>
       </div>
-      <div class="div-table-col col-width-4">
+      <div class="div-table-col col-width-4 col-align-bot">
         <div class="line">
           <b><%= @proposal.prop_manuf_chief_org %></b>
         </div>
@@ -303,7 +312,7 @@
           подпись
         </div>
       </div>
-      <div class="div-table-col col-width-4">
+      <div class="div-table-col col-width-4 col-align-bot">
         <div class="line">
           <b><%= @proposal.prop_manuf_chief_accountant %></b>
         </div>
@@ -330,5 +339,11 @@
 <br>
 <div class="paragraph no-print">
   <%= link_to t('link.edit'), edit_proposal_path %> | 
-  <%= link_to t('link.back'), proposals_path %>
+  <%= link_to t('link.back'), proposals_path %> | 
+  <%= link_to t('link.destroy'), proposal_path(@proposal),
+      method: :delete,
+      data: { confirm: 'Are you sure?' } %>
+  <% if @proposal.solution_proposal.nil? %>
+     | <%= link_to t('link.new_solution_proposal'), new_proposal_solution_proposal_path(@proposal) %>
+  <% end %>
 </div>

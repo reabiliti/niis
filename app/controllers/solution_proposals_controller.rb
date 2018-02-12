@@ -1,0 +1,63 @@
+class SolutionProposalsController < ApplicationController
+  before_action :proposal_find, only: [ :show, :new, :create, :edit, :update, :destroy ]
+  before_action :solprop_find, only: [ :show, :edit, :update, :destroy ]
+  def index
+  end
+
+  def show
+    @setting = Setting.first
+  end
+
+  def new
+    @solution_proposal = @proposal.build_solution_proposal
+    @solution_proposal.solprop_number = @proposal.prop_number
+    @solution_proposal.solprop_applic_name_product = @proposal.prop_applic_name_product
+    @solution_proposal.solprop_applic_code_okp = @proposal.prop_applic_code_okp
+    @solution_proposal.solprop_applic_code_tn_ved = @proposal.prop_applic_code_tn_ved
+    @solution_proposal.solprop_manuf_name = @proposal.prop_manuf_name
+    @solution_proposal.solprop_manuf_address = @proposal.prop_manuf_address
+    @solution_proposal.solprop_manuf_postcode = @proposal.prop_manuf_postcode
+    @solution_proposal.solprop_manuf_doc = @proposal.prop_manuf_doc
+    @solution_proposal.solprop_manuf_list_doc = @proposal.prop_manuf_list_doc
+    @solution_proposal.solprop_regulations = @proposal.prop_manuf_regulations
+    @solution_proposal.solprop_applic_name = @proposal.prop_applic_name
+  end
+
+  def create
+    @solution_proposal = @proposal.build_solution_proposal(solprop_params)
+    @solution_proposal.save ? (redirect_to proposal_solution_proposal_path(@proposal, @solution_proposal)) : (render 'new')
+  end
+
+  def edit
+  end
+
+  def update
+    @solution_proposal.update(solprop_params) ? (redirect_to proposal_solution_proposal_path(@proposal, @solution_proposal)) : (render 'edit')
+  end
+
+  def destroy
+    @solution_proposal.destroy
+    redirect_to proposal_path(@proposal)
+  end
+
+  private
+  def solprop_params
+    params.require(:solution_proposal).permit(:solprop_number, :solprop_date_from, :solprop_solution,
+                                               :solprop_applic_name_product, :solprop_applic_code_okp,
+                                               :solprop_applic_code_tn_ved, :solprop_manuf_name,
+                                               :solprop_manuf_address, :solprop_manuf_postcode,
+                                               :solprop_manuf_doc, :solprop_manuf_list_doc,
+                                               :solprop_regulations, :solprop_desc_scheme_cert,
+                                               :solprop_test_lab, :solprop_sampling, :solprop_list_doc_product,
+                                               :solprop_basis_work, :solprop_add_info, :solprop_chief_name,
+                                               :solprop_chief_org, :solprop_expert, :solprop_executor,
+                                               :solprop_applic_sign, :solprop_applic_name)
+  end
+
+  def proposal_find
+    @proposal = Proposal.find(params[:proposal_id])
+  end
+  def solprop_find
+    @solution_proposal = SolutionProposal.find(params[:id])
+  end
+end

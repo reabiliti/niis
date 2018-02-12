@@ -241,6 +241,11 @@ footer {
   width: $width-page;
 }
 
+.ol-left {
+  padding-left: 0;
+  margin-left: 0;
+}
+
 @media print
 {
   .conteiner, body, .page-body {

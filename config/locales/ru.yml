@@ -35,6 +35,7 @@ ru:
     show: "Просмотр"
     destroy: "Удалить"
     new: "Создать"
+    new_solution_proposal: "Создать решение"
     edit: "Изменить"
     home: "Главная"
     print_PDF: "Печать PDF"
@@ -121,6 +122,33 @@ ru:
         prop_manuf_add_info: "Дополнительная информация"
         prop_manuf_chief_org: "Руководитель организации"
         prop_manuf_chief_accountant: "Главный бухгалтер"
+      solution_proposal:
+        solprop_number: "Решение по заявке №"
+        solprop_date_from: "от"
+        solprop_solution: "Принято решение"
+        solprop_applic_name_product: "наименование продукции"
+        solprop_applic_code_okp: "Код ОК 005-93 (ОКП)"
+        solprop_applic_code_tn_ved: "код ТН ВЭД"
+        solprop_manuf_name: "Наименование изготовителя"
+        solprop_manuf_address: "Название улицы, номер дома, номер помещения; название населенного пункта (города,
+                                поселка и т.п.); название района; название республики, края, области, автономного округа (области)"
+        solprop_manuf_postcode: "Почтовый индекс"
+        solprop_manuf_doc: "Наименование и обозначение документации изготовителя (стандарт, ТУ, КД, образец-эталон)"
+        solprop_manuf_list_doc: "Перечень представленных документов, подтверждающих соответствие продукции установленным требованиям"
+        solprop_regulations: "Наименование и обозначение нормативных документов"
+        solprop_desc_scheme_cert: "Описание схемы сертификации"
+        solprop_test_lab: "Для каждой испытательной лаборатории приводят: полное наименование, регистрационный номер, адрес, телефон"
+        solprop_sampling: "Отбор продукции для испытаний проводит"
+        solprop_list_doc_product: "Перечень документов, в том числе документы о соответствии продукции установленным требованиям, 
+                                  выданные федеральными органами исполнительной власти"
+        solprop_basis_work: "Работы проводятся на основе"
+        solprop_add_info: "Дополнительная информация"
+        solprop_chief_name: "Наименование должности руководителя"
+        solprop_chief_org: "Руководитель"
+        solprop_expert: "Эксперт"
+        solprop_executor: "Исполнитель"
+        solprop_applic_sign: "Подпись заявителя"
+        solprop_applic_name: "Заявитель"
 
 # Template
   form:
