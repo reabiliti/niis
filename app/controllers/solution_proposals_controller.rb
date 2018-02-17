@@ -1,7 +1,8 @@
 class SolutionProposalsController < ApplicationController
-  before_action :proposal_find, only: [ :show, :new, :create, :edit, :update, :destroy ]
   before_action :solprop_find, only: [ :show, :edit, :update, :destroy ]
+  before_action :proposal_find, only: [ :show, :new ]
   def index
+    @solution_proposals = SolutionProposal.all
   end
 
   def show
@@ -9,7 +10,8 @@ class SolutionProposalsController < ApplicationController
   end
 
   def new
-    @solution_proposal = @proposal.build_solution_proposal
+    @solution_proposal = SolutionProposal.new
+    @solution_proposal.proposal_id = @proposal.id
     @solution_proposal.solprop_number = @proposal.prop_number
     @solution_proposal.solprop_applic_name_product = @proposal.prop_applic_name_product
     @solution_proposal.solprop_applic_code_okp = @proposal.prop_applic_code_okp
@@ -24,25 +26,27 @@ class SolutionProposalsController < ApplicationController
   end
 
   def create
-    @solution_proposal = @proposal.build_solution_proposal(solprop_params)
-    @solution_proposal.save ? (redirect_to proposal_solution_proposal_path(@proposal, @solution_proposal)) : (render 'new')
+    @solution_proposal = SolutionProposal.new(solprop_params)
+    @solution_proposal.save ? (redirect_to solution_proposal_path(@solution_proposal,
+                              proposal_id: @solution_proposal.proposal_id)) : (render 'new')
   end
 
   def edit
   end
 
   def update
-    @solution_proposal.update(solprop_params) ? (redirect_to proposal_solution_proposal_path(@proposal, @solution_proposal)) : (render 'edit')
+    @solution_proposal.update(solprop_params) ? (redirect_to solution_proposal_path(@solution_proposal,
+                                                proposal_id: @solution_proposal.proposal_id)) : (render 'edit')
   end
 
   def destroy
     @solution_proposal.destroy
-    redirect_to proposal_path(@proposal)
+    redirect_to root_path
   end
 
   private
   def solprop_params
-    params.require(:solution_proposal).permit(:solprop_number, :solprop_date_from, :solprop_solution,
+    params.require(:solution_proposal).permit(:proposal_id, :solprop_number, :solprop_date_from, :solprop_solution,
                                                :solprop_applic_name_product, :solprop_applic_code_okp,
                                                :solprop_applic_code_tn_ved, :solprop_manuf_name,
                                                :solprop_manuf_address, :solprop_manuf_postcode,
@@ -54,10 +58,11 @@ class SolutionProposalsController < ApplicationController
                                                :solprop_applic_sign, :solprop_applic_name)
   end
 
-  def proposal_find
-    @proposal = Proposal.find(params[:proposal_id])
-  end
   def solprop_find
     @solution_proposal = SolutionProposal.find(params[:id])
+  end
+
+  def proposal_find
+    @proposal = Proposal.find(params[:proposal_id])
   end
 end

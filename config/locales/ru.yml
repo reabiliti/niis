@@ -35,12 +35,14 @@ ru:
     show: "Просмотр"
     destroy: "Удалить"
     new: "Создать"
-    new_solution_proposal: "Создать решение"
+    new_proposal: "Создать Заявку"
+    new_solution_proposal: "Создать Решение"
     edit: "Изменить"
     home: "Главная"
     print_PDF: "Печать PDF"
     settings: "Настройки"
     proposals: "Заявки"
+    solution_proposals: "Решения по заявкам"
     certificates: "Сертификаты"
   activerecord:
     errors:
@@ -52,6 +54,8 @@ ru:
     models:
       certificate: "Сертификат"
       setting: "Настройки"
+      proposal: "Заявка"
+      solution_proposal: "Решение по заявке"
     attributes:
       certificate:
         cer_number: "Номер сертификата"

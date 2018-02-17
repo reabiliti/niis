@@ -1,2 +1,29 @@
 <% provide(:title, "Главная") %>
+<%= link_to t('link.new_proposal'), new_proposal_path %>
 <h1>Главная</h1>
+<ul>
+  <li>
+    <%= link_to @setting.set_name, setting_path(@setting) %>
+  </li>
+  <% @proposals.each do |proposal| %>
+    <ul>
+      <li>
+        <%= link_to "#{proposal.prop_date_from.strftime("%d.%m.%Y")} #{proposal.prop_number} #{proposal.prop_applic_name}", proposal_path(proposal) %>
+      </li>
+      <% unless proposal.solution_proposal.nil? %>
+        <ul>
+          <li>
+            <%= link_to "1.3 Решение по заявке о проведении сертификации от 
+                        #{proposal.solution_proposal.solprop_date_from.strftime("%d.%m.%Y")} № 
+                        #{proposal.solution_proposal.solprop_number}",
+                        solution_proposal_path(proposal.solution_proposal, proposal_id: proposal.id) %>
+          </li>
+        </ul>
+      <% end %>
+    </ul>
+  <% end %>
+</ul>
+<br>
+<br>
+<br>
+<%= link_to t('link.new_proposal'), new_proposal_path %>

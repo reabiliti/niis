@@ -1,10 +1,12 @@
-<% provide(:title, "Решение по заявке") %>
-<h1>"Решение по заявке"</h1>
-
-  <ul>
-    <li>
-      <%= link_to @solution_proposal.solprop_number, proposal_solution_proposal_path(@proposal) %>
-    </li>
-  </ul>
-
-<%= link_to t('link.new'), new_solution_proposal_path %>
+<% provide(:title, "Решения по заявкам") %>
+<h1>"Решения по заявкам"</h1>
+  <% @solution_proposals.each do |solprop| %>
+    <ul>
+      <li>
+        <%= link_to solprop.solprop_number, solution_proposal_path(solprop, proposal_id: solprop.proposal_id) %>
+      </li>
+    </ul>
+  <% end %>
+<br>
+<br>
+<br>

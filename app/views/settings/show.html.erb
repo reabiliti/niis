@@ -1,4 +1,5 @@
 <% provide(:title, "Настройка #{@setting.set_name}") %>
+<%= link_to t('link.back'), root_path %>
 <h1>Настройка <%= @setting.set_name %></h1>
 <br>
 
@@ -17,4 +18,4 @@
   </table>
 </div>
 
-<%= link_to t('link.back'), settings_path %>
+<%= link_to t('link.back'), root_path %>

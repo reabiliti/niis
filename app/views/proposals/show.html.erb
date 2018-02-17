@@ -1,12 +1,12 @@
 <% provide(:title, "Заявка № #{@proposal.prop_number}") %>
 <div class="paragraph no-print">
   <%= link_to t('link.edit'), edit_proposal_path %> | 
-  <%= link_to t('link.back'), proposals_path %> | 
+  <%= link_to t('link.back'), root_path %> | 
   <%= link_to t('link.destroy'), proposal_path(@proposal),
       method: :delete,
       data: { confirm: 'Are you sure?' } %>
   <% if @proposal.solution_proposal.nil? %>
-     | <%= link_to t('link.new_solution_proposal'), new_proposal_solution_proposal_path(@proposal) %>
+     | <%= link_to t('link.new_solution_proposal'), new_solution_proposal_path(proposal_id: @proposal.id) %>
   <% end %>
 </div>
 <h1 class="no-print">Заявка № <%= @proposal.prop_number %></h1>
@@ -339,11 +339,11 @@
 <br>
 <div class="paragraph no-print">
   <%= link_to t('link.edit'), edit_proposal_path %> | 
-  <%= link_to t('link.back'), proposals_path %> | 
+  <%= link_to t('link.back'), root_path %> | 
   <%= link_to t('link.destroy'), proposal_path(@proposal),
       method: :delete,
       data: { confirm: 'Are you sure?' } %>
   <% if @proposal.solution_proposal.nil? %>
-     | <%= link_to t('link.new_solution_proposal'), new_proposal_solution_proposal_path(@proposal) %>
+     | <%= link_to t('link.new_solution_proposal'), new_solution_proposal_path(@proposal) %>
   <% end %>
 </div>

@@ -1,12 +1,12 @@
-<% provide(:title, "Решение по заявке № #{@proposal.solution_proposal.solprop_number}") %>
+<% provide(:title, "Решение по заявке № #{@solution_proposal.solprop_number}") %>
 <div class="paragraph no-print">
-  <%= link_to t('link.edit'), edit_proposal_solution_proposal_path %> | 
-  <%= link_to t('link.back'), proposals_path %> | 
-  <%= link_to t('link.destroy'), proposal_solution_proposal_path(@proposal, @solution_proposal),
+  <%= link_to t('link.edit'), edit_solution_proposal_path %> | 
+  <%= link_to t('link.back'), root_path %> | 
+  <%= link_to t('link.destroy'), solution_proposal_path(@solution_proposal),
       method: :delete,
       data: { confirm: 'Are you sure?' } %>
 </div>
-<h1 class="no-print">Решение по заявке № <%= @proposal.solution_proposal.solprop_number %></h1>
+<h1 class="no-print">Решение по заявке № <%= @solution_proposal.solprop_number %></h1>
 <div class="page-body">
   <div class="line">
     <% @setting.set_organization.split("\r\n").each do |set_org| %>
@@ -267,9 +267,9 @@
 <br>
 <br>
 <div class="paragraph no-print">
-  <%= link_to t('link.edit'), edit_proposal_solution_proposal_path %> | 
-  <%= link_to t('link.back'), proposals_path %> | 
-  <%= link_to t('link.destroy'), proposal_solution_proposal_path(@proposal, @solution_proposal),
+  <%= link_to t('link.edit'), edit_solution_proposal_path %> | 
+  <%= link_to t('link.back'), root_path %> | 
+  <%= link_to t('link.destroy'), solution_proposal_path(@solution_proposal),
       method: :delete,
       data: { confirm: 'Are you sure?' } %>
 </div>

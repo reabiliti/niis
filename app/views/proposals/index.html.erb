@@ -1,5 +1,5 @@
 <% provide(:title, "Заявки") %>
-<%= link_to t('link.new'), new_proposal_path %>
+<%= link_to t('link.new_proposal'), new_proposal_path %>
 <h1>Заявки</h1>
 
 <% @proposals.each do |proposal| %>
@@ -7,18 +7,9 @@
     <li>
       <%= link_to "#{proposal.prop_date_from.strftime("%d.%m.%Y")} #{proposal.prop_number} #{proposal.prop_applic_name}", proposal_path(proposal) %>
     </li>
-    <% unless proposal.solution_proposal.nil? %>
-      <ul>
-        <li>
-          <%= link_to "1.3 Решение по заявке о проведении сертификации от #{proposal.solution_proposal.solprop_date_from.strftime("%d.%m.%Y")} № 
-                                                                          #{proposal.solution_proposal.solprop_number}",
-                                                                          proposal_solution_proposal_path(proposal, proposal.solution_proposal) %>
-        </li>
-      </ul>
-    <% end %>
   </ul>
 <% end %>
 <br>
 <br>
 <br>
-<%= link_to t('link.new'), new_proposal_path %>
+<%= link_to t('link.new_proposal'), new_proposal_path %>
