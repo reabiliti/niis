@@ -1,7 +1,7 @@
 <% provide(:title, "Заявка № #{@proposal.prop_number}") %>
 <div class="paragraph no-print">
-  <%= link_to t('link.edit'), edit_proposal_path %> | 
   <%= link_to t('link.back'), root_path %> | 
+  <%= link_to t('link.edit'), edit_proposal_path %> | 
   <%= link_to t('link.destroy'), proposal_path(@proposal),
       method: :delete,
       data: { confirm: 'Are you sure?' } %>
@@ -9,7 +9,8 @@
      | <%= link_to t('link.new_solution_proposal'), new_solution_proposal_path(proposal_id: @proposal.id) %>
   <% end %>
 </div>
-<h1 class="no-print">Заявка № <%= @proposal.prop_number %></h1>
+<br class="no-print">
+<br class="no-print">
 <div class="page-body">
   <div class="line">
     <% @setting.set_organization.split("\r\n").each do |set_org| %>
@@ -51,8 +52,18 @@
   <div class="paragraph">
     Банковские реквизиты: <b><%= @proposal.prop_applic_bank_detail %></b>
   </div>
-  <div class="paragraph">
-    Телефон: <b><%= @proposal.prop_applic_phone %></b> Факс: <b><%= @proposal.prop_applic_fax %></b> Почта: <b><%= @proposal.prop_applic_email %></b>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-4">
+        Телефон: <b><%= @proposal.prop_applic_phone %></b>
+      </div>
+      <div class="div-table-col col-width-4">
+        Факс: <b><%= @proposal.prop_applic_fax %></b>
+      </div>
+      <div class="div-table-col col-width-4">
+        Почта: <b><%= @proposal.prop_applic_email %></b>
+      </div>
+    </div>
   </div>
   <div class="div-table-header no-print">
     Поисковые реквизиты заявителя
@@ -133,17 +144,17 @@
   </div>
   <div class="div-table">
     <div class="div-table-row">
-      <div class="div-table-col col-width-4">
+      <div class="div-table-col col-width-6">
         Код ОК 005-93 (ОКП)
+        <span class="line">
+          <b><%= @proposal.prop_applic_code_okp %></b>
+        </span>
       </div>
-      <div class="div-table-col-hr col-width-2">
-        <b><%= @proposal.prop_applic_code_okp %></b>
-      </div>
-      <div class="div-table-col col-width-2">
+      <div class="div-table-col col-width-6">
         Код ТН ВЭД
-      </div>
-      <div class="div-table-col-hr col-width-2">
-        <b><%= @proposal.prop_applic_code_tn_ved %></b>
+        <span class="line">
+          <b><%= @proposal.prop_applic_code_tn_ved %></b>
+        </span>
       </div>
     </div>
   </div>
@@ -333,13 +344,11 @@
     </div>
   </div>
 </div>
-
-
-<br>
-<br>
+<br class="no-print">
+<br class="no-print">
 <div class="paragraph no-print">
-  <%= link_to t('link.edit'), edit_proposal_path %> | 
   <%= link_to t('link.back'), root_path %> | 
+  <%= link_to t('link.edit'), edit_proposal_path %> | 
   <%= link_to t('link.destroy'), proposal_path(@proposal),
       method: :delete,
       data: { confirm: 'Are you sure?' } %>

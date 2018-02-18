@@ -1,12 +1,16 @@
 <% provide(:title, "Решение по заявке № #{@solution_proposal.solprop_number}") %>
 <div class="paragraph no-print">
-  <%= link_to t('link.edit'), edit_solution_proposal_path %> | 
   <%= link_to t('link.back'), root_path %> | 
+  <%= link_to t('link.edit'), edit_solution_proposal_path %> | 
   <%= link_to t('link.destroy'), solution_proposal_path(@solution_proposal),
       method: :delete,
       data: { confirm: 'Are you sure?' } %>
+  <% if @solution_proposal.protocol.nil? %>
+    | <%= link_to t('link.new_protocol'), new_protocol_path(solution_proposal_id: @solution_proposal.id) %>
+  <% end %>
 </div>
-<h1 class="no-print">Решение по заявке № <%= @solution_proposal.solprop_number %></h1>
+<br class="no-print">
+<br class="no-print">
 <div class="page-body">
   <div class="line">
     <% @setting.set_organization.split("\r\n").each do |set_org| %>
@@ -179,7 +183,7 @@
   </ol>
   <div class="div-table">
     <div class="div-table-row">
-      <div class="div-table-co col-width-6 col-align-top">
+      <div class="div-table-col col-width-6 col-align-top">
         <%= @solution_proposal.solprop_chief_name %>
       </div>
       <div class="div-table-col col-width-2 col-align-bot">
@@ -199,7 +203,7 @@
       </div>
     </div>
     <div class="div-table-row">
-      <div class="div-table-co col-width-6 col-align-top">
+      <div class="div-table-col col-width-6 col-align-top">
         Эксперт
       </div>
       <div class="div-table-col col-width-2 col-align-bot">
@@ -220,7 +224,7 @@
     </div>
     <% unless @solution_proposal.solprop_executor.blank? %>
       <div class="div-table-row">
-        <div class="div-table-co col-width-6 col-align-top">
+        <div class="div-table-col col-width-6 col-align-top">
           Исполнитель
         </div>
         <div class="div-table-col col-width-2 col-align-bot">
@@ -242,7 +246,7 @@
     <% end %>
     <% if @solution_proposal.solprop_applic_sign %>
       <div class="div-table-row">
-        <div class="div-table-co col-width-6 col-align-top">
+        <div class="div-table-col col-width-6 col-align-top">
           С решением ознакомлен:
         </div>
         <div class="div-table-col col-width-2 col-align-bot">
@@ -264,11 +268,11 @@
     <% end %>
   </div>
 </div>
-<br>
-<br>
+<br class="no-print">
+<br class="no-print">
 <div class="paragraph no-print">
-  <%= link_to t('link.edit'), edit_solution_proposal_path %> | 
   <%= link_to t('link.back'), root_path %> | 
+  <%= link_to t('link.edit'), edit_solution_proposal_path %> | 
   <%= link_to t('link.destroy'), solution_proposal_path(@solution_proposal),
       method: :delete,
       data: { confirm: 'Are you sure?' } %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180211172621) do
+ActiveRecord::Schema.define(version: 20180218131514) do
 
   create_table "certificates", force: :cascade do |t|
     t.string "cer_number"
@@ -78,6 +78,32 @@ ActiveRecord::Schema.define(version: 20180211172621) do
     t.string "prop_manuf_scheme_cert"
     t.string "prop_manuf_count_sort_cert"
     t.string "prop_manuf_group_complexity"
+  end
+
+  create_table "protocols", force: :cascade do |t|
+    t.integer "solution_proposal_id"
+    t.datetime "prot_date_from"
+    t.text "prot_applic_name_product"
+    t.string "prot_applic_code_okp"
+    t.string "prot_applic_code_tn_ved"
+    t.string "prot_origin_cert"
+    t.string "prot_info_product"
+    t.datetime "prot_date_issue_product"
+    t.string "prot_shelf_life"
+    t.string "prot_info_box"
+    t.string "prot_label_product"
+    t.string "prot_regulations_product"
+    t.text "prot_evaluation_product"
+    t.string "prot_requirement_test"
+    t.text "prot_list_indicators"
+    t.string "prot_conclusion"
+    t.string "prot_expert"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "prot_manuf_name"
+    t.string "prot_manuf_address"
+    t.string "prot_manuf_postcode"
+    t.index ["solution_proposal_id"], name: "index_protocols_on_solution_proposal_id"
   end
 
   create_table "settings", force: :cascade do |t|

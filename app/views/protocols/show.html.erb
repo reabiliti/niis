@@ -1,0 +1,209 @@
+<%= provide(:title, "Протокол идентификации продукции от #{@protocol.prot_date_from.strftime("%d.%m.%Y")}") %>
+<div class="paragraph no-print">
+  <%= link_to t('link.back'), root_path %> | 
+  <%= link_to t('link.edit'), edit_protocol_path(@protocol, solution_proposal_id: @protocol.solution_proposal_id) %> | 
+  <%= link_to t('link.destroy'), protocol_path(@protocol), method: :delete,
+                                  data: { confirm: "Are you sure" }%>
+</div>
+<br class="no-print">
+<br class="no-print">
+<div class="page-body">
+  <div class="line">
+    <% @setting.set_organization.split("\r\n").each do |set_org| %>
+      <%= set_org %><br>
+    <% end %>
+    <%= @setting.set_name %>
+  </div>
+  <div class="hint">
+    наименование органа по сертификации
+  </div>
+  <div class="line">
+    <%= @setting.set_address %>
+  </div>
+  <div class="hint">
+    адрес, телефон, факс
+  </div>
+  <br>
+  <div class="caption">
+    Протокол идентификации продукции от <%= @protocol.prot_date_from.strftime("%d.%m.%Y") %>
+  </div>
+  <br>
+  <div class="paragraph">
+    <b>1.</b> Наименование заявителя и его реквизиты:
+  </div>
+  <div class="line">
+    <b><%= @proposal.prop_applic_name %><br>
+    <%= @proposal.prop_applic_reg_doc %></b>
+  </div>
+  <div class="hint">
+    наименование организации-изготовителя, продавца или индивидуального предпринимателя (далее - заявитель)
+  </div>
+  <div class="paragraph">
+    Юридический адрес: <b><%= "#{@proposal.prop_applic_address}, #{@proposal.prop_applic_postcode}" %></b>
+  </div>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-4">
+        Телефон: <b><%= @proposal.prop_applic_phone %></b>
+      </div>
+      <div class="div-table-col col-width-4">
+        Факс: <b><%= @proposal.prop_applic_fax %></b>
+      </div>
+      <div class="div-table-col col-width-4">
+        Почта: <b><%= @proposal.prop_applic_email %></b>
+      </div>
+    </div>
+  </div>
+  <div class="paragraph">
+    Заявка <b>№ <%= @proposal.prop_number %></b> от <b><%= @proposal.prop_date_from.strftime("%d.%m.%Y") %></b>
+  </div>
+  <div class="paragraph">
+    <b>2.</b> Заявленное наименование продукции:
+  </div>
+  <div class="line">
+    <b><%= @protocol.prot_applic_name_product %></b>
+  </div>
+  <div class="hint">
+    наименование продукции
+  </div>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-6">
+        Код ОК 005-93 (ОКП)
+        <span class="line">
+          <b><%= @protocol.prot_applic_code_okp %></b>
+        </span>
+      </div>
+      <div class="div-table-col col-width-6">
+        Код ТН ВЭД
+        <span class="line">
+          <b><%= @protocol.prot_applic_code_tn_ved %></b>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="paragraph">
+    <b>3.</b> Сведения об изготовителе продукции:
+  </div>
+  <div class="line">
+    <b><%= @protocol.prot_manuf_name %></b>
+  </div>
+  <div class="hint">
+    наименование изготовителя
+  </div>
+  <div class="line">
+    <b><%= "#{@protocol.prot_manuf_address}, #{@protocol.prot_manuf_postcode}" %></b>
+  </div>
+  <div class="hint">
+    адрес
+  </div>
+  <% unless @protocol.prot_origin_cert.blank? %>
+    <div class="line">
+      <b><%= @protocol.prot_origin_cert %></b>
+    </div>
+    <div class="hint">
+      сертификат происхождения
+    </div>
+  <% end %>
+  <div class="paragraph">
+    <b>4.</b> Сведения о продукции:
+  </div>
+  <div class="line">
+    <b><%= @protocol.prot_info_product %></b>
+  </div>
+  <div class="hint">
+    удостоверение о качестве, сертификат качества изготовителя, санитарный сертификат страны-изготовителя,
+    фитосанитарный сертификат, ветеринарный сертификат (свидетельство), сертификат хлебной инспекции,
+    гигиеническое заключение
+  </div>
+  <div class="paragraph">
+    <b>5.</b> Дата выпуска продукции: <b><%= @protocol.prot_date_issue_product.strftime("%d.%m.%Y") %></b>
+  </div>
+  <div class="paragraph">
+    <b>6.</b> Срок годности продукции, указанный изготовителем: <b><%= @protocol.prot_shelf_life %></b>
+  </div>
+  <div class="paragraph">
+    <b>7.</b> Сведения об упаковке:
+  </div>
+  <div class="line">
+    <b><%= @protocol.prot_info_box %></b>
+  </div>
+  <div class="hint">
+    сведения об упаковке, масса, объем первичной упаковки
+  </div>
+  <div class="paragraph">
+    <b>8.</b> Оценка маркировки продукции:
+  </div>
+  <div class="line">
+    <b><%= @protocol.prot_label_product %></b>
+  </div>
+  <div class="hint">
+    соответствие информации на этикетке (упаковке) и прилагаемой сопроводительной документации требованиям
+    ГОСТ Р 51074-2003, анализ информации штрих-кода
+  </div>
+  <div class="paragraph">
+    <b>9.</b> Нормативная документация на заявленную продукцию:
+  </div>
+  <div class="line">
+    <b><%= @protocol.prot_regulations_product %></b>
+  </div>
+  <div class="hint">
+    наименование и обозначение НД. Для импортной продукции - наличие отечественных аналогов, возможность использования
+    отечественной НД для идентификации
+  </div>
+  <div class="paragraph">
+    <b>10.</b> Оценка органолептических показателей продукции:
+  </div>
+  <div class="line">
+    <b><%= @protocol.prot_evaluation_product %></b>
+  </div>
+  <div class="hint">
+    соответствие вкуса, цвета, запаха, консистенции, внешнего вида продукции заявленному наименованию, требованиям
+    нормативных и технических документов, рецептурам, приведенному пищевому составу, прилагаемой информации и (или)
+    традиционно сложившимся вкусам или привычкам населения
+  </div>
+  <div class="paragraph">
+    <b>11.</b> Проведение дополнительных испытаний по показателям, подтверждающим идентификацию продукции:
+    <b><%= @protocol.prot_requirement_test %></b>
+  </div>
+  <div class="line">
+    <b><%= @protocol.prot_list_indicators %></b>
+  </div>
+  <div class="hint">
+    перечень показателей, анализ результатов испытаний
+  </div>
+  <div class="paragraph">
+    <b>12.</b> Заключение: <b><%= @protocol.prot_conclusion %></b>
+  </div>
+  <br>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-6 col-align-top">
+        <b>Эксперт</b>
+      </div>
+      <div class="div-table-col col-width-2 col-align-bot">
+        <div class="line">
+        </div>
+        <div class="hint">
+          подпись
+        </div>
+      </div>
+      <div class="div-table-col col-width-3 col-align-bot">
+        <div class="line">
+          <%= @protocol.prot_expert %>
+        </div>
+        <div class="hint">
+          инициалы, фамилия
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br class="no-print">
+<br class="no-print">
+<div class="paragraph no-print">
+  <%= link_to t('link.back'), root_path %> | 
+  <%= link_to t('link.edit'), edit_protocol_path(@protocol, solution_proposal_id: @protocol.solution_proposal_id) %> | 
+  <%= link_to t('link.destroy'), protocol_path(@protocol), method: :delete,
+                                  data: { confirm: "Are you sure" }%>
+</div>

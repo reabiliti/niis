@@ -37,6 +37,7 @@ ru:
     new: "Создать"
     new_proposal: "Создать Заявку"
     new_solution_proposal: "Создать Решение"
+    new_protocol: "Создать Протокол"
     edit: "Изменить"
     home: "Главная"
     print_PDF: "Печать PDF"
@@ -153,7 +154,28 @@ ru:
         solprop_executor: "Исполнитель"
         solprop_applic_sign: "Подпись заявителя"
         solprop_applic_name: "Заявитель"
-
+      protocol:
+        prot_date_from: "от"
+        prot_applic_name_product: "Наименование продукции"
+        prot_applic_code_okp: "Код ОК 005-93 (ОКП)"
+        prot_applic_code_tn_ved: "Код ТН ВЭД"
+        prot_manuf_name: "Наименование изготовителя"
+        prot_manuf_address: "Название улицы, номер дома, номер помещения; название населенного пункта (города,
+                                поселка и т.п.); название района; название республики, края, области, автономного округа (области)"
+        prot_manuf_postcode: "Почтовый индекс"
+        prot_origin_cert: "Сертификат происхождения"
+        prot_info_product: "Сведения о продукции"
+        prot_date_issue_product: "Дата выпуска продукции"
+        prot_shelf_life: "Срок годности продукции, указанный изготовителем"
+        prot_info_box: "Сведения об упаковки"
+        prot_label_product: "Оценка маркировки продукции"
+        prot_regulations_product: "Нормативная документация на заявленную продукцию"
+        prot_evaluation_product: "Оценка органолептических показателей продукции"
+        prot_requirement_test: "Проведение дополнительных испытаний по показателям,
+                                подтверждающим идентификацию продукции"
+        prot_list_indicators: "Перечень показателей, анализ результатов испытаний"
+        prot_conclusion: "Заключение"
+        prot_expert: "Эксперт"
 # Template
   form:
     search: "Поиск"
