@@ -1,7 +1,7 @@
 <% provide(:title, "Решение по заявке № #{@solution_proposal.solprop_number}") %>
-<%= link_to t('link.back'), solution_proposal_path(@solution_proposal) %>
+<%= link_to t('link.back'), solution_proposal_path(@solution_proposal, proposal_id: @solution_proposal.proposal_id) %>
 <h1>Решение по заявке № <%= @solution_proposal.solprop_number %></h1>
 
 <%= render 'form' %>
 
-<%= link_to t('link.back'), solution_proposal_path(@solution_proposal) %>
+<%= link_to t('link.back'), solution_proposal_path(@solution_proposal, proposal_id: @solution_proposal.proposal_id) %>
