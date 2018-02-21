@@ -8,6 +8,9 @@
   <% if @solution_proposal.protocol.nil? %>
     | <%= link_to t('link.new_protocol'), new_protocol_path(solution_proposal_id: @solution_proposal.id) %>
   <% end %>
+  <% if @solution_proposal.conclusion.nil? %>
+    | <%= link_to t('link.new_conclusion'), new_conclusion_path(solution_proposal_id: @solution_proposal.id) %>
+  <% end %>
 </div>
 <h1 class="no-print">Решение по заявке № <%= @solution_proposal.solprop_number %></h1>
 <div class="page-body">
@@ -15,7 +18,7 @@
     <% @setting.set_organization.split("\r\n").each do |set_org| %>
       <%= set_org %><br>
     <% end %>
-    <%= @setting.set_name %>
+    рег. № <%= @setting.set_name %>
   </div>
   <div class="hint">
     Наименование органа по сертификации
@@ -275,4 +278,10 @@
   <%= link_to t('link.destroy'), solution_proposal_path(@solution_proposal),
       method: :delete,
       data: { confirm: 'Are you sure?' } %>
+  <% if @solution_proposal.protocol.nil? %>
+    | <%= link_to t('link.new_protocol'), new_protocol_path(solution_proposal_id: @solution_proposal.id) %>
+  <% end %>
+  <% if @solution_proposal.conclusion.nil? %>
+    | <%= link_to t('link.new_conclusion'), new_conclusion_path(solution_proposal_id: @solution_proposal.id) %>
+  <% end %>
 </div>

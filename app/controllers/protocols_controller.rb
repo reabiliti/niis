@@ -1,6 +1,6 @@
 class ProtocolsController < ApplicationController
   before_action :protocol_find, only: [ :show, :edit, :update, :destroy ]
-  before_action :solprop_find, only: [ :show, :new, :edit ]
+  before_action :solprop_find, only: [ :show, :new ]
 
   def index
     @protocols = Protocol.all

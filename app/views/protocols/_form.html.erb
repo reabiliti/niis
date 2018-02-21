@@ -4,7 +4,7 @@
       <div class="error text-danger">
         <p>
           <%= pluralize(@protocol.errors.count, "error") %> prohibited
-          this solution proposal from being saved:
+          this protocol from being saved:
         </p>
         <ul>
           <%= @protocol.errors.full_messages.each do |msg| %>

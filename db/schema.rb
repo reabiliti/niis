@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180218131514) do
+ActiveRecord::Schema.define(version: 20180221070954) do
 
   create_table "certificates", force: :cascade do |t|
     t.string "cer_number"
@@ -32,6 +32,37 @@ ActiveRecord::Schema.define(version: 20180218131514) do
     t.integer "setting_id"
     t.index ["id"], name: "index_certificates_on_id"
     t.index ["setting_id"], name: "index_certificates_on_setting_id"
+  end
+
+  create_table "conclusions", force: :cascade do |t|
+    t.string "conc_solution_num"
+    t.datetime "conc_solution_date"
+    t.string "conc_contract_num"
+    t.datetime "conc_contract_date"
+    t.string "conc_directive_num"
+    t.datetime "conc_directive_date"
+    t.text "conc_name_product"
+    t.string "conc_code_okp"
+    t.string "conc_tn_ved"
+    t.string "conc_manuf_name"
+    t.string "conc_manuf_address"
+    t.string "conc_manuf_postcode"
+    t.string "conc_manuf_doc"
+    t.string "conc_manuf_regulations"
+    t.string "conc_desc_scheme_cert"
+    t.text "conc_test_report"
+    t.string "conc_list_doc"
+    t.string "conc_conformity"
+    t.string "conc_may_be_issued"
+    t.datetime "conc_expiry_date"
+    t.text "conc_add_info"
+    t.string "conc_attachment"
+    t.string "conc_expert"
+    t.datetime "conc_sign_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "solution_proposal_id"
+    t.index ["solution_proposal_id"], name: "index_conclusions_on_solution_proposal_id"
   end
 
   create_table "proposals", force: :cascade do |t|

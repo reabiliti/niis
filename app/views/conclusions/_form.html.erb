@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <% if @conclusion.errors.any? %>
+      <div class="error text-danger">
+        <p>
+          <%= pluralize(@conclusion.errors.count, "error") %> prohibited
+          this conclusion from being saved:
+        </p>
+        <ul>
+          <%= @conclusion.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= simple_form_for [ @conclusion ], html: { class: "form-horizontal" }, wrapper: :horizontal_form do |f| %>
+
+      <%= f.input :solution_proposal_id, as: :hidden %>
+      <%= f.input :conc_solution_num %>
+      <div class="row">
+        <div class="form-group">
+          <%= f.label :conc_solution_date, class: 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.input_field :conc_solution_date, as: :date, start_year: Date.today.year - 10,
+                                                              end_year: Date.today.year + 10 %>
+          </div>
+        </div>
+      </div>
+      <%= f.input :conc_contract_num %>
+      <div class="row">
+        <div class="form-group">
+          <%= f.label :conc_contract_date, class: 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.input_field :conc_contract_date, as: :date, start_year: Date.today.year - 10,
+                                                              end_year: Date.today.year + 10 %>
+          </div>
+        </div>
+      </div>
+      <%= f.input :conc_directive_num %>
+      <div class="row">
+        <div class="form-group">
+          <%= f.label :conc_directive_date, class: 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.input_field :conc_directive_date, as: :date, start_year: Date.today.year - 10,
+                                                               end_year: Date.today.year + 10 %>
+          </div>
+        </div>
+      </div>
+      <%= f.input :conc_name_product, as: :text, input_html: { rows: 5 } %>
+      <%= f.input :conc_code_okp %>
+      <%= f.input :conc_tn_ved %>
+      <%= f.input :conc_manuf_name %>
+      <%= f.input :conc_manuf_address %>
+      <%= f.input :conc_manuf_postcode %>
+      <%= f.input :conc_manuf_doc %>
+      <%= f.input :conc_manuf_regulations %>
+      <%= f.input :conc_desc_scheme_cert %>
+      <%= f.input :conc_test_report, as: :text, input_html: { rows: 5 } %>
+      <%= f.input :conc_list_doc %>
+      <%= f.input :conc_conformity %>
+      <%= f.input :conc_may_be_issued, collection: [ "может", "не может" ] %>
+      <div class="row">
+        <div class="form-group">
+          <%= f.label :conc_expiry_date, class: 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.input_field :conc_expiry_date, as: :date, start_year: Date.today.year - 10,
+                                                            end_year: Date.today.year + 10 %>
+          </div>
+        </div>
+      </div>
+      <%= f.input :conc_add_info, as: :text, input_html: { rows: 5 } %>
+      <%= f.input :conc_attachment %>
+      <%= f.input :conc_expert %>
+      <div class="row">
+        <div class="form-group">
+          <%= f.label :conc_sign_date, class: 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.input_field :conc_sign_date, as: :date, start_year: Date.today.year - 10,
+                                                          end_year: Date.today.year + 10 %>
+          </div>
+        </div>
+      </div>
+      <%= f.button :submit, "Сохранить заключение эксперта о выдаче сертификата", class: 'btn btn-primary center-block' %>
+    <% end %>
+  </div>
+</div>

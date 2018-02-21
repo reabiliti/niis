@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  conc_solution_num: MyString
+  conc_solution_date: 2018-02-21 09:07:29
+
+two:
+  conc_solution_num: MyString
+  conc_solution_date: 2018-02-21 09:07:29
