@@ -4,6 +4,9 @@
   <%= link_to t('link.edit'), edit_conclusion_path(@conclusion) %> | 
   <%= link_to t('link.destroy'), conclusion_path(@conclusion), method: :delete,
                                   data: { confirm: "Are you sure" }%>
+  <% if @conclusion.solution.nil? %>
+    | <%= link_to t('link.new_solution'), new_solution_path(conclusion_id: @conclusion.id) %>
+  <% end %>
 </div>
 <br class="no-print">
 <br class="no-print">
@@ -60,11 +63,18 @@
     </div>
   </div>
   <div class="paragraph">
-    <b>- решения</b> органа по сертификации <b>№ <%= @conclusion.conc_solution_num %></b> от <b><%= @conclusion.conc_solution_date.strftime("%d.%m.%Y") %></b>
+    <b>- решения</b> органа по сертификации <b>№ <%= @conclusion.conc_solution_proposal_num %></b> от <b><%= @conclusion.conc_solution_proposal_date.strftime("%d.%m.%Y") %></b>
   </div>
   <div class="paragraph">
-    <b>- договора</b> на проведение работ по сертификации <b>№ <%= @conclusion.conc_contract_num %></b> от <b><%= @conclusion.conc_contract_date.strftime("%d.%m.%Y") %></b>
+    <b>- договора</b> на проведение работ по сертификации <b>№ <%= @conclusion.conc_contract_num %></b>
+    от <b><%= @conclusion.conc_contract_date.strftime("%d.%m.%Y") %></b>
   </div>
+  <% if @conclusion.conc_directive_num.present? %>
+    <div class="paragraph">
+      <b>- распоряжения</b> руководителя органа по сертификации <b>№ <%= @conclusion.conc_directive_num %></b>
+      от <b><%= @conclusion.conc_directive_date.strftime("%d.%m.%Y") %></b>
+    </div>
+  <% end %>
   <div class="paragraph">
     проведена работа по <b>добровольной</b> сертификации продукции:
   </div>
@@ -85,7 +95,7 @@
       <div class="div-table-col col-width-6">
         Код ТН ВЭД
         <span class="line">
-          <b><%= @conclusion.conc_tn_ved %></b>
+          <b><%= @conclusion.conc_code_tn_ved %></b>
         </span>
       </div>
     </div>
@@ -168,7 +178,7 @@
   <br>
   <div class="paragraph">
     На заявленную продукцию <%= @conclusion.conc_may_be_issued %> быть выдан сертификат соответствия <b>сроком по
-    <%= @conclusion.conc_expiry_date.strftime("%d.%m.%Y") %></b>
+    <%= @conclusion.conc_cert_expiry_date.strftime("%d.%m.%Y") %></b>
   </div>
   <div class="line">
     <b><%= @conclusion.conc_add_info %></b>
@@ -207,24 +217,6 @@
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 <br class="no-print">
 <br class="no-print">

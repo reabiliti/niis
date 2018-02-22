@@ -21,8 +21,8 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group">
-            <%= f.label :solprop_number, class: 'col-sm-6 control-label' %>
-            <div class="col-sm-6">
+            <%= f.label :solprop_number, class: 'col-sm-8 control-label' %>
+            <div class="col-sm-4">
               <%= f.input_field :solprop_number, class: 'form-control' %>
             </div>
           </div>
@@ -56,7 +56,14 @@
       <%= f.input :solprop_chief_org %>
       <%= f.input :solprop_expert %>
       <%= f.input :solprop_executor %>
-      <%= f.input :solprop_applic_sign %>
+      <div class="row">
+        <div class="form-group">
+          <%= f.label :solprop_applic_sign, class: 'col-sm-4 control-label' %>
+          <div class="col-sm-8">
+            <%= f.input_field :solprop_applic_sign %>
+          </div>
+        </div>
+      </div>
       <%= f.input :solprop_applic_name %>
 
       <%= f.button :submit, "Сохранить решение по заявке", class: 'btn btn-primary center-block' %>

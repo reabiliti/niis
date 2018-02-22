@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180221070954) do
+ActiveRecord::Schema.define(version: 20180222120925) do
 
   create_table "certificates", force: :cascade do |t|
     t.string "cer_number"
@@ -35,26 +35,26 @@ ActiveRecord::Schema.define(version: 20180221070954) do
   end
 
   create_table "conclusions", force: :cascade do |t|
-    t.string "conc_solution_num"
-    t.datetime "conc_solution_date"
+    t.string "conc_solution_proposal_num"
+    t.datetime "conc_solution_proposal_date"
     t.string "conc_contract_num"
     t.datetime "conc_contract_date"
     t.string "conc_directive_num"
     t.datetime "conc_directive_date"
     t.text "conc_name_product"
     t.string "conc_code_okp"
-    t.string "conc_tn_ved"
+    t.string "conc_code_tn_ved"
     t.string "conc_manuf_name"
     t.string "conc_manuf_address"
     t.string "conc_manuf_postcode"
     t.string "conc_manuf_doc"
     t.string "conc_manuf_regulations"
-    t.string "conc_desc_scheme_cert"
+    t.text "conc_desc_scheme_cert"
     t.text "conc_test_report"
     t.string "conc_list_doc"
     t.string "conc_conformity"
     t.string "conc_may_be_issued"
-    t.datetime "conc_expiry_date"
+    t.datetime "conc_cert_expiry_date"
     t.text "conc_add_info"
     t.string "conc_attachment"
     t.string "conc_expert"
@@ -169,13 +169,53 @@ ActiveRecord::Schema.define(version: 20180221070954) do
     t.string "solprop_chief_org"
     t.string "solprop_expert"
     t.string "solprop_executor"
-    t.boolean "solprop_applic_sign"
+    t.boolean "solprop_applic_sign", null: false
     t.string "solprop_applic_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "solprop_manuf_name"
     t.text "solprop_manuf_list_doc"
     t.index ["proposal_id"], name: "index_solution_proposals_on_proposal_id"
+  end
+
+  create_table "solutions", force: :cascade do |t|
+    t.integer "conclusion_id"
+    t.string "sol_number"
+    t.datetime "sol_date_from"
+    t.string "sol_delivery"
+    t.string "sol_solution_proposal_num"
+    t.datetime "sol_solution_proposal_date"
+    t.string "sol_contract_num"
+    t.datetime "sol_contract_date"
+    t.string "sol_directive_num"
+    t.datetime "sol_directive_date"
+    t.text "sol_name_product"
+    t.string "sol_code_okp"
+    t.string "sol_code_tn_ved"
+    t.string "sol_manuf_name"
+    t.string "sol_manuf_address"
+    t.string "sol_manuf_postcode"
+    t.string "sol_manuf_doc"
+    t.string "sol_manuf_regulations"
+    t.text "sol_desc_scheme_cert"
+    t.text "sol_test_report"
+    t.string "sol_list_doc"
+    t.datetime "sol_conclusion_date"
+    t.datetime "sol_cert_expiry_date"
+    t.string "sol_place_marking"
+    t.string "sol_inspection_period"
+    t.string "sol_inspection_method"
+    t.string "sol_inspection_work_basis"
+    t.text "sol_add_info"
+    t.string "sol_chief_name"
+    t.string "sol_chief_org"
+    t.string "sol_expert"
+    t.string "sol_executor"
+    t.boolean "sol_applic_sign", default: false, null: false
+    t.string "sol_applic_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conclusion_id"], name: "index_solutions_on_conclusion_id"
   end
 
 end

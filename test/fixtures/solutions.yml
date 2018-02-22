@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sol_number: MyString
+  sol_date_from: MyString
+  sol_delivery: MyString
+
+two:
+  sol_number: MyString
+  sol_date_from: MyString
+  sol_delivery: MyString

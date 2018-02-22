@@ -32,6 +32,14 @@
                 <%= link_to "3.1 Заключение эксперта о выдаче сертификата от #{conclusion.conc_sign_date.strftime("%d.%m.%Y")}",
                             conclusion_path(conclusion, solution_proposal_id: conclusion.solution_proposal_id)%>
               </li>
+              <% if solution = conclusion.solution %>
+              <ul>
+                <li>
+                  <%= link_to "3.2 Решение о выдаче сертификата от #{solution.sol_date_from.strftime("%d.%m.%Y")} № #{solution.sol_number}",
+                              solution_path(solution, conclusion_id: solution.conclusion_id)%>
+                </li>
+              </ul>
+              <% end %>
             </ul>
           <% end %>
         </ul>

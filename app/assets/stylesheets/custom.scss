@@ -115,8 +115,12 @@ footer {
 .paragraph {
   padding-left: 10px;
   padding-right: 10px;
+  min-height: 24px;
 }
 
+.inline{
+  float: left;
+}
 .line {
   border-bottom: 1px solid $black-line;
   padding-left: 10px;

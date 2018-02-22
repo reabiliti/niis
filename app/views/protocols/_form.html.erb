@@ -19,8 +19,8 @@
       <%= f.input :solution_proposal_id, as: :hidden %>
       <div class="row">
         <div class="form-group">
-          <%= f.label :prot_date_from, class: 'col-sm-6 control-label' %>
-          <div class="col-sm-6">
+          <%= f.label :prot_date_from, class: 'col-sm-4 control-label' %>
+          <div class="col-sm-8">
             <%= f.input_field :prot_date_from, as: :date, start_year: Date.today.year - 10,
                                                     end_year: Date.today.year + 10 %>
           </div>
@@ -36,8 +36,8 @@
       <%= f.input :prot_info_product %>
       <div class="row">
         <div class="form-group">
-          <%= f.label :prot_date_issue_product, class: 'col-sm-6 control-label' %>
-          <div class="col-sm-6">
+          <%= f.label :prot_date_issue_product, class: 'col-sm-4 control-label' %>
+          <div class="col-sm-8">
             <%= f.input_field :prot_date_issue_product, as: :date, start_year: Date.today.year - 10,
                                                              end_year: Date.today.year + 10 %>
           </div>

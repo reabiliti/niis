@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :solution_proposals
   resources :protocols
   resources :conclusions
+  resources :solutions
 
   get 'welcome/index'
 

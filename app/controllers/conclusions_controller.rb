@@ -14,11 +14,11 @@ class ConclusionsController < ApplicationController
   def new
     @conclusion = Conclusion.new
     @conclusion.solution_proposal_id = @solution_proposal.id
-    @conclusion.conc_solution_num = @solution_proposal.solprop_number
-    @conclusion.conc_solution_date = @solution_proposal.solprop_date_from
+    @conclusion.conc_solution_proposal_num = @solution_proposal.solprop_number
+    @conclusion.conc_solution_proposal_date = @solution_proposal.solprop_date_from
     @conclusion.conc_name_product = @solution_proposal.solprop_applic_name_product
     @conclusion.conc_code_okp = @solution_proposal.solprop_applic_code_okp
-    @conclusion.conc_tn_ved = @solution_proposal.solprop_applic_code_tn_ved
+    @conclusion.conc_code_tn_ved = @solution_proposal.solprop_applic_code_tn_ved
     @conclusion.conc_manuf_name = @solution_proposal.solprop_manuf_name
     @conclusion.conc_manuf_address = @solution_proposal.solprop_manuf_address
     @conclusion.conc_manuf_postcode = @solution_proposal.solprop_manuf_postcode
@@ -50,12 +50,12 @@ class ConclusionsController < ApplicationController
 
   private
   def conc_params
-    params.require(:conclusion).permit(:conc_solution_num, :conc_solution_date, :conc_contract_num,
+    params.require(:conclusion).permit(:conc_solution_proposal_num, :conc_solution_proposal_date, :conc_contract_num,
                                        :conc_contract_date, :conc_directive_num, :conc_directive_date,
-                                       :conc_name_product, :conc_code_okp, :conc_tn_ved, :conc_manuf_name,
+                                       :conc_name_product, :conc_code_okp, :conc_code_tn_ved, :conc_manuf_name,
                                        :conc_manuf_address, :conc_manuf_postcode, :conc_manuf_doc,
                                        :conc_manuf_regulations, :conc_desc_scheme_cert, :conc_test_report,
-                                       :conc_list_doc, :conc_conformity, :conc_may_be_issued, :conc_expiry_date,
+                                       :conc_list_doc, :conc_conformity, :conc_may_be_issued, :conc_cert_expiry_date,
                                        :conc_add_info, :conc_attachment, :conc_expert, :conc_sign_date,
                                        :solution_proposal_id)
   end

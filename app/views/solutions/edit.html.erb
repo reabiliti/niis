@@ -1,0 +1,6 @@
+<% provide(:title, "Решение о выдаче сертификата от #{@solution.sol_date_from.strftime("%d.%m.%Y")}") %>
+<%= link_to t('link.back'), solution_path(@solution, conclusion_id: @solution.conclusion_id) %>
+<h1>Решение о выдаче сертификата <%= @solution.sol_date_from.strftime("%d.%m.%Y") %></h1>
+<%= render 'form' %>
+<br>
+<%= link_to t('link.back'), solution_path(@solution, conclusion_id: @solution.conclusion_id) %>

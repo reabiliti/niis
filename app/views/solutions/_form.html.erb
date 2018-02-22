@@ -1,0 +1,150 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <% if @solution.errors.any? %>
+      <div class="error text-danger">
+        <p>
+          <%= pluralize(@solution.errors.count, "error") %> prohibited
+          this solution from being saved:
+        </p>
+        <ul>
+          <%= @solution.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= simple_form_for [ @solution ], html: { class: "form-horizontal" }, wrapper: :horizontal_form do |f| %>
+
+      <%= f.input :conclusion_id, as: :hidden %>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :sol_number, class: 'col-sm-8 control-label' %>
+            <div class="col-sm-4">
+              <%= f.input_field :sol_number, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :sol_date_from, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-9">
+              <%= f.input_field :sol_date_from, as: :date, start_year: Date.today.year - 10,
+                                                           end_year: Date.today.year + 10 %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= f.input :sol_delivery, collection: [ "о выдаче", "об отказе в выдаче" ] %>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :sol_solution_proposal_num, class: 'col-sm-8 control-label' %>
+            <div class="col-sm-4">
+              <%= f.input_field :sol_solution_proposal_num, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :sol_solution_proposal_date, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-9">
+              <%= f.input_field :sol_solution_proposal_date, as: :date, start_year: Date.today.year - 10,
+                                                                        end_year: Date.today.year + 10 %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :sol_contract_num, class: 'col-sm-8 control-label' %>
+            <div class="col-sm-4">
+              <%= f.input_field :sol_contract_num, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :sol_contract_date, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-9">
+              <%= f.input_field :sol_contract_date, as: :date, start_year: Date.today.year - 10,
+                                                                        end_year: Date.today.year + 10 %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :sol_directive_num, class: 'col-sm-8 control-label' %>
+            <div class="col-sm-4">
+              <%= f.input_field :sol_directive_num, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :sol_directive_date, class: 'col-sm-3 control-label' %>
+            <div class="col-sm-9">
+              <%= f.input_field :sol_directive_date, as: :date, start_year: Date.today.year - 10,
+                                                                        end_year: Date.today.year + 10 %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%= f.input :sol_name_product, as: :text, input_html: { rows: 5 } %>
+      <%= f.input :sol_code_okp %>
+      <%= f.input :sol_code_tn_ved %>
+      <%= f.input :sol_manuf_name %>
+      <%= f.input :sol_manuf_address %>
+      <%= f.input :sol_manuf_postcode %>
+      <%= f.input :sol_manuf_doc %>
+      <%= f.input :sol_manuf_regulations %>
+      <%= f.input :sol_desc_scheme_cert, as: :text, input_html: { rows: 5 } %>
+      <%= f.input :sol_test_report, as: :text, input_html: { rows: 5 } %>
+      <%= f.input :sol_list_doc %>
+      <div class="row">
+        <div class="form-group">
+          <%= f.label :sol_conclusion_date, class: 'col-sm-4 control-label' %>
+          <div class="col-sm-8">
+            <%= f.input_field :sol_conclusion_date, as: :date, start_year: Date.today.year - 10,
+                                                               end_year: Date.today.year + 10 %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <%= f.label :sol_cert_expiry_date, class: 'col-sm-4 control-label' %>
+          <div class="col-sm-8">
+            <%= f.input_field :sol_cert_expiry_date, as: :date, start_year: Date.today.year - 10,
+                                                                end_year: Date.today.year + 10 %>
+          </div>
+        </div>
+      </div>
+      <%= f.input :sol_place_marking %>
+      <%= f.input :sol_inspection_period, collection: [ "один раз в месяц", "один раз в 2 месяца",
+                                                        "один раз в квартал", "один раз в полгода", "один раз в год"  ] %>
+      <%= f.input :sol_inspection_method %>
+      <%= f.input :sol_inspection_work_basis %>
+      <%= f.input :sol_add_info, as: :text, input_html: { rows: 5 } %>
+      <%= f.input :sol_chief_name %>
+      <%= f.input :sol_chief_org %>
+      <%= f.input :sol_expert %>
+      <%= f.input :sol_executor %>
+      <div class="row">
+        <div class="form-group">
+          <%= f.label :sol_applic_sign, class: 'col-sm-4 control-label' %>
+          <div class="col-sm-8">
+            <%= f.input_field :sol_applic_sign %>
+          </div>
+        </div>
+      </div>
+      <%= f.input :sol_applic_name %>
+
+      <%= f.button :submit, "Сохранить решение о выдаче сертификата", class: 'btn btn-primary center-block' %>
+    <% end %>
+  </div>
+</div>
