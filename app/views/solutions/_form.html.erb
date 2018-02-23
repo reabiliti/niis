@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-10 col-md-offset-1">
     <% if @solution.errors.any? %>
       <div class="error text-danger">
         <p>
@@ -99,13 +99,13 @@
       <%= f.input :sol_code_okp %>
       <%= f.input :sol_code_tn_ved %>
       <%= f.input :sol_manuf_name %>
-      <%= f.input :sol_manuf_address %>
+      <%= f.input :sol_manuf_address, as: :text, input_html: { rows: 6 } %>
       <%= f.input :sol_manuf_postcode %>
-      <%= f.input :sol_manuf_doc %>
-      <%= f.input :sol_manuf_regulations %>
+      <%= f.input :sol_manuf_doc, as: :text, input_html: { rows: 3 } %>
+      <%= f.input :sol_manuf_regulations, as: :text, input_html: { rows: 1 } %>
       <%= f.input :sol_desc_scheme_cert, as: :text, input_html: { rows: 5 } %>
       <%= f.input :sol_test_report, as: :text, input_html: { rows: 5 } %>
-      <%= f.input :sol_list_doc %>
+      <%= f.input :sol_list_doc, as: :text, input_html: { rows: 4 } %>
       <div class="row">
         <div class="form-group">
           <%= f.label :sol_conclusion_date, class: 'col-sm-4 control-label' %>
@@ -128,7 +128,7 @@
       <%= f.input :sol_inspection_period, collection: [ "один раз в месяц", "один раз в 2 месяца",
                                                         "один раз в квартал", "один раз в полгода", "один раз в год"  ] %>
       <%= f.input :sol_inspection_method %>
-      <%= f.input :sol_inspection_work_basis %>
+      <%= f.input :sol_inspection_work_basis, as: :text, input_html: { rows: 3 } %>
       <%= f.input :sol_add_info, as: :text, input_html: { rows: 5 } %>
       <%= f.input :sol_chief_name %>
       <%= f.input :sol_chief_org %>

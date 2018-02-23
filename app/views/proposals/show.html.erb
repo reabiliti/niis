@@ -353,6 +353,6 @@
       method: :delete,
       data: { confirm: 'Are you sure?' } %>
   <% if @proposal.solution_proposal.nil? %>
-     | <%= link_to t('link.new_solution_proposal'), new_solution_proposal_path(@proposal) %>
+     | <%= link_to t('link.new_solution_proposal'), new_solution_proposal_path(proposal_id: @proposal.id) %>
   <% end %>
 </div>

@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-10 col-md-offset-1">
     <% if @setting.errors.any? %>
       <div class="error text-danger">
         <p>
@@ -14,13 +14,16 @@
       </div>
     <% end %>
 
-    <%= simple_form_for @setting do |f| %>
+    <%= simple_form_for @setting, html: { class: "form-horizontal" }, wrapper: :horizontal_form do |f| %>
       <%= f.input :set_name %>
       <%= f.input :set_organization, as: :text, input_html: { rows: 6 } %>
-      <%= f.input :set_address %>
+      <%= f.input :set_address, as: :text, input_html: { rows: 4 } %>
+      <hr class="col-sm-12">
+      <h2>Параметры печати</h2>
       <%= f.input :set_at_x %>
       <%= f.input :set_at_y %>
-      <%= f.button :submit %>
+      <hr class="col-sm-12">
+      <%= f.button :submit, "Сохранить настройки", class: 'btn btn-primary center-block'%>
     <% end %>
   </div>
 </div>

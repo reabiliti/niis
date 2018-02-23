@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-10 col-md-offset-1">
     <% if @solution_proposal.errors.any? %>
       <div class="error text-danger">
         <p>
@@ -41,15 +41,15 @@
       <%= f.input :solprop_applic_code_okp %>
       <%= f.input :solprop_applic_code_tn_ved %>
       <%= f.input :solprop_manuf_name, as: :text, input_html: { rows: 3 } %>
-      <%= f.input :solprop_manuf_address %>
+      <%= f.input :solprop_manuf_address, as: :text, input_html: { rows: 6 } %>
       <%= f.input :solprop_manuf_postcode %>
-      <%= f.input :solprop_manuf_doc %>
+      <%= f.input :solprop_manuf_doc, as: :text, input_html: { rows: 3 } %>
       <%= f.input :solprop_manuf_list_doc, as: :text, input_html: { rows: 3 } %>
-      <%= f.input :solprop_regulations %>
+      <%= f.input :solprop_regulations, as: :text, input_html: { rows: 1 } %>
       <%= f.input :solprop_desc_scheme_cert, as: :text, input_html: { rows: 3 }  %>
-      <%= f.input :solprop_test_lab %>
+      <%= f.input :solprop_test_lab, as: :text, input_html: { rows: 4 } %>
       <%= f.input :solprop_sampling, collection: [ "орган по сертификации", "испытательная лаборатория" ] %>
-      <%= f.input :solprop_list_doc_product %>
+      <%= f.input :solprop_list_doc_product, as: :text, input_html: { rows: 6 } %>
       <%= f.input :solprop_basis_work %>
       <%= f.input :solprop_add_info %>
       <%= f.input :solprop_chief_name %>

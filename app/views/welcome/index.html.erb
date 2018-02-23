@@ -3,7 +3,8 @@
 <h1>Главная</h1>
 <ul>
   <li>
-    <%= @setting.nil? ? (link_to "Необходимо создать Настройки", new_setting_path) : (link_to @setting.set_name, setting_path(@setting)) %>
+    <%= @setting.nil? ? (link_to "Необходимо создать документ Настроек", new_setting_path) :
+                        (link_to @setting.set_name, setting_path(@setting)) %>
   </li>
   <% @proposals.each do |proposal| %>
     <ul>

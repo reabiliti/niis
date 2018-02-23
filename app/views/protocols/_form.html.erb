@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-10 col-md-offset-1">
     <% if @protocol.errors.any? %>
       <div class="error text-danger">
         <p>
@@ -30,7 +30,7 @@
       <%= f.input :prot_applic_code_okp %>
       <%= f.input :prot_applic_code_tn_ved %>
       <%= f.input :prot_manuf_name %>
-      <%= f.input :prot_manuf_address %>
+      <%= f.input :prot_manuf_address, as: :text, input_html: { rows: 6 } %>
       <%= f.input :prot_manuf_postcode %>
       <%= f.input :prot_origin_cert %>
       <%= f.input :prot_info_product %>
