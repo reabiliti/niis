@@ -1,6 +1,7 @@
-<% provide(:title, "Редактирование Сертификата #{@certificate.cer_number}") %>
-<h1>Редактирование сертификата <%= @certificate.cer_number %></h1>
+<% provide(:title, "Редактирование Сертификата #{@certificate.cert_registration_num}") %>
+<%= link_to t('link.back'), certificate_path(@certificate, solution_id: @certificate.solution_id) %>
+<h1>Редактирование сертификата <%= @certificate.cert_registration_num %></h1>
 
 <%= render 'form' %>
 
-<%= link_to t('link.back'), certificates_path %>
+<%= link_to t('link.back'), certificate_path(@certificate, solution_id: @certificate.solution_id) %>

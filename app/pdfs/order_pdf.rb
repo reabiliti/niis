@@ -1,89 +1,132 @@
 class OrderPdf < Prawn::Document
-  def initialize(certificate, setting)
+  def initialize(certificate, setting, proposal)
     super(margin: [0,0,0,0])
     @certificate = certificate
     @setting = setting
+    @proposal = proposal
 #    bg_setup
     font_setup
     cer_number
   end
 
   def cer_number
+    size = 12
+    at_x = set_at_x(59)
 
-    at_x_first = set_at_x_first(230)
+    at_x_indent = set_at_x(230)
     at_y = set_at_y(652)
-    draw_text @certificate.cer_number, :at => [at_x_first,at_y], size: 12, style: :bold
+    draw_text @certificate.cert_registration_num, at: [ at_x_indent, at_y ], size: size, style: :bold
 
-    at_x_first = set_at_x_first(315)
+    at_x_indent = set_at_x(315)
     at_y = set_at_y(630)
-    draw_text (@certificate.cer_validity_from).strftime("%d.%m.%Y"), :at => [at_x_first,at_y], size: 12, style: :bold unless @certificate.cer_validity_from.nil?
+    draw_text (@certificate.cert_registration_date).strftime("%d.%m.%Y"), at: [ at_x_indent, at_y ], size: size, style: :bold
 
-    at_x_first = set_at_x_first(443)
-    draw_text (@certificate.cer_validity_to).strftime("%d.%m.%Y"), :at => [at_x_first,at_y], size: 12, style: :bold unless @certificate.cer_validity_to.nil?
+    at_x_indent = set_at_x(443)
+    draw_text (@certificate.cert_expiry_date).strftime("%d.%m.%Y"), at: [ at_x_indent, at_y ], size: size, style: :bold
 
-    at_x_first = set_at_x_first(230)
-    at_x_other = set_at_x_other(59)
+    at_x_indent = set_at_x(229)
     at_y = set_at_y(590)
-    @setting.set_organization.split("\r\n").each_with_index do |sorg, index|
-      index == 0 ? (draw_text sorg, :at => [at_x_first, at_y], size: 12, style: :bold) : (draw_text sorg, :at => [at_x_other, at_y], size: 12, style: :bold)
-      at_y -= 12
-    end
+    draw_text "рег. № #{@setting.set_name}", at: [ at_x_indent, at_y ], size: size, style: :bold
 
-    at_x_first = set_at_x_first(140)
+    at_y = set_at_y(584)
+    text_box "#{@setting.set_organization}\n#{@setting.set_address}", at: [ at_x, at_y ], size: size, style: :bold
+
+
+    at_x_indent = set_at_x(140)
     at_y = set_at_y(519)
-    @certificate.cer_product_name.split("\r\n").each_with_index do |cpn, index|
-      index == 0 ? (draw_text cpn, :at => [at_x_first, at_y], size: 12, style: :bold) : (draw_text cpn, :at => [at_x_other, at_y], size: 12, style: :bold)
-      at_y -= 12
-    end
+    draw_text @certificate.cert_name_product, at: [ at_x_indent, at_y ], size: size, style: :bold
 
-    at_x_first = set_at_x_first(480)
+    at_y = set_at_y(507)
+    draw_text @certificate.cert_manuf_doc, at: [ at_x, at_y ], size: size, style: :bold
+
+    at_y = set_at_y(495)
+    draw_text @proposal.prop_applic_from_issue, at: [ at_x, at_y ], size: size, style: :bold
+
+    at_x_indent = set_at_x(480)
     at_y = set_at_y(490)
-    draw_text @certificate.cer_code_okp, :at => [at_x_first,at_y], size: 12, style: :bold
+    draw_text @certificate.cert_code_okp, at: [ at_x_indent, at_y ], size: size, style: :bold
 
     at_y = set_at_y(410)
-    draw_text @certificate.cer_code_tn_ved, :at => [at_x_first,at_y], size: 12, style: :bold
+    draw_text @certificate.cert_code_tn_ved, at: [ at_x, at_y ], size: size, style: :bold
 
-    at_x_first = set_at_x_first(59)
-    at_y = set_at_y(425)
-    @certificate.cer_regulation.split("\r\n").each do |creg|
-      draw_text creg, :at => [at_x_first, at_y], size: 12, style: :bold
-      at_y -= 12
-    end
+    at_y = set_at_y(433)
+    text_box @certificate.cert_manuf_regulations, at: [ at_x, at_y ], size: size, style: :bold, width: 400
 
-    at_x_first = set_at_x_first(159)
+    at_x_indent = set_at_x(159)
     at_y = set_at_y(350)
-    @certificate.cer_manufacturer.split("\r\n").each_with_index do |cmnf, index|
-      index == 0 ? (draw_text cmnf, :at => [at_x_first, at_y], size: 12, style: :bold) : (draw_text cmnf, :at => [at_x_other, at_y], size: 12, style: :bold)
-      at_y -= 12
+    if @certificate.cert_manuf_name.split("\r\n").size > 1
+      @certificate.cert_manuf_name.split("\r\n", 2).each_with_index do |cert_manuf_name, index|
+        index == 0 ? (draw_text cert_manuf_name, at: [at_x_indent, at_y], size: size, style: :bold) :
+                     (text_box "#{cert_manuf_name}. ИНН: #{@certificate.cert_manuf_inn}\n" +
+                      "#{@certificate.cert_manuf_address}, #{@certificate.cert_manuf_postcode}",
+                      at: [at_x, at_y], size: size, style: :bold, width: 500)
+        at_y -= 5
+      end
+    elsif "#{@certificate.cert_manuf_name}. ИНН: #{@certificate.cert_manuf_inn}".length <= 60
+      draw_text "#{@certificate.cert_manuf_name}. ИНН: #{@certificate.cert_manuf_inn}",
+                at: [ at_x_indent, at_y ], size: size, style: :bold
+      at_y -= 5
+      text_box "#{@certificate.cert_manuf_address}, #{@certificate.cert_manuf_postcode}",
+               at: [at_x, at_y], size: size, style: :bold, width: 500
+    else
+      draw_text "#{@certificate.cert_manuf_name}.",
+                at: [ at_x_indent, at_y ], size: size, style: :bold
+      at_y -= 5
+      text_box "ИНН: #{@certificate.cert_manuf_inn}\n" +
+               "#{@certificate.cert_manuf_address}, #{@certificate.cert_manuf_postcode}",
+               at: [at_x, at_y], size: size, style: :bold, width: 500
     end
 
-    at_x_first = set_at_x_first(190)
+    at_x_indent = set_at_x(190)
     at_y = set_at_y(299)
-    @certificate.cer_certificate_issued.split("\r\n").each_with_index do |cci, index|
-      index == 0 ? (draw_text cci, :at => [at_x_first, at_y], size: 12, style: :bold) : (draw_text cci, :at => [at_x_other, at_y], size: 12, style: :bold)
-      at_y -= 12
+    if @proposal.prop_applic_name.split("\r\n, 2").size > 1
+      @proposal.prop_applic_name.split("\r\n", 2).each_with_index do |prop_applic_name, index|
+        index == 0 ? (draw_text prop_applic_name, at: [ at_x_indent, at_y ], size: size, style: :bold) :
+                     (text_box "#{prop_applic_name}. ИНН: #{@proposal.prop_applic_inn}\n" +
+                      "#{@proposal.prop_applic_address}, #{@proposal.prop_applic_postcode}" +
+                      ", #{@proposal.prop_applic_phone}", at: [ at_x, at_y ], size: size, style: :bold, width: 500)
+        at_y -= 5
+      end
+    elsif "#{@proposal.prop_applic_name}. ИНН: #{@proposal.prop_applic_inn}".length <= 58
+      draw_text "#{@proposal.prop_applic_name}. ИНН: #{@proposal.prop_applic_inn}",
+                at: [ at_x_indent, at_y ], size: size, style: :bold
+      at_y -= 5
+      text_box "#{@proposal.prop_applic_address}, #{@proposal.prop_applic_postcode}",
+               at: [at_x, at_y], size: size, style: :bold, width: 500
+    else
+      draw_text "#{@proposal.prop_applic_name}.",
+                at: [ at_x_indent, at_y ], size: size, style: :bold
+      at_y -= 5
+      text_box "ИНН: #{@proposal.prop_applic_inn}\n" +
+               "#{@proposal.prop_applic_address}, #{@proposal.prop_applic_postcode}, тел. #{@proposal.prop_applic_phone}",
+               at: [at_x, at_y], size: size, style: :bold, width: 500
     end
 
-    at_x_first = set_at_x_first(165)
+    at_x_indent = set_at_x(165)
     at_y = set_at_y(247)
-    @certificate.cer_based.split("\r\n").each_with_index do |cbased, index|
-      index == 0 ? (draw_text cbased, :at => [at_x_first, at_y], size: 12, style: :bold) : (draw_text cbased, :at => [at_x_other, at_y], size: 12, style: :bold)
-      at_y -= 12
+    @certificate.cert_test_report.split("\r\n", 2).each_with_index do |test_report, index|
+      index == 0 ? (draw_text test_report, at: [ at_x_indent, at_y ], size: size, style: :bold) :
+                   (text_box test_report, at: [ at_x, at_y ], size: size, style: :bold, width: 500)
+      at_y -= 5
     end
 
-    at_x_first = set_at_x_first(276)
+    at_x_indent = set_at_x(276)
     at_y = set_at_y(146)
-    @certificate.cer_more_info.split("\r\n").each_with_index do |cmi, index|
-      index == 0 ? (draw_text cmi, :at => [at_x_first, at_y], size: 12, style: :bold) : (draw_text cmi, :at => [at_x_other, at_y], size: 12, style: :bold)
-      at_y -= 12
-    end
+    draw_text @certificate.cert_add_info, at: [ at_x_indent, at_y ], size: size, style: :bold
 
-    at_x_first = set_at_x_first(428)
+    at_y -= 12
+    draw_text @certificate.cert_place_marking, at: [ at_x, at_y ], size: size, style: :bold
+
+    at_y -= 12
+    draw_text "Схема сертификации " + @proposal.prop_manuf_scheme_cert + ".", at: [ at_x, at_y ], size: size, style: :bold
+
+
+    at_x_indent = set_at_x(428)
     at_y = set_at_y(85)
-    draw_text @certificate.cer_org_chief, :at => [at_x_first,at_y], size: 12, style: :bold
+    draw_text @certificate.cert_chief_org, at: [ at_x_indent, at_y ], size: size, style: :bold
 
     at_y = set_at_y(60)
-    draw_text @certificate.cer_org_expert, :at => [at_x_first,at_y], size: 12, style: :bold
+    draw_text @certificate.cert_expert, at: [ at_x_indent, at_y ], size: size, style: :bold
 
   end
 
@@ -102,12 +145,8 @@ class OrderPdf < Prawn::Document
   end
 
   private
-    def set_at_x_first(at_x_first)
-      at_x_first + @setting.set_at_x
-    end
-
-    def set_at_x_other(at_x_other)
-      at_x_other + @setting.set_at_x
+    def set_at_x(at_x)
+      at_x + @setting.set_at_x
     end
 
     def set_at_y(at_y)

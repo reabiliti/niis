@@ -1,28 +1,153 @@
-<% provide(:title, "Сертификат #{@certificate.cer_number}") %>
-<h1>Сертификат <%= @certificate.cer_number %></h1>
-<br>
+<% provide(:title, "Сертификат #{@certificate.cert_registration_num}") %>
 
-<div class="table-responsive">
-  <table class="table">
-    <tr>
-      <th>#</th>
-      <th>Номер Сертификата</th>
-      <th>Номер бланка</th>
-      <th>Дата начала</th>
-      <th>Дата окончания</th>
-      <th>#</th>
-      <th>#</th>
-    </tr>
-    <tr>
-      <td><%= @certificate.id %></td>
-      <td><%= @certificate.cer_number %></td>
-      <td><%= @certificate.cer_blank_number %></td>
-      <td><%= (@certificate.cer_validity_from).strftime("%d.%m.%Y") unless (@certificate.cer_validity_from).nil? %></td>
-      <td><%= (@certificate.cer_validity_to).strftime("%d.%m.%Y") unless (@certificate.cer_validity_to).nil? %></td>
-      <td><%= link_to t('link.edit'), edit_certificate_path(@certificate) %></td>
-      <td><%= link_to t('link.print_PDF'), certificate_path(@certificate, format: 'pdf'), target: "_blank" %></td>
-    </tr>
-  </table>
+<div class="paragraph no-print">
+  <%= link_to t('link.back'), root_path %> |
+  <%= link_to t('link.edit'), edit_certificate_path(@certificate) %> |
+  <%= link_to t('link.destroy'), certificate_path(@certificate), method: :delete,
+                                  data: { confirm: "Are you sure" }%> |
+  <%= link_to t('link.print_PDF'), certificate_path(@certificate, solution_id: @certificate.solution_id,
+                                                    format: 'pdf'), target: "_blank" %>
 </div>
-
-<%= link_to t('link.back'), certificates_path %>
+<br class="no-print">
+<br class="no-print">
+<div class="page-body">
+  <div class="caption">
+    СИСТЕМА СЕРТИФИКАЦИИ ГОСТ Р<br>
+    ГОССТАНДАРТ РОССИИ<br>
+    <br>
+    СЕРТИФИКАТ СООТВЕТСТВИЯ
+  </div>
+  <br>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-4">
+      </div>
+      <div class="div-table-col col-width-6">
+        № <b><%= @certificate.cert_registration_num %></b><br>
+        Срок действия с <b><%= @certificate.cert_registration_date.strftime("%d.%m.%Y") %></b>
+        по <b><%= @certificate.cert_expiry_date.strftime("%d.%m.%Y") %></b>
+      </div>
+      <div class="div-table-col col-width-2">
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-4">
+      </div>
+      <div class="div-table-col col-width-6">
+      </div>
+      <div class="div-table-col col-width-2 red-text">
+        № <b><%= @certificate.cert_blank_num %></b>
+      </div>
+    </div>
+  </div>
+  <div class="paragraph">
+    ОРГАН ПО СЕРТИФИКАЦИИ <b><%= @setting.set_name %></b>
+  </div>
+  <div class="paragraph">
+    <b><%= @setting.set_organization %></b>
+  </div>
+  <div class="paragraph">
+    <b><%= @setting.set_address %></b>
+  </div>
+  <br>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-9">
+        ПРОДУКЦИЯ <b><%= @certificate.cert_name_product %></b>
+      </div>
+      <div class="div-table-col col-width-3 center">
+        Код ОК 005 (ОКП)
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-9">
+        <b><%= @certificate.cert_manuf_doc %></b>
+      </div>
+      <div class="div-table-col col-width-3 center">
+        <b><%= @certificate.cert_code_okp %></b>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="paragraph">
+    СООТВЕТСТВУЕТ ТРЕБОВАНИЯМ НОРМАТИВНЫХ ДОКУМЕНТОВ
+  </div>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-9">
+        <b><%= @certificate.cert_manuf_regulations %></b>
+      </div>
+      <div class="div-table-col col-width-3 center">
+        Код ТН ВЭД
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-9">
+      </div>
+      <div class="div-table-col col-width-3 center">
+        <b><%= @certificate.cert_code_tn_ved %></b>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="paragraph">
+    ИЗГОТОВИТЕЛЬ <b><%= @certificate.cert_manuf_name %></b>
+  </div>
+  <div class="paragraph">
+    ИНН <b><%= @certificate.cert_manuf_inn %></b>
+  </div>
+  <div class="paragraph">
+    Адрес: <b><%= @certificate.cert_manuf_address %>, <%= @certificate.cert_manuf_postcode %></b>
+  </div>
+  <br>
+  <br>
+  <div class="paragraph">
+    НА ОСНОВАНИИ
+  </div>
+  <div class="paragraph">
+    <b><%= @certificate.cert_test_report %></b>
+  </div>
+  <br>
+  <div class="paragraph">
+    ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ
+  </div>
+  <div class="paragraph">
+    <b><%= @certificate.cert_add_info %></b>
+  </div>
+  <div class="paragraph">
+    <b><%= @certificate.cert_place_marking %></b>
+  </div>
+  <div class="paragraph">
+    Схема сертификации <b><%= @proposal.prop_manuf_scheme_cert %></b>.
+  </div>
+  <br>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-7">
+        Руководитель органа
+      </div>
+      <div class="div-table-col col-width-5">
+        <b><%= @certificate.cert_chief_org %></b>
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-7">
+        Эксперт
+      </div>
+      <div class="div-table-col col-width-5">
+        <b><%= @certificate.cert_expert %></b>
+      </div>
+    </div>
+  </div>
+</div>
+<br class="no-print">
+<br class="no-print">
+<div class="paragraph no-print">
+  <%= link_to t('link.back'), root_path %> |
+  <%= link_to t('link.edit'), edit_certificate_path(@certificate) %> |
+  <%= link_to t('link.destroy'), certificate_path(@certificate), method: :delete,
+                                  data: { confirm: "Are you sure" }%> |
+  <%= link_to t('link.print_PDF'), certificate_path(@certificate, solution_id: @certificate.solution_id,
+                                                    format: 'pdf'), target: "_blank" %>
+</div>

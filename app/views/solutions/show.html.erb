@@ -5,6 +5,9 @@
   <%= link_to t('link.edit'), edit_solution_path(@solution) %> | 
   <%= link_to t('link.destroy'), solution_path(@solution), method: :delete,
                                   data: { confirm: "Are you sure" }%>
+  <% if @solution.certificate.nil? %>
+    | <%= link_to t('link.new_certificate'), new_certificate_path(solution_id: @solution.id) %>
+  <% end %>
 </div>
 <br class="no-print">
 <br class="no-print">
@@ -324,4 +327,7 @@
   <%= link_to t('link.edit'), edit_solution_path(@solution) %> | 
   <%= link_to t('link.destroy'), solution_path(@solution), method: :delete,
                                   data: { confirm: "Are you sure" }%>
+  <% if @solution.certificate.nil? %>
+    | <%= link_to t('link.new_certificate'), new_certificate_path(solution_id: @solution.id) %>
+  <% end %>
 </div>

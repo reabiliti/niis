@@ -10,28 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180222120925) do
+ActiveRecord::Schema.define(version: 20180223085345) do
 
   create_table "certificates", force: :cascade do |t|
-    t.string "cer_number"
-    t.string "cer_blank_number"
-    t.datetime "cer_validity_from"
-    t.datetime "cer_validity_to"
+    t.integer "solution_id"
+    t.datetime "cert_expiry_date"
+    t.string "cert_name_product"
+    t.string "cert_manuf_regulations"
+    t.string "cert_code_okp"
+    t.string "cert_code_tn_ved"
+    t.string "cert_manuf_doc"
+    t.string "cert_manuf_name"
+    t.string "cert_manuf_inn"
+    t.string "cert_manuf_address"
+    t.string "cert_manuf_postcode"
+    t.string "cert_test_report"
+    t.string "cert_add_info"
+    t.string "cert_place_marking"
+    t.string "cert_chief_org"
+    t.string "cert_expert"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "cer_product_name"
-    t.string "cer_code_okp"
-    t.string "cer_code_tn_ved"
-    t.text "cer_regulation"
-    t.text "cer_manufacturer"
-    t.text "cer_certificate_issued"
-    t.text "cer_based"
-    t.text "cer_more_info"
-    t.string "cer_org_chief"
-    t.string "cer_org_expert"
-    t.integer "setting_id"
-    t.index ["id"], name: "index_certificates_on_id"
-    t.index ["setting_id"], name: "index_certificates_on_setting_id"
+    t.datetime "cert_registration_date"
+    t.string "cert_registration_num"
+    t.string "cert_blank_num"
+    t.index ["solution_id"], name: "index_certificates_on_solution_id"
   end
 
   create_table "conclusions", force: :cascade do |t|

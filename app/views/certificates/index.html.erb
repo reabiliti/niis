@@ -15,7 +15,6 @@
       <th>#</th>
       <th>Номер сертификата</th>
       <th>Номер бланка</th>
-      <th>Дата начала</th>
       <th>Дата окончания</th>
       <th>#</th>
       <th>#</th>
@@ -25,10 +24,9 @@
     <% @certificates.each do |certificate| %>
       <tr>
         <td><%= certificate.id %></td>
-        <td><%= certificate.cer_number %></td>
-        <td><%= certificate.cer_blank_number %></td>
-        <td><%= (certificate.cer_validity_from).strftime("%d.%m.%Y") unless (certificate.cer_validity_from).nil? %></td>
-        <td><%= (certificate.cer_validity_to).strftime("%d.%m.%Y") unless (certificate.cer_validity_to).nil? %></td>
+        <td><%= certificate.cert_registration_num %></td>
+        <td><%= certificate.cert_blank_num %></td>
+        <td><%= certificate.cert_expiry_date.strftime("%d.%m.%Y") %></td>
         <td><%= link_to t('link.show'), certificate_path(certificate) %></td>
         <td><%= link_to t('link.edit'), edit_certificate_path(certificate) %></td>
         <td><%= link_to t('link.destroy'), certificate_path(certificate),
@@ -38,7 +36,5 @@
     <% end %>
 
   </table>
-
-  <%= link_to t('link.new'), new_certificate_path %>
 
 </div>

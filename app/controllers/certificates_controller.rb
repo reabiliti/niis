@@ -1,19 +1,22 @@
 class CertificatesController < ApplicationController
-  before_action :certificate_find, only: [:show, :edit, :update, :destroy]
-  before_action :setting_all, only: [:new, :edit, :update, :create]
+  before_action :certificate_find, only: [ :show, :edit, :update, :destroy ]
+  before_action :solution_find, only: [ :show, :new ]
 
   def index
     @certificates = Certificate.search(params[:cer_search])
   end
 
   def show
-    @setting = setting_find unless @certificate.setting_id.nil?
+    @conclusion = Conclusion.find(@solution.conclusion_id)
+    @solution_proposal = SolutionProposal.find(@conclusion.solution_proposal_id)
+    @proposal = Proposal.find(@solution_proposal.proposal_id)
+    @setting = Setting.first
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = OrderPdf.new(@certificate, @setting)
+        pdf = OrderPdf.new(@certificate, @setting, @proposal)
         send_data pdf.render,
-                  filename: "order_#{@certificate.cer_number}",
+                  filename: "order_#{@certificate.cert_registration_num}",
                   type: 'application/pdf',
                   disposition: 'inline',
                   page_layout: 'landscape'
@@ -22,7 +25,26 @@ class CertificatesController < ApplicationController
   end
 
   def new
+    @conclusion = Conclusion.find(@solution.conclusion_id)
+    @solution_proposal = SolutionProposal.find(@conclusion.solution_proposal_id)
+    @proposal = Proposal.find(@solution_proposal.proposal_id)
     @certificate = Certificate.new
+    @certificate.solution_id = @solution.id
+    @certificate.cert_expiry_date = @solution.sol_cert_expiry_date
+    @certificate.cert_manuf_doc = @solution.sol_manuf_doc
+    @certificate.cert_code_okp = @solution.sol_code_okp
+    @certificate.cert_code_tn_ved = @solution.sol_code_tn_ved
+    @certificate.cert_manuf_regulations = @solution.sol_manuf_regulations
+    @certificate.cert_manuf_name = @solution.sol_manuf_name
+    @certificate.cert_manuf_inn = @proposal.prop_manuf_inn
+    @certificate.cert_manuf_address = @solution.sol_manuf_address
+    @certificate.cert_manuf_postcode = @solution.sol_manuf_postcode
+    @certificate.cert_test_report = @solution.sol_test_report
+    @certificate.cert_add_info = @solution.sol_add_info
+    @certificate.cert_place_marking = @solution.sol_place_marking
+    @certificate.cert_chief_org = @solution.sol_chief_org
+    @certificate.cert_expert = @solution.sol_expert
+
   end
 
   def edit
@@ -30,16 +52,18 @@ class CertificatesController < ApplicationController
 
   def create
     @certificate = Certificate.new(certificate_params)
-    @certificate.save ? (redirect_to @certificate) : (render 'new')
+    @certificate.save ? (redirect_to certificate_path(@certificate,
+                         solution_id: @certificate.solution_id)) : (render 'new')
   end
 
   def update
-    @certificate.update(certificate_params) ? (redirect_to @certificate) : (render 'edit')
+    @certificate.update(certificate_params) ? (redirect_to certificate_path(@certificate,
+                                               solution_id: @certificate.solution_id)) : (render 'edit')
   end
 
   def destroy
     @certificate.destroy
-    redirect_to certificates_path
+    redirect_to root_path
   end
 
   def self.search(cer_search)
@@ -49,27 +73,21 @@ class CertificatesController < ApplicationController
   private
 
     def certificate_params
-      params.require(:certificate).permit(:cer_number, :cer_blank_number,
-                                          :cer_validity_from, :cer_validity_to,
-                                          :cer_product_name, :cer_code_okp,
-                                          :cer_code_tn_ved,
-                                          :cer_regulation, :cer_manufacturer,
-                                          :cer_certificate_issued,
-                                          :cer_based, :cer_more_info,
-                                          :cer_org_chief, :cer_org_expert,
-                                          :setting_id, :cer_search)
+      params.require(:certificate).permit(:solution_id, :cert_expiry_date, :cert_name_product,
+                                          :cert_manuf_regulations, :cert_code_okp, :cert_code_tn_ved,
+                                          :cert_manuf_doc, :cert_manuf_name, :cert_manuf_inn,
+                                          :cert_manuf_address, :cert_manuf_postcode,
+                                          :cert_test_report, :cert_add_info, :cert_place_marking,
+                                          :cert_chief_org, :cert_expert, :cert_registration_date,
+                                          :cert_registration_num, :cert_blank_num)
     end
 
     def certificate_find
       @certificate = Certificate.find(params[:id])
     end
 
-    def setting_find
-      Setting.find(@certificate.setting_id)
-    end
-
-    def setting_all
-      @settings = Setting.all
+    def solution_find
+      @solution = Solution.find(params[:solution_id])
     end
 
 end

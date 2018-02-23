@@ -33,12 +33,21 @@
                             conclusion_path(conclusion, solution_proposal_id: conclusion.solution_proposal_id)%>
               </li>
               <% if solution = conclusion.solution %>
-              <ul>
-                <li>
-                  <%= link_to "3.2 Решение о выдаче сертификата от #{solution.sol_date_from.strftime("%d.%m.%Y")} № #{solution.sol_number}",
-                              solution_path(solution, conclusion_id: solution.conclusion_id)%>
-                </li>
-              </ul>
+                <ul>
+                  <li>
+                    <%= link_to "3.2 Решение о выдаче сертификата от #{solution.sol_date_from.strftime("%d.%m.%Y")} № #{solution.sol_number}",
+                                solution_path(solution, conclusion_id: solution.conclusion_id)%>
+                  </li>
+                  <% if certificate = solution.certificate %>
+                    <ul>
+                      <li>
+                        <%= link_to "4.1 Сертификат соответствия от #{certificate.cert_registration_date.strftime("%d.%m.%Y")}
+                                     № #{certificate.cert_registration_num}",
+                                    certificate_path(certificate, solution_id: certificate.solution_id)%>
+                      </li>
+                    </ul>
+                  <% end %>
+                </ul>
               <% end %>
             </ul>
           <% end %>

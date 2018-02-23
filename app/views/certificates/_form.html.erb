@@ -14,25 +14,42 @@
       </div>
     <% end %>
 
-    <%= simple_form_for @certificate do |f| %>
-      <%= f.input :setting_id, collection: @settings, label_method: :set_name, value_method: :id %>
-      <%= f.input :cer_number %>
-      <%= f.input :cer_blank_number %>
-      <%= f.input :cer_validity_from, as: :date, start_year: Date.today.year - 10,
-                                                 end_year: Date.today.year + 10 %>
-      <%= f.input :cer_validity_to, as: :date, start_year: Date.today.year - 10,
-                                               end_year: Date.today.year + 10 %>
-      <%= f.input :cer_product_name, as: :text, input_html: { rows: 4 } %>
-      <%= f.input :cer_code_okp %>
-      <%= f.input :cer_code_tn_ved %>
-      <%= f.input :cer_regulation, as: :text, input_html: { rows: 4 } %>
-      <%= f.input :cer_manufacturer, as: :text, input_html: { rows: 4 } %>
-      <%= f.input :cer_certificate_issued, as: :text, input_html: { rows: 4 } %>
-      <%= f.input :cer_based, as: :text, input_html: { rows: 4 } %>
-      <%= f.input :cer_more_info, as: :text, input_html: { rows: 4 } %>
-      <%= f.input :cer_org_chief %>
-      <%= f.input :cer_org_expert %>
-      <%= f.button :submit %>
+    <%= simple_form_for @certificate, html: { class: "form-horizontal" }, wrapper: :horizontal_form do |f| %>
+      <%= f.input :solution_id, as: :hidden %>
+      <div class="form-group">
+        <%= f.label :cert_expiry_date, class: 'col-sm-4 control-label' %>
+        <div class="col-sm-8">
+          <%= f.input_field :cert_expiry_date, as: :date, start_year: Date.today.year - 10,
+                                                         end_year: Date.today.year + 10 %>
+        </div>
+      </div>
+      <%= f.input :cert_name_product %>
+      <%= f.input :cert_manuf_doc, as: :text, input_html: { rows: 5 } %>
+      <%= f.input :cert_code_okp %>
+      <%= f.input :cert_code_tn_ved %>
+      <%= f.input :cert_manuf_regulations, as: :text, input_html: { rows: 3 } %>
+      <%= f.input :cert_manuf_name, as: :text, input_html: { rows: 5 } %>
+      <%= f.input :cert_manuf_inn %>
+      <%= f.input :cert_manuf_address, as: :text, input_html: { rows: 9 } %>
+      <%= f.input :cert_manuf_postcode %>
+      <%= f.input :cert_test_report, as: :text, input_html: { rows: 2 } %>
+      <%= f.input :cert_add_info %>
+      <%= f.input :cert_place_marking %>
+      <%= f.input :cert_chief_org %>
+      <%= f.input :cert_expert %>
+      <hr class="col-sm-12">
+      <h2>Регистрация</h2>
+      <div class="form-group">
+        <%= f.label :cert_registration_date, class: 'col-sm-4 control-label' %>
+        <div class="col-sm-8">
+          <%= f.input_field :cert_registration_date, as: :date, start_year: Date.today.year - 10,
+                                                         end_year: Date.today.year + 10 %>
+        </div>
+      </div>
+      <%= f.input :cert_registration_num %>
+      <%= f.input :cert_blank_num %>
+
+      <%= f.button :submit, "Сохранить сертификат", class: 'btn btn-primary center-block' %>
     <% end %>
   </div>
 </div>

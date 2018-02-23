@@ -34,7 +34,7 @@
         </div>
       </div>
       <%= f.input :prop_cert_system %>
-      <%= f.input :prop_applic_name %>
+      <%= f.input :prop_applic_name, as: :text, input_html: { rows: 5 } %>
       <%= f.input :prop_applic_reg_doc %>
       <hr class="col-xs-12">
       <h2>Юридический адрес заявителя</h2>
