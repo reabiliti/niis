@@ -4,7 +4,7 @@ class OrderPdf < Prawn::Document
     @certificate = certificate
     @setting = setting
     @proposal = proposal
-#    bg_setup
+    bg_setup
     font_setup
     cer_number
   end
@@ -34,13 +34,22 @@ class OrderPdf < Prawn::Document
 
     at_x_indent = set_at_x(140)
     at_y = set_at_y(519)
-    draw_text @certificate.cert_name_product, at: [ at_x_indent, at_y ], size: size, style: :bold
-
-    at_y = set_at_y(507)
-    draw_text @certificate.cert_manuf_doc, at: [ at_x, at_y ], size: size, style: :bold
-
-    at_y = set_at_y(495)
-    draw_text @proposal.prop_applic_from_issue, at: [ at_x, at_y ], size: size, style: :bold
+    if @certificate.cert_name_product.split("\r\n").length > 1
+      @certificate.cert_name_product.split("\r\n").each_with_index do |cert_name_product, index|
+        index == 0 ? (draw_text cert_name_product, at: [ at_x_indent, at_y ], size: size, style: :bold) :
+                     (text_box cert_name_product + "\n" +
+                      @certificate.cert_manuf_doc + "\n" +
+                      @proposal.prop_applic_from_issue,
+                      at: [ at_x, at_y ], size: size, style: :bold, width: 400)
+        at_y -= 5
+      end
+    else
+      draw_text @certificate.cert_name_product, at: [ at_x_indent, at_y ], size: size, style: :bold
+      at_y -= 12
+      draw_text @certificate.cert_manuf_doc, at: [ at_x, at_y ], size: size, style: :bold
+      at_y -= 12
+      draw_text @proposal.prop_applic_from_issue, at: [ at_x, at_y ], size: size, style: :bold
+    end
 
     at_x_indent = set_at_x(480)
     at_y = set_at_y(490)

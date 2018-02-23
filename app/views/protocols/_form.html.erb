@@ -50,13 +50,10 @@
       <%= f.input :prot_evaluation_product, as: :text, input_html: { rows: 5 } %>
       <%= f.input :prot_requirement_test, collection: [ "требуется","не требуется" ] %>
       <%= f.input :prot_list_indicators, as: :text, input_html: { rows: 5 } %>
-      <%= f.input :prot_conclusion %>
+      <%= f.input :prot_conclusion, as: :text, input_html: { rows: 2 } %>
       <%= f.input :prot_expert %>
 
       <%= f.button :submit, "Сохранить протокол идентификации продукции", class: 'btn btn-primary center-block' %>
     <% end %>
-
-
-
   </div>
 </div>
