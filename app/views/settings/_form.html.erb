@@ -16,10 +16,32 @@
 
     <%= simple_form_for @setting, html: { class: "form-horizontal" }, wrapper: :horizontal_form do |f| %>
       <%= f.input :set_name %>
-      <%= f.input :set_organization, as: :text, input_html: { rows: 6 } %>
-      <%= f.input :set_address, as: :text, input_html: { rows: 4 } %>
       <hr class="col-sm-12">
-      <h2>Параметры печати</h2>
+      <h2>Сведения об аккредитации органа по сертификации</h2>
+      <%= f.input :set_os_registration_num %>
+      <div class="form-group">
+        <%= f.label :set_os_registration_date, class: 'col-sm-4 control-label' %>
+        <div class="col-sm-8">
+          <%= f.input_field :set_os_registration_date, as: :date, start_year: Date.today.year - 10,
+                                                                  end_year: Date.today.year + 10 %>
+        </div>
+      </div>
+      <%= f.input :set_os_name, as: :text, input_html: { rows: 4 } %>
+      <%= f.input :set_os_address, as: :text, input_html: { rows: 7 } %>
+      <%= f.input :set_os_chief_position %>
+      <%= f.input :set_os_chief_name %>
+      <%= f.input :set_os_based_doc %>
+      <hr class="col-sm-12">
+      <h2>Организация, на базе которой создан орган по сертификации</h2>
+      <%= f.input :set_org_name, as: :text, input_html: { rows: 4 } %>
+      <%= f.input :set_org_address, as: :text, input_html: { rows: 7 } %>
+      <%= f.input :set_org_phone %>
+      <%= f.input :set_org_chief_position %>
+      <%= f.input :set_org_chief_name %>
+      <%= f.input :set_org_based_doc %>
+      <%= f.input :set_org_chief_accountant %>
+      <hr class="col-sm-12">
+      <h2>Параметры печати сертификата</h2>
       <%= f.input :set_at_x %>
       <%= f.input :set_at_y %>
       <hr class="col-sm-12">

@@ -36,16 +36,36 @@
               <% if solution = conclusion.solution %>
                 <ul>
                   <li>
-                    <%= link_to "3.2 Решение о выдаче сертификата от #{solution.sol_date_from.strftime("%d.%m.%Y")} № #{solution.sol_number}",
+                    <%= link_to "3.2 Решение о выдаче сертификата от #{solution.sol_date_from.strftime("%d.%m.%Y")}
+                                № #{solution.sol_number}",
                                 solution_path(solution, conclusion_id: solution.conclusion_id)%>
                   </li>
                   <% if certificate = solution.certificate %>
                     <ul>
                       <li>
                         <%= link_to "4.1 Сертификат соответствия от #{certificate.cert_registration_date.strftime("%d.%m.%Y")}
-                                     № #{certificate.cert_registration_num}",
+                                    № #{certificate.cert_registration_num}",
                                     certificate_path(certificate, solution_id: certificate.solution_id)%>
                       </li>
+                      <% if permission = certificate.permission %>
+                        <ul>
+                          <li>
+                            <%= link_to "4.3 Разрешение на применение знака соответствия от
+                                        #{permission.perm_registration_date.strftime("%d.%m.%Y")}
+                                        № #{permission.perm_registration_num}",
+                                        permission_path(permission, certificate_id: permission.certificate_id)%>
+                          </li>
+                        </ul>
+                      <% end %>
+                      <% if ikcontract = certificate.ikcontract %>
+                        <ul>
+                          <li>
+                            <%= link_to "5.1 Договор на инспекционный контроль от
+                                        #{ikcontract.ikcon_registration_date.strftime("%d.%m.%Y")}",
+                                        ikcontract_path(ikcontract, certificate_id: ikcontract.certificate_id)%>
+                          </li>
+                        </ul>
+                      <% end %>
                     </ul>
                   <% end %>
                 </ul>

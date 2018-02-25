@@ -7,6 +7,12 @@
                                   data: { confirm: "Are you sure" }%> |
   <%= link_to t('link.print_PDF'), certificate_path(@certificate, solution_id: @certificate.solution_id,
                                                     format: 'pdf'), target: "_blank" %>
+  <% if @certificate.permission.nil? %>
+    | <%= link_to t('link.new_permission'), new_permission_path(certificate_id: @certificate.id) %>
+  <% end %>
+  <% if @certificate.ikcontract.nil? %>
+    | <%= link_to t('link.new_ikcontract'), new_ikcontract_path(certificate_id: @certificate.id) %>
+  <% end %>
 </div>
 <br class="no-print">
 <br class="no-print">
@@ -41,13 +47,13 @@
     </div>
   </div>
   <div class="paragraph">
-    ОРГАН ПО СЕРТИФИКАЦИИ <b><%= @setting.set_name %></b>
+    ОРГАН ПО СЕРТИФИКАЦИИ <b><%= @setting.set_os_registration_num %></b>
   </div>
   <div class="paragraph">
-    <b><%= @setting.set_organization %></b>
+    <b><%= @setting.set_os_name.gsub 'ОРГАН ПО СЕРТИФИКАЦИИ ', '' %></b>
   </div>
   <div class="paragraph">
-    <b><%= @setting.set_address %></b>
+    <b><%= @setting.set_os_address %></b>
   </div>
   <br>
   <div class="div-table">
@@ -150,4 +156,10 @@
                                   data: { confirm: "Are you sure" }%> |
   <%= link_to t('link.print_PDF'), certificate_path(@certificate, solution_id: @certificate.solution_id,
                                                     format: 'pdf'), target: "_blank" %>
+  <% if @certificate.permission.nil? %>
+    | <%= link_to t('link.new_permission'), new_permission_path(certificate_id: @certificate.id) %>
+  <% end %>
+  <% if @certificate.ikcontract.nil? %>
+    | <%= link_to t('link.new_ikcontract'), new_ikcontract_path(certificate_id: @certificate.id) %>
+  <% end %>
 </div>

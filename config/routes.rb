@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :protocols
   resources :conclusions
   resources :solutions
+  resources :permissions
+  resources :ikcontracts
 
   get 'welcome/index'
 

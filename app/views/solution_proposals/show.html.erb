@@ -15,16 +15,14 @@
 <h1 class="no-print">Решение по заявке № <%= @solution_proposal.solprop_number %></h1>
 <div class="page-body">
   <div class="line">
-    <% @setting.set_organization.split("\r\n").each do |set_org| %>
-      <%= set_org %><br>
-    <% end %>
-    рег. № <%= @setting.set_name %>
+    <%= @setting.set_os_name %><br>
+    рег. № <%= @setting.set_os_registration_num %>
   </div>
   <div class="hint">
-    Наименование органа по сертификации
+    наименование органа по сертификации
   </div>
   <div class="line">
-    <%= @setting.set_address %>
+    <%= @setting.set_os_address %>
   </div>
   <div class="hint">
     адрес, телефон, факс
@@ -114,10 +112,8 @@
   </div>
   <br>
   <div class="paragraph">
-    <% @setting.set_organization.split("\r\n").each do |set_org| %>
-      <%= set_org %><br>
-    <% end %>
-    <%= @setting.set_name %>
+    <%= @setting.set_os_name %><br>
+    рег. № <%= @setting.set_os_registration_num %>
   </div>
   <br>
   <div class="caption">

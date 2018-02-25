@@ -1,13 +1,13 @@
 class SolutionsController < ApplicationController
   before_action :sol_find, only: [ :show, :edit, :update, :destroy ]
   before_action :conc_find, only: [ :show, :new ]
+  before_action :setting_find, only: [ :show, :new ]
 
   def index
     @solutions = Solution.all
   end
 
   def show
-    @setting = Setting.first
     @solution_proposal = SolutionProposal.find(@conclusion.solution_proposal_id)
     @proposal = Proposal.find(@solution_proposal.proposal_id)
   end
@@ -35,6 +35,8 @@ class SolutionsController < ApplicationController
     @solution.sol_conclusion_date = @conclusion.conc_sign_date
     @solution.sol_cert_expiry_date = @conclusion.conc_cert_expiry_date
     @solution.sol_add_info = @conclusion.conc_add_info
+    @solution.sol_chief_name = @setting.set_os_chief_position
+    @solution.sol_chief_org = @setting.set_os_chief_name
   end
 
   def create
@@ -77,5 +79,7 @@ class SolutionsController < ApplicationController
     @conclusion = Conclusion.find(params[:conclusion_id])
   end
 
-
+  def setting_find
+    @setting = Setting.first
+  end
 end

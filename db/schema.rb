@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180223085345) do
+ActiveRecord::Schema.define(version: 20180225203152) do
 
   create_table "certificates", force: :cascade do |t|
     t.integer "solution_id"
@@ -66,6 +66,46 @@ ActiveRecord::Schema.define(version: 20180223085345) do
     t.datetime "updated_at", null: false
     t.integer "solution_proposal_id"
     t.index ["solution_proposal_id"], name: "index_conclusions_on_solution_proposal_id"
+  end
+
+  create_table "ikcontracts", force: :cascade do |t|
+    t.integer "certificate_id"
+    t.datetime "ikcon_registration_date"
+    t.string "ikcon_registration_num"
+    t.string "ikcon_exec_name"
+    t.string "ikcon_exec_named"
+    t.string "ikcon_exec_chief"
+    t.string "ikcon_exec_active"
+    t.string "ikcon_exec_based_doc"
+    t.string "ikcon_client_name"
+    t.string "ikcon_client_named"
+    t.string "ikcon_client_chief"
+    t.string "ikcon_client_active"
+    t.string "ikcon_client_based_doc"
+    t.string "ikcon_name_product"
+    t.string "ikcon_cert_registration_num"
+    t.string "ikcon_inspection_period"
+    t.string "ikcon_contract_time"
+    t.string "ikcon_exec_address"
+    t.string "ikcon_exec_bank_details"
+    t.string "ikcon_client_address"
+    t.string "ikcon_client_bank_details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["certificate_id"], name: "index_ikcontracts_on_certificate_id"
+  end
+
+  create_table "permissions", force: :cascade do |t|
+    t.integer "certificate_id"
+    t.string "perm_registration_num"
+    t.datetime "perm_registration_date"
+    t.datetime "perm_expiry_date"
+    t.string "perm_place_marking"
+    t.string "perm_chief_name"
+    t.string "perm_chief_org"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["certificate_id"], name: "index_permissions_on_certificate_id"
   end
 
   create_table "proposals", force: :cascade do |t|
@@ -144,10 +184,22 @@ ActiveRecord::Schema.define(version: 20180223085345) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "set_name"
-    t.text "set_organization"
     t.integer "set_at_x"
     t.integer "set_at_y"
-    t.string "set_address"
+    t.string "set_os_registration_num"
+    t.datetime "set_os_registration_date"
+    t.string "set_os_name"
+    t.string "set_os_address"
+    t.string "set_os_chief_position"
+    t.string "set_os_chief_name"
+    t.string "set_os_based_doc"
+    t.string "set_org_name"
+    t.string "set_org_address"
+    t.string "set_org_phone"
+    t.string "set_org_chief_position"
+    t.string "set_org_chief_name"
+    t.string "set_org_based_doc"
+    t.string "set_org_chief_accountant"
   end
 
   create_table "solution_proposals", force: :cascade do |t|

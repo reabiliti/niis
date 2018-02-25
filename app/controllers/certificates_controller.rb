@@ -1,6 +1,7 @@
 class CertificatesController < ApplicationController
   before_action :certificate_find, only: [ :show, :edit, :update, :destroy ]
   before_action :solution_find, only: [ :show, :new ]
+  before_action :setting_find, only: [ :show, :new ]
 
   def index
     @certificates = Certificate.search(params[:cer_search])
@@ -10,7 +11,6 @@ class CertificatesController < ApplicationController
     @conclusion = Conclusion.find(@solution.conclusion_id)
     @solution_proposal = SolutionProposal.find(@conclusion.solution_proposal_id)
     @proposal = Proposal.find(@solution_proposal.proposal_id)
-    @setting = Setting.first
     respond_to do |format|
       format.html
       format.pdf do
@@ -44,16 +44,17 @@ class CertificatesController < ApplicationController
     @certificate.cert_place_marking = @solution.sol_place_marking
     @certificate.cert_chief_org = @solution.sol_chief_org
     @certificate.cert_expert = @solution.sol_expert
+    @certificate.cert_chief_org = @setting.set_os_chief_name
 
-  end
-
-  def edit
   end
 
   def create
     @certificate = Certificate.new(certificate_params)
     @certificate.save ? (redirect_to certificate_path(@certificate,
                          solution_id: @certificate.solution_id)) : (render 'new')
+  end
+
+  def edit
   end
 
   def update
@@ -90,4 +91,7 @@ class CertificatesController < ApplicationController
       @solution = Solution.find(params[:solution_id])
     end
 
+    def setting_find
+      @setting = Setting.first
+    end
 end

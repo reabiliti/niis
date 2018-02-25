@@ -4,7 +4,7 @@ class OrderPdf < Prawn::Document
     @certificate = certificate
     @setting = setting
     @proposal = proposal
-#    bg_setup
+    bg_setup
     font_setup
     cer_number
   end
@@ -26,10 +26,11 @@ class OrderPdf < Prawn::Document
 
     at_x_indent = set_at_x(229)
     at_y = set_at_y(590)
-    draw_text "рег. № #{@setting.set_name}", at: [ at_x_indent, at_y ], size: size, style: :bold
+    draw_text "рег. № #{@setting.set_os_registration_num}", at: [ at_x_indent, at_y ], size: size, style: :bold
 
     at_y = set_at_y(584)
-    text_box "#{@setting.set_organization}\n#{@setting.set_address}", at: [ at_x, at_y ], size: size, style: :bold
+    text_box "#{@setting.set_os_name.gsub 'ОРГАН ПО СЕРТИФИКАЦИИ ', ''}\n" +
+             "#{@setting.set_os_address}", at: [ at_x, at_y ], size: size, style: :bold, width: 450
 
 
     at_x_indent = set_at_x(140)

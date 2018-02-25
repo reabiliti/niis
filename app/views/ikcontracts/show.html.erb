@@ -1,0 +1,27 @@
+<% provide(:title, "Договор на проведение инспекционного контроля от
+                    #{@ikcontract.ikcon_registration_date.strftime("%d.%m.%Y")}") %>
+
+<div class="paragraph no-print">
+  <%= link_to t('link.back'), root_path %> |
+  <%= link_to t('link.edit'), edit_ikcontract_path(@ikcontract) %> |
+  <%= link_to t('link.destroy'), ikcontract_path(@ikcontract), method: :delete,
+                                  data: { confirm: "Are you sure" }%> |
+</div>
+<br class="no-print">
+<br class="no-print">
+<div class="page-body">
+  <div class="caption">
+    СИСТЕМА СЕРТИФИКАЦИИ ГОСТ Р<br>
+    ГОССТАНДАРТ РОССИИ<br>
+    <br>
+    СЕРТИФИКАТ СООТВЕТСТВИЯ
+  </div>
+</div>
+<br class="no-print">
+<br class="no-print">
+<div class="paragraph no-print">
+  <%= link_to t('link.back'), root_path %> |
+  <%= link_to t('link.edit'), edit_ikcontract_path(@ikcontract) %> |
+  <%= link_to t('link.destroy'), ikcontract_path(@ikcontract), method: :delete,
+                                  data: { confirm: "Are you sure" }%> |
+</div>

@@ -1,0 +1,12 @@
+<% provide(:title, "Редактирование разрешения на применение знака соответствия от
+                    #{@permission.perm_registration_date.strftime("%d.%m.%Y")} № #{@permission.perm_registration_num}") %>
+<%= link_to t('link.back'), permission_path(@permission, certificate_id: @permission.certificate_id) %>
+
+<h1>
+  Редактирование разрешения на применение знака соответствия от
+  <%= @permission.perm_registration_date.strftime("%d.%m.%Y") %> № <%= @permission.perm_registration_num %>
+</h1>
+
+<%= render 'form' %>
+
+<%= link_to t('link.back'), permission_path(@permission, certificate_id: @permission.certificate_id) %>

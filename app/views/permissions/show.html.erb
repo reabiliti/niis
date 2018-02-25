@@ -1,0 +1,144 @@
+<% provide(:title, "Разрешение на применение знака соответствия от #{@permission.perm_registration_date.strftime("%d.%m.%Y")}
+                    № #{@permission.perm_registration_num}") %>
+
+<div class="paragraph no-print">
+  <%= link_to t('link.back'), root_path %> |
+  <%= link_to t('link.edit'), edit_permission_path(@permission) %> |
+  <%= link_to t('link.destroy'), permission_path(@permission), method: :delete,
+                                  data: { confirm: "Are you sure" }%>
+</div>
+<br class="no-print">
+<br class="no-print">
+<div class="page-body">
+  <div class="caption">
+    Разрешение на применение знака соответствия<br>
+    Системы сертификации ГОСТ Р<br>
+    при добровольной сертификации продукции (работ, услуг)
+    <br>
+    <br>
+    РАЗРЕШЕНИЕ
+    <br>
+    <br>
+  </div>
+  <div class="paragraph">
+    Регистрационный номер <b><%= @permission.perm_registration_num %></b>
+    от <b><%= @permission.perm_registration_date.strftime("%d.%m.%Y") %></b>
+  </div>
+  <br>
+  <div class="paragraph">
+    <b><%= @setting.set_os_name %></b>
+    <br>
+    рег. № <b><%= @setting.set_os_registration_num %></b>
+  </div>
+  <br>
+  <div class="paragraph">
+    <b>
+      разрешает применение знака соответствия системы сертификации ГОСТ Р при
+      добровольной сертификации продукции (работ, услуг)
+    </b>
+  </div>
+  <br>
+  <div class="paragraph">
+    Разрешение выдано
+  </div>
+  <div class="line">
+    <b><%= @proposal.prop_applic_name %><br>
+    <%= @proposal.prop_applic_reg_doc %></b>
+  </div>
+  <div class="hint">
+    указывается наименование организации
+  </div>
+  <br>
+  <div class="paragraph">
+    Юридический адрес
+  </div>
+  <div class="line">
+    <b><%= "#{@proposal.prop_applic_address}, #{@proposal.prop_applic_postcode}" %></b>
+  </div>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-4">
+        Телефон: <b><%= @proposal.prop_applic_phone %></b>
+      </div>
+      <div class="div-table-col col-width-4">
+        Факс: <b><%= @proposal.prop_applic_fax %></b>
+      </div>
+      <div class="div-table-col col-width-4">
+        Почта: <b><%= @proposal.prop_applic_email %></b>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="paragraph">
+    на основании сертификата соответствия рег. номер <b><%= @certificate.cert_registration_num %></b>
+  </div>
+  <div class="paragraph">
+    срок действия сертификата с <b><%= @certificate.cert_registration_date.strftime("%d.%m.%Y") %></b>
+    по <b><%= @certificate.cert_expiry_date.strftime("%d.%m.%Y") %></b>
+  </div>
+  <div class="paragraph">
+    срок действия разрешения до <b><%= @permission.perm_expiry_date.strftime("%d.%m.%Y") %></b>
+  </div>
+  <br>
+  <div class="paragraph">
+    Условия применения знака соответствия
+  </div>
+  <div class="line">
+    <b><%= @permission.perm_place_marking %></b>
+  </div>
+  <div class="hint">
+    место нанесения знака, прочие условия
+  </div>
+  <br>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-6">
+        Руководитель органа по сертификации
+      </div>
+      <div class="div-table-col-hr col-width-6">
+          <b><%= @permission.perm_chief_name %></b>
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-6">
+      </div>
+      <div class="div-table-col col-width-6 hint">
+        должность
+      </div>
+    </div>
+  </div>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-2">
+        М.П.
+      </div>
+      <div class="div-table-col-hr col-width-3">
+      </div>
+      <div class="div-table-col col-width-1">
+      </div>
+      <div class="div-table-col-hr col-width-6 center">
+          <b><%= @permission.perm_chief_org %></b>
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-2">
+      </div>
+      <div class="div-table-col col-width-3 hint">
+        подпись
+      </div>
+      <div class="div-table-col col-width-1">
+      </div>
+      <div class="div-table-col col-width-6 hint">
+        инициалы, фамилия
+      </div>
+    </div>
+  </div>
+</div>
+<br class="no-print">
+<br class="no-print">
+<div class="paragraph no-print">
+  <%= link_to t('link.back'), root_path %> |
+  <%= link_to t('link.edit'), edit_permission_path(@permission) %> |
+  <%= link_to t('link.destroy'), permission_path(@permission), method: :delete,
+                                  data: { confirm: "Are you sure" }%>
+</div>

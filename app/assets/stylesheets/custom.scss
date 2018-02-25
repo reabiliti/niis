@@ -15,6 +15,7 @@ $width-page: 710px;
 /* universal */
 
 body {
+  font-family: TimesNewRoman, Times New Roman, Times, Baskerville, Georgia, serif;
   padding-top: 60px;
 }
 
@@ -191,6 +192,10 @@ footer {
   border-bottom: 1px solid $black-line;
   padding-left: 10px;
   padding-right: 10px;
+}
+
+.hr-light {
+  border-bottom: 1px solid #d3d3d3;
 }
 
 .col-align-bot {

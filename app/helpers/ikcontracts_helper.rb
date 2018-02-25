@@ -1,0 +1,2 @@
+module IkcontractsHelper
+end

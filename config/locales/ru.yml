@@ -41,6 +41,7 @@ ru:
     new_conclusion: "Создать Заключение"
     new_solution: "Создать Решение"
     new_certificate: "Создать Сертификат"
+    new_permission: "Создать Разрешение"
     edit: "Изменить"
     home: "Главная"
     print_PDF: "Печать PDF"
@@ -60,32 +61,30 @@ ru:
       setting: "Настройки"
       proposal: "Заявка"
       solution_proposal: "Решение по заявке"
-    attributes:
-      certificate:
-        cer_number: "Номер сертификата"
-        setting_id: "Файл настроек"
-        cer_blank_number: "Номер бланка сертификата"
-        cer_validity_from: "Начальный срок дествия"
-        cer_validity_to: "Конечный срок действия"
-        cer_product_name: "Продукция"
-        cer_code_okp: "код ОК 006 (ОКП)"
-        cer_code_tn_ved: "код ТН ВЭД России"
-        cer_regulation: "Соответствует требованиям нормативных документов"
-        cer_manufacturer: "Изготовитель"
-        cer_certificate_issued: "Сертификат выдан"
-        cer_based: "На основании"
-        cer_more_info: "Дополнительная информация"
-        cer_org_chief: "Руководитель органа"
-        cer_org_expert: "Эксперт"
-      setting:
-        set_name: "Наименование настройки"
-        set_organization: "Наименование органа по сертификации"
-        set_address: "Адрес органа по сертификации"
-        set_at_x: "Смещение по оси Х"
-        set_at_y: "Смещение по оси Y"
-
   simple_form:
     labels:
+      setting:
+        set_name: "Наименование настройки"
+        set_os_registration_num: "Регистрационный номер"
+        set_os_registration_date: "Дата регистрации"
+        set_os_name: "Наименование"
+        set_os_address: "Адрес: Название улицы, номер дома, номер помещения; название населенного пункта (города,
+                         поселка и т.п.); название района; название республики, края, области, автономного округа (области);
+                         страна (для зарубежных ОС); почтовый индекс"
+        set_os_chief_position: "Должность руководителя ОС"
+        set_os_chief_name: "Инициалы, фамилия руководителя"
+        set_os_based_doc: "Действует на основании документа"
+        set_org_name: "Наименование"
+        set_org_address: "Адрес: Название улицы, номер дома, номер помещения; название населенного пункта (города,
+                          поселка и т.п.); название района; название республики, края, области, автономного округа (области);
+                          страна (для зарубежных ОС); почтовый индекс"
+        set_org_phone: "Телефон"
+        set_org_chief_position: "Должность руководителя"
+        set_org_chief_name: "Инициалы, фамилия руководителя"
+        set_org_based_doc: "Действует на основании документа"
+        set_org_chief_accountant: "Главный бухгалтер"
+        set_at_x: "Смещение по оси X"
+        set_at_y: "Смещение по оси Y"
       proposal:
         prop_number: "Номер заявки"
         prop_date_from: "от"
@@ -260,6 +259,14 @@ ru:
         cert_registration_date: "Дата регистрации сертификата"
         cert_registration_num: "Номер регистрации сертификата"
         cert_blank_num: "Номер бланка"
+      permission:
+        perm_registration_num: "Регистрационный номер"
+        perm_registration_date: "Дата регистрации"
+        perm_expiry_date: "дата истечения срока действия"
+        perm_place_marking: "Место нанесения знака, прочие условия"
+        perm_chief_name: "Должность руководителя организации"
+        perm_chief_org: "Инициалы, Фамилия"
+
 # Template
   form:
     search: "Поиск"
