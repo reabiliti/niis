@@ -11,10 +11,22 @@
 <br class="no-print">
 <div class="page-body">
   <div class="caption">
-    СИСТЕМА СЕРТИФИКАЦИИ ГОСТ Р<br>
-    ГОССТАНДАРТ РОССИИ<br>
-    <br>
-    СЕРТИФИКАТ СООТВЕТСТВИЯ
+    ДОГОВОР<br>
+    на проведение инспекционного контроля<br>
+    за сертифицированной продукцией
+  </div>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-1">
+        <b><%= @ikcontract.ikcon_registration_date.strftime("%d.%m.%Y") %></b>
+      </div>
+      <div class="div-table-col col-width-2">
+        <b><%= @ikcontract.ikcon_registration_num %></b>
+      </div>
+      <div class="div-table-col col-width-9 right">
+        <b><%= @ikcontract.ikcon_registration_city %></b>
+      </div>
+    </div>
   </div>
 </div>
 <br class="no-print">

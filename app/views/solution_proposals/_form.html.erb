@@ -36,7 +36,7 @@
         </div>
       </div>
 
-      <%= f.input :solprop_solution, collection: [ "о проведении", "об отказе в проведении" ] %>
+      <%= f.input :solprop_solution, collection: [ "о проведении", "об отказе в проведении" ], include_blank: false %>
       <%= f.input :solprop_applic_name_product, as: :text, input_html: { rows: 5 } %>
       <%= f.input :solprop_applic_code_okp %>
       <%= f.input :solprop_applic_code_tn_ved %>
@@ -48,7 +48,8 @@
       <%= f.input :solprop_regulations, as: :text, input_html: { rows: 1 } %>
       <%= f.input :solprop_desc_scheme_cert, as: :text, input_html: { rows: 3 }  %>
       <%= f.input :solprop_test_lab, as: :text, input_html: { rows: 4 } %>
-      <%= f.input :solprop_sampling, collection: [ "орган по сертификации", "испытательная лаборатория" ] %>
+      <%= f.input :solprop_sampling, collection: [ "орган по сертификации", "испытательная лаборатория" ],
+                                     include_blank: false %>
       <%= f.input :solprop_list_doc_product, as: :text, input_html: { rows: 6 } %>
       <%= f.input :solprop_basis_work %>
       <%= f.input :solprop_add_info %>

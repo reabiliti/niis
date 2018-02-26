@@ -36,7 +36,7 @@
           </div>
         </div>
       </div>
-      <%= f.input :sol_delivery, collection: [ "о выдаче", "об отказе в выдаче" ] %>
+      <%= f.input :sol_delivery, collection: [ "о выдаче", "об отказе в выдаче" ], include_blank: false %>
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group">
@@ -126,7 +126,8 @@
       </div>
       <%= f.input :sol_place_marking %>
       <%= f.input :sol_inspection_period, collection: [ "один раз в месяц", "один раз в 2 месяца",
-                                                        "один раз в квартал", "один раз в полгода", "один раз в год"  ] %>
+                                                        "один раз в квартал", "один раз в полгода",
+                                                        "один раз в год"  ], include_blank: false %>
       <%= f.input :sol_inspection_method %>
       <%= f.input :sol_inspection_work_basis, as: :text, input_html: { rows: 3 } %>
       <%= f.input :sol_add_info, as: :text, input_html: { rows: 5 } %>

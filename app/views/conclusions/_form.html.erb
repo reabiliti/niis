@@ -86,7 +86,7 @@
       <%= f.input :conc_test_report, as: :text, input_html: { rows: 5 } %>
       <%= f.input :conc_list_doc, as: :text, input_html: { rows: 4 } %>
       <%= f.input :conc_conformity, as: :text, input_html: { rows: 2 } %>
-      <%= f.input :conc_may_be_issued, collection: [ "может", "не может" ] %>
+      <%= f.input :conc_may_be_issued, collection: [ "может", "не может" ], include_blank: false %>
       <div class="row">
         <div class="form-group">
           <%= f.label :conc_cert_expiry_date, class: 'col-sm-4 control-label' %>

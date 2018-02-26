@@ -15,11 +15,13 @@ class IkcontractsController < ApplicationController
     @ikcontract.ikcon_registration_city = @setting.set_os_city
     @ikcontract.ikcon_name_product = @certificate.cert_name_product
     @ikcontract.ikcon_cert_registration_num = @certificate.cert_registration_num
-    @ikcontract.ikcon_name_product = @certificate.cert_name_product
-    @ikcontract.ikcon_name_product = @certificate.cert_name_product
-    @ikcontract.ikcon_name_product = @certificate.cert_name_product
-    @ikcontract.ikcon_name_product = @certificate.cert_name_product
     @ikcontract.ikcon_exec_name = @setting.set_org_name
+    @ikcontract.ikcon_exec_chief = @setting.set_org_chief_position + " " + @setting.set_org_chief_name
+    @ikcontract.ikcon_exec_based_doc = @setting.set_org_based_doc
+    @ikcontract.ikcon_exec_address = @setting.set_org_address
+    @ikcontract.ikcon_client_name = @certificate.cert_manuf_name
+    @ikcontract.ikcon_client_chief = @certificate.cert_manuf_name
+    @ikcontract.ikcon_client_address = @certificate.cert_manuf_address + ", " + @certificate.cert_manuf_postcode
   end
 
   def create
