@@ -1,7 +1,7 @@
 <%= provide(:title, "Заключение эксперта о выдаче сертификата") %>
-<%= link_to t('link.back'), solution_proposal_path(@solution_proposal, proposal_id: @solution_proposal.proposal_id) %>
+<%= link_to t('link.back'), :back %>
+<br>
 <h1>Заключение эксперта о выдаче сертификата</h1>
-
 <%= render 'form' %>
-
-<%= link_to t('link.back'), solution_proposal_path(@solution_proposal, proposal_id: @solution_proposal.proposal_id) %>
+<br>
+<%= link_to t('link.back'), :back %>

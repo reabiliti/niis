@@ -1,13 +1,12 @@
 class SolutionProposalsController < ApplicationController
   before_action :solprop_find, only: [ :show, :edit, :update, :destroy ]
   before_action :proposal_find, only: [ :show, :new ]
-  before_action :setting_find, only: [ :show, :new ]
-
   def index
     @solution_proposals = SolutionProposal.all
   end
 
   def show
+    @setting = Setting.first
   end
 
   def new
@@ -24,14 +23,12 @@ class SolutionProposalsController < ApplicationController
     @solution_proposal.solprop_manuf_list_doc = @proposal.prop_manuf_list_doc
     @solution_proposal.solprop_regulations = @proposal.prop_manuf_regulations
     @solution_proposal.solprop_applic_name = @proposal.prop_applic_name
-    @solution_proposal.solprop_chief_name = @setting.set_os_chief_position
-    @solution_proposal.solprop_chief_org = @setting.set_os_chief_name
   end
 
   def create
     @solution_proposal = SolutionProposal.new(solprop_params)
     @solution_proposal.save ? (redirect_to solution_proposal_path(@solution_proposal,
-                              proposal_id: @solution_proposal.proposal_id)) : (render 'new')
+                              proposal_id: @solution_proposal.proposal_id)) : (render 'new', locals: {proposal_id: @solution_proposal.proposal_id})
   end
 
   def edit
@@ -67,9 +64,5 @@ class SolutionProposalsController < ApplicationController
 
   def proposal_find
     @proposal = Proposal.find(params[:proposal_id])
-  end
-
-  def setting_find
-    @setting = Setting.first
   end
 end

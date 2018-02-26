@@ -12,6 +12,14 @@ class IkcontractsController < ApplicationController
   def new
     @ikcontract = Ikcontract.new
     @ikcontract.certificate_id = @certificate.id
+    @ikcontract.ikcon_registration_city = @setting.set_os_city
+    @ikcontract.ikcon_name_product = @certificate.cert_name_product
+    @ikcontract.ikcon_cert_registration_num = @certificate.cert_registration_num
+    @ikcontract.ikcon_name_product = @certificate.cert_name_product
+    @ikcontract.ikcon_name_product = @certificate.cert_name_product
+    @ikcontract.ikcon_name_product = @certificate.cert_name_product
+    @ikcontract.ikcon_name_product = @certificate.cert_name_product
+    @ikcontract.ikcon_exec_name = @setting.set_org_name
   end
 
   def create
@@ -36,8 +44,8 @@ class IkcontractsController < ApplicationController
 
   private
   def ikcontract_params
-    params.require(:ikcontract).permit(:certificate_id, :ikcon_registration_date,
-                                       :ikcon_registration_num, :ikcon_exec_name, :ikcon_exec_named,
+    params.require(:ikcontract).permit(:certificate_id, :ikcon_registration_date, :ikcon_registration_num,
+                                       :ikcon_registration_city, :ikcon_exec_name, :ikcon_exec_named,
                                        :ikcon_exec_chief, :ikcon_exec_active, :ikcon_exec_based_doc,
                                        :ikcon_client_name, :ikcon_client_named, :ikcon_client_chief,
                                        :ikcon_client_active, :ikcon_client_based_doc, :ikcon_name_product,

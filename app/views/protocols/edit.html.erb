@@ -1,6 +1,7 @@
 <% provide(:title, "Протокол идентификации продукции от #{@protocol.prot_date_from.strftime("%d.%m.%Y")}") %>
-<%= link_to t('link.back'), protocol_path(@protocol, solution_proposal_id: @protocol.solution_proposal_id) %>
+<%= link_to t('link.back'), :back %>
+<br>
 <h1>Протокол идентификации продукции от <%= @protocol.prot_date_from.strftime("%d.%m.%Y") %></h1>
 <%= render 'form' %>
 <br>
-<%= link_to t('link.back'), protocol_path(@protocol, solution_proposal_id: @protocol.solution_proposal_id) %>
+<%= link_to t('link.back'), :back %>

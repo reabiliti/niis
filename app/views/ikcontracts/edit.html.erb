@@ -1,8 +1,8 @@
 <% provide(:title, "Договор на проведение инспекционного контроля от
                     #{@ikcontract.ikcon_registration_date.strftime("%d.%m.%Y")}") %>
-<%= link_to t('link.back'), ikcontract_path(@ikcontract, certificate_id: @ikcontract.certificate_id) %>
+<%= link_to t('link.back'), :back %>
+<br>
 <h1>Договор на проведение инспекционного контроля от <%= @ikcontract.ikcon_registration_date.strftime("%d.%m.%Y") %></h1>
-
 <%= render 'form' %>
-
-<%= link_to t('link.back'), ikcontract_path(@ikcontract, certificate_id: @ikcontract.certificate_id) %>
+<br>
+<%= link_to t('link.back'), :back %>

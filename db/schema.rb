@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180225203152) do
+ActiveRecord::Schema.define(version: 20180226103121) do
 
   create_table "certificates", force: :cascade do |t|
     t.integer "solution_id"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20180225203152) do
     t.string "ikcon_client_bank_details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ikcon_registration_city"
     t.index ["certificate_id"], name: "index_ikcontracts_on_certificate_id"
   end
 
@@ -200,6 +201,7 @@ ActiveRecord::Schema.define(version: 20180225203152) do
     t.string "set_org_chief_name"
     t.string "set_org_based_doc"
     t.string "set_org_chief_accountant"
+    t.string "set_os_city"
   end
 
   create_table "solution_proposals", force: :cascade do |t|

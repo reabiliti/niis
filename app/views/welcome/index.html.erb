@@ -1,6 +1,4 @@
 <% provide(:title, "Главная") %>
-<%= link_to t('link.new_proposal'), new_proposal_path %>
-<h1>Главная</h1>
 <ul>
   <li>
     <%= @setting.nil? ? (link_to "Необходимо создать документ Настроек", new_setting_path) :
@@ -77,7 +75,3 @@
     </ul>
   <% end %>
 </ul>
-<br>
-<br>
-<br>
-<%= link_to t('link.new_proposal'), new_proposal_path %>

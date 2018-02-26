@@ -4,7 +4,7 @@ class OrderPdf < Prawn::Document
     @certificate = certificate
     @setting = setting
     @proposal = proposal
-    bg_setup
+#    bg_setup
     font_setup
     cer_number
   end

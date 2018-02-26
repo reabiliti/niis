@@ -1,6 +1,7 @@
 <% provide(:title, "Заключение эксперта о выдаче сертификата от #{@conclusion.conc_sign_date.strftime("%d.%m.%Y")}") %>
-<%= link_to t('link.back'), conclusion_path(@conclusion, solution_proposal_id: @conclusion.solution_proposal_id) %>
+<%= link_to t('link.back'), :back %>
+<br>
 <h1>Протокол идентификации продукции от <%= @conclusion.conc_sign_date.strftime("%d.%m.%Y") %></h1>
 <%= render 'form' %>
 <br>
-<%= link_to t('link.back'), conclusion_path(@conclusion, solution_proposal_id: @conclusion.solution_proposal_id) %>
+<%= link_to t('link.back'), :back %>

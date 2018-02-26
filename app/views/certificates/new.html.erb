@@ -1,7 +1,7 @@
 <% provide(:title, "Сертификат") %>
-<%= link_to t('link.back'), solution_path(@solution, conclusion_id: @solution.conclusion_id) %>
+<%= link_to t('link.back'), :back %>
+<br>
 <h1>Сертификат</h1>
-
 <%= render 'form' %>
-
-<%= link_to t('link.back'), solution_path(@solution, conclusion_id: @solution.conclusion_id) %>
+<br>
+<%= link_to t('link.back'), :back %>

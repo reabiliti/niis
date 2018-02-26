@@ -42,6 +42,7 @@ ru:
     new_solution: "Создать Решение"
     new_certificate: "Создать Сертификат"
     new_permission: "Создать Разрешение"
+    new_ikcontract: "Создать Договор ИК"
     edit: "Изменить"
     home: "Главная"
     print_PDF: "Печать PDF"
@@ -71,6 +72,7 @@ ru:
         set_os_address: "Адрес: Название улицы, номер дома, номер помещения; название населенного пункта (города,
                          поселка и т.п.); название района; название республики, края, области, автономного округа (области);
                          страна (для зарубежных ОС); почтовый индекс"
+        set_os_city: "Город"
         set_os_chief_position: "Должность руководителя ОС"
         set_os_chief_name: "Инициалы, фамилия руководителя"
         set_os_based_doc: "Действует на основании документа"
@@ -266,6 +268,28 @@ ru:
         perm_place_marking: "Место нанесения знака, прочие условия"
         perm_chief_name: "Должность руководителя организации"
         perm_chief_org: "Инициалы, Фамилия"
+      ikcontract:
+        ikcon_registration_num: "Регистрационный номер"
+        ikcon_registration_date: "от"
+        ikcon_registration_city: "Город"
+        ikcon_exec_name: "Наименование организации (органа по сертификации)"
+        ikcon_exec_named: "Именуемый в дальнейшем"
+        ikcon_exec_chief: "Должность, фамилия, имя, отчество руководителя"
+        ikcon_exec_active: "Действующего на основании"
+        ikcon_exec_based_doc: "Документ"
+        ikcon_client_name: "Наименование организации-изготовителя (продавца)"
+        ikcon_client_named: "Именуемый в дальнейшем"
+        ikcon_client_chief: "Должность, фамилия, имя, отчество руководителя"
+        ikcon_client_active: "Действующего на основании"
+        ikcon_client_based_doc: "Документ"
+        ikcon_name_product: "Наименование сертифицируемой продукции"
+        ikcon_cert_registration_num: "Номер сертификата соответствия"
+        ikcon_inspection_period: "Период инспекционных проверок"
+        ikcon_contract_time: "Срок действия договора"
+        ikcon_exec_address: "Юридический адрес исполнителя"
+        ikcon_exec_bank_details: "Расчетный счет исполнителя, реквизиты банка"
+        ikcon_client_address: "Юридический адрес заказчика"
+        ikcon_client_bank_details: "Расчетный счет заказчика, реквизиты банка"
 
 # Template
   form:

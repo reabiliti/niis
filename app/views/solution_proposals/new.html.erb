@@ -1,7 +1,7 @@
 <%= provide(:title, "Новое решение по заявке") %>
-<%= link_to t('link.back'), proposal_path(@proposal) %>
+<%= link_to t('link.back'), :back %>
+<br>
 <h1>Новое решение по заявке</h1>
-
 <%= render 'form' %>
-
-<%= link_to t('link.back'), proposal_path(@proposal) %>
+<br>
+<%= link_to t('link.back'), :back %>

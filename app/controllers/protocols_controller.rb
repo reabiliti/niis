@@ -12,15 +12,19 @@ class ProtocolsController < ApplicationController
   end
 
   def new
-    @protocol = Protocol.new
-    @protocol.solution_proposal_id = @solution_proposal.id
-    @protocol.prot_applic_name_product = @solution_proposal.solprop_applic_name_product
-    @protocol.prot_applic_code_okp = @solution_proposal.solprop_applic_code_okp
-    @protocol.prot_applic_code_tn_ved = @solution_proposal.solprop_applic_code_tn_ved
-    @protocol.prot_manuf_name = @solution_proposal.solprop_manuf_name
-    @protocol.prot_manuf_address = @solution_proposal.solprop_manuf_address
-    @protocol.prot_manuf_postcode = @solution_proposal.solprop_manuf_postcode
-    @protocol.prot_regulations_product = @solution_proposal.solprop_regulations
+    if @solution_proposal.protocol.nil?
+      @protocol = Protocol.new
+      @protocol.solution_proposal_id = @solution_proposal.id
+      @protocol.prot_applic_name_product = @solution_proposal.solprop_applic_name_product
+      @protocol.prot_applic_code_okp = @solution_proposal.solprop_applic_code_okp
+      @protocol.prot_applic_code_tn_ved = @solution_proposal.solprop_applic_code_tn_ved
+      @protocol.prot_manuf_name = @solution_proposal.solprop_manuf_name
+      @protocol.prot_manuf_address = @solution_proposal.solprop_manuf_address
+      @protocol.prot_manuf_postcode = @solution_proposal.solprop_manuf_postcode
+      @protocol.prot_regulations_product = @solution_proposal.solprop_regulations
+    else
+      flash[:error] = "You already have a protocol"
+    end
   end
 
   def create

@@ -1,7 +1,7 @@
 <% provide(:title, "Разрешение на применение знака соответствия") %>
-<%= link_to t('link.back'), certificate_path(@certificate, solution_id: @certificate.solution_id) %>
+<%= link_to t('link.back'), :back %>
+<br>
 <h1>Разрешение на применение знака соответствия</h1>
-
 <%= render 'form' %>
-
-<%= link_to t('link.back'), certificate_path(@certificate, solution_id: @certificate.solution_id) %>
+<br>
+<%= link_to t('link.back'), :back %>
