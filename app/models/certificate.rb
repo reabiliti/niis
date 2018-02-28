@@ -1,6 +1,6 @@
 class Certificate < ApplicationRecord
   belongs_to :solution, inverse_of: :certificate
-  validates_uniqueness_of :solution_id
+  validates :solution_id, :cert_blank_num, uniqueness: true
   has_one :permission, dependent: :destroy, inverse_of: :certificate
   has_one :ikcontract, dependent: :destroy, inverse_of: :certificate
 

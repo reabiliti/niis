@@ -1,5 +1,5 @@
 class Conclusion < ApplicationRecord
   belongs_to :solution_proposal, inverse_of: :conclusion
-  validates_uniqueness_of :solution_proposal_id
+  validates :solution_proposal_id, uniqueness: true
   has_one :solution, dependent: :destroy, inverse_of: :conclusion
 end
