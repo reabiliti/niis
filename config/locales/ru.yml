@@ -43,6 +43,7 @@ ru:
     new_certificate: "Создать Сертификат"
     new_permission: "Создать Разрешение"
     new_ikcontract: "Создать Договор ИК"
+    new_certcontract: "Создать Договор по Сертификации"
     edit: "Изменить"
     home: "Главная"
     print_PDF: "Печать PDF"
