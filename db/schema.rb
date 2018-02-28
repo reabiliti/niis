@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180226103121) do
+ActiveRecord::Schema.define(version: 20180228083352) do
 
   create_table "certificates", force: :cascade do |t|
     t.integer "solution_id"
@@ -74,12 +74,12 @@ ActiveRecord::Schema.define(version: 20180226103121) do
     t.string "ikcon_registration_num"
     t.string "ikcon_exec_name"
     t.string "ikcon_exec_named"
-    t.string "ikcon_exec_chief"
+    t.string "ikcon_exec_chief_position"
     t.string "ikcon_exec_active"
     t.string "ikcon_exec_based_doc"
     t.string "ikcon_client_name"
     t.string "ikcon_client_named"
-    t.string "ikcon_client_chief"
+    t.string "ikcon_client_chief_position"
     t.string "ikcon_client_active"
     t.string "ikcon_client_based_doc"
     t.string "ikcon_name_product"
@@ -93,6 +93,12 @@ ActiveRecord::Schema.define(version: 20180226103121) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ikcon_registration_city"
+    t.string "ikcon_exec_chief_name"
+    t.string "ikcon_client_chief_name"
+    t.string "ikcon_exec_chief_position_sign"
+    t.string "ikcon_exec_chief_name_sign"
+    t.string "ikcon_client_chief_position_sign"
+    t.string "ikcon_client_chief_name_sign"
     t.index ["certificate_id"], name: "index_ikcontracts_on_certificate_id"
   end
 

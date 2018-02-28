@@ -39,7 +39,7 @@
     <%= @ikcontract.ikcon_exec_named %> в дальнейшем <b>Исполнитель</b>, в лице
   </div>
   <div class="line">
-    <%= @ikcontract.ikcon_exec_chief %>
+    <%= "#{@ikcontract.ikcon_exec_chief_position} #{@ikcontract.ikcon_exec_chief_name}" %>
   </div>
   <div class="hint">
     должность, фамилия, имя, отчество руководителя
@@ -57,7 +57,7 @@
     <%= @ikcontract.ikcon_client_named %> в дальнейшем <b>Заказчик</b>, в лице
   </div>
   <div class="line">
-    <%= @ikcontract.ikcon_client_chief %>
+    <%= "#{@ikcontract.ikcon_client_chief_position} #{@ikcontract.ikcon_client_chief_name}" %>
   </div>
   <div class="hint">
     должность, фамилия, имя, отчество руководителя
@@ -156,9 +156,338 @@
   <div class="paragraph">
     1.6.4. Информировать Госстандарт и другие заинтересованные стороны в случае приостановления или аннулирования сертификата.
   </div>
-
-
-
+  <br>
+  <div class="caption">
+    2. СТОИМОСТЬ РАБОТ И ПОРЯДОК РАСЧЕТОВ
+  </div>
+  <br>
+  <div class="paragraph">
+    2.1. Стоимость работ по инспекционному контролю определяется по тарифам Исполнителя, действующим на момент проведения работ,
+    в соответствии с утвержденными Госстандартом России "Правилами по сертификации. Оплата работ по сертификации продукции и
+    услуг" (рег. номер РОСС RU.0001.00ДД01).
+  </div>
+  <div class="paragraph">
+    Стоимость первой проверки составляет:
+  </div>
+  <div class="paragraph">
+    Стоимость второй и последующих проверок определяетсяисходя из их объема, предусмотренного соответствующими календарными планами.
+  </div>
+  <br>
+  <div class="paragraph">
+    2.2. Предоплата по первой проверке составляет:
+  </div>
+  <div class="paragraph">
+    и оплачивается в течение 5 банковских дней с момента подписания настоящего договора. Предоплата по второй и последующим проверкам
+    производится в течение 5 банковских дней с момента получения Акта предыдущей проверки по счету Исполнителя по тарифам, действующим
+    у Исполнителя в этот период. Стоимость испытаний образцов (проб) в указанную сумму не входит. Оплата испытаний производится Заказчиком
+    по фактическим затратам Исполнителя. Заказчик также оплачивает стоимость образцов (проб), если они отбираются в торговле, и все расходы
+    специалистов Исполнителя при выезде их на место проверки.
+  </div>
+  <br>
+  <div class="paragraph">
+    2.3. Командировочные расходы лиц, проводящих инспекционную проверку (транспортные расходы, проживание в готинице, суточные) оплачиваются
+    Заказчиком по фактическим затратам согласно представленным документам и установленным нормативам (суточных и др.).
+  </div>
+  <br>
+  <div class="paragraph">
+    2.4. В случае расторжения договора Заказчиком в одностороннем порядке, выплаченная Исполнителю сумма не возвращается. В случае расторжения
+    договора Исполнителем в одностороннем порядке, он возвращает сумму предоплаты, полученную по настоящему договору.
+  </div>
+  <br>
+  <div class="caption">
+    3. ПОРЯДОК СДАЧИ И ПРИЕМКИ РАБОТ
+  </div>
+  <br>
+  <div class="paragraph">
+    3.1. По завершении каждой проверки Исполнитель направляет Заказчику акт инспекционной проверки, акт сдачи-приемки и другие, связанные
+    с проведенной проверкой, документы.
+  </div>
+  <br>
+  <div class="paragraph">
+    3.2. Заказчик в течение 3-х дней со дня получения акта инспекционной проверки и акта сдачи-приема работ направляет Исполнителю подписанные
+    акты и производит в соответствии с пп.2.1., 2.2., 2.3. настоящего договора, оплату за работы по инспекционной проверке и испытаниям образцов продукции.
+  </div>
+  <br>
+  <div class="caption">
+    4. ОТВЕТСТВЕННОСТЬ СТОРОН
+  </div>
+  <br>
+  <div class="paragraph">
+    4.1. В случае невыполнения Заказчиком условий настоящего договора, Исполнитель вправе принять решение об отмене действия сертификата
+    соответствия, выданного Заказчику.
+  </div>
+  <br>
+  <div class="paragraph">
+    4.2. Исполнитель несет ответственность за необъективность выводов по результатам инспекционного контроля.
+  </div>
+  <br>
+  <div class="paragraph">
+    4.3. Стороны несут ответственность в соответствии с действующим законодательством за несоблюдение конфиденциальности информации
+    при выполнении настоящего договора.
+  </div>
+  <br>
+  <div class="caption">
+    5. ДРУГИЕ УСЛОВИЯ
+  </div>
+  <br>
+  <br>
+  <div class="caption">
+    6. СРОК ДЕЙСТВИЯ ДОГОВОРА И ЮРИДИЧЕСКИЕ АДРЕСА СТОРОН
+  </div>
+  <br>
+  <div class="paragraph">
+    6.1. Настоящий договор вступает в силу с момента его подписания обеими сторонами и действует <%= @ikcontract.ikcon_contract_time %>.
+  </div>
+  <br>
+  <div class="paragraph">
+    6.2. Юридические адреса сторон:
+  </div>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-3">
+        <b>Исполнитель:</b>
+      </div>
+      <div class="div-table-col col-width-9">
+        <div class="line">
+        <%= @ikcontract.ikcon_exec_address %>
+        </div>
+        <div class="hint">
+          юридический адрес исполнителя
+        </div>
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-3">
+      </div>
+      <div class="div-table-col col-width-9">
+        <div class="line">
+          <%= @ikcontract.ikcon_exec_bank_details %>
+        </div>
+        <div class="hint">
+          расчетный счет исполнителя, реквизиты банка
+        </div>
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-3">
+        <b>Заказчик:</b>
+      </div>
+      <div class="div-table-col col-width-9">
+        <div class="line">
+        <%= @ikcontract.ikcon_client_address %>
+        </div>
+        <div class="hint">
+          юридический адрес заказчика
+        </div>
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-3">
+      </div>
+      <div class="div-table-col col-width-9">
+        <div class="line">
+          <%= @ikcontract.ikcon_client_bank_details %>
+        </div>
+        <div class="hint">
+          расчетный счет заказчика, реквизиты банка
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="div-table more">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-5">
+        <b>От Исполнителя</b>
+      </div>
+      <div class="div-table-col col-width-2">
+      </div>
+      <div class="div-table-col col-width-5">
+        <b>От Заказчика</b>
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-5">
+        <b><%= @ikcontract.ikcon_exec_chief_position_sign %></b>
+      </div>
+      <div class="div-table-col col-width-2">
+      </div>
+      <div class="div-table-col col-width-5">
+        <b><%= @ikcontract.ikcon_client_chief_position_sign %></b>
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-5">
+        <div class="line">
+        </div>
+      </div>
+      <div class="div-table-col col-width-2">
+      </div>
+      <div class="div-table-col col-width-5">
+        <div class="line">
+        </div>
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-5 center">
+        <%= @ikcontract.ikcon_exec_chief_name_sign %>
+      </div>
+      <div class="div-table-col col-width-2">
+      </div>
+      <div class="div-table-col col-width-5 center">
+        <%= @ikcontract.ikcon_client_chief_name_sign %>
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-5 center">
+        М.П.
+      </div>
+      <div class="div-table-col col-width-2">
+      </div>
+      <div class="div-table-col col-width-5 center">
+        М.П.
+      </div>
+    </div>
+  </div>
+  <br class="no-print">
+  <hr class="col-width-12 hr-light no-print">
+  <br class="no-print">
+  <div class="paragraph center">
+    Приложение № 1 к Договору на проведение инспекционного контроля за сертифицированной продукцией от
+    <%= @ikcontract.ikcon_registration_date.strftime("%d.%m.%Y") %> № <%= @ikcontract.ikcon_registration_num %>
+  </div>
+  <br>
+  <div class="caption">
+    КАЛЕНДАРНЫЙ ПЛАН РАБОТ<br>
+    проведения инспекционной проверки сертифицированной продукции
+  </div>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-6 center border-lt">
+        Наименование работ по договору*
+      </div>
+      <div class="div-table-col col-width-2 center border-lt">
+        Трудоемкость (чел. дн.) на одну группу продукции
+      </div>
+      <div class="div-table-col col-width-2 center border-lt">
+        Трудоемкость (чел. дн.) всего
+      </div>
+      <div class="div-table-col col-width-2 center border-ltr">
+        Примечание
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-6 center border-lt">
+        <b>1</b>
+      </div>
+      <div class="div-table-col col-width-2 center border-lt">
+        <b>2</b>
+      </div>
+      <div class="div-table-col col-width-2 center border-lt">
+        <b>3</b>
+      </div>
+      <div class="div-table-col col-width-2 center border-ltr">
+        <b>4</b>
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-6 border-lt">
+        <ol class="ol-left">
+          <li>
+            Анализ нормативной документации, информации от потребителей, контролирующих органов о сертифицированной продукции.
+            Составление программы проверки (при необходимости).
+          </li>
+          <li>
+            Проверка производства или проверка хранения и порядка реализации продукции (при необходимости).
+          </li>
+          <li>
+            Отбор образцов продукции в соответствии с НТД для проведения испытаний. Оформление акта отбора образцов.
+          </li>
+          <li>
+            Проведение испытаний образцов. Оформление протоколов испытаний.
+          </li>
+          <li>
+            Анализ результатов испытаний. Оформление акта инспекционной проверки.
+          </li>
+          <li>
+            Оформление акта сдачи-приемки работ по проведенной инспекционной проверке.
+          </li>
+          <li>
+            Разработка Заявителем и согласование с Исполнителем Плана корректирующих мероприятий (при необходимости).
+          </li>
+          <li>
+            Проверка выполнения работ, предусмотренных Планом корректирующих мероприятий (при необходимости). Составление акта проверки.
+          </li>
+        </ol>
+      </div>
+      <div class="div-table-col col-width-2 center border-lt">
+      </div>
+      <div class="div-table-col col-width-2 center border-lt">
+      </div>
+      <div class="div-table-col col-width-2 center border-ltr">
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-6 border-ltb">
+        <b>ИТОГО:</b>
+      </div>
+      <div class="div-table-col col-width-2 center border-ltb">
+      </div>
+      <div class="div-table-col col-width-2 center border-ltb">
+      </div>
+      <div class="div-table-col col-width-2 center border">
+      </div>
+    </div>
+  </div>
+  <div class="note">
+    * Примечание: этапы работ, невыполняемые для указанной схемы сертификации, сопровождаются прочерком в графе 3. Если при сертификации нескольких
+    групп продукции трудоемкость сертификации для первой и последующих групп продукции отличаются, то в соответствующих строках во 2-й графе таблицы
+    указываются два значения трудоемкости (для первой группы продукции и для каждой последующей), разделенные наклонной чертой "/".
+  </div>
+  <br>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-5">
+        Ответственный исполнитель работ:
+      </div>
+      <div class="div-table-col col-width-1">
+      </div>
+      <div class="div-table-col-hr col-width-2">
+      </div>
+      <div class="div-table-col col-width-1">
+      </div>
+      <div class="div-table-col col-width-2">
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-5">
+        Начальник отдела:
+      </div>
+      <div class="div-table-col col-width-1">
+      </div>
+      <div class="div-table-col-hr col-width-2">
+      </div>
+      <div class="div-table-col col-width-1">
+      </div>
+      <div class="div-table-col col-width-2">
+        <%= @setting.set_os_chief_name %>
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-5">
+        Согласовано с заказчиком:
+      </div>
+      <div class="div-table-col col-width-1">
+      </div>
+      <div class="div-table-col-hr col-width-2">
+      </div>
+      <div class="div-table-col col-width-1">
+      </div>
+      <div class="div-table-col col-width-2">
+        <%= @ikcontract.ikcon_client_chief_name %>
+      </div>
+    </div>
+  </div>
 
 
 

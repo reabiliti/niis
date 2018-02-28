@@ -116,7 +116,7 @@ footer {
 
 .page-body {
   width: $width-page;
-  font-size: 16px;
+  font-size: 14px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -146,6 +146,12 @@ footer {
   padding-right: 10px;
 }
 
+.note {
+  font-size: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .caption {
   font-weight: bold;
   text-align: center;
@@ -158,6 +164,27 @@ footer {
   padding-left: 10px;
   padding-right: 10px;
   background-color: $gray-light;
+}
+
+.border {
+  border: 1px solid $black-line;
+}
+
+.border-lt {
+  border-left: 1px solid $black-line;
+  border-top: 1px solid $black-line;
+}
+
+.border-ltb {
+  border-left: 1px solid $black-line;
+  border-top: 1px solid $black-line;
+  border-bottom: 1px solid $black-line;
+}
+
+.border-ltr {
+  border-left: 1px solid $black-line;
+  border-top: 1px solid $black-line;
+  border-right: 1px solid $black-line;
 }
 
 .div-table {
@@ -259,8 +286,7 @@ footer {
 }
 
 .ol-left {
-  padding-left: 0;
-  margin-left: 0;
+  padding-left: 10px;
 }
 
 @media print
@@ -270,8 +296,13 @@ footer {
     margin: 0;
     padding: 0;
   }
+
   .no-print, .no-print * {
     display: none !important;
+  }
+
+  .more {
+    page-break-after: always;
   }
 }
 
