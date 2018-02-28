@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :solutions
   resources :permissions
   resources :ikcontracts
+  resources :certcontracts
 
   get 'welcome/index'
 

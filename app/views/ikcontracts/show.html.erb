@@ -1,5 +1,6 @@
 <% provide(:title, "Договор на проведение инспекционного контроля от
-                    #{@ikcontract.ikcon_registration_date.strftime("%d.%m.%Y")}") %>
+                    #{@ikcontract.ikcon_registration_date.strftime("%d.%m.%Y")}
+                    № #{@ikcontract.ikcon_registration_num}") %>
 
 <div class="paragraph no-print">
   <%= link_to t('link.back'), root_path %> |
@@ -15,13 +16,14 @@
     на проведение инспекционного контроля<br>
     за сертифицированной продукцией
   </div>
+  <br>
   <div class="div-table">
     <div class="div-table-row">
       <div class="div-table-col col-width-1">
         <b><%= @ikcontract.ikcon_registration_date.strftime("%d.%m.%Y") %></b>
       </div>
       <div class="div-table-col col-width-2">
-        <b><%= @ikcontract.ikcon_registration_num %></b>
+        <b>№ <%= @ikcontract.ikcon_registration_num %></b>
       </div>
       <div class="div-table-col col-width-9 right">
         <b><%= @ikcontract.ikcon_registration_city %></b>
@@ -392,7 +394,7 @@
     </div>
     <div class="div-table-row">
       <div class="div-table-col col-width-6 border-lt">
-        <ol class="ol-left">
+        <ol class="ol-table">
           <li>
             Анализ нормативной документации, информации от потребителей, контролирующих органов о сертифицированной продукции.
             Составление программы проверки (при необходимости).
@@ -488,15 +490,6 @@
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
 </div>
 <br class="no-print">
 <br class="no-print">

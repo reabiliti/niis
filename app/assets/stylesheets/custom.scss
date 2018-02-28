@@ -286,7 +286,11 @@ footer {
 }
 
 .ol-left {
-  padding-left: 10px;
+  padding-left: 0px;
+}
+.ol-table {
+  padding-left: 20px;
+  font-size: 14px;
 }
 
 @media print

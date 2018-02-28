@@ -10,7 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180228083352) do
+ActiveRecord::Schema.define(version: 20180228183539) do
+
+  create_table "certcontracts", force: :cascade do |t|
+    t.integer "proposal_id"
+    t.string "cecon_exec_chief_name_sign"
+    t.datetime "cecon_registration_date"
+    t.string "cecon_registration_num"
+    t.string "cecon_registration_city"
+    t.string "cecon_exec_name"
+    t.string "cecon_exec_named"
+    t.string "cecon_exec_chief_position"
+    t.string "cecon_exec_chief_name"
+    t.string "cecon_exec_active"
+    t.string "cecon_exec_based_doc"
+    t.string "cecon_client_name"
+    t.string "cecon_client_named"
+    t.string "cecon_client_chief_position"
+    t.string "cecon_client_chief_name"
+    t.string "cecon_client_active"
+    t.string "cecon_client_based_doc"
+    t.string "cecon_name_product"
+    t.datetime "cecon_date_from"
+    t.datetime "cecon_date_expiry"
+    t.string "cecon_exec_address"
+    t.string "cecon_exec_bank_details"
+    t.string "cecon_client_address"
+    t.string "cecon_client_bank_details"
+    t.string "cecon_exec_chief_position_sign"
+    t.string "cecon_client_chief_position_sign"
+    t.string "cecon_client_chief_name_sign"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["proposal_id"], name: "index_certcontracts_on_proposal_id"
+  end
 
   create_table "certificates", force: :cascade do |t|
     t.integer "solution_id"

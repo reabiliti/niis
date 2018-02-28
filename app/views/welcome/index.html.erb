@@ -4,10 +4,12 @@
     <%= @setting.nil? ? (link_to "Необходимо создать документ Настроек", new_setting_path) :
                         (link_to @setting.set_name, setting_path(@setting)) %>
   </li>
+  <br>
   <% @proposals.each do |proposal| %>
     <ul>
       <li>
-        <%= link_to "#{proposal.prop_date_from.strftime("%d.%m.%Y")} #{proposal.prop_number} #{proposal.prop_applic_name}", proposal_path(proposal) %>
+        <%= link_to "#{proposal.prop_date_from.strftime("%d.%m.%Y")} #{proposal.prop_number} #{proposal.prop_applic_name}",
+                    proposal_path(proposal) %>
       </li>
       <% if solution_proposal = proposal.solution_proposal %>
         <ul>
@@ -59,7 +61,8 @@
                         <ul>
                           <li>
                             <%= link_to "5.1 Договор на инспекционный контроль от
-                                        #{ikcontract.ikcon_registration_date.strftime("%d.%m.%Y")}",
+                                         #{ikcontract.ikcon_registration_date.strftime("%d.%m.%Y")}
+                                         № #{ikcontract.ikcon_registration_num}",
                                         ikcontract_path(ikcontract, certificate_id: ikcontract.certificate_id)%>
                           </li>
                         </ul>
@@ -72,6 +75,17 @@
           <% end %>
         </ul>
       <% end %>
+      <% if certcontract = proposal.certcontract %>
+        <ul>
+          <li>
+            <%= link_to "1.5 Договор на проведение работ по сертификации от
+                        #{certcontract.cecon_registration_date.strftime("%d.%m.%Y")}
+                        № #{certcontract.cecon_registration_num}",
+                        certcontract_path(certcontract, proposal_id: certcontract.proposal_id) %>
+          </li>
+        </ul>
+      <% end %>
     </ul>
+    <br>
   <% end %>
 </ul>

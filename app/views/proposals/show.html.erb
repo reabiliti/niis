@@ -5,6 +5,9 @@
   <%= link_to t('link.destroy'), proposal_path(@proposal),
       method: :delete,
       data: { confirm: 'Are you sure?' } %>
+  <% if @proposal.certcontract.nil? %>
+     | <%= link_to t('link.new_certcontract'), new_certcontract_path(proposal_id: @proposal.id) %>
+  <% end %>
   <% if @proposal.solution_proposal.nil? %>
      | <%= link_to t('link.new_solution_proposal'), new_solution_proposal_path(proposal_id: @proposal.id) %>
   <% end %>
