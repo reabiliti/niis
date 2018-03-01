@@ -1,0 +1,111 @@
+<% provide(:title, "Опись документов от #{@inventory.inv_date_from.strftime("%d.%m.%Y")}") %>
+
+<div class="paragraph no-print">
+  <%= link_to t('link.back'), :back %> |
+  <%= link_to t('link.edit'), edit_inventory_path(@inventory) %> |
+  <%= link_to t('link.destroy'), inventory_path(@inventory), method: :delete,
+                                  data: { confirm: "Are you sure" }%>
+</div>
+<br class="no-print">
+<br class="no-print">
+<div class="page-body">
+  <div class="caption">
+    ОПИСЬ ДОКУМЕНТОВ
+  </div>
+  <br>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-9 center border-lt">
+        Наименование документа
+      </div>
+      <div class="div-table-col col-width-3 center border-ltr">
+        № страницы
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-9 border-ltb">
+        <ol class="ol-table">
+          <% @inventory.inv_list_doc.split("\r\n").each do |inv_list_doc| %>
+            <li>
+              <%= inv_list_doc %>
+            </li>
+          <% end %>
+        </ol>
+      </div>
+      <div class="div-table-col col-width-3 center border">
+        <ul class="ol-table">
+          <% @inventory.inv_list_page.split("\r\n").each do |inv_list_page| %>
+            <li class="li-none">
+              <%= inv_list_page %><br>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-3">
+        Исполнитель
+      </div>
+      <div class="div-table-col col-width-2">
+      </div>
+      <div class="div-table-col-hr col-width-2">
+      </div>
+      <div class="div-table-col col-width-1">
+      </div>
+      <div class="div-table-col-hr col-width-3">
+        <%= @inventory.inv_exec_name %>
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-3">
+      </div>
+      <div class="div-table-col col-width-2">
+      </div>
+      <div class="div-table-col col-width-2">
+      </div>
+      <div class="div-table-col col-width-1">
+      </div>
+      <div class="div-table-col col-width-3 hint">
+        инициалы, фамилия
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-3">
+        Начальник отдела
+      </div>
+      <div class="div-table-col col-width-2">
+      </div>
+      <div class="div-table-col-hr col-width-2">
+      </div>
+      <div class="div-table-col col-width-1">
+      </div>
+      <div class="div-table-col-hr col-width-3">
+        <%= @inventory.inv_chief_name %>
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-3">
+      </div>
+      <div class="div-table-col col-width-2">
+      </div>
+      <div class="div-table-col col-width-2">
+      </div>
+      <div class="div-table-col col-width-1">
+      </div>
+      <div class="div-table-col col-width-3 hint">
+        инициалы, фамилия
+      </div>
+    </div>
+  </div>
+</div>
+<br class="no-print">
+<br class="no-print">
+<div class="paragraph no-print">
+  <%= link_to t('link.back'), :back %> |
+  <%= link_to t('link.edit'), edit_inventory_path(@inventory) %> |
+  <%= link_to t('link.destroy'), inventory_path(@inventory), method: :delete,
+                                  data: { confirm: "Are you sure" }%>
+</div>

@@ -6,7 +6,8 @@
   <%= link_to t('link.destroy'), certificate_path(@certificate), method: :delete,
                                   data: { confirm: "Are you sure" }%> |
   <%= link_to t('link.print_PDF'), certificate_path(@certificate, solution_id: @certificate.solution_id,
-                                                    format: 'pdf'), target: "_blank" %>
+                                                    format: 'pdf'), target: "_blank" %> |
+  <%= link_to t('link.new_attachment'), new_attachment_path(certificate_id: @certificate.id) %>
   <% if @certificate.permission.nil? %>
     | <%= link_to t('link.new_permission'), new_permission_path(certificate_id: @certificate.id) %>
   <% end %>
@@ -71,6 +72,13 @@
       </div>
       <div class="div-table-col col-width-3 center">
         <b><%= @certificate.cert_code_okp %></b>
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-9">
+        <b><%= @proposal.prop_applic_from_issue %></b>
+      </div>
+      <div class="div-table-col col-width-3 center">
       </div>
     </div>
   </div>

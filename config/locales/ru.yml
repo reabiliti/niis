@@ -41,9 +41,11 @@ ru:
     new_conclusion: "Создать Заключение"
     new_solution: "Создать Решение"
     new_certificate: "Создать Сертификат"
+    new_attachment: "Создать Приложение"
     new_permission: "Создать Разрешение"
     new_ikcontract: "Создать Договор ИК"
     new_certcontract: "Создать Договор по Сертификации"
+    new_inventory: "Создать Опись документов"
     edit: "Изменить"
     home: "Главная"
     print_PDF: "Печать PDF"
@@ -324,6 +326,19 @@ ru:
         cecon_exec_bank_details: "Расчетный счет исполнителя, реквизиты банка"
         cecon_client_address: "Юридический адрес заказчика"
         cecon_client_bank_details: "Расчетный счет заказчика, реквизиты банка"
+      inventory:
+        inv_date_from: "Дата"
+        inv_list_doc: "Список документов"
+        inv_list_page: "Список страниц"
+        inv_exec_name: "Исполнитель"
+        inv_chief_name: "Начальник отдела, инициалы, фамилия"
+      attachment:
+        att_blank_num: "Номер бланка"
+        att_code_okp: "Код ОК 005 (ОКП)"
+        att_code_tn_ved: "Код ТН ВЭД"
+        att_name_product: "Наименование и обозначение продукции"
+        att_manuf_name: "Изготовитель"
+        att_regulations: "Обозначение документации, по которой выпускается продукция"
 
 # Template
   form:

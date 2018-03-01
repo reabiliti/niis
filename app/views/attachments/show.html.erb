@@ -1,0 +1,94 @@
+<% provide(:title, "Приложение к сертификату #{@certificate.cert_registration_num}, бланк № #{@attachment.att_blank_num}") %>
+
+<div class="paragraph no-print">
+  <%= link_to t('link.back'), :back %> |
+  <%= link_to t('link.edit'), edit_attachment_path(@attachment) %> |
+  <%= link_to t('link.destroy'), attachment_path(@attachment), method: :delete,
+                                  data: { confirm: "Are you sure" }%>
+</div>
+<br class="no-print">
+<br class="no-print">
+<div class="page-body">
+  <div class="caption">
+    СИСТЕМА СЕРТИФИКАЦИИ ГОСТ Р<br>
+    ГОССТАНДАРТ РОССИИ
+  </div>
+  <div class="paragraph right red-text">
+    <b>№ <%= @attachment.att_blank_num %></b>
+  </div>
+  <div class="caption">
+    ПРИЛОЖЕНИЕ
+  </div>
+  <br>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-5">
+        к сертификату соответствия №
+      </div>
+      <div class="div-table-col-hr col-width-7">
+        <b><%= @certificate.cert_registration_num %></b>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="paragraph center">
+    <b>Перечень конкретной продукции, на которую распространяется действие сертификата соответствия</b>
+  </div>
+  <br>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-3 border-lt">
+        <b>Код ОК 005 (ОКП)</b><br>
+        <b>Код ТН ВЭД</b>
+      </div>
+      <div class="div-table-col col-width-5 border-lt">
+        <b>Наименование и обозначение продукции, изготовитель</b>
+      </div>
+      <div class="div-table-col col-width-4 border-ltr">
+        <b>Обозначение документации, по которой выпускается продукция</b>
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-3 border-ltb">
+        <%= @attachment.att_code_okp %><br>
+        <%= @attachment.att_code_tn_ved %>
+      </div>
+      <div class="div-table-col col-width-5 border-ltb">
+        <%= @attachment.att_name_product %>
+        <br>
+        <br>
+        <%= @attachment.att_manuf_name %>
+      </div>
+      <div class="div-table-col col-width-4 border">
+        <%= @attachment.att_regulations %>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="div-table">
+    <div class="div-table-row">
+      <div class="div-table-col col-width-6">
+        Руководитель органа
+      </div>
+      <div class="div-table-col col-width-6">
+        <b><%= @certificate.cert_chief_org %></b>
+      </div>
+    </div>
+    <div class="div-table-row">
+      <div class="div-table-col col-width-6">
+        Эксперт
+      </div>
+      <div class="div-table-col col-width-6">
+        <b><%= @certificate.cert_expert %></b>
+      </div>
+    </div>
+  </div>
+</div>
+<br class="no-print">
+<br class="no-print">
+<div class="paragraph no-print">
+  <%= link_to t('link.back'), :back %> |
+  <%= link_to t('link.edit'), edit_attachment_path(@attachment) %> |
+  <%= link_to t('link.destroy'), attachment_path(@attachment), method: :delete,
+                                  data: { confirm: "Are you sure" }%>
+</div>

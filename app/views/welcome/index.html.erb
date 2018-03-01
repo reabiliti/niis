@@ -47,6 +47,17 @@
                                     № #{certificate.cert_registration_num}",
                                     certificate_path(certificate, solution_id: certificate.solution_id)%>
                       </li>
+                      <% if attachments = certificate.attachments %>
+                        <ul>
+                          <% attachments.each do |attachment| %>
+                            <li>
+                              <%= link_to "4.2 Приложение к сертификату #{certificate.cert_registration_num},
+                                           бланк № #{attachment.att_blank_num}",
+                                           attachment_path(attachment) %>
+                            </li>
+                          <% end %>
+                        </ul>
+                      <% end %>
                       <% if permission = certificate.permission %>
                         <ul>
                           <li>
@@ -82,6 +93,14 @@
                         #{certcontract.cecon_registration_date.strftime("%d.%m.%Y")}
                         № #{certcontract.cecon_registration_num}",
                         certcontract_path(certcontract, proposal_id: certcontract.proposal_id) %>
+          </li>
+        </ul>
+      <% end %>
+      <% if inventory = proposal.inventory %>
+        <ul>
+          <li>
+            <%= link_to "1.9 Опись документов от #{inventory.inv_date_from.strftime("%d.%m.%Y")}",
+                        inventory_path(inventory) %>
           </li>
         </ul>
       <% end %>

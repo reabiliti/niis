@@ -1,0 +1,7 @@
+<% provide(:title, "Приложение к сертификату #{@certificate.cert_registration_num}, бланк № #{@attachment.att_blank_num}") %>
+<%= link_to t('link.back'), :back %>
+<br>
+<h1>Приложение к сертификату <%= @certificate.cert_registration_num %>, бланк № <%= @attachment.att_blank_num %></h1>
+<%= render 'form' %>
+<br>
+<%= link_to t('link.back'), :back %>

@@ -1,0 +1,7 @@
+<% provide(:title, "Опись документов от #{@inventory.inv_date_from.strftime("%d.%m.%Y")}") %>
+<%= link_to t('link.back'), :back %>
+<br>
+<h1>Опись документов от <%= @inventory.inv_date_from.strftime("%d.%m.%Y") %></h1>
+<%= render 'form' %>
+<br>
+<%= link_to t('link.back'), :back %>

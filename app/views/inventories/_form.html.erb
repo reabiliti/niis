@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <% if @inventory.errors.any? %>
+      <div class="error text-danger">
+        <p>
+          <%= pluralize(@inventory.errors.count, "error") %> prohibited
+          this inventory from being saved:
+        </p>
+        <ul>
+          <% @inventory.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= simple_form_for @inventory, html: { class: "form-horizontal" }, wrapper: :horizontal_form do |f| %>
+      <%= f.input :proposal_id, as: :hidden %>
+      <div class="form-group">
+        <%= f.label :inv_date_from, class: 'col-sm-4 control-label' %>
+        <div class="col-sm-8">
+          <%= f.input_field :inv_date_from, as: :date, start_year: Date.today.year - 10,
+                                                       end_year: Date.today.year + 10 %>
+        </div>
+      </div>
+      <%= f.input :inv_list_doc, as: :text, input_html: {  rows: 10 } %>
+      <%= f.input :inv_list_page, as: :text, input_html: { rows: 10 } %>
+      <%= f.input :inv_exec_name %>
+      <%= f.input :inv_chief_name %>
+
+      <%= f.button :submit, "Сохранить опись документов", class: 'btn btn-primary center-block' %>
+    <% end %>
+  </div>
+</div>

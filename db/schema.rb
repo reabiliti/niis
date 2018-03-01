@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180228183539) do
+ActiveRecord::Schema.define(version: 20180301102141) do
+
+  create_table "attachments", force: :cascade do |t|
+    t.integer "certificate_id"
+    t.string "att_blank_num"
+    t.string "att_code_okp"
+    t.string "att_code_tn_ved"
+    t.string "att_name_product"
+    t.string "att_manuf_name"
+    t.string "att_regulations"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["certificate_id"], name: "index_attachments_on_certificate_id"
+  end
 
   create_table "certcontracts", force: :cascade do |t|
     t.integer "proposal_id"
@@ -133,6 +146,18 @@ ActiveRecord::Schema.define(version: 20180228183539) do
     t.string "ikcon_client_chief_position_sign"
     t.string "ikcon_client_chief_name_sign"
     t.index ["certificate_id"], name: "index_ikcontracts_on_certificate_id"
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.integer "proposal_id"
+    t.datetime "inv_date_from"
+    t.string "inv_list_doc"
+    t.string "inv_list_page"
+    t.string "inv_exec_name"
+    t.string "inv_chief_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["proposal_id"], name: "index_inventories_on_proposal_id"
   end
 
   create_table "permissions", force: :cascade do |t|
