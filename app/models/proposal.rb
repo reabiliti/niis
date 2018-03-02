@@ -5,9 +5,9 @@ class Proposal < ApplicationRecord
 
   def self.search(search, page)
     if search
-      where('prop_number likE ?', "%#{search}%").paginate(page: page, per_page: 10).order('id DESC')
+      where('prop_number likE ?', "%#{search}%").paginate(page: page, per_page: 10).order('prop_number DESC')
     else
-      paginate(page: page, per_page: 10).order('id DESC')
+      paginate(page: page, per_page: 10).order('prop_number DESC')
     end
   end
 end

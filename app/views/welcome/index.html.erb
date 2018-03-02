@@ -13,11 +13,26 @@
                         (link_to @setting.set_name, setting_path(@setting)) %>
   </li>
   <% @proposals.each_with_index do |proposal, index| %>
-    <hr class="col-width-12 hr-light">
+    <hr class="col-width-12 hr-light hr-left">
     <ul>
-      <li>
-        <%= link_to "#{proposal.prop_date_from.strftime("%d.%m.%Y")} #{proposal.prop_number} #{proposal.prop_applic_name}",
-                    proposal_path(proposal) %>
+        <%= link_to proposal_path(proposal) do %>
+          <div class="div-table">
+            <div class="div-table-row">
+              <div class="div-table-col col-width-2">
+                <li><%= proposal.prop_date_from.strftime("%d.%m.%Y") %>
+
+              </div>
+              <div class="div-table-col col-width-2">
+                <b><%= proposal.prop_number %></b>
+
+              </div>
+              <div class="div-table-col col-width-7">
+                <%= proposal.prop_applic_name %>
+
+              </div>
+            </div>
+          </div>
+        <% end %>
       </li>
       <% if solution_proposal = proposal.solution_proposal %>
         <ul>
