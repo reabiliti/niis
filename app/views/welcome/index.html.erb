@@ -12,8 +12,8 @@
     <%= @setting.nil? ? (link_to "Необходимо создать документ Настроек", new_setting_path) :
                         (link_to @setting.set_name, setting_path(@setting)) %>
   </li>
-  <br>
-  <% @proposals.each do |proposal| %>
+  <% @proposals.each_with_index do |proposal, index| %>
+    <hr class="col-width-12 hr-light">
     <ul>
       <li>
         <%= link_to "#{proposal.prop_date_from.strftime("%d.%m.%Y")} #{proposal.prop_number} #{proposal.prop_applic_name}",
@@ -115,7 +115,6 @@
         </ul>
       <% end %>
     </ul>
-    <br>
   <% end %>
 </ul>
 <div class="center">
