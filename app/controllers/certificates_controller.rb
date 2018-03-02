@@ -3,7 +3,6 @@ class CertificatesController < ApplicationController
   before_action :setting_find, only: [:show, :new]
 
   def index
-    @certificates = Certificate.search(params[:cer_search])
   end
 
   def show
@@ -65,12 +64,7 @@ class CertificatesController < ApplicationController
     redirect_to root_path
   end
 
-  def self.search(cer_search)
-    cer_search ? (where('cer_number LIKE ? OR cer_blank_number LIKE ?', "%#{params[:cer_search]}%", "%#{params[:cer_search]}%")) : all
-  end
-
   private
-
     def certificate_params
       params.require(:certificate).permit(:solution_id, :cert_expiry_date, :cert_name_product,
                                           :cert_manuf_regulations, :cert_code_okp, :cert_code_tn_ved,

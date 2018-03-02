@@ -2,7 +2,6 @@ class ConclusionsController < ApplicationController
   before_action :conc_find, only: [:show, :edit, :update, :destroy]
 
   def index
-    @conclusions = Conclusion.all
   end
 
   def show

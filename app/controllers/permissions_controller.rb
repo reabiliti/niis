@@ -3,7 +3,6 @@ class PermissionsController < ApplicationController
   before_action :setting_find, only: [:show, :new]
 
   def index
-    @permissions = Permission.all
   end
 
   def show

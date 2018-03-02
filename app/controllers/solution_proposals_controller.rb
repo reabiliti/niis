@@ -2,7 +2,6 @@ class SolutionProposalsController < ApplicationController
   before_action :solprop_find, only: [:show, :edit, :update, :destroy]
 
   def index
-    @solution_proposals = SolutionProposal.all
   end
 
   def show

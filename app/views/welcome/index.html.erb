@@ -1,9 +1,9 @@
 <% provide(:title, "Главная") %>
 <br>
 <div class="right">
-  <%= form_with url: root_path, method: :get, local: true do |f| %>
-    <%= f.text_field :search_prop, params[:search_prop] %>
-    <%= f.submit t('form.search'), name: nil %>
+  <%= form_tag(root_path, method: :get) do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag t('form.search'), name: nil %>
   <% end %>
 </div>
 <br>
@@ -118,3 +118,6 @@
     <br>
   <% end %>
 </ul>
+<div class="center">
+  <%= will_paginate @proposals %>
+</div>

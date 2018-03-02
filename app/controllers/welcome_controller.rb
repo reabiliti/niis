@@ -1,10 +1,8 @@
 class WelcomeController < ApplicationController
+
   def index
-    if params[:search_prop]
-      @proposals = Proposal.where('prop_number LIKE ?', "%#{params[:search_prop]}%")
-    else
-      @proposals = Proposal.all
-    end
+    @proposals = Proposal.search(params[:search], params[:page])
     @setting = Setting.first
   end
+
 end

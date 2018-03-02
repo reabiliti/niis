@@ -3,7 +3,6 @@ class SolutionsController < ApplicationController
   before_action :setting_find, only: [:show, :new]
 
   def index
-    @solutions = Solution.all
   end
 
   def show

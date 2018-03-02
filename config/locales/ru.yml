@@ -65,6 +65,10 @@ ru:
       setting: "Настройки"
       proposal: "Заявка"
       solution_proposal: "Решение по заявке"
+  will_paginate:
+    previous_label: "&#8592; Предыдущий"
+    next_label: "Следующий &#8594"
+    page_gap: "&hellip"
   simple_form:
     labels:
       setting:

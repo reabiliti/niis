@@ -2,7 +2,6 @@ class SettingsController < ApplicationController
   before_action :setting_find, only: [:show, :edit, :update, :destroy]
 
   def index
-    @settings = Setting.all
   end
 
   def show

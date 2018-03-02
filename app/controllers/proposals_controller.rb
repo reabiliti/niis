@@ -2,7 +2,6 @@ class ProposalsController < ApplicationController
   before_action :proposal_find, only: [:show, :edit, :update, :destroy]
 
   def index
-    @proposals = Proposal.all
   end
 
   def show
