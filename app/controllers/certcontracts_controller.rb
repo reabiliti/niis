@@ -1,15 +1,16 @@
 class CertcontractsController < ApplicationController
-  before_action :cecon_find, only: [ :show, :edit, :update, :destroy ]
-  before_action :setting_find, only: [ :show, :new ]
-  before_action :proposal_find, only: [ :show, :new ]
+  before_action :cecon_find, only: [:show, :edit, :update, :destroy]
+  before_action :setting_find, only: [:show, :new]
 
   def index
   end
 
   def show
+    @proposal = Proposal.find(@certcontract.proposal_id)
   end
 
   def new
+    @proposal = Proposal.find(params[:proposal_id])
     @certcontract = Certcontract.new
     @certcontract.proposal_id = @proposal.id
     @certcontract.cecon_registration_city = @setting.set_os_city
@@ -29,16 +30,14 @@ class CertcontractsController < ApplicationController
 
   def create
     @certcontract = Certcontract.new(cecon_params)
-    @certcontract.save ? (redirect_to certcontract_path(@certcontract, proposal_id: @certcontract.proposal_id)) :
-                         (render 'new')
+    @certcontract.save ? (redirect_to @certcontract) : (render 'new')
   end
 
   def edit
   end
 
   def update
-    @certcontract.update(cecon_params) ? (redirect_to certcontract_path(@certcontract, proposal_id: @certcontract.proposal_id)) :
-                                         (render 'new')
+    @certcontract.update(cecon_params) ? (redirect_to @certcontract) : (render 'new')
   end
 
   def destroy
@@ -67,9 +66,5 @@ class CertcontractsController < ApplicationController
 
   def setting_find
     @setting = Setting.first
-  end
-
-  def proposal_find
-    @proposal = Proposal.find(params[:proposal_id])
   end
 end

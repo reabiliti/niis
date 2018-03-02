@@ -1,4 +1,12 @@
 <% provide(:title, "Главная") %>
+<br>
+<div class="right">
+  <%= form_with url: root_path, method: :get, local: true do |f| %>
+    <%= f.text_field :search_prop, params[:search_prop] %>
+    <%= f.submit t('form.search'), name: nil %>
+  <% end %>
+</div>
+<br>
 <ul>
   <li>
     <%= @setting.nil? ? (link_to "Необходимо создать документ Настроек", new_setting_path) :
@@ -17,66 +25,69 @@
             <%= link_to "1.3 Решение по заявке о проведении сертификации от 
                         #{solution_proposal.solprop_date_from.strftime("%d.%m.%Y")} № 
                         #{solution_proposal.solprop_number}",
-                        solution_proposal_path(solution_proposal, proposal_id: solution_proposal.proposal_id) %>
+                        solution_proposal_path(solution_proposal) %>
           </li>
-          <% if protocol = solution_proposal.protocol %>
+          <% if protocols = solution_proposal.protocols %>
             <ul>
-              <li>
-                <%= link_to "2.2.1 Протокол идентификации от #{protocol.prot_date_from.strftime("%d.%m.%Y")}",
-                            protocol_path(protocol, solution_proposal_id: protocol.solution_proposal_id)%>
-              </li>
+              <% protocols.each do |protocol| %>
+                <li>
+                  <%= link_to "2.2.1 Протокол идентификации от #{protocol.prot_date_from.strftime("%d.%m.%Y")}",
+                              protocol_path(protocol)%>
+                </li>
+              <% end %>
             </ul>
           <% end %>
           <% if conclusion = solution_proposal.conclusion %>
             <ul>
               <li>
                 <%= link_to "3.1 Заключение эксперта о выдаче сертификата от #{conclusion.conc_sign_date.strftime("%d.%m.%Y")}",
-                            conclusion_path(conclusion, solution_proposal_id: conclusion.solution_proposal_id)%>
+                            conclusion_path(conclusion)%>
               </li>
               <% if solution = conclusion.solution %>
                 <ul>
                   <li>
                     <%= link_to "3.2 Решение о выдаче сертификата от #{solution.sol_date_from.strftime("%d.%m.%Y")}
                                 № #{solution.sol_number}",
-                                solution_path(solution, conclusion_id: solution.conclusion_id)%>
+                                solution_path(solution)%>
                   </li>
-                  <% if certificate = solution.certificate %>
+                  <% if certificates = solution.certificates %>
                     <ul>
-                      <li>
-                        <%= link_to "4.1 Сертификат соответствия от #{certificate.cert_registration_date.strftime("%d.%m.%Y")}
-                                    № #{certificate.cert_registration_num}",
-                                    certificate_path(certificate, solution_id: certificate.solution_id)%>
-                      </li>
-                      <% if attachments = certificate.attachments %>
-                        <ul>
-                          <% attachments.each do |attachment| %>
+                      <% certificates.each do |certificate| %>
+                        <li>
+                          <%= link_to "4.1 Сертификат соответствия от #{certificate.cert_registration_date.strftime("%d.%m.%Y")}
+                                      № #{certificate.cert_registration_num}", certificate_path(certificate)%>
+                        </li>
+                        <% if attachments = certificate.attachments %>
+                          <ul>
+                            <% attachments.each do |attachment| %>
+                              <li>
+                                <%= link_to "4.2 Приложение к сертификату #{certificate.cert_registration_num},
+                                             бланк № #{attachment.att_blank_num}",
+                                             attachment_path(attachment) %>
+                              </li>
+                            <% end %>
+                          </ul>
+                        <% end %>
+                        <% if permission = certificate.permission %>
+                          <ul>
                             <li>
-                              <%= link_to "4.2 Приложение к сертификату #{certificate.cert_registration_num},
-                                           бланк № #{attachment.att_blank_num}",
-                                           attachment_path(attachment) %>
+                              <%= link_to "4.3 Разрешение на применение знака соответствия от
+                                          #{permission.perm_registration_date.strftime("%d.%m.%Y")}
+                                          № #{permission.perm_registration_num}",
+                                          permission_path(permission)%>
                             </li>
-                          <% end %>
-                        </ul>
-                      <% end %>
-                      <% if permission = certificate.permission %>
-                        <ul>
-                          <li>
-                            <%= link_to "4.3 Разрешение на применение знака соответствия от
-                                        #{permission.perm_registration_date.strftime("%d.%m.%Y")}
-                                        № #{permission.perm_registration_num}",
-                                        permission_path(permission, certificate_id: permission.certificate_id)%>
-                          </li>
-                        </ul>
-                      <% end %>
-                      <% if ikcontract = certificate.ikcontract %>
-                        <ul>
-                          <li>
-                            <%= link_to "5.1 Договор на инспекционный контроль от
-                                         #{ikcontract.ikcon_registration_date.strftime("%d.%m.%Y")}
-                                         № #{ikcontract.ikcon_registration_num}",
-                                        ikcontract_path(ikcontract, certificate_id: ikcontract.certificate_id)%>
-                          </li>
-                        </ul>
+                          </ul>
+                        <% end %>
+                        <% if ikcontract = certificate.ikcontract %>
+                          <ul>
+                            <li>
+                              <%= link_to "5.1 Договор на инспекционный контроль от
+                                           #{ikcontract.ikcon_registration_date.strftime("%d.%m.%Y")}
+                                           № #{ikcontract.ikcon_registration_num}",
+                                          ikcontract_path(ikcontract)%>
+                            </li>
+                          </ul>
+                        <% end %>
                       <% end %>
                     </ul>
                   <% end %>
@@ -91,8 +102,7 @@
           <li>
             <%= link_to "1.5 Договор на проведение работ по сертификации от
                         #{certcontract.cecon_registration_date.strftime("%d.%m.%Y")}
-                        № #{certcontract.cecon_registration_num}",
-                        certcontract_path(certcontract, proposal_id: certcontract.proposal_id) %>
+                        № #{certcontract.cecon_registration_num}", certcontract_path(certcontract) %>
           </li>
         </ul>
       <% end %>

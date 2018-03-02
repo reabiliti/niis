@@ -1,15 +1,17 @@
 class SolutionProposalsController < ApplicationController
-  before_action :solprop_find, only: [ :show, :edit, :update, :destroy ]
-  before_action :proposal_find, only: [ :show, :new ]
+  before_action :solprop_find, only: [:show, :edit, :update, :destroy]
+
   def index
     @solution_proposals = SolutionProposal.all
   end
 
   def show
+    @proposal = Proposal.find(@solution_proposal.proposal_id)
     @setting = Setting.first
   end
 
   def new
+    @proposal = Proposal.find(params[:proposal_id])
     @solution_proposal = SolutionProposal.new
     @solution_proposal.proposal_id = @proposal.id
     @solution_proposal.solprop_number = @proposal.prop_number
@@ -27,16 +29,14 @@ class SolutionProposalsController < ApplicationController
 
   def create
     @solution_proposal = SolutionProposal.new(solprop_params)
-    @solution_proposal.save ? (redirect_to solution_proposal_path(@solution_proposal,
-                              proposal_id: @solution_proposal.proposal_id)) : (render 'new', locals: {proposal_id: @solution_proposal.proposal_id})
+    @solution_proposal.save ? (redirect_to @solution_proposal) : (render 'new')
   end
 
   def edit
   end
 
   def update
-    @solution_proposal.update(solprop_params) ? (redirect_to solution_proposal_path(@solution_proposal,
-                                                proposal_id: @solution_proposal.proposal_id)) : (render 'edit')
+    @solution_proposal.update(solprop_params) ? (redirect_to @solution_proposal) : (render 'edit')
   end
 
   def destroy
@@ -60,9 +60,5 @@ class SolutionProposalsController < ApplicationController
 
   def solprop_find
     @solution_proposal = SolutionProposal.find(params[:id])
-  end
-
-  def proposal_find
-    @proposal = Proposal.find(params[:proposal_id])
   end
 end

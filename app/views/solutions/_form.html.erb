@@ -14,7 +14,7 @@
       </div>
     <% end %>
 
-    <%= simple_form_for [ @solution ], html: { class: "form-horizontal" }, wrapper: :horizontal_form do |f| %>
+    <%= simple_form_for @solution, html: { class: "form-horizontal" }, wrapper: :horizontal_form do |f| %>
 
       <%= f.input :conclusion_id, as: :hidden %>
       <div class="row">

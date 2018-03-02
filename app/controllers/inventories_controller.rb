@@ -1,6 +1,6 @@
 class InventoriesController < ApplicationController
-  before_action :inv_find, only: [ :show, :edit, :update, :destroy ]
-  before_action :setting_find, only: [ :show, :new ]
+  before_action :inv_find, only: [:show, :edit, :update, :destroy]
+  before_action :setting_find, only: [:show, :new]
   def index
   end
 

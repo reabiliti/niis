@@ -1,6 +1,5 @@
 class ConclusionsController < ApplicationController
-  before_action :conc_find, only: [ :show, :edit, :update, :destroy ]
-  before_action :solprop_find, only: [ :show, :new ]
+  before_action :conc_find, only: [:show, :edit, :update, :destroy]
 
   def index
     @conclusions = Conclusion.all
@@ -8,10 +7,12 @@ class ConclusionsController < ApplicationController
 
   def show
     @setting = Setting.first
+    @solution_proposal = SolutionProposal.find(@conclusion.solution_proposal_id)
     @proposal = Proposal.find(@solution_proposal.proposal_id)
   end
 
   def new
+    @solution_proposal = SolutionProposal.find(params[:solution_proposal_id])
     @conclusion = Conclusion.new
     @conclusion.solution_proposal_id = @solution_proposal.id
     @conclusion.conc_solution_proposal_num = @solution_proposal.solprop_number
@@ -31,16 +32,14 @@ class ConclusionsController < ApplicationController
 
   def create
     @conclusion = Conclusion.new(conc_params)
-    @conclusion.save ? (redirect_to conclusion_path(@conclusion,
-                        solution_proposal_id: @conclusion.solution_proposal_id)) : (render 'new')
+    @conclusion.save ? (redirect_to @conclusion) : (render 'new')
   end
 
   def edit
   end
 
   def update
-    @conclusion.update(conc_params) ? (redirect_to conclusion_path(@conclusion,
-                                       solution_proposal_id: @conclusion.solution_proposal_id)) : (render 'new')
+    @conclusion.update(conc_params) ? (redirect_to @conclusion) : (render 'new')
   end
 
   def destroy
@@ -63,9 +62,4 @@ class ConclusionsController < ApplicationController
   def conc_find
     @conclusion = Conclusion.find(params[:id])
   end
-
-  def solprop_find
-    @solution_proposal = SolutionProposal.find(params[:solution_proposal_id])
-  end
-
 end

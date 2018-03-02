@@ -1,6 +1,5 @@
 class ProtocolsController < ApplicationController
-  before_action :protocol_find, only: [ :show, :edit, :update, :destroy ]
-  before_action :solprop_find, only: [ :show, :new ]
+  before_action :protocol_find, only: [:show, :edit, :update, :destroy]
 
   def index
     @protocols = Protocol.all
@@ -8,10 +7,12 @@ class ProtocolsController < ApplicationController
 
   def show
     @setting = Setting.first
+    @solution_proposal = SolutionProposal.find(@protocol.solution_proposal_id)
     @proposal = Proposal.find(@solution_proposal.proposal_id)
   end
 
   def new
+    @solution_proposal = SolutionProposal.find(params[:solution_proposal_id])
     @protocol = Protocol.new
     @protocol.solution_proposal_id = @solution_proposal.id
     @protocol.prot_applic_name_product = @solution_proposal.solprop_applic_name_product
@@ -25,16 +26,14 @@ class ProtocolsController < ApplicationController
 
   def create
     @protocol = Protocol.new(protocol_params)
-    @protocol.save ? (redirect_to protocol_path(@protocol,
-                      solution_proposal_id: @protocol.solution_proposal_id)) : (render 'new')
+    @protocol.save ? (redirect_to @protocol) : (render 'new')
   end
 
   def edit
   end
 
   def update
-    @protocol.update(protocol_params) ? (redirect_to protocol_path(@protocol,
-                                        solution_proposal_id: @protocol.solution_proposal_id)) : (render 'edit')
+    @protocol.update(protocol_params) ? (redirect_to @protocol) : (render 'edit')
   end
 
   def destroy
@@ -55,9 +54,5 @@ class ProtocolsController < ApplicationController
 
   def protocol_find
     @protocol = Protocol.find(params[:id])
-  end
-
-  def solprop_find
-    @solution_proposal = SolutionProposal.find(params[:solution_proposal_id])
   end
 end

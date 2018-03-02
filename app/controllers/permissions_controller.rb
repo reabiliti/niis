@@ -1,13 +1,13 @@
 class PermissionsController < ApplicationController
-  before_action :perm_find, only: [ :show, :edit, :update, :destroy ]
-  before_action :cert_find, only: [ :show, :new ]
-  before_action :setting_find, only: [ :show, :new ]
+  before_action :perm_find, only: [:show, :edit, :update, :destroy]
+  before_action :setting_find, only: [:show, :new]
 
   def index
     @permissions = Permission.all
   end
 
   def show
+    @certificate = Certificate.find(@permission.certificate_id)
     @solution = Solution.find(@certificate.solution_id)
     @conclusion = Conclusion.find(@solution.conclusion_id)
     @solution_proposal = SolutionProposal.find(@conclusion.solution_proposal_id)
@@ -15,6 +15,7 @@ class PermissionsController < ApplicationController
   end
 
   def new
+    @certificate = Certificate.find(params[:certificate_id])
     @solution = Solution.find(@certificate.solution_id)
     @permission = Permission.new
     @permission.certificate_id = @certificate.id
@@ -25,17 +26,14 @@ class PermissionsController < ApplicationController
 
   def create
     @permission = Permission.new(permission_params)
-    @permission.save ? (redirect_to permission_path(@permission, certificate_id: @permission.certificate_id)) :
-                       (render 'new')
+    @permission.save ? (redirect_to @permission) : (render 'new')
   end
 
   def edit
   end
 
   def update
-    @permission.update(permission_params) ? (redirect_to permission_path(@permission,
-                                                                         certificate_id: @permission.certificate_id)) :
-                                            (render 'new')
+    @permission.update(permission_params) ? (redirect_to @permission) : (render 'new')
   end
 
   def destroy
@@ -52,10 +50,6 @@ class PermissionsController < ApplicationController
 
   def perm_find
     @permission = Permission.find(params[:id])
-  end
-
-  def cert_find
-    @certificate = Certificate.find(params[:certificate_id])
   end
 
   def setting_find

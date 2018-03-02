@@ -1,15 +1,16 @@
 class IkcontractsController < ApplicationController
-  before_action :ikcontract_find, only: [ :show, :edit, :update, :destroy ]
-  before_action :certificate_find, only: [ :show, :new ]
-  before_action :setting_find, only: [ :show, :new ]
+  before_action :ikcontract_find, only: [:show, :edit, :update, :destroy]
+  before_action :setting_find, only: [:show, :new]
 
   def index
   end
 
   def show
+    @certificate = Certificate.find(@ikcontract.certificate_id)
   end
 
   def new
+    @certificate = Certificate.find(params[:certificate_id])
     @ikcontract = Ikcontract.new
     @ikcontract.certificate_id = @certificate.id
     @ikcontract.ikcon_registration_city = @setting.set_os_city
@@ -30,17 +31,14 @@ class IkcontractsController < ApplicationController
 
   def create
     @ikcontract = Ikcontract.new(ikcontract_params)
-    @ikcontract.save ? (redirect_to ikcontract_path(@ikcontract, certificate_id: @ikcontract.certificate_id)) :
-                       (render 'new')
+    @ikcontract.save ? (redirect_to @ikcontract) : (render 'new')
   end
 
   def edit
   end
 
   def update
-    @ikcontract.update(ikcontract_params) ? (redirect_to ikcontract_path(@ikcontract,
-                                                                         certificate_id: @ikcontract.certificate_id)) :
-                                            (render 'edit')
+    @ikcontract.update(ikcontract_params) ? (redirect_to @ikcontract) : (render 'edit')
   end
 
   def destroy
@@ -66,10 +64,6 @@ class IkcontractsController < ApplicationController
 
   def ikcontract_find
     @ikcontract = Ikcontract.find(params[:id])
-  end
-
-  def certificate_find
-    @certificate = Certificate.find(params[:certificate_id])
   end
 
   def setting_find

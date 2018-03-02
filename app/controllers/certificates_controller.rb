@@ -1,13 +1,13 @@
 class CertificatesController < ApplicationController
-  before_action :certificate_find, only: [ :show, :edit, :update, :destroy ]
-  before_action :solution_find, only: [ :show, :new ]
-  before_action :setting_find, only: [ :show, :new ]
+  before_action :certificate_find, only: [:show, :edit, :update, :destroy]
+  before_action :setting_find, only: [:show, :new]
 
   def index
     @certificates = Certificate.search(params[:cer_search])
   end
 
   def show
+    @solution = Solution.find(@certificate.solution_id)
     @conclusion = Conclusion.find(@solution.conclusion_id)
     @solution_proposal = SolutionProposal.find(@conclusion.solution_proposal_id)
     @proposal = Proposal.find(@solution_proposal.proposal_id)
@@ -25,6 +25,7 @@ class CertificatesController < ApplicationController
   end
 
   def new
+    @solution = Solution.find(params[:solution_id])
     @conclusion = Conclusion.find(@solution.conclusion_id)
     @solution_proposal = SolutionProposal.find(@conclusion.solution_proposal_id)
     @proposal = Proposal.find(@solution_proposal.proposal_id)
@@ -49,16 +50,14 @@ class CertificatesController < ApplicationController
 
   def create
     @certificate = Certificate.new(certificate_params)
-    @certificate.save ? (redirect_to certificate_path(@certificate,
-                         solution_id: @certificate.solution_id)) : (render 'new')
+    @certificate.save ? (redirect_to @certificate) : (render 'new')
   end
 
   def edit
   end
 
   def update
-    @certificate.update(certificate_params) ? (redirect_to certificate_path(@certificate,
-                                               solution_id: @certificate.solution_id)) : (render 'edit')
+    @certificate.update(certificate_params) ? (redirect_to @certificate) : (render 'edit')
   end
 
   def destroy
@@ -84,10 +83,6 @@ class CertificatesController < ApplicationController
 
     def certificate_find
       @certificate = Certificate.find(params[:id])
-    end
-
-    def solution_find
-      @solution = Solution.find(params[:solution_id])
     end
 
     def setting_find
