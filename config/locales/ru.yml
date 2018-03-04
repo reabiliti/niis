@@ -53,6 +53,10 @@ ru:
     proposals: "Заявки"
     solution_proposals: "Решения по заявкам"
     certificates: "Сертификаты"
+    users: "Пользователи"
+    account: "Аккаунт"
+    profile: "Профиль"
+    logout: "Выход"
   activerecord:
     errors:
       messages:
