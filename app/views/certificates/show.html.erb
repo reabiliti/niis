@@ -1,22 +1,5 @@
 <% provide(:title, "Сертификат #{@certificate.cert_registration_num}") %>
-
-<div class="paragraph no-print">
-  <%= link_to t('link.back'), root_path %> |
-  <%= link_to t('link.edit'), edit_certificate_path(@certificate) %> |
-  <%= link_to t('link.destroy'), certificate_path(@certificate), method: :delete,
-                                  data: { confirm: "Are you sure" }%> |
-  <%= link_to t('link.print_PDF'), certificate_path(@certificate, solution_id: @certificate.solution_id,
-                                                    format: 'pdf'), target: "_blank" %> |
-  <%= link_to t('link.new_attachment'), new_attachment_path(certificate_id: @certificate.id) %>
-  <% if @certificate.permission.nil? %>
-    | <%= link_to t('link.new_permission'), new_permission_path(certificate_id: @certificate.id) %>
-  <% end %>
-  <% if @certificate.ikcontract.nil? %>
-    | <%= link_to t('link.new_ikcontract'), new_ikcontract_path(certificate_id: @certificate.id) %>
-  <% end %>
-</div>
-<br class="no-print">
-<br class="no-print">
+<%= render "links" %>
 <div class="page-body">
   <div class="caption">
     СИСТЕМА СЕРТИФИКАЦИИ ГОСТ Р<br>
@@ -154,20 +137,4 @@
       </div>
     </div>
   </div>
-</div>
-<br class="no-print">
-<br class="no-print">
-<div class="paragraph no-print">
-  <%= link_to t('link.back'), root_path %> |
-  <%= link_to t('link.edit'), edit_certificate_path(@certificate) %> |
-  <%= link_to t('link.destroy'), certificate_path(@certificate), method: :delete,
-                                  data: { confirm: "Are you sure" }%> |
-  <%= link_to t('link.print_PDF'), certificate_path(@certificate, solution_id: @certificate.solution_id,
-                                                    format: 'pdf'), target: "_blank" %>
-  <% if @certificate.permission.nil? %>
-    | <%= link_to t('link.new_permission'), new_permission_path(certificate_id: @certificate.id) %>
-  <% end %>
-  <% if @certificate.ikcontract.nil? %>
-    | <%= link_to t('link.new_ikcontract'), new_ikcontract_path(certificate_id: @certificate.id) %>
-  <% end %>
 </div>

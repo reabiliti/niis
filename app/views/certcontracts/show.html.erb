@@ -1,15 +1,7 @@
 <% provide(:title, "Договор на проведение работ по сертификации от
                    #{@certcontract.cecon_registration_date.strftime("%d.%m.%Y")}
                    № #{@certcontract.cecon_registration_num}") %>
-
-<div class="paragraph no-print">
-  <%= link_to t('link.back'), root_path %> |
-  <%= link_to t('link.edit'), edit_certcontract_path(@certcontract) %> |
-  <%= link_to t('link.destroy'), certcontract_path(@certcontract), method: :delete,
-                                  data: { confirm: "Are you sure" }%>
-</div>
-<br class="no-print">
-<br class="no-print">
+<%= render "links" %>
 <div class="page-body">
   <div class="caption">
     ДОГОВОР<br>
@@ -473,12 +465,4 @@
       </div>
     </div>
   </div>
-</div>
-<br class="no-print">
-<br class="no-print">
-<div class="paragraph no-print">
-  <%= link_to t('link.back'), root_path %> |
-  <%= link_to t('link.edit'), edit_certcontract_path(@certcontract) %> |
-  <%= link_to t('link.destroy'), certcontract_path(@certcontract), method: :delete,
-                                  data: { confirm: "Are you sure" }%>
 </div>

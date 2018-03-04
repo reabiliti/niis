@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'users/new'
+
   root 'welcome#index'
 
   resources :settings
@@ -15,6 +17,12 @@ Rails.application.routes.draw do
   resources :certcontracts
   resources :inventories
   resources :attachments
+
+  get       '/signup',  to: 'users#new'
+  get       '/login',   to: 'sessions#new'
+  post      '/login',   to: 'sessions#create'
+  delete    '/logout',  to: 'sessions#destroy'
+  resources :users
 
   get 'welcome/index'
 

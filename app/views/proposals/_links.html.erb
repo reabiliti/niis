@@ -1,0 +1,17 @@
+<div class="link-stuck no-print">
+  <%= link_to t('link.back'), root_path %> | 
+  <%= link_to t('link.edit'), edit_proposal_path(@proposal) %> | 
+  <%= link_to t('link.destroy'), @proposal, method: :delete,
+                                            data: { confirm: 'Вы уверены?' } %>
+  <% if @proposal.certcontract.nil? %>
+     | <%= link_to t('link.new_certcontract'), new_certcontract_path(proposal_id: @proposal.id) %>
+  <% end %>
+  <% if @proposal.solution_proposal.nil? %>
+     | <%= link_to t('link.new_solution_proposal'), new_solution_proposal_path(proposal_id: @proposal.id) %>
+  <% end %>
+  <% if @proposal.inventory.nil? %>
+     | <%= link_to t('link.new_inventory'), new_inventory_path(proposal_id: @proposal.id) %>
+  <% end %>
+</div>
+<br class="no-print">
+<br class="no-print">

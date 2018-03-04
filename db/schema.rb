@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180301102141) do
+ActiveRecord::Schema.define(version: 20180304095624) do
 
   create_table "attachments", force: :cascade do |t|
     t.integer "certificate_id"
@@ -337,6 +337,15 @@ ActiveRecord::Schema.define(version: 20180301102141) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["conclusion_id"], name: "index_solutions_on_conclusion_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.string "name"
+    t.boolean "admin", default: false
   end
 
 end

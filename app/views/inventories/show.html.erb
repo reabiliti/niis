@@ -1,13 +1,5 @@
 <% provide(:title, "Опись документов от #{@inventory.inv_date_from.strftime("%d.%m.%Y")}") %>
-
-<div class="paragraph no-print">
-  <%= link_to t('link.back'), :back %> |
-  <%= link_to t('link.edit'), edit_inventory_path(@inventory) %> |
-  <%= link_to t('link.destroy'), inventory_path(@inventory), method: :delete,
-                                  data: { confirm: "Are you sure" }%>
-</div>
-<br class="no-print">
-<br class="no-print">
+<%= render "links" %>
 <div class="page-body">
   <div class="caption">
     ОПИСЬ ДОКУМЕНТОВ
@@ -100,12 +92,4 @@
       </div>
     </div>
   </div>
-</div>
-<br class="no-print">
-<br class="no-print">
-<div class="paragraph no-print">
-  <%= link_to t('link.back'), :back %> |
-  <%= link_to t('link.edit'), edit_inventory_path(@inventory) %> |
-  <%= link_to t('link.destroy'), inventory_path(@inventory), method: :delete,
-                                  data: { confirm: "Are you sure" }%>
 </div>

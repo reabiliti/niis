@@ -1,14 +1,5 @@
 <%= provide(:title, "Решение о выдаче сертификата от #{@solution.sol_date_from.strftime("%d.%m.%Y")}") %>
-
-<div class="paragraph no-print">
-  <%= link_to t('link.back'), root_path %> | 
-  <%= link_to t('link.edit'), edit_solution_path(@solution) %> | 
-  <%= link_to t('link.destroy'), solution_path(@solution), method: :delete,
-                                  data: { confirm: "Are you sure" }%> |
-  <%= link_to t('link.new_certificate'), new_certificate_path(solution_id: @solution.id) %>
-</div>
-<br class="no-print">
-<br class="no-print">
+<%= render "links" %>
 <div class="page-body">
   <div class="line">
     <%= @setting.set_os_name %><br>
@@ -313,13 +304,4 @@
       </div>
     </div>
   <% end %>
-</div>
-<br class="no-print">
-<br class="no-print">
-<div class="paragraph no-print">
-  <%= link_to t('link.back'), root_path %> | 
-  <%= link_to t('link.edit'), edit_solution_path(@solution) %> | 
-  <%= link_to t('link.destroy'), solution_path(@solution), method: :delete,
-                                  data: { confirm: "Are you sure" }%> |
-  <%= link_to t('link.new_certificate'), new_certificate_path(solution_id: @solution.id) %>
 </div>

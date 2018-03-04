@@ -1,7 +1,7 @@
 <% provide(:title, "Решение по заявке № #{@solution_proposal.solprop_number}") %>
-<%= link_to t('link.back'), :back %>
+<div class="link-stuck">
+  <%= link_to t('link.back'), :back %>
+</div>
 <br>
 <h1>Решение по заявке № <%= @solution_proposal.solprop_number %></h1>
 <%= render 'form' %>
-<br>
-<%= link_to t('link.back'), :back %>

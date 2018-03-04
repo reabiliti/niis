@@ -1,6 +1,7 @@
 class CertificatesController < ApplicationController
   before_action :certificate_find, only: [:show, :edit, :update, :destroy]
   before_action :setting_find, only: [:show, :new]
+  before_action :logged_in_user
 
   def index
   end

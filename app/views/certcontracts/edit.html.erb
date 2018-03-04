@@ -1,7 +1,9 @@
 <% provide(:title, "Договор на проведение работ по сертификации от
                     #{@certcontract.cecon_registration_date.strftime("%d.%m.%Y")}
                     № #{@certcontract.cecon_registration_num}") %>
-<%= link_to t('link.back'), :back %>
+<div class="link-stuck">
+  <%= link_to t('link.back'), :back %>
+</div>
 <br>
 <h1>
   Договор на проведение работ по сертификации от <%= @certcontract.cecon_registration_date.strftime("%d.%m.%Y") %>
@@ -9,5 +11,3 @@
 
 </h1>
 <%= render 'form' %>
-<br>
-<%= link_to t('link.back'), :back %>

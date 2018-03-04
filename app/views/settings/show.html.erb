@@ -1,8 +1,5 @@
 <% provide(:title, "Настройка #{@setting.set_name}") %>
-<div class="paragraph no-print">
-  <%= link_to t('link.back'), root_path %> |
-  <%= link_to t('link.edit'), edit_setting_path(@setting) %>
-</div>
+<%= render "links" %>
 <h1>Настройка <%= @setting.set_name %></h1>
 <br class="no-print">
 <br class="no-print">
@@ -159,11 +156,4 @@
       </div>
     </div>
   </div>
-</div>
-<br class="no-print">
-<br class="no-print">
-
-<div class="paragraph no-print">
-  <%= link_to t('link.back'), root_path %> |
-  <%= link_to t('link.edit'), edit_setting_path(@setting) %>
 </div>

@@ -1,12 +1,5 @@
 <%= provide(:title, "Протокол идентификации продукции от #{@protocol.prot_date_from.strftime("%d.%m.%Y")}") %>
-<div class="paragraph no-print">
-  <%= link_to t('link.back'), root_path %> | 
-  <%= link_to t('link.edit'), edit_protocol_path(@protocol) %> | 
-  <%= link_to t('link.destroy'), protocol_path(@protocol), method: :delete,
-                                  data: { confirm: "Are you sure" }%>
-</div>
-<br class="no-print">
-<br class="no-print">
+<%= render "links" %>
 <div class="page-body">
   <div class="line">
     <%= @setting.set_os_name %><br>
@@ -196,12 +189,4 @@
       </div>
     </div>
   </div>
-</div>
-<br class="no-print">
-<br class="no-print">
-<div class="paragraph no-print">
-  <%= link_to t('link.back'), root_path %> | 
-  <%= link_to t('link.edit'), edit_protocol_path(@protocol, solution_proposal_id: @protocol.solution_proposal_id) %> | 
-  <%= link_to t('link.destroy'), protocol_path(@protocol), method: :delete,
-                                  data: { confirm: "Are you sure" }%>
 </div>

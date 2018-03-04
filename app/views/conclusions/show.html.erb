@@ -1,15 +1,5 @@
 <%= provide(:title, "Заключение эксперта о выдаче сертификата от #{@conclusion.conc_sign_date.strftime("%d.%m.%Y")}") %>
-<div class="paragraph no-print">
-  <%= link_to t('link.back'), root_path %> | 
-  <%= link_to t('link.edit'), edit_conclusion_path(@conclusion) %> | 
-  <%= link_to t('link.destroy'), conclusion_path(@conclusion), method: :delete,
-                                  data: { confirm: "Are you sure" }%>
-  <% if @conclusion.solution.nil? %>
-    | <%= link_to t('link.new_solution'), new_solution_path(conclusion_id: @conclusion.id) %>
-  <% end %>
-</div>
-<br class="no-print">
-<br class="no-print">
+<%= render "links" %>
 <div class="page-body">
   <div class="line">
     <%= @setting.set_os_name %><br>
@@ -215,12 +205,4 @@
       </div>
     </div>
   </div>
-</div>
-<br class="no-print">
-<br class="no-print">
-<div class="paragraph no-print">
-  <%= link_to t('link.back'), root_path %> | 
-  <%= link_to t('link.edit'), edit_conclusion_path(@conclusion) %> | 
-  <%= link_to t('link.destroy'), conclusion_path(@conclusion), method: :delete,
-                                  data: { confirm: "Are you sure" }%>
 </div>

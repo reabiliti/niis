@@ -1,16 +1,5 @@
 <% provide(:title, "Решение по заявке № #{@solution_proposal.solprop_number}") %>
-<div class="paragraph no-print">
-  <%= link_to t('link.back'), root_path %> |
-  <%= link_to t('link.edit'), edit_solution_proposal_path %> | 
-  <%= link_to t('link.destroy'), solution_proposal_path(@solution_proposal),
-      method: :delete,
-      data: { confirm: 'Are you sure?' } %> |
-  <%= link_to t('link.new_protocol'), new_protocol_path(solution_proposal_id: @solution_proposal.id) %>
-  <% if @solution_proposal.conclusion.nil? %>
-    | <%= link_to t('link.new_conclusion'), new_conclusion_path(solution_proposal_id: @solution_proposal.id) %>
-  <% end %>
-</div>
-<h1 class="no-print">Решение по заявке № <%= @solution_proposal.solprop_number %></h1>
+<%= render "links" %>
 <div class="page-body">
   <div class="line">
     <%= @setting.set_os_name %><br>
@@ -263,17 +252,4 @@
       </div>
     <% end %>
   </div>
-</div>
-<br>
-<br>
-<div class="paragraph no-print">
-  <%= link_to t('link.back'), root_path %> |
-  <%= link_to t('link.edit'), edit_solution_proposal_path %> | 
-  <%= link_to t('link.destroy'), solution_proposal_path(@solution_proposal),
-      method: :delete,
-      data: { confirm: 'Are you sure?' } %> |
-  <%= link_to t('link.new_protocol'), new_protocol_path(solution_proposal_id: @solution_proposal.id) %>
-  <% if @solution_proposal.conclusion.nil? %>
-    | <%= link_to t('link.new_conclusion'), new_conclusion_path(solution_proposal_id: @solution_proposal.id) %>
-  <% end %>
 </div>

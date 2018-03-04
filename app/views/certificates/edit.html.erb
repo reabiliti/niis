@@ -1,7 +1,7 @@
 <% provide(:title, "Редактирование Сертификата #{@certificate.cert_registration_num}") %>
-<%= link_to t('link.back'), :back %>
+<div class="link-stuck">
+  <%= link_to t('link.back'), :back %>
+</div>
 <br>
 <h1>Редактирование сертификата <%= @certificate.cert_registration_num %></h1>
 <%= render 'form' %>
-<br>
-<%= link_to t('link.back'), :back %>

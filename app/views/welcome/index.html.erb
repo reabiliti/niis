@@ -13,7 +13,7 @@
                         (link_to @setting.set_name, setting_path(@setting)) %>
   </li>
   <% @proposals.each_with_index do |proposal, index| %>
-    <hr class="col-width-12 hr-light hr-left">
+    <hr class="col-width-12 hr-light">
     <ul>
         <%= link_to proposal_path(proposal) do %>
           <div class="div-table">

@@ -1,5 +1,6 @@
 class ConclusionsController < ApplicationController
   before_action :conc_find, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user
 
   def index
   end

@@ -18,6 +18,7 @@ gem 'bootstrap-sass'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'simple_form'
 gem 'will_paginate', '>= 3.1'
+gem 'bcrypt'
 
 gem 'prawn'
 gem 'responders'
