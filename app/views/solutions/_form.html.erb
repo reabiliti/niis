@@ -3,11 +3,10 @@
     <% if @solution.errors.any? %>
       <div class="error text-danger">
         <p>
-          <%= pluralize(@solution.errors.count, "error") %> prohibited
-          this solution from being saved:
+          <%= pluralize(@solution.errors.count, "error") %>:
         </p>
         <ul>
-          <%= @solution.errors.full_messages.each do |msg| %>
+          <% @solution.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
           <% end %>
         </ul>

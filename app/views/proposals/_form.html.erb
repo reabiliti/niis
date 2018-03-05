@@ -3,8 +3,7 @@
     <% if @proposal.errors.any? %>
       <div class="error text-danger">
         <p>
-          <%= pluralize(@proposal.errors.count, "error") %> prohibited
-          this proposal from being saved:
+          <%= pluralize(@proposal.errors.count, "error") %>:
         </p>
         <ul>
           <% @proposal.errors.full_messages.each do |msg| %>

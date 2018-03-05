@@ -3,8 +3,7 @@
     <% if @inventory.errors.any? %>
       <div class="error text-danger">
         <p>
-          <%= pluralize(@inventory.errors.count, "error") %> prohibited
-          this inventory from being saved:
+          <%= pluralize(@inventory.errors.count, "error") %>:
         </p>
         <ul>
           <% @inventory.errors.full_messages.each do |msg| %>

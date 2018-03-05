@@ -3,8 +3,7 @@
     <% if @attachment.errors.any? %>
       <div class="error text-danger">
         <p>
-          <%= pluralize(@attachment.errors.count, "error") %> prohibited
-          this attachment from being saved:
+          <%= pluralize(@attachment.errors.count, "error") %>:
         </p>
         <ul>
           <% @attachment.errors.full_messages.each do |msg| %>

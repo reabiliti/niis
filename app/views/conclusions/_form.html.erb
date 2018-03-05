@@ -3,11 +3,10 @@
     <% if @conclusion.errors.any? %>
       <div class="error text-danger">
         <p>
-          <%= pluralize(@conclusion.errors.count, "error") %> prohibited
-          this conclusion from being saved:
+          <%= pluralize(@conclusion.errors.count, "error") %>:
         </p>
         <ul>
-          <%= @conclusion.errors.full_messages.each do |msg| %>
+          <% @conclusion.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
           <% end %>
         </ul>

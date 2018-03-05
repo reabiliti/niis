@@ -1,7 +1,7 @@
-<% provide(:title, "Опись документов от #{@inventory.inv_date_from.strftime("%d.%m.%Y")}") %>
+<% provide(:title, "Опись документов от #{@inventory.inv_date_from.try(:strftime,"%d.%m.%Y")}") %>
 <div class="link-stuck">
   <%= link_to t('link.back'), :back %>
 </div>
 <br>
-<h1>Опись документов от <%= @inventory.inv_date_from.strftime("%d.%m.%Y") %></h1>
+<h1>Опись документов от <%= @inventory.inv_date_from.try(:strftime,"%d.%m.%Y") %></h1>
 <%= render 'form' %>

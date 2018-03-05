@@ -3,8 +3,7 @@
     <% if @ikcontract.errors.any? %>
       <div class="error text-danger">
         <p>
-          <%= pluralize(@ikcontract.errors.count, "error") %> prohibited
-          this ikcontract from being saved:
+          <%= pluralize(@ikcontract.errors.count, "error") %>:
         </p>
         <ul>
           <% @ikcontract.errors.full_messages.each do |msg| %>

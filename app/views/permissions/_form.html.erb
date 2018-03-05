@@ -3,8 +3,7 @@
     <% if @permission.errors.any? %>
       <div class="error text-danger">
         <p>
-          <%= pluralize(@permission.errors.count, "error") %> prohibited
-          this permission from being saved:
+          <%= pluralize(@permission.errors.count, "error") %>:
         </p>
         <ul>
           <% @permission.errors.full_messages.each do |msg| %>

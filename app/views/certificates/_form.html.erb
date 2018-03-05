@@ -3,8 +3,7 @@
     <% if @certificate.errors.any? %>
       <div class="error text-danger">
         <p>
-          <%= pluralize(@certificate.errors.count, "error") %> prohibited
-          this certificate from being saved:
+          <%= pluralize(@certificate.errors.count, "error") %>:
         </p>
         <ul>
           <% @certificate.errors.full_messages.each do |msg| %>
