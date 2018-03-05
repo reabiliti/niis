@@ -89,19 +89,19 @@ class OrderPdf < Prawn::Document
 
     at_x_indent = set_at_x(190)
     at_y = set_at_y(299)
-    if @proposal.prop_applic_name.split("\r\n, 2").size > 1
-      @proposal.prop_applic_name.split("\r\n", 2).each_with_index do |prop_applic_name, index|
-        index == 0 ? (draw_text prop_applic_name, at: [ at_x_indent, at_y ], size: size, style: :bold) :
-                     (text_box "#{prop_applic_name}. ИНН: #{@proposal.prop_applic_inn}\n" +
-                      "#{@proposal.prop_applic_address}, #{@proposal.prop_applic_postcode}" +
-                      ", #{@proposal.prop_applic_phone}", at: [ at_x, at_y ], size: size, style: :bold, width: 500)
-        at_y -= 5
+    if @proposal.prop_applic_name.split("\r\n", 2).size > 1
+       @proposal.prop_applic_name.split("\r\n", 2).each_with_index do |prop_applic_name, index|
+       index == 0 ? (draw_text prop_applic_name, at: [ at_x_indent, at_y ], size: size, style: :bold) :
+                    (text_box "#{prop_applic_name}. ИНН: #{@proposal.prop_applic_inn}\n" +
+                    "#{@proposal.prop_applic_address}, #{@proposal.prop_applic_postcode}" +
+                    ", тел. #{@proposal.prop_applic_phone}", at: [ at_x, at_y ], size: size, style: :bold, width: 500)
+       at_y -= 5
       end
     elsif "#{@proposal.prop_applic_name}. ИНН: #{@proposal.prop_applic_inn}".length <= 58
       draw_text "#{@proposal.prop_applic_name}. ИНН: #{@proposal.prop_applic_inn}",
                 at: [ at_x_indent, at_y ], size: size, style: :bold
       at_y -= 5
-      text_box "#{@proposal.prop_applic_address}, #{@proposal.prop_applic_postcode}",
+      text_box "#{@proposal.prop_applic_address}, #{@proposal.prop_applic_postcode}, тел. #{@proposal.prop_applic_phone}",
                at: [at_x, at_y], size: size, style: :bold, width: 500
     else
       draw_text "#{@proposal.prop_applic_name}.",

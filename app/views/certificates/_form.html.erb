@@ -17,7 +17,7 @@
       <%= f.input :solution_id, as: :hidden %>
       <div class="form-group">
         <%= f.label :cert_expiry_date, class: 'col-sm-4 control-label' %>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
           <%= f.input_field :cert_expiry_date, as: :date, start_year: Date.today.year - 10,
                                                           end_year: Date.today.year + 10,
                                                           html5: true, class: "form-control" %>
@@ -41,7 +41,7 @@
       <h2>Регистрация</h2>
       <div class="form-group">
         <%= f.label :cert_registration_date, class: 'col-sm-4 control-label' %>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
           <%= f.input_field :cert_registration_date, as: :date, start_year: Date.today.year - 10,
                                                                 end_year: Date.today.year + 10,
                                                                 html5: true, class: "form-control" %>
