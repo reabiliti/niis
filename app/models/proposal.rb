@@ -3,6 +3,7 @@ class Proposal < ApplicationRecord
   has_one :certcontract, dependent: :destroy
   has_one :inventory, dependent: :destroy
   validates :prop_number, uniqueness: true
+  validates :prop_date_from, :prop_number, presence: true
 
   def self.search(search, page)
     if search

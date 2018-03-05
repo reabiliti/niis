@@ -28,10 +28,11 @@
         </div>
         <div class="col-sm-6">
           <div class="form-group">
-            <%= f.label :sol_date_from, class: 'col-sm-3 control-label' %>
-            <div class="col-sm-9">
+            <%= f.label :sol_date_from, class: 'col-sm-8 control-label' %>
+            <div class="col-sm-4">
               <%= f.input_field :sol_date_from, as: :date, start_year: Date.today.year - 10,
-                                                           end_year: Date.today.year + 10 %>
+                                                           end_year: Date.today.year + 10,
+                                                           html5:true, class: "form-control" %>
             </div>
           </div>
         </div>
@@ -48,10 +49,11 @@
         </div>
         <div class="col-sm-6">
           <div class="form-group">
-            <%= f.label :sol_solution_proposal_date, class: 'col-sm-3 control-label' %>
-            <div class="col-sm-9">
+            <%= f.label :sol_solution_proposal_date, class: 'col-sm-8 control-label' %>
+            <div class="col-sm-4">
               <%= f.input_field :sol_solution_proposal_date, as: :date, start_year: Date.today.year - 10,
-                                                                        end_year: Date.today.year + 10 %>
+                                                                        end_year: Date.today.year + 10,
+                                                                        html5: true, class: "form-control" %>
             </div>
           </div>
         </div>
@@ -67,10 +69,11 @@
         </div>
         <div class="col-sm-6">
           <div class="form-group">
-            <%= f.label :sol_contract_date, class: 'col-sm-3 control-label' %>
-            <div class="col-sm-9">
+            <%= f.label :sol_contract_date, class: 'col-sm-8 control-label' %>
+            <div class="col-sm-4">
               <%= f.input_field :sol_contract_date, as: :date, start_year: Date.today.year - 10,
-                                                                        end_year: Date.today.year + 10 %>
+                                                               end_year: Date.today.year + 10,
+                                                               html5: true, class: "form-control" %>
             </div>
           </div>
         </div>
@@ -86,10 +89,11 @@
         </div>
         <div class="col-sm-6">
           <div class="form-group">
-            <%= f.label :sol_directive_date, class: 'col-sm-3 control-label' %>
-            <div class="col-sm-9">
+            <%= f.label :sol_directive_date, class: 'col-sm-8 control-label' %>
+            <div class="col-sm-4">
               <%= f.input_field :sol_directive_date, as: :date, start_year: Date.today.year - 10,
-                                                                        end_year: Date.today.year + 10 %>
+                                                                end_year: Date.today.year + 10,
+                                                                html5: true, class: "form-control" %>
             </div>
           </div>
         </div>
@@ -109,18 +113,20 @@
       <div class="row">
         <div class="form-group">
           <%= f.label :sol_conclusion_date, class: 'col-sm-4 control-label' %>
-          <div class="col-sm-8">
+          <div class="col-sm-2">
             <%= f.input_field :sol_conclusion_date, as: :date, start_year: Date.today.year - 10,
-                                                               end_year: Date.today.year + 10 %>
+                                                               end_year: Date.today.year + 10,
+                                                               html5: true, class: "form-control" %>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="form-group">
           <%= f.label :sol_cert_expiry_date, class: 'col-sm-4 control-label' %>
-          <div class="col-sm-8">
+          <div class="col-sm-2">
             <%= f.input_field :sol_cert_expiry_date, as: :date, start_year: Date.today.year - 10,
-                                                                end_year: Date.today.year + 10 %>
+                                                                end_year: Date.today.year + 10,
+                                                                html5: true, class: "form-control" %>
           </div>
         </div>
       </div>

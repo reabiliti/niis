@@ -20,9 +20,10 @@
       <div class="row">
         <div class="form-group">
           <%= f.label :prot_date_from, class: 'col-sm-4 control-label' %>
-          <div class="col-sm-8">
+          <div class="col-sm-2">
             <%= f.input_field :prot_date_from, as: :date, start_year: Date.today.year - 10,
-                                                    end_year: Date.today.year + 10 %>
+                                                    end_year: Date.today.year + 10,
+                                                    html5: true, class: "form-control" %>
           </div>
         </div>
       </div>
@@ -37,9 +38,10 @@
       <div class="row">
         <div class="form-group">
           <%= f.label :prot_date_issue_product, class: 'col-sm-4 control-label' %>
-          <div class="col-sm-8">
+          <div class="col-sm-2">
             <%= f.input_field :prot_date_issue_product, as: :date, start_year: Date.today.year - 10,
-                                                             end_year: Date.today.year + 10 %>
+                                                             end_year: Date.today.year + 10,
+                                                             html5: true, class: "form-control"%>
           </div>
         </div>
       </div>

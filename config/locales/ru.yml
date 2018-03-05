@@ -276,7 +276,7 @@ ru:
       permission:
         perm_registration_num: "Регистрационный номер"
         perm_registration_date: "Дата регистрации"
-        perm_expiry_date: "дата истечения срока действия"
+        perm_expiry_date: "Дата истечения срока действия"
         perm_place_marking: "Место нанесения знака, прочие условия"
         perm_chief_name: "Должность руководителя организации"
         perm_chief_org: "Инициалы, Фамилия"
