@@ -1,9 +1,9 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top navbar-inverse bg-inverse no-print">
   <div class="container no-print">
     <%= link_to 'Certification', root_path, id: "logo" %>
     <nav>
-      <ul class="nav navbar-nav navbar-right no-print">
-        <% if logged_in? %>
+      <% if logged_in? %>
+        <ul class="nav navbar-nav navbar-left">
           <li><%= link_to t('link.new_proposal'), new_proposal_path %></li>
           <li><%= link_to t('link.users'), users_path %></li>
           <li class="dropdown">
@@ -17,10 +17,18 @@
               <li><%= link_to t("link.logout"), logout_path, method: :delete %></li>
             </ul>
           </li>
-        <% else %>
-          <li><%= link_to "Log in", login_path %>
+        </ul>
+        <%= form_tag root_path, method: :get, class: "navbar-form navbar-right" do %>
+          <div class="form-group">
+            <%= text_field_tag :search, params[:search], class: "form-control" %>
+          </div>
+          <%= submit_tag t('form.search'), name: nil, class: "btn btn-default" %>
         <% end %>
-      </ul>
+      <% else %>
+        <ul class="nav navbar-nav navbar-left">
+            <li><%= link_to t("link.login"), login_path %>
+        </ul>
+      <% end %>
     </nav>
   </div>
 </header>

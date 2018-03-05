@@ -56,7 +56,8 @@ ru:
     users: "Пользователи"
     account: "Аккаунт"
     profile: "Профиль"
-    logout: "Выход"
+    login: "Войти"
+    logout: "Выйти"
   activerecord:
     errors:
       messages:

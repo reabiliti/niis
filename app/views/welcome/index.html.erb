@@ -1,19 +1,12 @@
 <% provide(:title, "Главная") %>
 <br>
-<div class="right">
-  <%= form_tag(root_path, method: :get) do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag t('form.search'), name: nil %>
-  <% end %>
-</div>
-<br>
 <ul>
   <li>
     <%= @setting.nil? ? (link_to "Необходимо создать документ Настроек", new_setting_path) :
                         (link_to @setting.set_name, setting_path(@setting)) %>
   </li>
   <% @proposals.each_with_index do |proposal, index| %>
-    <hr class="col-width-12 hr-light">
+    <hr class="hr-light">
     <ul>
         <%= link_to proposal_path(proposal) do %>
           <div class="div-table">
