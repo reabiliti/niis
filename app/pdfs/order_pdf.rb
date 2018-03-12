@@ -57,7 +57,7 @@ class OrderPdf < Prawn::Document
     draw_text @certificate.cert_code_okp, at: [ at_x_indent, at_y ], size: size, style: :bold
 
     at_y = set_at_y(410)
-    draw_text @certificate.cert_code_tn_ved, at: [ at_x, at_y ], size: size, style: :bold
+    draw_text @certificate.cert_code_tn_ved, at: [ at_x_indent, at_y ], size: size, style: :bold
 
     at_y = set_at_y(433)
     text_box @certificate.cert_manuf_regulations, at: [ at_x, at_y ], size: size, style: :bold, width: 400

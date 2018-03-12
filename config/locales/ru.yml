@@ -121,7 +121,7 @@ ru:
         prop_applic_kpp: "КПП"
         prop_applic_chief: "ФИО руководителя"
         prop_applic_name_product: "Наименование продукции"
-        prop_applic_code_okp: "Код ОК 005-93 (ОКП)"
+        prop_applic_code_okp: "Код ОКПД2"
         prop_applic_code_tn_ved: "Код ТН ВЭД"
         prop_applic_from_issue: "Серийный выпуск, или партия определенного размера, или единица продукции"
         prop_manuf_name: "Наименовани изготовителя"
@@ -148,7 +148,7 @@ ru:
         solprop_date_from: "от"
         solprop_solution: "Принято решение"
         solprop_applic_name_product: "наименование продукции"
-        solprop_applic_code_okp: "Код ОК 005-93 (ОКП)"
+        solprop_applic_code_okp: "Код ОКПД2"
         solprop_applic_code_tn_ved: "код ТН ВЭД"
         solprop_manuf_name: "Наименование изготовителя"
         solprop_manuf_address: "Название улицы, номер дома, номер помещения; название населенного пункта (города,
@@ -173,7 +173,7 @@ ru:
       protocol:
         prot_date_from: "от"
         prot_applic_name_product: "Наименование продукции"
-        prot_applic_code_okp: "Код ОК 005-93 (ОКП)"
+        prot_applic_code_okp: "Код ОКПД2"
         prot_applic_code_tn_ved: "Код ТН ВЭД"
         prot_manuf_name: "Наименование изготовителя"
         prot_manuf_address: "Название улицы, номер дома, номер помещения; название населенного пункта (города,
@@ -200,7 +200,7 @@ ru:
         conc_directive_num: "Распоряжение руководителя органа по сертификации №"
         conc_directive_date: "от"
         conc_name_product: "Наименование продукции"
-        conc_code_okp: "Код ОК 005-93 (ОКП)"
+        conc_code_okp: "Код ОКПД2"
         conc_code_tn_ved: "Код ТН ВЭД"
         conc_manuf_name: "Наименование изготовителя"
         conc_manuf_address: "Название улицы, номер дома, номер помещения; название населенного пункта (города,
@@ -229,7 +229,7 @@ ru:
         sol_directive_num: "Распоряжение руководителя органа по сертификации №"
         sol_directive_date: "от"
         sol_name_product: "Наименование продукции"
-        sol_code_okp: "Код ОК 005-93 (ОКП)"
+        sol_code_okp: "Код ОКПД2"
         sol_code_tn_ved: "Код ТН ВЭД"
         sol_manuf_name: "Наименование изготовителя"
         sol_manuf_address: "Название улицы, номер дома, номер помещения; название населенного пункта (города,
@@ -257,7 +257,7 @@ ru:
         cert_expiry_date: "Дата истечения сертификата"
         cert_name_product: "Наименование продукции"
         cert_manuf_doc: "Наименование и обозначение документации изготовителя (стандарт, ТУ, КД, образец-эталон)"
-        cert_code_okp: "Код ОК 005-93 (ОКП)"
+        cert_code_okp: "Код ОКПД2"
         cert_code_tn_ved: "Код ТН ВЭД"
         cert_manuf_regulations: "Наименование и обозначение нормативных документов"
         cert_manuf_name: "Наименование изготовителя"
@@ -343,7 +343,7 @@ ru:
         inv_chief_name: "Начальник отдела, инициалы, фамилия"
       attachment:
         att_blank_num: "Номер бланка"
-        att_code_okp: "Код ОК 005 (ОКП)"
+        att_code_okp: "Код ОКПД2"
         att_code_tn_ved: "Код ТН ВЭД"
         att_name_product: "Наименование и обозначение продукции"
         att_manuf_name: "Изготовитель"

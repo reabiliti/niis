@@ -15,7 +15,7 @@ class AttachmentsController < ApplicationController
     @attachment = Attachment.new
     @attachment.certificate_id = @certificate.id
     @attachment.att_code_okp = @certificate.cert_code_okp
-    @attachment.att_code_tn_ved = @certificate.cert_code_okp
+    @attachment.att_code_tn_ved = @certificate.cert_code_tn_ved
     @attachment.att_name_product = @certificate.cert_name_product
     @attachment.att_manuf_name = @certificate.cert_manuf_name
     @attachment.att_regulations = @certificate.cert_manuf_doc
