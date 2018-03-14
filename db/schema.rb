@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180304095624) do
+ActiveRecord::Schema.define(version: 20180314130050) do
 
   create_table "attachments", force: :cascade do |t|
     t.integer "certificate_id"
@@ -86,10 +86,6 @@ ActiveRecord::Schema.define(version: 20180304095624) do
   create_table "conclusions", force: :cascade do |t|
     t.string "conc_solution_proposal_num"
     t.datetime "conc_solution_proposal_date"
-    t.string "conc_contract_num"
-    t.datetime "conc_contract_date"
-    t.string "conc_directive_num"
-    t.datetime "conc_directive_date"
     t.text "conc_name_product"
     t.string "conc_code_okp"
     t.string "conc_code_tn_ved"
@@ -306,10 +302,6 @@ ActiveRecord::Schema.define(version: 20180304095624) do
     t.string "sol_delivery"
     t.string "sol_solution_proposal_num"
     t.datetime "sol_solution_proposal_date"
-    t.string "sol_contract_num"
-    t.datetime "sol_contract_date"
-    t.string "sol_directive_num"
-    t.datetime "sol_directive_date"
     t.text "sol_name_product"
     t.string "sol_code_okp"
     t.string "sol_code_tn_ved"

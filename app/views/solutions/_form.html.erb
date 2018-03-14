@@ -57,47 +57,6 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="form-group">
-            <%= f.label :sol_contract_num, class: 'col-sm-8 control-label' %>
-            <div class="col-sm-4">
-              <%= f.input_field :sol_contract_num, class: 'form-control' %>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="form-group">
-            <%= f.label :sol_contract_date, class: 'col-sm-7 control-label' %>
-            <div class="col-sm-5">
-              <%= f.input_field :sol_contract_date, as: :date, start_year: Date.today.year - 10,
-                                                               end_year: Date.today.year + 10,
-                                                               html5: true, class: "form-control" %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="form-group">
-            <%= f.label :sol_directive_num, class: 'col-sm-8 control-label' %>
-            <div class="col-sm-4">
-              <%= f.input_field :sol_directive_num, class: 'form-control' %>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="form-group">
-            <%= f.label :sol_directive_date, class: 'col-sm-7 control-label' %>
-            <div class="col-sm-5">
-              <%= f.input_field :sol_directive_date, as: :date, start_year: Date.today.year - 10,
-                                                                end_year: Date.today.year + 10,
-                                                                html5: true, class: "form-control" %>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <%= f.input :sol_name_product, as: :text, input_html: { rows: 5 } %>
       <%= f.input :sol_code_okp, as: :text, input_html: { rows: 2 } %>
       <%= f.input :sol_code_tn_ved, as: :text, input_html: { rows: 2 } %>

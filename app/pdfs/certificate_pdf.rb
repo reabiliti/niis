@@ -1,4 +1,4 @@
-class OrderPdf < Prawn::Document
+class CertificatePdf < Prawn::Document
   def initialize(certificate, setting, proposal)
     super(margin: [0,0,0,0])
     @certificate = certificate

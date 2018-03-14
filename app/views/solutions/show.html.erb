@@ -53,16 +53,6 @@
     <b>- решения</b> органа по сертификации <b>№ <%= @solution.sol_solution_proposal_num %></b> от <b><%= @solution.sol_solution_proposal_date.strftime("%d.%m.%Y") %></b>
   </div>
   <div class="paragraph">
-    <b>- договора</b> на проведение работ по сертификации <b>№ <%= @solution.sol_contract_num %></b>
-    от <b><%= @solution.sol_contract_date.strftime("%d.%m.%Y") %></b>
-  </div>
-  <% if @solution.sol_directive_num.present? %>
-    <div class="paragraph">
-      <b>- распоряжения</b> руководителя органа по сертификации <b>№ <%= @solution.sol_directive_num %></b>
-      от <b><%= @solution.sol_directive_date.strftime("%d.%m.%Y") %></b>
-    </div>
-  <% end %>
-  <div class="paragraph">
     проведена работа по <b>добровольной</b> сертификации продукции:
   </div>
   <div class="line">

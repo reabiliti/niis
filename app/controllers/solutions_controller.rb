@@ -18,10 +18,6 @@ class SolutionsController < ApplicationController
     @solution.conclusion_id = @conclusion.id
     @solution.sol_solution_proposal_num = @conclusion.conc_solution_proposal_num
     @solution.sol_solution_proposal_date = @conclusion.conc_solution_proposal_date
-    @solution.sol_contract_num = @conclusion.conc_contract_num
-    @solution.sol_contract_date = @conclusion.conc_contract_date
-    @solution.sol_directive_num = @conclusion.conc_directive_num
-    @solution.sol_directive_date = @conclusion.conc_directive_date
     @solution.sol_name_product = @conclusion.conc_name_product
     @solution.sol_code_okp = @conclusion.conc_code_okp
     @solution.sol_code_tn_ved = @conclusion.conc_code_tn_ved

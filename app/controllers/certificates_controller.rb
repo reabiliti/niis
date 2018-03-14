@@ -14,9 +14,9 @@ class CertificatesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = OrderPdf.new(@certificate, @setting, @proposal)
+        pdf = CertificatePdf.new(@certificate, @setting, @proposal)
         send_data pdf.render,
-                  filename: "order_#{@certificate.cert_registration_num}",
+                  filename: "certificate_#{@certificate.cert_registration_num}",
                   type: 'application/pdf',
                   disposition: 'inline',
                   page_layout: 'landscape'
