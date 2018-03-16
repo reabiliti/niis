@@ -92,10 +92,21 @@
     ИЗГОТОВИТЕЛЬ <b><%= @certificate.cert_manuf_name %></b>
   </div>
   <div class="paragraph">
-    ИНН <b><%= @certificate.cert_manuf_inn %></b>
+    ИНН: <b><%= @certificate.cert_manuf_inn %></b>
   </div>
   <div class="paragraph">
     Адрес: <b><%= @certificate.cert_manuf_address %>, <%= @certificate.cert_manuf_postcode %></b>
+  </div>
+  <br>
+  <br>
+  <div class="paragraph">
+    СЕРТИФИКАТ ВЫДАН <b><%= @certificate.cert_applic_name %></b>
+  </div>
+  <div class="paragraph">
+    ИНН: <b><%= @certificate.cert_applic_inn %></b>
+  </div>
+  <div class="paragraph">
+    Адрес: <b><%= @certificate.cert_applic_address %>, <%= @certificate.cert_applic_postcode %>, тел.: <%= @certificate.cert_applic_phone %></b>
   </div>
   <br>
   <br>

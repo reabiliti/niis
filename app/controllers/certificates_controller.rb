@@ -40,6 +40,11 @@ class CertificatesController < ApplicationController
     @certificate.cert_manuf_inn = @proposal.prop_manuf_inn
     @certificate.cert_manuf_address = @solution.sol_manuf_address
     @certificate.cert_manuf_postcode = @solution.sol_manuf_postcode
+    @certificate.cert_applic_name = @proposal.prop_applic_name
+    @certificate.cert_applic_inn = @proposal.prop_applic_inn
+    @certificate.cert_applic_address = @proposal.prop_applic_address
+    @certificate.cert_applic_postcode = @proposal.prop_applic_postcode
+    @certificate.cert_applic_phone = @proposal.prop_applic_phone
     @certificate.cert_test_report = @solution.sol_test_report
     @certificate.cert_add_info = @solution.sol_add_info
     @certificate.cert_place_marking = @solution.sol_place_marking
@@ -73,7 +78,9 @@ class CertificatesController < ApplicationController
                                           :cert_manuf_address, :cert_manuf_postcode,
                                           :cert_test_report, :cert_add_info, :cert_place_marking,
                                           :cert_chief_org, :cert_expert, :cert_registration_date,
-                                          :cert_registration_num, :cert_blank_num)
+                                          :cert_registration_num, :cert_blank_num, :cert_applic_name,
+                                          :cert_applic_inn, :cert_applic_address, :cert_applic_postcode,
+                                          :cert_applic_phone)
     end
 
     def certificate_find

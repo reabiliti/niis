@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180314130050) do
+ActiveRecord::Schema.define(version: 20180316054850) do
 
   create_table "attachments", force: :cascade do |t|
     t.integer "certificate_id"
@@ -80,6 +80,11 @@ ActiveRecord::Schema.define(version: 20180314130050) do
     t.datetime "cert_registration_date"
     t.string "cert_registration_num"
     t.string "cert_blank_num"
+    t.string "cert_applic_name"
+    t.string "cert_applic_inn"
+    t.string "cert_applic_address"
+    t.string "cert_applic_postcode"
+    t.string "cert_applic_phone"
     t.index ["solution_id"], name: "index_certificates_on_solution_id"
   end
 

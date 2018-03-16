@@ -28,10 +28,20 @@
       <%= f.input :cert_code_okp, as: :text, input_html: { rows: 2 } %>
       <%= f.input :cert_code_tn_ved, as: :text, input_html: { rows: 2 } %>
       <%= f.input :cert_manuf_regulations, as: :text, input_html: { rows: 3 } %>
+      <hr class="col-sm-12">
+      <h2>Изготовитель</h2>
       <%= f.input :cert_manuf_name, as: :text, input_html: { rows: 5 } %>
       <%= f.input :cert_manuf_inn %>
       <%= f.input :cert_manuf_address, as: :text, input_html: { rows: 9 } %>
       <%= f.input :cert_manuf_postcode %>
+      <hr class="col-sm-12">
+      <h2>Заявитель</h2>
+      <%= f.input :cert_applic_name, as: :text, input_html: { rows: 5 } %>
+      <%= f.input :cert_applic_inn %>
+      <%= f.input :cert_applic_address, as: :text, input_html: { rows: 9 } %>
+      <%= f.input :cert_applic_postcode %>
+      <%= f.input :cert_applic_phone %>
+      <hr class="col-sm-12">
       <%= f.input :cert_test_report, as: :text, input_html: { rows: 2 } %>
       <%= f.input :cert_add_info %>
       <%= f.input :cert_place_marking %>

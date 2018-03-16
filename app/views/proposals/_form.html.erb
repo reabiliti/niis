@@ -34,10 +34,10 @@
         </div>
       </div>
       <%= f.input :prop_cert_system %>
+      <hr class="col-sm-12">
+      <h2>Заявитель</h2>
       <%= f.input :prop_applic_name, as: :text, input_html: { rows: 5 } %>
       <%= f.input :prop_applic_reg_doc, as: :text, input_html: { rows: 3 } %>
-      <hr class="col-xs-12">
-      <h2>Юридический адрес заявителя</h2>
       <%= f.input :prop_applic_address, as: :text, input_html: { rows: 6 } %>
       <%= f.input :prop_applic_postcode %>
       <%= f.input :prop_applic_bank_detail, as: :text, input_html: { rows: 1 } %>
@@ -100,14 +100,12 @@
       </div>
       <%= f.input :prop_applic_from_issue, collection: [ "серийный выпуск", "партия", "единичное изделие" ],
                                            include_blank: false %>
+      <hr class="col-sm-12">
+      <h2>Изготовитель</h2>
       <%= f.input :prop_manuf_name, as: :text, input_html: { rows: 1 } %>
-      <hr class="col-xs-12">
-      <h2>Фактический адрес изготовителя</h2>
       <%= f.input :prop_manuf_address, as: :text, input_html: { rows: 6 } %>
       <%= f.input :prop_manuf_postcode %>
-      <hr class="col-xs-12">
       <%= f.input :prop_manuf_doc, as: :text, input_html: { rows: 3 } %>
-      <hr class="col-xs-12">
       <h2>Поисковые реквизиты изготовителя</h2>
       <%= f.input :prop_manuf_code_okato %>
       <%= f.input :prop_manuf_type_own, collection: [ "государственная", "негосударственная", "муниципальная",
