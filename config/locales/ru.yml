@@ -329,6 +329,8 @@ ru:
         cecon_name_product: "Наименование сертифицируемой продукции"
         cecon_date_from: "Договор вступает в силу с"
         cecon_date_expiry: "Срок действия договора заканчивается"
+        cecon_price_work: "Стоимость в рублях (прописью)"
+        cecon_price_work_total: "Полная стоимость в рублях (прописью)"
         cecon_exec_address: "Юридический адрес исполнителя"
         cecon_exec_bank_details: "Расчетный счет исполнителя, реквизиты банка"
         cecon_client_address: "Юридический адрес заказчика"

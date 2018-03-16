@@ -58,7 +58,8 @@ class CertcontractsController < ApplicationController
                                          :cecon_date_from, :cecon_date_expiry, :cecon_exec_address,
                                          :cecon_exec_bank_details, :cecon_client_address, :cecon_client_bank_details,
                                          :cecon_exec_chief_position_sign, :cecon_exec_chief_name_sign,
-                                         :cecon_client_chief_position_sign, :cecon_client_chief_name_sign)
+                                         :cecon_client_chief_position_sign, :cecon_client_chief_name_sign,
+                                         :cecon_price_work, :cecon_price_work_total)
   end
 
   def cecon_find

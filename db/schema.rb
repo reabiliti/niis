@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180316054850) do
+ActiveRecord::Schema.define(version: 20180316074631) do
 
   create_table "attachments", force: :cascade do |t|
     t.integer "certificate_id"
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 20180316054850) do
     t.string "cecon_client_chief_name_sign"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "cecon_price_work"
+    t.string "cecon_price_work_total"
     t.index ["proposal_id"], name: "index_certcontracts_on_proposal_id"
   end
 

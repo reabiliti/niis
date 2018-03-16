@@ -54,6 +54,10 @@
         </div>
       </div>
       <hr class="col-sm-12">
+      <h2>Стоимость работ</h2>
+      <%= f.input :cecon_price_work %>
+      <%= f.input :cecon_price_work_total %>
+      <hr class="col-sm-12">
       <h2>Данные об Исполнителе</h2>
       <%= f.input :cecon_exec_name, as: :text, input_html: {  rows: 3 } %>
       <%= f.input :cecon_exec_named, collection: [ "именуемый", "именуемая", "именуемое" ], include_blank: false %>

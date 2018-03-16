@@ -14,11 +14,15 @@
   <br>
   <div class="div-table">
     <div class="div-table-row">
-      <div class="div-table-col col-width-5">
-        к сертификату соответствия №
+      <div class="div-table-col col-width-2">
       </div>
-      <div class="div-table-col-hr col-width-7">
+      <div class="div-table-col col-width-4">
+        К сертификату соответствия №
+      </div>
+      <div class="div-table-col-hr col-width-3">
         <b><%= @certificate.cert_registration_num %></b>
+      </div>
+      <div class="div-table-col col-width-2">
       </div>
     </div>
   </div>
@@ -46,10 +50,14 @@
         <%= @attachment.att_code_tn_ved %>
       </div>
       <div class="div-table-col col-width-5 border-ltb">
-        <%= @attachment.att_name_product %>
+        <% if @attachment.att_name_product.present? %>
+          <% @attachment.att_name_product.split("\r\n").each do |att_name_product| %>
+            <%= att_name_product %><br>
+          <% end %>
+        <% end %>
         <br>
         <br>
-        <%= @attachment.att_manuf_name %>
+        ИЗГОТОВИТЕЛЬ: <%= @attachment.att_manuf_name %>
       </div>
       <div class="div-table-col col-width-4 border">
         <%= @attachment.att_regulations %>
@@ -59,19 +67,43 @@
   <br>
   <div class="div-table">
     <div class="div-table-row">
-      <div class="div-table-col col-width-6">
+      <div class="div-table-col col-width-4">
         Руководитель органа
       </div>
-      <div class="div-table-col col-width-6">
+      <div class="div-table-col col-width-2 col-align-bot">
+        <div class="line">
+        </div>
+        <div class="hint">
+          подпись
+        </div>
+      </div>
+      <div class="div-table-col col-width-3">
+        <div class="line">
         <b><%= @certificate.cert_chief_org %></b>
+        </div>
+        <div class="hint">
+          инициалы, фамилия
+        </div>
       </div>
     </div>
     <div class="div-table-row">
-      <div class="div-table-col col-width-6">
+      <div class="div-table-col col-width-4">
         Эксперт
       </div>
-      <div class="div-table-col col-width-6">
-        <b><%= @certificate.cert_expert %></b>
+      <div class="div-table-col col-width-2 col-align-bot">
+        <div class="line">
+        </div>
+        <div class="hint">
+          подпись
+        </div>
+      </div>
+      <div class="div-table-col col-width-3">
+        <div class="line">
+          <b><%= @certificate.cert_expert %></b>
+        </div>
+        <div class="hint">
+          инициалы, фамилия
+        </div>
       </div>
     </div>
   </div>
