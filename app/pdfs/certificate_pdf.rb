@@ -1,6 +1,6 @@
 class CertificatePdf < Prawn::Document
   def initialize(certificate, setting, proposal)
-    super(margin: [0,0,0,0])
+    super(page_size: "A4", margin: [0,0,0,0])
     @certificate = certificate
     @setting = setting
     @proposal = proposal
