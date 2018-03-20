@@ -13,8 +13,8 @@ class CertificatePdf < Prawn::Document
     size = 12
     at_x = set_at_x(59)
 
-    at_x_indent = set_at_x(215)
-    at_y = set_at_y(653)
+    at_x_indent = set_at_x(218)
+    at_y = set_at_y(663)
     draw_text @certificate.cert_registration_num, at: [ at_x_indent, at_y ], size: size, style: :bold
 
     at_x_indent = set_at_x(315)
@@ -25,10 +25,10 @@ class CertificatePdf < Prawn::Document
     draw_text (@certificate.cert_expiry_date).strftime("%d.%m.%Y"), at: [ at_x_indent, at_y ], size: size, style: :bold
 
     at_x_indent = set_at_x(230)
-    at_y = set_at_y(589)
+    at_y = set_at_y(600)
     draw_text "рег. № #{@setting.set_os_registration_num}", at: [ at_x_indent, at_y ], size: size, style: :bold
 
-    at_y = set_at_y(584)
+    at_y = set_at_y(595)
     text_box "#{@setting.set_os_name.gsub 'ОРГАН ПО СЕРТИФИКАЦИИ ', ''}\n" +
              "#{@setting.set_os_address}", at: [ at_x, at_y ], size: size, style: :bold, width: 450
 
