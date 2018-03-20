@@ -13,15 +13,15 @@ class CertificatePdf < Prawn::Document
     size = 12
     at_x = set_at_x(59)
 
-    at_x_indent = set_at_x(230)
-    at_y = set_at_y(652)
+    at_x_indent = set_at_x(190)
+    at_y = set_at_y(638)
     draw_text @certificate.cert_registration_num, at: [ at_x_indent, at_y ], size: size, style: :bold
 
     at_x_indent = set_at_x(315)
-    at_y = set_at_y(630)
+    at_y = set_at_y(628)
     draw_text (@certificate.cert_registration_date).strftime("%d.%m.%Y"), at: [ at_x_indent, at_y ], size: size, style: :bold
 
-    at_x_indent = set_at_x(443)
+    at_x_indent = set_at_x(440)
     draw_text (@certificate.cert_expiry_date).strftime("%d.%m.%Y"), at: [ at_x_indent, at_y ], size: size, style: :bold
 
     at_x_indent = set_at_x(229)
@@ -141,7 +141,7 @@ class CertificatePdf < Prawn::Document
   end
 
   def bg_setup
-    bg = "public/pdf/cert_filled.jpg"
+    bg = "public/pdf/cert_clean.jpg"
     image bg, at: [ 0, bounds.height ], width: bounds.width, height: bounds.height
   end
 

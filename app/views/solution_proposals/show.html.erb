@@ -107,65 +107,61 @@
     ПРИНИМАЕТ РЕШЕНИЕ
   </div>
   <br>
-  <ol class="ol-left">
+  <div class="paragraph">
+    1. Добровольную сертификацию заявленной продукции провести на соответствие требованиям
+  </div>
+  <div class="line">
+    <b><%= @solution_proposal.solprop_regulations %></b>
+  </div>
+  <div class="hint">
+    наименование и обозначение нормативных документов
+  </div>
+  <div class="paragraph">
+    по схеме <b><%= @proposal.prop_manuf_scheme_cert %></b>, предусматривающей
+  </div>
+  <div class="line">
+    <b><%= @solution_proposal.solprop_desc_scheme_cert %></b>
+  </div>
+  <div class="hint">
+    описание схемы сертификации
+  </div>
+  <div class="paragraph">
+    2. Проведение анализа состояния производства (сертификации производства или системы качества)
+    заявленной продукции схемой сертификации не предусмотрено.
+  </div>
+  <div class="paragraph">
+    3. Для проведения сертификационных испытаний заявленной продукции определить следующие
+    аккредитованные испытательные лаборатории (выбор конкретной испытательной лаборатории осуществляет заявитель):
+  </div>
+  <div class="line">
+    <b><%= @solution_proposal.solprop_test_lab %></b>
+  </div>
+  <div class="hint">
+    для каждой испытательной лаборатории приводят: полное наименование, регистрационный номер, адрес, телефон
+  </div>
+  <div class="paragraph">
+    4. Отбор образцов заявленной для проведения сертификационных испытаний проводит <%= @solution_proposal.solprop_sampling %>.
+  </div>
+  <div class="paragraph">
+    5. Заявитель должен предоставить в орган по сертификации следующие документы:
+  </div>
+  <div class="paragraph">
+    <b><%= @solution_proposal.solprop_list_doc_product %></b>
+  </div>
+  <div class="paragraph">
+    6. Работы проводят на основе:
+  </div>
+  <div class="paragraph">
+    <b><%= @solution_proposal.solprop_basis_work %></b>
+  </div>
+  <% if @solution_proposal.solprop_add_info.present? %>
     <div class="paragraph">
-      <li>Добровольную сертификацию заявленной продукции провести на соответствие требованиям</li>
-    </div>
-    <div class="line">
-      <b><%= @solution_proposal.solprop_regulations %></b>
-    </div>
-    <div class="hint">
-      наименование и обозначение нормативных документов
+       <li>Дополнительная информация:</li>
     </div>
     <div class="paragraph">
-      по схеме <b><%= @proposal.prop_manuf_scheme_cert %></b>, предусматривающей
+      <b><%= @solution_proposal.solprop_add_info %></b>
     </div>
-    <div class="line">
-      <b><%= @solution_proposal.solprop_desc_scheme_cert %></b>
-    </div>
-    <div class="hint">
-      описание схемы сертификации
-    </div>
-    <div class="paragraph">
-      <li>Проведение анализа состояния производства (сертификации производства или системы качества)
-      заявленной продукции схемой сертификации не предусмотрено.</li>
-    </div>
-    <div class="paragraph">
-      <li>Для проведения сертификационных испытаний заявленной продукции определить следующие
-      аккредитованные испытательные лаборатории (выбор конкретной испытательной лаборатории осуществляет заявитель):</li>
-    </div>
-    <div class="line">
-      <b><%= @solution_proposal.solprop_test_lab %></b>
-    </div>
-    <div class="hint">
-      для каждой испытательной лаборатории приводят: полное наименование, регистрационный номер, адрес, телефон
-    </div>
-    <div class="paragraph">
-      <li>Отбор образцов заявленной для проведения сертификационных испытаний проводит <%= @solution_proposal.solprop_sampling %>.</li>
-    </div>
-    <% unless @solution_proposal.solprop_list_doc_product.blank? %>
-      <div class="paragraph">
-         <li>Заявитель должен предоставить в орган по сертификации следующие документы:</li>
-      </div>
-      <div class="paragraph">
-        <b><%= @solution_proposal.solprop_list_doc_product %></b>
-      </div>
-    <% end %>
-    <div class="paragraph">
-      <li>Работы проводят на основе:</li>
-    </div>
-    <div class="paragraph">
-      <b><%= @solution_proposal.solprop_basis_work %></b>
-    </div>
-    <% unless @solution_proposal.solprop_add_info.blank? %>
-      <div class="paragraph">
-         <li>Дополнительная информация:</li>
-      </div>
-      <div class="paragraph">
-        <b><%= @solution_proposal.solprop_add_info %></b>
-      </div>
-    <% end %>
-  </ol>
+  <% end %>
   <div class="div-table">
     <div class="div-table-row">
       <div class="div-table-col col-width-6 col-align-top">
