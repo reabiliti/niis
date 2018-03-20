@@ -13,12 +13,12 @@ class CertificatePdf < Prawn::Document
     size = 12
     at_x = set_at_x(59)
 
-    at_x_indent = set_at_x(205)
-    at_y = set_at_y(643)
+    at_x_indent = set_at_x(215)
+    at_y = set_at_y(653)
     draw_text @certificate.cert_registration_num, at: [ at_x_indent, at_y ], size: size, style: :bold
 
     at_x_indent = set_at_x(315)
-    at_y = set_at_y(628)
+    at_y = set_at_y(638)
     draw_text (@certificate.cert_registration_date).strftime("%d.%m.%Y"), at: [ at_x_indent, at_y ], size: size, style: :bold
 
     at_x_indent = set_at_x(440)
