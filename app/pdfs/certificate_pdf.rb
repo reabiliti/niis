@@ -13,8 +13,8 @@ class CertificatePdf < Prawn::Document
     size = 12
     at_x = set_at_x(59)
 
-    at_x_indent = set_at_x(190)
-    at_y = set_at_y(638)
+    at_x_indent = set_at_x(205)
+    at_y = set_at_y(643)
     draw_text @certificate.cert_registration_num, at: [ at_x_indent, at_y ], size: size, style: :bold
 
     at_x_indent = set_at_x(315)
@@ -24,8 +24,8 @@ class CertificatePdf < Prawn::Document
     at_x_indent = set_at_x(440)
     draw_text (@certificate.cert_expiry_date).strftime("%d.%m.%Y"), at: [ at_x_indent, at_y ], size: size, style: :bold
 
-    at_x_indent = set_at_x(229)
-    at_y = set_at_y(590)
+    at_x_indent = set_at_x(230)
+    at_y = set_at_y(589)
     draw_text "рег. № #{@setting.set_os_registration_num}", at: [ at_x_indent, at_y ], size: size, style: :bold
 
     at_y = set_at_y(584)
@@ -34,7 +34,7 @@ class CertificatePdf < Prawn::Document
 
 
     at_x_indent = set_at_x(140)
-    at_y = set_at_y(519)
+    at_y = set_at_y(510)
     if @certificate.cert_name_product.split("\r\n").length > 1
       @certificate.cert_name_product.split("\r\n").each_with_index do |cert_name_product, index|
         index == 0 ? (draw_text cert_name_product, at: [ at_x_indent, at_y ], size: size, style: :bold) :
@@ -59,7 +59,7 @@ class CertificatePdf < Prawn::Document
     at_y = set_at_y(410)
     draw_text @certificate.cert_code_tn_ved, at: [ at_x_indent, at_y ], size: size, style: :bold
 
-    at_y = set_at_y(433)
+    at_y = set_at_y(423)
     text_box @certificate.cert_manuf_regulations, at: [ at_x, at_y ], size: size, style: :bold, width: 400
 
     at_x_indent = set_at_x(159)
