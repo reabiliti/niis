@@ -59,11 +59,11 @@ class CertificatePdf < Prawn::Document
     at_y = set_at_y(420)
     draw_text @certificate.cert_code_tn_ved, at: [ at_x_indent, at_y ], size: size, style: :bold
 
-    at_y = set_at_y(460)
+    at_y = set_at_y(455)
     text_box @certificate.cert_manuf_regulations, at: [ at_x, at_y ], size: size, style: :bold, width: 400
 
     at_x_indent = set_at_x(158)
-    at_y = set_at_y(372)
+    at_y = set_at_y(367)
     if @certificate.cert_manuf_name.split("\r\n").size > 1
       @certificate.cert_manuf_name.split("\r\n", 2).each_with_index do |cert_manuf_name, index|
         index == 0 ? (draw_text cert_manuf_name, at: [at_x_indent, at_y], size: size, style: :bold) :
@@ -88,7 +88,7 @@ class CertificatePdf < Prawn::Document
     end
 
     at_x_indent = set_at_x(185)
-    at_y = set_at_y(318)
+    at_y = set_at_y(313)
     if @certificate.cert_applic_name.split("\r\n", 2).size > 1
        @certificate.cert_applic_name.split("\r\n", 2).each_with_index do |prop_applic_name, index|
        index == 0 ? (draw_text prop_applic_name, at: [ at_x_indent, at_y ], size: size, style: :bold) :
@@ -113,7 +113,7 @@ class CertificatePdf < Prawn::Document
     end
 
     at_x_indent = set_at_x(160)
-    at_y = set_at_y(262)
+    at_y = set_at_y(257)
     @certificate.cert_test_report.split("\r\n", 2).each_with_index do |test_report, index|
       index == 0 ? (draw_text test_report, at: [ at_x_indent, at_y ], size: size, style: :bold) :
                    (text_box test_report, at: [ at_x, at_y ], size: size, style: :bold, width: 500)
@@ -121,7 +121,7 @@ class CertificatePdf < Prawn::Document
     end
 
     at_x_indent = set_at_x(274)
-    at_y = set_at_y(155)
+    at_y = set_at_y(150)
     draw_text @certificate.cert_add_info, at: [ at_x_indent, at_y ], size: size, style: :bold
 
     at_y -= 12
@@ -132,10 +132,10 @@ class CertificatePdf < Prawn::Document
 
 
     at_x_indent = set_at_x(428)
-    at_y = set_at_y(92)
+    at_y = set_at_y(87)
     draw_text @certificate.cert_chief_org, at: [ at_x_indent, at_y ], size: size, style: :bold
 
-    at_y = set_at_y(64)
+    at_y = set_at_y(59)
     draw_text @certificate.cert_expert, at: [ at_x_indent, at_y ], size: size, style: :bold
 
   end
