@@ -132,10 +132,10 @@ class CertificatePdf < Prawn::Document
 
 
     at_x_indent = set_at_x(428)
-    at_y = set_at_y(87)
+    at_y = set_at_y(92)
     draw_text @certificate.cert_chief_org, at: [ at_x_indent, at_y ], size: size, style: :bold
 
-    at_y = set_at_y(59)
+    at_y = set_at_y(64)
     draw_text @certificate.cert_expert, at: [ at_x_indent, at_y ], size: size, style: :bold
 
   end
