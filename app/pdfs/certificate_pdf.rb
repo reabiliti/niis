@@ -36,20 +36,25 @@ class CertificatePdf < Prawn::Document
     at_x_indent = set_at_x(135)
     at_y = set_at_y(548)
     if @certificate.cert_name_product.split("\r\n").length > 1
-      @certificate.cert_name_product.split("\r\n").each_with_index do |cert_name_product, index|
-        index == 0 ? (draw_text cert_name_product, at: [ at_x_indent, at_y ], size: size, style: :bold) :
-                     (text_box cert_name_product + "\n" +
-                      @certificate.cert_manuf_doc + "\n" +
-                      @proposal.prop_applic_from_issue,
-                      at: [ at_x, at_y ], size: size, style: :bold, width: 400)
-        at_y -= 5
+       @certificate.cert_name_product.split("\r\n").each_with_index do |cert_name_product, index|
+       index == 0 ? (draw_text cert_name_product, at: [ at_x_indent, at_y ], size: size, style: :bold) :
+                    (draw_text "#{cert_name_product}",
+                    at: [ at_x, at_y ], size: size, style: :bold)
+        at_y -= 12
       end
+      draw_text @certificate.cert_manuf_doc, at: [ at_x, at_y ], size: size, style: :bold
+      at_y -= 12
+      draw_text @proposal.prop_applic_from_issue, at: [ at_x, at_y ], size: size, style: :bold
+      at_y -= 5
+      text_box @certificate.cert_manuf_regulations, at: [ at_x, at_y ], size: size, style: :bold, width: 400
     else
       draw_text @certificate.cert_name_product, at: [ at_x_indent, at_y ], size: size, style: :bold
       at_y -= 12
       draw_text @certificate.cert_manuf_doc, at: [ at_x, at_y ], size: size, style: :bold
       at_y -= 12
       draw_text @proposal.prop_applic_from_issue, at: [ at_x, at_y ], size: size, style: :bold
+      at_y -= 5
+      text_box @certificate.cert_manuf_regulations, at: [ at_x, at_y ], size: size, style: :bold, width: 400
     end
 
     at_x_indent = set_at_x(470)
@@ -59,17 +64,14 @@ class CertificatePdf < Prawn::Document
     at_y = set_at_y(420)
     draw_text @certificate.cert_code_tn_ved, at: [ at_x_indent, at_y ], size: size, style: :bold
 
-    at_y = set_at_y(455)
-    text_box @certificate.cert_manuf_regulations, at: [ at_x, at_y ], size: size, style: :bold, width: 400
-
     at_x_indent = set_at_x(158)
     at_y = set_at_y(367)
     if @certificate.cert_manuf_name.split("\r\n").size > 1
-      @certificate.cert_manuf_name.split("\r\n", 2).each_with_index do |cert_manuf_name, index|
-        index == 0 ? (draw_text cert_manuf_name, at: [at_x_indent, at_y], size: size, style: :bold) :
-                     (text_box "#{cert_manuf_name}. ИНН: #{@certificate.cert_manuf_inn}\n" +
-                      "#{@certificate.cert_manuf_address}, #{@certificate.cert_manuf_postcode}",
-                      at: [at_x, at_y], size: size, style: :bold, width: 500)
+       @certificate.cert_manuf_name.split("\r\n", 2).each_with_index do |cert_manuf_name, index|
+       index == 0 ? (draw_text cert_manuf_name, at: [at_x_indent, at_y], size: size, style: :bold) :
+                    (text_box "#{cert_manuf_name}. ИНН: #{@certificate.cert_manuf_inn}\n" +
+                    "#{@certificate.cert_manuf_address}, #{@certificate.cert_manuf_postcode}",
+                    at: [at_x, at_y], size: size, style: :bold, width: 500)
         at_y -= 5
       end
     elsif "#{@certificate.cert_manuf_name}. ИНН: #{@certificate.cert_manuf_inn}".length <= 60
