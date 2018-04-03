@@ -17,22 +17,22 @@ class AttachmentPdf < Prawn::Document
     draw_text @certificate.cert_registration_num, at: [ at_x, at_y ], size: size, style: :bold
 
     at_x = set_at_x(48)
-    at_y = set_at_y(525)
+    at_y = set_at_y(518)
     text_box @attachment.att_code_okp, at: [ at_x, at_y ], size: size, style: :bold, width: 90
 
     at_x = set_at_x(142)
-    at_y = set_at_y(525)
+    at_y = set_at_y(518)
     text_box "#{@attachment.att_name_product}\n\n ИЗГОТОВИТЕЛЬ: #{@attachment.att_manuf_name}", at: [ at_x, at_y ], size: size, style: :bold, width: 205
 
     at_x = set_at_x(385)
-    at_y = set_at_y(525)
+    at_y = set_at_y(518)
     text_box @attachment.att_regulations, at: [ at_x, at_y ], size: size, style: :bold, width: 150
 
     at_x = set_at_x(428)
-    at_y = set_at_y(88)
+    at_y = set_at_y(70)
     draw_text @certificate.cert_chief_org, at: [ at_x, at_y ], size: size, style: :bold
 
-    at_y = set_at_y(63)
+    at_y = set_at_y(45)
     draw_text @certificate.cert_expert, at: [ at_x, at_y ], size: size, style: :bold
 
   end
