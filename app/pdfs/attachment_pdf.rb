@@ -29,10 +29,10 @@ class AttachmentPdf < Prawn::Document
     text_box @attachment.att_regulations, at: [ at_x, at_y ], size: size, style: :bold, width: 150
 
     at_x = set_at_x(428)
-    at_y = set_at_y(50)
+    at_y = set_at_y(42)
     draw_text @certificate.cert_chief_org, at: [ at_x, at_y ], size: size, style: :bold
 
-    at_y = set_at_y(25)
+    at_y = set_at_y(18)
     draw_text @certificate.cert_expert, at: [ at_x, at_y ], size: size, style: :bold
 
   end
