@@ -45,17 +45,16 @@ class CertificatePdf < Prawn::Document
       draw_text @certificate.cert_manuf_doc, at: [ at_x, at_y ], size: size, style: :bold
       at_y -= 12
       draw_text @proposal.prop_applic_from_issue, at: [ at_x, at_y ], size: size, style: :bold
-      at_y -= 5
-      text_box @certificate.cert_manuf_regulations, at: [ at_x, at_y ], size: size, style: :bold, width: 400
     else
       draw_text @certificate.cert_name_product, at: [ at_x_indent, at_y ], size: size, style: :bold
       at_y -= 12
       draw_text @certificate.cert_manuf_doc, at: [ at_x, at_y ], size: size, style: :bold
       at_y -= 12
       draw_text @proposal.prop_applic_from_issue, at: [ at_x, at_y ], size: size, style: :bold
-      at_y -= 5
-      text_box @certificate.cert_manuf_regulations, at: [ at_x, at_y ], size: size, style: :bold, width: 400
     end
+
+    at_y = set_at_y(455)
+    text_box @certificate.cert_manuf_regulations, at: [ at_x, at_y ], size: size, style: :bold, width: 400
 
     at_x_indent = set_at_x(470)
     at_y = set_at_y(510)
