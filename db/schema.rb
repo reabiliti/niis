@@ -305,7 +305,6 @@ ActiveRecord::Schema.define(version: 20180316074631) do
   create_table "solutions", force: :cascade do |t|
     t.integer "conclusion_id"
     t.string "sol_number"
-    t.datetime "sol_date_from"
     t.string "sol_delivery"
     t.string "sol_solution_proposal_num"
     t.datetime "sol_solution_proposal_date"
@@ -335,6 +334,7 @@ ActiveRecord::Schema.define(version: 20180316074631) do
     t.string "sol_applic_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "sol_date_from"
     t.index ["conclusion_id"], name: "index_solutions_on_conclusion_id"
   end
 
