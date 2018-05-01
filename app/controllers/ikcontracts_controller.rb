@@ -27,7 +27,8 @@ class IkcontractsController < ApplicationController
     @ikcontract.ikcon_client_name = @certificate.cert_manuf_name
     @ikcontract.ikcon_client_chief_name = @certificate.cert_manuf_name
     @ikcontract.ikcon_client_chief_name_sign = @certificate.cert_manuf_name
-    @ikcontract.ikcon_client_address = @certificate.cert_manuf_address + ", " + @certificate.cert_manuf_postcode
+    @ikcontract.ikcon_client_address = "#{@certificate.cert_manuf_address}, \
+                                        #{@certificate.cert_manuf_postcode}"
   end
 
   def create
@@ -48,19 +49,19 @@ class IkcontractsController < ApplicationController
   end
 
   private
+
   def ikcontract_params
     params.require(:ikcontract).permit(:certificate_id, :ikcon_registration_date, :ikcon_registration_num,
                                        :ikcon_registration_city, :ikcon_exec_name, :ikcon_exec_named,
                                        :ikcon_exec_chief_position, :ikcon_exec_chief_position_sign,
                                        :ikcon_exec_chief_name, :ikcon_exec_chief_name_sign, :ikcon_exec_active,
-                                       :ikcon_exec_based_doc,
-                                       :ikcon_client_name, :ikcon_client_named, :ikcon_client_chief_position,
-                                       :ikcon_client_chief_position_sign, :ikcon_client_chief_name,
-                                       :ikcon_client_chief_name_sign,
+                                       :ikcon_exec_based_doc, :ikcon_client_name, :ikcon_client_named,
+                                       :ikcon_client_chief_position, :ikcon_client_chief_position_sign,
+                                       :ikcon_client_chief_name, :ikcon_client_chief_name_sign,
                                        :ikcon_client_active, :ikcon_client_based_doc, :ikcon_name_product,
-                                       :ikcon_cert_registration_num, :ikcon_inspection_period, :ikcon_contract_time,
-                                       :ikcon_exec_address, :ikcon_exec_bank_details, :ikcon_client_address,
-                                       :ikcon_client_bank_details)
+                                       :ikcon_cert_registration_num, :ikcon_inspection_period,
+                                       :ikcon_contract_time, :ikcon_exec_address, :ikcon_exec_bank_details,
+                                       :ikcon_client_address, :ikcon_client_bank_details)
   end
 
   def ikcontract_find

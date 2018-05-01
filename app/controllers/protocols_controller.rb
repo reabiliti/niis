@@ -30,8 +30,7 @@ class ProtocolsController < ApplicationController
     @protocol.save ? (redirect_to @protocol) : (render 'new')
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @protocol.update(protocol_params) ? (redirect_to @protocol) : (render 'edit')
@@ -43,6 +42,7 @@ class ProtocolsController < ApplicationController
   end
 
   private
+
   def protocol_params
     params.require(:protocol).permit(:solution_proposal_id, :prot_date_from, :prot_applic_name_product,
                                      :prot_applic_code_okp, :prot_applic_code_tn_ved, :prot_manuf_name,

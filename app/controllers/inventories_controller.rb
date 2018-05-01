@@ -3,8 +3,7 @@ class InventoriesController < ApplicationController
   before_action :setting_find, only: [:show, :new]
   before_action :logged_in_user
 
-  def index
-  end
+  def index; end
 
   def show
     @proposal = Proposal.find(@inventory.proposal_id)
@@ -22,8 +21,7 @@ class InventoriesController < ApplicationController
     @inventory.save ? (redirect_to @inventory) : (render 'new')
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @inventory.update(inv_params) ? (redirect_to @inventory) : (render 'new')
@@ -35,6 +33,7 @@ class InventoriesController < ApplicationController
   end
 
   private
+
   def inv_params
     params.require(:inventory).permit(:proposal_id, :inv_date_from, :inv_list_doc,
                                       :inv_list_page, :inv_exec_name, :inv_chief_name)

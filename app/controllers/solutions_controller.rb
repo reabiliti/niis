@@ -3,8 +3,7 @@ class SolutionsController < ApplicationController
   before_action :setting_find, only: [:show, :new]
   before_action :logged_in_user
 
-  def index
-  end
+  def index; end
 
   def show
     @conclusion = Conclusion.find(@solution.conclusion_id)
@@ -41,8 +40,7 @@ class SolutionsController < ApplicationController
     @solution.save ? (redirect_to @solution) : (render 'new')
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @solution.update(sol_params) ? (redirect_to @solution) : (render 'new')
@@ -54,6 +52,7 @@ class SolutionsController < ApplicationController
   end
 
   private
+
   def sol_params
     params.require(:solution).permit(:conclusion_id, :sol_number, :sol_date_from, :sol_delivery,
                                      :sol_solution_proposal_num, :sol_solution_proposal_date,

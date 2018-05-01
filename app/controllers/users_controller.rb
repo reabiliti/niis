@@ -8,8 +8,7 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @user = User.new
@@ -26,12 +25,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
-      flash[:success] = "Профиль обновлен"
+      flash[:success] = 'Профиль обновлен'
       redirect_to @user
     else
       render 'edit'
@@ -40,11 +38,12 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    flash[:success] = "Пользователь удален"
+    flash[:success] = 'Пользователь удален'
     redirect_to users_path
   end
 
   private
+
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end

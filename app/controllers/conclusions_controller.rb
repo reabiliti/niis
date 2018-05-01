@@ -2,8 +2,7 @@ class ConclusionsController < ApplicationController
   before_action :conc_find, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user
 
-  def index
-  end
+  def index; end
 
   def show
     @setting = Setting.first
@@ -35,8 +34,7 @@ class ConclusionsController < ApplicationController
     @conclusion.save ? (redirect_to @conclusion) : (render 'new')
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @conclusion.update(conc_params) ? (redirect_to @conclusion) : (render 'new')
@@ -48,6 +46,7 @@ class ConclusionsController < ApplicationController
   end
 
   private
+
   def conc_params
     params.require(:conclusion).permit(:conc_solution_proposal_num, :conc_solution_proposal_date, :conc_contract_num,
                                        :conc_contract_date, :conc_directive_num, :conc_directive_date,

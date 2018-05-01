@@ -26,7 +26,7 @@ class CertcontractsController < ApplicationController
     @certcontract.cecon_client_name = @proposal.prop_applic_name
     @certcontract.cecon_client_chief_name = @proposal.prop_applic_chief
     @certcontract.cecon_client_chief_name_sign = @proposal.prop_applic_chief
-    @certcontract.cecon_client_address = @proposal.prop_applic_address + ", " + @proposal.prop_manuf_postcode
+    @certcontract.cecon_client_address = "#{@proposal.prop_applic_address}, #{@proposal.prop_manuf_postcode}"
   end
 
   def create
@@ -47,6 +47,7 @@ class CertcontractsController < ApplicationController
   end
 
   private
+
   def cecon_params
     params.require(:certcontract).permit(:proposal_id, :cecon_exec_chief_name_sign,
                                          :cecon_registration_date, :cecon_registration_num,

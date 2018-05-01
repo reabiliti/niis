@@ -1,10 +1,9 @@
 class AttachmentsController < ApplicationController
-  before_action :attach_find, only: [ :show, :edit, :update, :destroy ]
-  before_action :setting_find, only: [ :show ]
+  before_action :attach_find, only: [:show, :edit, :update, :destroy]
+  before_action :setting_find, only: [:show]
   before_action :logged_in_user
 
-  def index
-  end
+  def index; end
 
   def show
     @certificate = Certificate.find(@attachment.certificate_id)
@@ -14,8 +13,7 @@ class AttachmentsController < ApplicationController
         pdf = AttachmentPdf.new(@attachment, @setting, @certificate)
         send_data pdf.render,
                   filename: "attachment_#{@certificate.cert_registration_num}",
-                  type: 'application/pdf',
-                  disposition: 'inline',
+                  type: 'application/pdf', disposition: 'inline',
                   page_layout: 'landscape'
       end
     end
@@ -51,9 +49,11 @@ class AttachmentsController < ApplicationController
   end
 
   private
+
   def attach_params
-    params.require(:attachment).permit(:certificate_id, :att_blank_num, :att_code_okp,
-                                       :att_code_tn_ved, :att_name_product, :att_manuf_name,
+    params.require(:attachment).permit(:certificate_id, :att_blank_num,
+                                       :att_code_okp, :att_code_tn_ved,
+                                       :att_name_product, :att_manuf_name,
                                        :att_regulations)
   end
 

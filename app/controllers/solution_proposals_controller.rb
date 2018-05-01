@@ -2,8 +2,7 @@ class SolutionProposalsController < ApplicationController
   before_action :solprop_find, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user
 
-  def index
-  end
+  def index; end
 
   def show
     @proposal = Proposal.find(@solution_proposal.proposal_id)
@@ -32,8 +31,7 @@ class SolutionProposalsController < ApplicationController
     @solution_proposal.save ? (redirect_to @solution_proposal) : (render 'new')
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @solution_proposal.update(solprop_params) ? (redirect_to @solution_proposal) : (render 'edit')
@@ -45,6 +43,7 @@ class SolutionProposalsController < ApplicationController
   end
 
   private
+
   def solprop_params
     params.require(:solution_proposal).permit(:proposal_id, :solprop_number, :solprop_date_from, :solprop_solution,
                                                :solprop_applic_name_product, :solprop_applic_code_okp,

@@ -2,8 +2,7 @@ class ProposalsController < ApplicationController
   before_action :proposal_find, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user
 
-  def index
-  end
+  def index; end
 
   def show
     @setting = Setting.first
@@ -18,8 +17,7 @@ class ProposalsController < ApplicationController
     @proposal.save ? (redirect_to @proposal) : (render 'new')
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @proposal.update(proposal_params) ? (redirect_to @proposal) : (render 'edit')
@@ -31,6 +29,7 @@ class ProposalsController < ApplicationController
   end
 
   private
+
   def proposal_params
     params.require(:proposal).permit(:prop_number, :prop_date_from, :prop_cert_system, :prop_applic_name,
                                      :prop_applic_reg_doc, :prop_applic_address, :prop_applic_postcode,

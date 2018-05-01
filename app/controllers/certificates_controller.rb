@@ -71,23 +71,24 @@ class CertificatesController < ApplicationController
   end
 
   private
-    def certificate_params
-      params.require(:certificate).permit(:solution_id, :cert_expiry_date, :cert_name_product,
-                                          :cert_manuf_regulations, :cert_code_okp, :cert_code_tn_ved,
-                                          :cert_manuf_doc, :cert_manuf_name, :cert_manuf_inn,
-                                          :cert_manuf_address, :cert_manuf_postcode,
-                                          :cert_test_report, :cert_add_info, :cert_place_marking,
-                                          :cert_chief_org, :cert_expert, :cert_registration_date,
-                                          :cert_registration_num, :cert_blank_num, :cert_applic_name,
-                                          :cert_applic_inn, :cert_applic_address, :cert_applic_postcode,
-                                          :cert_applic_phone)
-    end
 
-    def certificate_find
-      @certificate = Certificate.find(params[:id])
-    end
+  def certificate_params
+    params.require(:certificate).permit(:solution_id, :cert_expiry_date, :cert_name_product,
+                                        :cert_manuf_regulations, :cert_code_okp, :cert_code_tn_ved,
+                                        :cert_manuf_doc, :cert_manuf_name, :cert_manuf_inn,
+                                        :cert_manuf_address, :cert_manuf_postcode,
+                                        :cert_test_report, :cert_add_info, :cert_place_marking,
+                                        :cert_chief_org, :cert_expert, :cert_registration_date,
+                                        :cert_registration_num, :cert_blank_num, :cert_applic_name,
+                                        :cert_applic_inn, :cert_applic_address, :cert_applic_postcode,
+                                        :cert_applic_phone)
+  end
 
-    def setting_find
-      @setting = Setting.first
-    end
+  def certificate_find
+    @certificate = Certificate.find(params[:id])
+  end
+
+  def setting_find
+    @setting = Setting.first
+  end
 end

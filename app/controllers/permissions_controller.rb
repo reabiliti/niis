@@ -3,8 +3,7 @@ class PermissionsController < ApplicationController
   before_action :setting_find, only: [:show, :new]
   before_action :logged_in_user
 
-  def index
-  end
+  def index; end
 
   def show
     @certificate = Certificate.find(@permission.certificate_id)
@@ -29,8 +28,7 @@ class PermissionsController < ApplicationController
     @permission.save ? (redirect_to @permission) : (render 'new')
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @permission.update(permission_params) ? (redirect_to @permission) : (render 'new')
@@ -42,6 +40,7 @@ class PermissionsController < ApplicationController
   end
 
   private
+
   def permission_params
     params.require(:permission).permit(:certificate_id, :perm_registration_num, :perm_registration_date,
                                        :perm_expiry_date, :perm_place_marking, :perm_chief_name,
