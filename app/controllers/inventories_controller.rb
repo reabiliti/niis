@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class InventoriesController < ApplicationController
-  before_action :inv_find, only: [:show, :edit, :update, :destroy]
-  before_action :setting_find, only: [:show, :new]
+  before_action :inv_find, only: %i[show edit update destroy]
+  before_action :setting_find, only: %i[show new]
   before_action :logged_in_user
 
   def index; end
@@ -46,5 +48,4 @@ class InventoriesController < ApplicationController
   def setting_find
     @setting = Setting.first
   end
-
 end

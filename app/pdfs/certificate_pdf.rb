@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Print to pdf certificate
 class CertificatePdf < Prawn::Document
   def initialize(certificate, setting, proposal)
@@ -122,8 +124,8 @@ class CertificatePdf < Prawn::Document
           text = "#{prop_applic_name}. ИНН: \
                   #{@certificate.cert_applic_inn}\n \
                   #{@certificate.cert_applic_address}, \
-                  #{@certificate.cert_applic_postcode} \
-                  , тел. #{@certificate.cert_applic_phone}"
+                  #{@certificate.cert_applic_postcode}"
+          text += ", тел. #{@certificate.cert_applic_phone}" if @certificate.cert_applic_phone.present?
           text_box text, at: [at_x, at_y], size: size, style: :bold, width: 500
         end
         at_y -= 5
@@ -134,8 +136,8 @@ class CertificatePdf < Prawn::Document
       draw_text text, at: [at_x_indent, at_y], size: size, style: :bold
       at_y -= 5
       text = "#{@certificate.cert_applic_address}, \
-              #{@certificate.cert_applic_postcode}, \
-              тел. #{@certificate.cert_applic_phone}"
+              #{@certificate.cert_applic_postcode}"
+      text += ", тел. #{@certificate.cert_applic_phone}" if @certificate.cert_applic_phone.present?
       text_box text, at: [at_x, at_y], size: size, style: :bold, width: 500
     else
       draw_text "#{@certificate.cert_applic_name}.", at: [at_x_indent, at_y],
@@ -143,8 +145,8 @@ class CertificatePdf < Prawn::Document
       at_y -= 5
       text = "ИНН: #{@certificate.cert_applic_inn}\n \
               #{@certificate.cert_applic_address}, \
-              #{@certificate.cert_applic_postcode}, \
-              тел. #{@certificate.cert_applic_phone}"
+              #{@certificate.cert_applic_postcode}"
+      text += ", тел. #{@certificate.cert_applic_phone}" if @certificate.cert_applic_phone.present?
       text_box text, at: [at_x, at_y], size: size, style: :bold, width: 500
     end
 

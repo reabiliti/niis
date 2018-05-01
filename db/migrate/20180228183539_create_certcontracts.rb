@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateCertcontracts < ActiveRecord::Migration[5.1]
   def change
     create_table :certcontracts do |t|
@@ -29,7 +31,6 @@ class CreateCertcontracts < ActiveRecord::Migration[5.1]
       t.string :cecon_exec_chief_name_sign
       t.string :cecon_client_chief_position_sign
       t.string :cecon_client_chief_name_sign
-
 
       t.timestamps
     end

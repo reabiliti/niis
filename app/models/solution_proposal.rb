@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SolutionProposal < ApplicationRecord
   belongs_to :proposal, inverse_of: :solution_proposal
   validates :proposal_id, uniqueness: true

@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 class CertificatesController < ApplicationController
-  before_action :certificate_find, only: [:show, :edit, :update, :destroy]
-  before_action :setting_find, only: [:show, :new]
+  before_action :certificate_find, only: %i[show edit update destroy]
+  before_action :setting_find, only: %i[show new]
   before_action :logged_in_user
 
-  def index
-  end
+  def index; end
 
   def show
     @solution = Solution.find(@certificate.solution_id)
@@ -50,7 +51,6 @@ class CertificatesController < ApplicationController
     @certificate.cert_place_marking = @solution.sol_place_marking
     @certificate.cert_chief_org = @setting.set_os_chief_name
     @certificate.cert_expert = @solution.sol_expert
-
   end
 
   def create
@@ -58,8 +58,7 @@ class CertificatesController < ApplicationController
     @certificate.save ? (redirect_to @certificate) : (render 'new')
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @certificate.update(certificate_params) ? (redirect_to @certificate) : (render 'edit')

@@ -106,7 +106,10 @@
     ИНН: <b><%= @certificate.cert_applic_inn %></b>
   </div>
   <div class="paragraph">
-    Адрес: <b><%= @certificate.cert_applic_address %>, <%= @certificate.cert_applic_postcode %>, тел.: <%= @certificate.cert_applic_phone %></b>
+    Адрес: <b><%= @certificate.cert_applic_address %>, <%= @certificate.cert_applic_postcode %>
+    <% if @certificate.cert_applic_phone.present? %>
+      , тел.: <%= @certificate.cert_applic_phone %></b>
+    <% end %>
   </div>
   <br>
   <br>

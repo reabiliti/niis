@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeRenameColumnConclusions < ActiveRecord::Migration[5.1]
   def change
     change_column :solution_proposals, :solprop_applic_sign, :boolean, null: false

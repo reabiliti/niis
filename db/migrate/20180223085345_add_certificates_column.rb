@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddCertificatesColumn < ActiveRecord::Migration[5.1]
   def change
     add_column :certificates, :cert_registration_date, :datetime

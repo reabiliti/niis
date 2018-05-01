@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ProposalsController < ApplicationController
-  before_action :proposal_find, only: [:show, :edit, :update, :destroy]
+  before_action :proposal_find, only: %i[show edit update destroy]
   before_action :logged_in_user
 
   def index; end

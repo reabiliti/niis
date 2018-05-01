@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Solution < ApplicationRecord
   belongs_to :conclusion, inverse_of: :solution
   validates :conclusion_id, uniqueness: true

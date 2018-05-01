@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class SolutionProposalsController < ApplicationController
-  before_action :solprop_find, only: [:show, :edit, :update, :destroy]
+  before_action :solprop_find, only: %i[show edit update destroy]
   before_action :logged_in_user
 
   def index; end
@@ -46,15 +48,15 @@ class SolutionProposalsController < ApplicationController
 
   def solprop_params
     params.require(:solution_proposal).permit(:proposal_id, :solprop_number, :solprop_date_from, :solprop_solution,
-                                               :solprop_applic_name_product, :solprop_applic_code_okp,
-                                               :solprop_applic_code_tn_ved, :solprop_manuf_name,
-                                               :solprop_manuf_address, :solprop_manuf_postcode,
-                                               :solprop_manuf_doc, :solprop_manuf_list_doc,
-                                               :solprop_regulations, :solprop_desc_scheme_cert,
-                                               :solprop_test_lab, :solprop_sampling, :solprop_list_doc_product,
-                                               :solprop_basis_work, :solprop_add_info, :solprop_chief_name,
-                                               :solprop_chief_org, :solprop_expert, :solprop_executor,
-                                               :solprop_applic_sign, :solprop_applic_name)
+                                              :solprop_applic_name_product, :solprop_applic_code_okp,
+                                              :solprop_applic_code_tn_ved, :solprop_manuf_name,
+                                              :solprop_manuf_address, :solprop_manuf_postcode,
+                                              :solprop_manuf_doc, :solprop_manuf_list_doc,
+                                              :solprop_regulations, :solprop_desc_scheme_cert,
+                                              :solprop_test_lab, :solprop_sampling, :solprop_list_doc_product,
+                                              :solprop_basis_work, :solprop_add_info, :solprop_chief_name,
+                                              :solprop_chief_org, :solprop_expert, :solprop_executor,
+                                              :solprop_applic_sign, :solprop_applic_name)
   end
 
   def solprop_find

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ConclusionsController < ApplicationController
-  before_action :conc_find, only: [:show, :edit, :update, :destroy]
+  before_action :conc_find, only: %i[show edit update destroy]
   before_action :logged_in_user
 
   def index; end
@@ -26,7 +28,6 @@ class ConclusionsController < ApplicationController
     @conclusion.conc_manuf_regulations = @solution_proposal.solprop_regulations
     @conclusion.conc_desc_scheme_cert = @solution_proposal.solprop_desc_scheme_cert
     @conclusion.conc_list_doc = @solution_proposal.solprop_list_doc_product
-
   end
 
   def create

@@ -1,5 +1,6 @@
-module SessionsHelper
+# frozen_string_literal: true
 
+module SessionsHelper
   def log_in(user)
     session[:user_id] = user.id
   end
@@ -23,9 +24,8 @@ module SessionsHelper
 
   def logged_in_user
     unless logged_in?
-      flash[:danger] = "Пожалуйста, авторизуйтесь"
+      flash[:danger] = 'Пожалуйста, авторизуйтесь'
       redirect_to login_path
     end
   end
-
 end

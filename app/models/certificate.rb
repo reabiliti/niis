@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Certificate < ApplicationRecord
   belongs_to :solution, inverse_of: :certificates
   validates :cert_blank_num, uniqueness: true

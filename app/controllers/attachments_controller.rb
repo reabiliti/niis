@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class AttachmentsController < ApplicationController
-  before_action :attach_find, only: [:show, :edit, :update, :destroy]
+  before_action :attach_find, only: %i[show edit update destroy]
   before_action :setting_find, only: [:show]
   before_action :logged_in_user
 

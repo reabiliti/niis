@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 class IkcontractsController < ApplicationController
-  before_action :ikcontract_find, only: [:show, :edit, :update, :destroy]
-  before_action :setting_find, only: [:show, :new]
+  before_action :ikcontract_find, only: %i[show edit update destroy]
+  before_action :setting_find, only: %i[show new]
   before_action :logged_in_user
 
-  def index
-  end
+  def index; end
 
   def show
     @certificate = Certificate.find(@ikcontract.certificate_id)
@@ -36,8 +37,7 @@ class IkcontractsController < ApplicationController
     @ikcontract.save ? (redirect_to @ikcontract) : (render 'new')
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @ikcontract.update(ikcontract_params) ? (redirect_to @ikcontract) : (render 'edit')

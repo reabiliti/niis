@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddRenameColumnIkcontract < ActiveRecord::Migration[5.1]
   def change
     rename_column :ikcontracts, :ikcon_exec_chief, :ikcon_exec_chief_position

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :user_find, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :user_find, only: %i[show edit update destroy]
+  before_action :correct_user, only: %i[edit update]
   before_action :admin_user, only: :destroy
-  before_action :logged_in_user, except: [:new, :create]
+  before_action :logged_in_user, except: %i[new create]
 
   def index
     @users = User.all

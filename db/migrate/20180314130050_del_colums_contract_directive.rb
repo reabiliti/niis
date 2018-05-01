@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DelColumsContractDirective < ActiveRecord::Migration[5.1]
   def change
     remove_column :conclusions, :conc_contract_num

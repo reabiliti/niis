@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # print to pDF attachment
 class AttachmentPdf < Prawn::Document
   def initialize(attachment, setting, certificate)

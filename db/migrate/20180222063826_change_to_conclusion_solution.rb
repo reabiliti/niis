@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeToConclusionSolution < ActiveRecord::Migration[5.1]
   def change
     rename_column :conclusions, :conc_solution_num, :conc_solution_proposal_num

@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 class CertcontractsController < ApplicationController
-  before_action :cecon_find, only: [:show, :edit, :update, :destroy]
-  before_action :setting_find, only: [:show, :new]
+  before_action :cecon_find, only: %i[show edit update destroy]
+  before_action :setting_find, only: %i[show new]
   before_action :logged_in_user
 
-  def index
-  end
+  def index; end
 
   def show
     @proposal = Proposal.find(@certcontract.proposal_id)
@@ -34,8 +35,7 @@ class CertcontractsController < ApplicationController
     @certcontract.save ? (redirect_to @certcontract) : (render 'new')
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @certcontract.update(cecon_params) ? (redirect_to @certcontract) : (render 'new')

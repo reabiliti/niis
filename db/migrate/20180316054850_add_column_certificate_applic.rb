@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddColumnCertificateApplic < ActiveRecord::Migration[5.1]
   def change
     add_column :certificates, :cert_applic_name, :string
