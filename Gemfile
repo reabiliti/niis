@@ -25,6 +25,7 @@ gem 'will_paginate', '>= 3.1'
 
 gem 'prawn'
 gem 'responders'
+gem 'haml-rails'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
