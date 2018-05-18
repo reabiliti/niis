@@ -1,0 +1,11 @@
+- provide(:title, "Приложение к сертификату #{@certificate.cert_registration_num},
+                  бланк № #{@attachment.att_blank_num}")
+.link-stuck
+  = link_to t('link.back'), :back
+%br
+%h1
+  Приложение к сертификату
+  = @certificate.cert_registration_num
+  , бланк №
+  = @attachment.att_blank_num
+= render partial: 'form', locals: { attachment: @attachment }

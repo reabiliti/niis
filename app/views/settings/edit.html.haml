@@ -3,4 +3,4 @@
   = link_to t('link.back'), :back
 %br
 %h1 Настройки
-= render 'form'
+= render partial: 'form', locals: { setting: @setting }

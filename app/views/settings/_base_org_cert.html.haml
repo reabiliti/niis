@@ -1,0 +1,39 @@
+%h2 Организация, на базе которой создан орган по сертификации
+.div-table
+  .div-table-row
+    .div-table-col.col-width-4.hr-light
+      Наименование
+    .div-table-col.col-width-8.hr-light
+      = setting.set_org_name
+  .div-table-row
+    .div-table-col.col-width-4.hr-light
+      Адрес: Название улицы, номер дома, номер помещения; название населенного пункта (города, поселка и т.п.);
+      название района; название республики, края, области, автономного округа (области);
+      страна (для зарубежных ОС); почтовый индекс
+    .div-table-col.col-width-8.hr-light
+      = setting.set_org_address
+  .div-table-row
+    .div-table-col.col-width-4.hr-light
+      Телефон
+    .div-table-col.col-width-8.hr-light
+      = setting.set_org_phone
+  .div-table-row
+    .div-table-col.col-width-4.hr-light
+      Должность руководителя ОС
+    .div-table-col.col-width-8.hr-light
+      = setting.set_org_chief_position
+  .div-table-row
+    .div-table-col.col-width-4.hr-light
+      Инициалы, фамилия руководителя
+    .div-table-col.col-width-8.hr-light
+      = setting.set_org_chief_name
+  .div-table-row
+    .div-table-col.col-width-4.hr-light
+      Действует на основании документа
+    .div-table-col.col-width-8.hr-light
+      = setting.set_org_based_doc
+  .div-table-row
+    .div-table-col.col-width-4.hr-light
+      Главный бухгалтер
+    .div-table-col.col-width-8.hr-light
+      = setting.set_org_chief_accountant

@@ -1,0 +1,20 @@
+.row
+  .col-md-10.col-md-offset-1
+    - if attachment.errors.any?
+      .error.text-danger
+        %p
+          = pluralize(attachment.errors.count, 'error')
+          \:
+        %ul
+          - attachment.errors.full_messages.each do |msg|
+            %li= msg
+    = simple_form_for attachment, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f|
+      = f.input :certificate_id, as: :hidden
+      = f.input :att_blank_num
+      = f.input :att_code_okp, as: :text, input_html: { rows: 2 }
+      = f.input :att_code_tn_ved, as: :text, input_html: { rows: 2 }
+      = f.input :att_name_product, as: :text, input_html: { rows: 6 }
+      = f.input :att_manuf_name, as: :text, input_html: { rows: 4 }
+      = f.input :att_regulations
+
+      = f.button :submit, 'Сохранить опись документов', class: 'btn btn-primary center-block'

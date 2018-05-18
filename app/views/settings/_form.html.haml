@@ -1,17 +1,17 @@
 .row
   .col-md-10.col-md-offset-1
-    - if @setting.errors.any?
+    - if setting.errors.any?
       .error.text-danger
         %p
-          = pluralize(@setting.errors.count, 'error')
+          = pluralize(setting.errors.count, 'error')
           \:
         %ul
-          - @setting.errors.full_messages.each do |msg|
+          - setting.errors.full_messages.each do |msg|
             %li= msg
 
-    = simple_form_for @setting, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f|
+    = simple_form_for setting, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f|
       = f.input :set_name
-      %hr{ class: 'col-sm-12' }
+      %hr.col-sm-12
       %h2 Сведения об аккредитации органа по сертификации
       = f.input :set_os_registration_num
       .form-group
@@ -26,7 +26,7 @@
       = f.input :set_os_chief_position
       = f.input :set_os_chief_name
       = f.input :set_os_based_doc
-      %hr{ class: 'col-sm-12' }
+      %hr.col-sm-12
       %h2 Организация, на базе которой создан орган по сертификации
       = f.input :set_org_name, as: :text, input_html: { rows: 4 }
       = f.input :set_org_address, as: :text, input_html: { rows: 7 }
@@ -35,9 +35,9 @@
       = f.input :set_org_chief_name
       = f.input :set_org_based_doc
       = f.input :set_org_chief_accountant
-      %hr{ class: 'col-sm-12' }
+      %hr.col-sm-12
       %h2 Параметры печати сертификата
       = f.input :set_at_x
       = f.input :set_at_y
-      %hr{ class: 'col-sm-12' }
+      %hr.col-sm-12
       = f.button :submit, 'Сохранить настройки', class: 'btn btn-primary center-block'
