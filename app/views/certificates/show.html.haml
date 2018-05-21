@@ -1,0 +1,116 @@
+- provide(:title, "Сертификат #{@certificate.cert_registration_num}")
+= render partial: 'links', locals: { certificate: @certificate }
+.page-body
+  .caption
+    СИСТЕМА СЕРТИФИКАЦИИ ГОСТ Р
+    %br ГОССТАНДАРТ РОССИИ
+    %br СЕРТИФИКАТ СООТВЕТСТВИЯ
+  %br
+  .div-table
+    .div-table-row
+      .div-table-col.col-width-4
+      .div-table-col.col-width-6
+        №
+        %b= @certificate.cert_registration_num
+        %br
+        Срок действия с
+        %b= @certificate.cert_registration_date.strftime('%d.%m.%Y')
+        по
+        %b= @certificate.cert_expiry_date.strftime('%d.%m.%Y')
+      .div-table-col.col-width-2
+    .div-table-row
+      .div-table-col.col-width-4
+      .div-table-col.col-width-6
+      .div-table-col.col-width-2.red-text
+        №
+        %b= @certificate.cert_blank_num
+  .paragraph
+    ОРГАН ПО СЕРТИФИКАЦИИ
+    %b= @setting.set_os_registration_num
+  .paragraph
+    %b= @setting.set_os_name.gsub 'ОРГАН ПО СЕРТИФИКАЦИИ ', ''
+  .paragraph
+    %b= @setting.set_os_address
+  %br
+  .div-table
+    .div-table-row
+      .div-table-col.col-width-9
+        ПРОДУКЦИЯ
+        %b= @certificate.cert_name_product
+      .div-table-col.col-width-2.center
+        Код ОКПД2
+    .div-table-row
+      .div-table-col.col-width-9
+        %b= @certificate.cert_manuf_doc
+      .div-table-col.col-width-3.center
+        %b= @certificate.cert_code_okp
+    .div-table-row
+      .div-table-col.col-width-9
+        %b= @proposal.prop_applic_from_issue
+      .div-table-col.col-width-3.center
+  %br
+  .paragraph
+    СООТВЕТСТВУЕТ ТРЕБОВАНИЯМ НОРМАТИВНЫХ ДОКУМЕНТОВ
+  .div-table
+    .div-table-row
+      .div-table-col.col-width-9
+        %b= @certificate.cert_manuf_regulations
+      .div-table-col.col-width-3.center
+        Код ТН ВЭД
+    .div-table-row
+      .div-table-col.col-width-9
+      .div-table-col.col-width-3.center
+        %b= @certificate.cert_code_tn_ved
+  %br
+  %br
+  .paragraph
+    ИЗГОТОВИТЕЛЬ
+    %b= @certificate.cert_manuf_name
+  .paragraph
+    ИНН:
+    %b= @certificate.cert_manuf_inn
+  .paragraph
+    Адрес:
+    %b #{@certificate.cert_manuf_address}, #{@certificate.cert_manuf_postcode}
+  %br
+  %br
+  .paragraph
+    СЕРТИФИКАТ ВЫДАН
+    %b= @certificate.cert_applic_name
+  .paragraph
+    ИНН:
+    %b= @certificate.cert_applic_inn
+  .paragraph
+    Адрес:
+    %b #{@certificate.cert_applic_address}, #{@certificate.cert_applic_postcode}
+    - if @certificate.cert_applic_phone.presence
+      %b, тел.: #{@certificate.cert_applic_phone}
+  %br
+  %br
+  .paragraph
+    НА ОСНОВАНИИ
+  .paragraph
+    %b= @certificate.cert_test_report
+  %br
+  .paragraph
+    ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ
+  .paragraph
+    %b
+      = @certificate.cert_add_info
+  .paragraph
+    %b= @certificate.cert_place_marking
+  .paragraph
+    Схема сертификации
+    %b #{@proposal.prop_manuf_scheme_cert}.
+  %br
+  .div-table
+    .div-table-row
+      .div-table-col.col-width-7
+        Руководитель органа
+      .div-table-col.col-width-5
+        %b= @certificate.cert_chief_org
+    .div-table-row
+      .div-table-col.col-width-7
+        Эксперт
+      .div-table-col.col-width-5
+        %b= @certificate.cert_expert

@@ -1,13 +1,6 @@
 .row
   .col-md-10.col-md-offset-1
-    - if certcontract.errors.any?
-      .error.text-danger
-        %p
-          = pluralize(certcontract.errors.count, 'error')
-          \:
-        %ul
-          - certcontract.errors.full_messages.each do |msg|
-            %li= msg
+    = render partial: 'shared/form_errors', locals: { model: certcontract }
     = simple_form_for certcontract, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f|
       = f.input :proposal_id, as: :hidden
       .row
