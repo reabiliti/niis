@@ -1,14 +1,6 @@
 .row
   .col-md-10.col-md-offset-1
-    - if setting.errors.any?
-      .error.text-danger
-        %p
-          = pluralize(setting.errors.count, 'error')
-          \:
-        %ul
-          - setting.errors.full_messages.each do |msg|
-            %li= msg
-
+    = render partial: 'shared/form_errors', locals: { model: setting }
     = simple_form_for setting, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f|
       = f.input :set_name
       %hr.col-sm-12

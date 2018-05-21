@@ -5,19 +5,19 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources :settings
-  resources :certificates
+  resources :settings, except: %i[index destroy]
+  resources :certificates, except: [:index]
 
-  resources :proposals
-  resources :solution_proposals
-  resources :protocols
-  resources :conclusions
-  resources :solutions
-  resources :permissions
-  resources :ikcontracts
-  resources :certcontracts
-  resources :inventories
-  resources :attachments
+  resources :proposals, except: [:index]
+  resources :solution_proposals, except: [:index]
+  resources :protocols, except: [:index]
+  resources :conclusions, except: [:index]
+  resources :solutions, except: [:index]
+  resources :permissions, except: [:index]
+  resources :ikcontracts, except: [:index]
+  resources :certcontracts, except: [:index]
+  resources :inventories, except: [:index]
+  resources :attachments, except: [:index]
 
   get       '/signup',  to: 'users#new'
   get       '/login',   to: 'sessions#new'

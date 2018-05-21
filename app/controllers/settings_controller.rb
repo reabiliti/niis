@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
+# This class settings application
 class SettingsController < ApplicationController
-  before_action :setting_find, only: %i[show edit update destroy]
+  before_action :setting_find, only: %i[show edit update]
   before_action :logged_in_user
-
-  def index; end
 
   def show; end
 
@@ -16,16 +15,21 @@ class SettingsController < ApplicationController
 
   def create
     @setting = Setting.new(setting_params)
-    @setting.save ? (redirect_to @setting) : (render 'new')
+    if @setting.save
+      redirect_to @setting, flash: { success: 'Настройки для приложения созданы успешно' }
+    else
+      flash.now[:danger] = 'Настройки для приложения не создались, просьба проверить вводимые данные'
+      render 'new'
+    end
   end
 
   def update
-    @setting.update(setting_params) ? (redirect_to @setting) : (render 'edit')
-  end
-
-  def destroy
-    @setting.destroy
-    redirect_to settings_path
+    if @setting.update(setting_params)
+      redirect_to @setting, flash: { success: 'Настройки обновлены успешно' }
+    else
+      flash.now[:danger] = 'Настройки не смогли обновиться'
+      render 'edit'
+    end
   end
 
   private
