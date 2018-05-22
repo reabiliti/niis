@@ -1,0 +1,6 @@
+- provide(:title, 'Настройки')
+.link-stuck
+  = link_to t('link.back'), :back
+%br
+%h1 Настройки
+= render partial: 'form', locals: { setting: @setting }

@@ -784,6 +784,7 @@ Metrics/BlockLength:
     - "config/routes.rb"
     - "spec/factories/**/*.rb"
     - 'config/initializers/*.rb'
+    - 'config/environments/*.rb'
 
 Metrics/BlockNesting:
   Description: 'Avoid excessive block nesting'
@@ -2071,4 +2072,3 @@ Style/YodaCondition:
 Style/ZeroLengthPredicate:
   Description: 'Use #empty? when testing for objects of length 0.'
   Enabled: true
-

@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '~> 2.5.0'
+ruby '~> 2.5.1'
 
 gem 'bcrypt'
 gem 'bootstrap-sass'
@@ -23,6 +23,7 @@ gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate', '>= 3.1'
 
+gem 'haml-rails'
 gem 'prawn'
 gem 'responders'
 
@@ -40,11 +41,12 @@ group :production do
 end
 
 group :development do
+  gem 'haml_lint', require: false
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'rubocop'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
-  gem 'rubocop'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

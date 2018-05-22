@@ -1,0 +1,35 @@
+.row
+  .col-md-10.col-md-offset-1
+    = render partial: 'shared/form_errors', locals: { model: setting }
+    = simple_form_for setting, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f|
+      = f.input :set_name
+      %hr.col-sm-12
+      %h2 Сведения об аккредитации органа по сертификации
+      = f.input :set_os_registration_num
+      .form-group
+        = f.label :set_os_registration_date, class: 'col-sm-4 control-label'
+        .col-sm-3
+          = f.input_field :set_os_registration_date, as: :date, start_year: Date.today.year - 10,
+                                                                end_year: Date.today.year + 10,
+                                                                html5: true, class: 'form-control'
+      = f.input :set_os_name, as: :text, input_html: { rows: 4 }
+      = f.input :set_os_address, as: :text, input_html: { rows: 7 }
+      = f.input :set_os_city
+      = f.input :set_os_chief_position
+      = f.input :set_os_chief_name
+      = f.input :set_os_based_doc
+      %hr.col-sm-12
+      %h2 Организация, на базе которой создан орган по сертификации
+      = f.input :set_org_name, as: :text, input_html: { rows: 4 }
+      = f.input :set_org_address, as: :text, input_html: { rows: 7 }
+      = f.input :set_org_phone
+      = f.input :set_org_chief_position
+      = f.input :set_org_chief_name
+      = f.input :set_org_based_doc
+      = f.input :set_org_chief_accountant
+      %hr.col-sm-12
+      %h2 Параметры печати сертификата
+      = f.input :set_at_x
+      = f.input :set_at_y
+      %hr.col-sm-12
+      = f.button :submit, 'Сохранить настройки', class: 'btn btn-primary center-block'

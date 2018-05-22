@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
+# This is class to certificates
 class CertificatesController < ApplicationController
   before_action :certificate_find, only: %i[show edit update destroy]
   before_action :setting_find, only: %i[show new]
   before_action :logged_in_user
-
-  def index; end
 
   def show
     @solution = Solution.find(@certificate.solution_id)
@@ -55,18 +54,28 @@ class CertificatesController < ApplicationController
 
   def create
     @certificate = Certificate.new(certificate_params)
-    @certificate.save ? (redirect_to @certificate) : (render 'new')
+    if @certificate.save
+      redirect_to @certificate, flash: { success: 'Сертификат создан успешно' }
+    else
+      flash.now[:danger] = 'Не удалось создать сертификат, проверьте вводимые данные'
+      render 'new'
+    end
   end
 
   def edit; end
 
   def update
-    @certificate.update(certificate_params) ? (redirect_to @certificate) : (render 'edit')
+    if @certificate.update(certificate_params)
+      redirect_to @certificate, flash: { success: 'Сертификат успешно обновлен' }
+    else
+      flash.now[:danger] = 'Не удалось обновить сертификат, проверьте вводимые данные'
+      render 'edit'
+    end
   end
 
   def destroy
     @certificate.destroy
-    redirect_to root_path
+    redirect_to root_path, flash: { success: 'Сертификат успешно удален' }
   end
 
   private

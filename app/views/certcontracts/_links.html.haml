@@ -1,0 +1,9 @@
+.link-stuck.no-print
+  = link_to t('link.back'), root_path
+  |
+  = link_to t('link.edit'), edit_certcontract_path(certcontract)
+  |
+  = link_to t('link.destroy'), certcontract, method: :delete,
+                                             data: { confirm: 'Вы уверены?' }
+%br.no-print
+%br.no-print

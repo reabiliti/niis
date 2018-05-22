@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
+# This class to contracts certificates
 class CertcontractsController < ApplicationController
   before_action :cecon_find, only: %i[show edit update destroy]
   before_action :setting_find, only: %i[show new]
   before_action :logged_in_user
-
-  def index; end
 
   def show
     @proposal = Proposal.find(@certcontract.proposal_id)
@@ -32,18 +31,28 @@ class CertcontractsController < ApplicationController
 
   def create
     @certcontract = Certcontract.new(cecon_params)
-    @certcontract.save ? (redirect_to @certcontract) : (render 'new')
+    if @certcontract.save
+      redirect_to @certcontract, flash: { success: 'Договор на проведение работ по сертификации создан успешно' }
+    else
+      flash.now[:danger] = 'Не удалось создать договор на проведение работ по сертификации, проверьте вводимые данные'
+      render 'new'
+    end
   end
 
   def edit; end
 
   def update
-    @certcontract.update(cecon_params) ? (redirect_to @certcontract) : (render 'new')
+    if @certcontract.update(cecon_params)
+      redirect_to @certcontract, flash: { success: 'Договор на проведение работ по сертификации успешно обновлен' }
+    else
+      flash.now[:danger] = 'Не удалось обновить договор на проведение работ по сертификации, проверьте вводимые данные'
+      render 'new'
+    end
   end
 
   def destroy
     @certcontract.destroy
-    redirect_to root_path
+    redirect_to root_path, flash: { success: 'Договор на проведение работ по сертификации удален успешно' }
   end
 
   private

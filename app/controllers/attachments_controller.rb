@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
+# This class to attachments certificates
 class AttachmentsController < ApplicationController
   before_action :attach_find, only: %i[show edit update destroy]
   before_action :setting_find, only: [:show]
   before_action :logged_in_user
-
-  def index; end
 
   def show
     @certificate = Certificate.find(@attachment.certificate_id)
@@ -13,10 +12,8 @@ class AttachmentsController < ApplicationController
       format.html
       format.pdf do
         pdf = AttachmentPdf.new(@attachment, @setting, @certificate)
-        send_data pdf.render,
-                  filename: "attachment_#{@certificate.cert_registration_num}",
-                  type: 'application/pdf', disposition: 'inline',
-                  page_layout: 'landscape'
+        send_data pdf.render, filename: "attachment_#{@certificate.cert_registration_num}",
+                              type: 'application/pdf', disposition: 'inline', page_layout: 'landscape'
       end
     end
   end
@@ -34,7 +31,12 @@ class AttachmentsController < ApplicationController
 
   def create
     @attachment = Attachment.new(attach_params)
-    @attachment.save ? (redirect_to @attachment) : (render 'new')
+    if @attachment.save
+      redirect_to @attachment, flash: { success: 'Приложение к сертификату создано успешно' }
+    else
+      flash.now[:danger] = 'Не получилось создать приложение к сертификату, проверьте вводимые данные'
+      render 'new'
+    end
   end
 
   def edit
@@ -42,12 +44,17 @@ class AttachmentsController < ApplicationController
   end
 
   def update
-    @attachment.update(attach_params) ? (redirect_to @attachment) : (render 'new')
+    if @attachment.update(attach_params)
+      redirect_to @attachment, flash: { success: 'Приложение к сертификату обновлено успешно' }
+    else
+      flash.now[:danger] = 'Приложение к сертификату не удалось обновить, проверьте вводимые данные'
+      render 'new'
+    end
   end
 
   def destroy
     @attachment.destroy
-    redirect_to root_path
+    redirect_to root_path, flash: { success: 'Приложение к сертификату удалено' }
   end
 
   private
