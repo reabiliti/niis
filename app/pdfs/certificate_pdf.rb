@@ -14,6 +14,7 @@ class CertificatePdf < Prawn::Document
 
   def cer_number
     size = 12
+    size_product = @certificate.cert_name_product_size_font
     at_x = at_x_set(46)
 
     at_x_indent = at_x_set(218)
@@ -22,42 +23,38 @@ class CertificatePdf < Prawn::Document
 
     at_x_indent = at_x_set(313)
     at_y = at_y_set(665)
-    text = @certificate.cert_registration_date.strftime('%d.%m.%Y')
-    draw_text text, at: [at_x_indent, at_y], size: size, style: :bold
+    draw_text @certificate.cert_registration_date.strftime('%d.%m.%Y'), at: [at_x_indent, at_y], size: size, style: :bold
 
-    text = @certificate.cert_expiry_date.strftime('%d.%m.%Y')
     at_x_indent = at_x_set(438)
-    draw_text text, at: [at_x_indent, at_y], size: size, style: :bold
+    draw_text @certificate.cert_expiry_date.strftime('%d.%m.%Y'), at: [at_x_indent, at_y], size: size, style: :bold
 
     at_x_indent = at_x_set(230)
     at_y = at_y_set(625)
-    text = "рег. № #{@setting.set_os_registration_num}"
-    draw_text text, at: [at_x_indent, at_y], size: size, style: :bold
+    registration_number = "рег. № #{@setting.set_os_registration_num}"
+    draw_text registration_number, at: [at_x_indent, at_y], size: size, style: :bold
 
     at_y = at_y_set(620)
-    text = "#{@setting.set_os_name.gsub 'ОРГАН ПО СЕРТИФИКАЦИИ ', ''}\n #{@setting.set_os_address}"
-    text_box text, at: [at_x, at_y], size: size, style: :bold, width: 450
+    os_name = "#{@setting.set_os_name.gsub 'ОРГАН ПО СЕРТИФИКАЦИИ ', ''}\n #{@setting.set_os_address}"
+    text_box os_name, at: [at_x, at_y], size: size, style: :bold, width: 450
 
     at_x_indent = at_x_set(135)
     at_y = at_y_set(548)
+    docs_product = "#{@certificate.cert_manuf_doc}\n#{@proposal.prop_applic_from_issue}"
     if @certificate.cert_name_product.split("\r\n").length > 1
       @certificate.cert_name_product.split("\r\n").each_with_index do |cert_name_product, index|
         if index.zero?
-          draw_text cert_name_product, at: [at_x_indent, at_y], size: size, style: :bold
+          draw_text cert_name_product, at: [at_x_indent, at_y], size: size_product, style: :bold
         else
-          draw_text cert_name_product, at: [at_x, at_y], size: size, style: :bold
+          name_product = "#{cert_name_product}\n#{docs_product}"
+          text_box name_product, at: [at_x, at_y], size: size_product, style: :bold, width: 440
         end
-        at_y -= 12
+        at_y -= 5
       end
     else
       draw_text @certificate.cert_name_product, at: [at_x_indent, at_y], size: size, style: :bold
-      at_y -= 12
+      at_y -= 5
+      text_box docs_product, at: [at_x, at_y], size: size, style: :bold, width: 440
     end
-
-    draw_text @certificate.cert_manuf_doc, at: [at_x, at_y], size: size, style: :bold
-
-    at_y -= 12
-    draw_text @proposal.prop_applic_from_issue, at: [at_x, at_y], size: size, style: :bold
 
     at_y = at_y_set(455)
     text_box @certificate.cert_manuf_regulations, at: [at_x, at_y], size: size, style: :bold, width: 400
@@ -76,7 +73,7 @@ class CertificatePdf < Prawn::Document
         if index.zero?
           draw_text cert_manuf_name, at: [at_x_indent, at_y], size: size, style: :bold
         else
-          text = "#{cert_manuf_name}. ИНН: #{@certificate.cert_manuf_inn}\n #{@certificate.cert_manuf_address}, #{@certificate.cert_manuf_postcode}"
+          text = "#{cert_manuf_name}. ИНН: #{@certificate.cert_manuf_inn}\n#{@certificate.cert_manuf_address}, #{@certificate.cert_manuf_postcode}"
           text_box text, at: [at_x, at_y], size: size, style: :bold, width: 520
         end
         at_y -= 5
@@ -88,10 +85,9 @@ class CertificatePdf < Prawn::Document
       text = "#{@certificate.cert_manuf_address}, #{@certificate.cert_manuf_postcode}"
       text_box text, at: [at_x, at_y], size: size, style: :bold, width: 520
     else
-      draw_text "#{@certificate.cert_manuf_name}.",
-                at: [at_x_indent, at_y], size: size, style: :bold
+      draw_text "#{@certificate.cert_manuf_name}.", at: [at_x_indent, at_y], size: size, style: :bold
       at_y -= 5
-      text = "ИНН: #{@certificate.cert_manuf_inn}\n #{@certificate.cert_manuf_address}, #{@certificate.cert_manuf_postcode}"
+      text = "ИНН: #{@certificate.cert_manuf_inn}\n#{@certificate.cert_manuf_address}, #{@certificate.cert_manuf_postcode}"
       text_box text, at: [at_x, at_y], size: size, style: :bold, width: 520
     end
 
@@ -116,10 +112,9 @@ class CertificatePdf < Prawn::Document
       text += ", тел. #{@certificate.cert_applic_phone}" if @certificate.cert_applic_phone.present?
       text_box text, at: [at_x, at_y], size: size, style: :bold, width: 520
     else
-      draw_text "#{@certificate.cert_applic_name}.", at: [at_x_indent, at_y],
-                                                     size: size, style: :bold
+      draw_text "#{@certificate.cert_applic_name}.", at: [at_x_indent, at_y], size: size, style: :bold
       at_y -= 5
-      text = "ИНН: #{@certificate.cert_applic_inn}\n #{@certificate.cert_applic_address}, #{@certificate.cert_applic_postcode}"
+      text = "ИНН: #{@certificate.cert_applic_inn}\n#{@certificate.cert_applic_address}, #{@certificate.cert_applic_postcode}"
       text += ", тел. #{@certificate.cert_applic_phone}" if @certificate.cert_applic_phone.present?
       text_box text, at: [at_x, at_y], size: size, style: :bold, width: 520
     end
@@ -162,6 +157,8 @@ class CertificatePdf < Prawn::Document
     draw_text @certificate.cert_expert, at: [at_x_indent, at_y], size: size, style: :bold
   end
 
+  private
+
   def bg_setup
     bg = 'public/pdf/cert_clean.jpg'
     image bg, at: [0, bounds.height], width: bounds.width, height: bounds.height
@@ -176,8 +173,6 @@ class CertificatePdf < Prawn::Document
     })
     font 'TimesNewRoman'
   end
-
-  private
 
   def at_x_set(at_x)
     at_x + @setting.set_at_x

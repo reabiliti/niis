@@ -89,7 +89,7 @@ class CertificatesController < ApplicationController
                                         :cert_chief_org, :cert_expert, :cert_registration_date,
                                         :cert_registration_num, :cert_blank_num, :cert_applic_name,
                                         :cert_applic_inn, :cert_applic_address, :cert_applic_postcode,
-                                        :cert_applic_phone)
+                                        :cert_applic_phone, :cert_name_product_size_font)
   end
 
   def certificate_find

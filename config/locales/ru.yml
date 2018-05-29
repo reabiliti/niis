@@ -247,6 +247,7 @@ ru:
         sol_applic_name: "Заявитель"
       certificate:
         cert_expiry_date: "Дата истечения сертификата"
+        cert_name_product_size_font: "Размер шрифта"
         cert_name_product: "Наименование продукции"
         cert_manuf_doc: "Наименование и обозначение документации изготовителя (стандарт, ТУ, КД, образец-эталон)"
         cert_code_okp: "Код ОКПД2"
