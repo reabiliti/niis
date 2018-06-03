@@ -1,0 +1,152 @@
+- provide(:title, "Заключение о выдаче сертификата от #{@conclusion.conc_sign_date.strftime('%d.%m.%Y')}")
+= render partial: 'links', locals: { conclusion: @conclusion }
+.page-body
+  .line
+    = @setting.set_os_name
+    %br
+    рег. №
+    = @setting.set_os_registration_num
+  .hint
+    наименование органа по сертификации
+  .line
+    = @setting.set_os_address
+  .hint
+    адрес, телефон, факс
+  %br
+  .caption
+    ЗАКЛЮЧЕНИЕ ЭКСПЕРТА
+    %br по результатам проведения работ
+    по сертификации продукции
+  %br
+  .paragraph
+    %b На основании
+    следующих документов:
+  .paragraph
+    %b - заявки
+    на проведение сертификации продукции
+    %b № #{@proposal.prop_number}
+    от
+    %b= @proposal.prop_date_from.strftime('%d.%m.%Y')
+  .line
+    %b
+      = @proposal.prop_applic_name
+      %br
+      = @proposal.prop_applic_reg_doc
+  .hint
+    наименование организации-изготовителя, продавца или индивидуального предпринимателя (далее - заявитель)
+  .paragraph
+    Юридический адрес:
+    %b #{@proposal.prop_applic_address} #{@proposal.prop_applic_postcode}
+  .div-table
+    .div-table-row
+      .div-table-col.col-width-4
+        Телефон:
+        %b= @proposal.prop_applic_phone
+      .div-table-col.col-width-4
+        Факс:
+        %b= @proposal.prop_applic_fax
+      .div-table-col.col-width-4
+        Почта:
+        %b= @proposal.prop_applic_email
+  .paragraph
+    %b - решения
+    органа по сертификации
+    %b № #{@conclusion.conc_solution_proposal_num}
+    от
+    %b= @conclusion.conc_solution_proposal_date.strftime('%d.%m.%Y')
+  .line
+    %b= @conclusion.conc_name_product
+  .hint
+    наименование продукции
+  .div-table
+    .div-table-row
+      .div-table-col.col-width-2
+        Код ОКПД2
+      .div-table-col-hr.col-width-2
+        %b= @conclusion.conc_code_okp
+      .div-table-col.col-width-2
+        Код ТН ВЭД
+      .div-table-col-hr.col-width-2
+        %b= @conclusion.conc_code_tn_ved
+  .line
+    %b= @proposal.prop_applic_from_issue
+  .hint
+    серийный выпуск, или партия определенного размера, или единица продукции
+  .paragraph
+    выпускаемой изготовителем
+  .line
+    %b= @conclusion.conc_manuf_name
+  .hint
+    наименование изготовителя
+  .line
+    %b #{@conclusion.conc_manuf_address}, #{@conclusion.conc_manuf_postcode}
+  .hint
+    адрес
+  .line
+    по
+    %b= @conclusion.conc_manuf_doc
+  .hint
+    наименование и обозначение документации изготовителя (стандарт, ТУ, КД, образец-эталон)
+  .paragraph
+    Сертификация проводилась на соответствие требованиям:
+  .line
+    %b= @conclusion.conc_manuf_regulations
+  .hint
+    наименование и обозначение нормативных документов
+  .paragraph
+    по схеме
+    %b= @proposal.prop_manuf_scheme_cert
+    , предусматривающей
+  .line
+    %b= @conclusion.conc_desc_scheme_cert
+  .hint
+    описание схемы сертификации
+  .paragraph
+    В результате анализа документов:
+  .line
+    %b= @conclusion.conc_test_report
+  .hint
+    протоколы испытаний, акт анализа состояния производства и др.
+  .line
+    %b= @conclusion.conc_list_doc
+  .hint
+    перечень представленных заявителем документов, подтверждающих соответствие продукции установленным требованиям
+  %br
+  .caption
+    УСТАНОВЛЕНО
+  %br
+  .line
+    %b= @conclusion.conc_conformity
+  .hint
+    оценка соответствия продукции установленным требованиям
+  %br
+  .caption
+    ВЫВОДЫ
+  %br
+  .paragraph
+    На заявленную продукцию
+    = @conclusion.conc_may_be_issued
+    быть выдан сертификат соответствия
+    %b сроком по #{@conclusion.conc_cert_expiry_date.strftime('%d.%m.%Y')}
+  .line
+    %b= @conclusion.conc_add_info
+  .hint
+    дополнительная информация
+  .div-table
+    .div-table-row
+      .div-table-col.col-width-4.col-align-top
+        Эксперт
+      .div-table-col.col-width-1.col-align-bot
+        .line
+        .hint
+          подпись
+      .div-table-col.col-width-3.col-align-bot
+        .line
+          %b= @conclusion.conc_expert
+        .hint
+          инициалы, фамилия
+    .div-table-row
+      .div-table-col.col-width-4.col-align-top
+      .div-table-col.col-width-2.col-align-bot
+        %b= @conclusion.conc_sign_date.strftime('%d.%m.%Y')
+      .div-table-col.col-width-4.col-align-top

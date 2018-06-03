@@ -10,7 +10,7 @@
                                                         end_year: Date.today.year + 10,
                                                         html5: true, class: 'form-control'
       %hr.col-sm-12
-      = f.input :cert_name_product_size_font, collection: %w[10 11 12], include_blank: false
+      = f.input :cert_name_product_size_font, collection: Certificate::FONT_SIZE, include_blank: false
       = f.input :cert_name_product, as: :text, input_html: { rows: 2 }
       %hr.col-sm-12
       = f.input :cert_manuf_doc, as: :text, input_html: { rows: 5 }

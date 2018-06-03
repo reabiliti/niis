@@ -1,12 +1,8 @@
 - provide(:title, "Договор на проведение работ по сертификации от,
                   #{@certcontract.cecon_registration_date.try(:strftime, '%d.%m.%Y')},
                   № #{@certcontract.cecon_registration_num}")
-.link-stuck
-  = link_to t('link.back'), :back
-%br
+= render 'shared/links'
 %h1
   Договор на проведение работ по сертификации от
-  = @certcontract.cecon_registration_date.try(:strftime, '%d.%m.%Y')
-  №
-  = @certcontract.cecon_registration_num
+  #{@certcontract.cecon_registration_date.try(:strftime, '%d.%m.%Y')} № #{@certcontract.cecon_registration_num}
 = render partial: 'form', locals: { certcontract: @certcontract }

@@ -1,0 +1,49 @@
+.row
+  .col-md-10.col-md-offset-1
+    = render partial: 'shared/form_errors', locals: { model: ikcontract }
+    = simple_form_for ikcontract, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f|
+      = f.input :certificate_id, as: :hidden
+      .row
+        .col-sm-6
+          .form-group
+            = f.label :ikcon_registration_num, class: 'col-sm-8 control-label'
+            .col-sm-4
+              = f.input_field :ikcon_registration_num, class: 'form-control'
+        .col-sm-6
+          .form-group
+            = f.label :ikcon_registration_date, class: 'col-sm-7 control-label'
+            .col-sm-5
+              = f.input_field :ikcon_registration_date, as: :date, start_year: Date.today.year - 10,
+                                                                   end_year: Date.today.year + 10,
+                                                                   html5: true, class: 'form-control'
+      = f.input :ikcon_registration_city
+      = f.input :ikcon_name_product, as: :text, input_html: { rows: 3 }
+      = f.input :ikcon_cert_registration_num
+      = f.input :ikcon_inspection_period, collection: Ikcontract::INSPECTION_PERIOD, include_blank: false
+      = f.input :ikcon_contract_time
+      %hr.col-sm-12
+      %h2 Данные об Исполнителе
+      = f.input :ikcon_exec_name, as: :text, input_html: { rows: 3 }
+      = f.input :ikcon_exec_named, collection: Ikcontract::DECLENSION_NAME, include_blank: false
+      = f.input :ikcon_exec_chief_position
+      = f.input :ikcon_exec_chief_name
+      = f.input :ikcon_exec_active, collection: Ikcontract::DECLENSION_ACTIVE, include_blank: false
+      = f.input :ikcon_exec_based_doc
+      = f.input :ikcon_exec_address, as: :text, input_html: { rows: 3 }
+      = f.input :ikcon_exec_bank_details
+      = f.input :ikcon_exec_chief_position_sign
+      = f.input :ikcon_exec_chief_name_sign
+      %hr.col-sm-12
+      %h2 Данные о Заказчике
+      = f.input :ikcon_client_name, as: :text, input_html: { rows: 3 }
+      = f.input :ikcon_client_named, collection: Ikcontract::DECLENSION_NAME, include_blank: false
+      = f.input :ikcon_client_chief_position
+      = f.input :ikcon_client_chief_name
+      = f.input :ikcon_client_active, collection: Ikcontract::DECLENSION_ACTIVE, include_blank: false
+      = f.input :ikcon_client_based_doc
+      = f.input :ikcon_client_address, as: :text, input_html: { rows: 3 }
+      = f.input :ikcon_client_bank_details
+      = f.input :ikcon_client_chief_position_sign
+      = f.input :ikcon_client_chief_name_sign
+      %hr.col-sm-12
+      = f.button :submit, 'Сохранить договор на инспекционный контроль', class: 'btn btn-primary center-block'

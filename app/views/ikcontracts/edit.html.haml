@@ -1,0 +1,8 @@
+- provide(:title, "Договор на проведение инспекционного контроля от,
+                  #{@ikcontract.ikcon_registration_date.try(:strftime, '%d.%m.%Y')},
+                  № #{@ikcontract.ikcon_registration_num}")
+= render 'shared/links'
+%h1
+  Договор на проведение инспекционного контроля от
+  #{@ikcontract.ikcon_registration_date.try(:strftime, '%d.%m.%Y')} № #{@ikcontract.ikcon_registration_num}
+= render partial: 'form', locals: { ikcontract: @ikcontract }

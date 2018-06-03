@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Class to create solutions experts certificates
 class ConclusionsController < ApplicationController
   before_action :conc_find, only: %i[show edit update destroy]
   before_action :logged_in_user
@@ -15,35 +16,34 @@ class ConclusionsController < ApplicationController
   def new
     @solution_proposal = SolutionProposal.find(params[:solution_proposal_id])
     @conclusion = Conclusion.new
-    @conclusion.solution_proposal_id = @solution_proposal.id
-    @conclusion.conc_solution_proposal_num = @solution_proposal.solprop_number
-    @conclusion.conc_solution_proposal_date = @solution_proposal.solprop_date_from
-    @conclusion.conc_name_product = @solution_proposal.solprop_applic_name_product
-    @conclusion.conc_code_okp = @solution_proposal.solprop_applic_code_okp
-    @conclusion.conc_code_tn_ved = @solution_proposal.solprop_applic_code_tn_ved
-    @conclusion.conc_manuf_name = @solution_proposal.solprop_manuf_name
-    @conclusion.conc_manuf_address = @solution_proposal.solprop_manuf_address
-    @conclusion.conc_manuf_postcode = @solution_proposal.solprop_manuf_postcode
-    @conclusion.conc_manuf_doc = @solution_proposal.solprop_manuf_doc
-    @conclusion.conc_manuf_regulations = @solution_proposal.solprop_regulations
-    @conclusion.conc_desc_scheme_cert = @solution_proposal.solprop_desc_scheme_cert
-    @conclusion.conc_list_doc = @solution_proposal.solprop_list_doc_product
+    fill_with_data_proposal
+    fill_with_data_manuf
   end
 
   def create
     @conclusion = Conclusion.new(conc_params)
-    @conclusion.save ? (redirect_to @conclusion) : (render 'new')
+    if @conclusion.save
+      redirect_to @conclusion, flash: { success: 'Заключение эксперта создано успешно' }
+    else
+      flash.now[:danger] = 'Не удалось создать заключение эксперта, проверьте вводимые данные'
+      render 'new'
+    end
   end
 
   def edit; end
 
   def update
-    @conclusion.update(conc_params) ? (redirect_to @conclusion) : (render 'new')
+    if @conclusion.update(conc_params)
+      redirect_to @conclusion, flash: { success: 'Заключение эксперта успешно обновлено' }
+    else
+      flash.now[:danger] = 'Не удалось обновить заключение эксперта, проверьте вводимые данные'
+      render 'edit'
+    end
   end
 
   def destroy
     @conclusion.destroy
-    redirect_to root_path
+    redirect_to root_path, flash: { success: 'Заключение эксперта успешно удалено' }
   end
 
   private
@@ -61,5 +61,24 @@ class ConclusionsController < ApplicationController
 
   def conc_find
     @conclusion = Conclusion.find(params[:id])
+  end
+
+  def fill_with_data_proposal
+    @conclusion.solution_proposal_id = @solution_proposal.id
+    @conclusion.conc_solution_proposal_num = @solution_proposal.solprop_number
+    @conclusion.conc_solution_proposal_date = @solution_proposal.solprop_date_from
+  end
+
+  def fill_with_data_manuf
+    @conclusion.conc_name_product = @solution_proposal.solprop_applic_name_product
+    @conclusion.conc_code_okp = @solution_proposal.solprop_applic_code_okp
+    @conclusion.conc_code_tn_ved = @solution_proposal.solprop_applic_code_tn_ved
+    @conclusion.conc_manuf_name = @solution_proposal.solprop_manuf_name
+    @conclusion.conc_manuf_address = @solution_proposal.solprop_manuf_address
+    @conclusion.conc_manuf_postcode = @solution_proposal.solprop_manuf_postcode
+    @conclusion.conc_manuf_doc = @solution_proposal.solprop_manuf_doc
+    @conclusion.conc_manuf_regulations = @solution_proposal.solprop_regulations
+    @conclusion.conc_desc_scheme_cert = @solution_proposal.solprop_desc_scheme_cert
+    @conclusion.conc_list_doc = @solution_proposal.solprop_list_doc_product
   end
 end

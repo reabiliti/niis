@@ -1,0 +1,5 @@
+- provide(:title, "Заключение о выдаче сертификата от #{@conclusion.conc_sign_date.try(:strftime, '%d.%m.%Y')}")
+= render 'shared/links'
+%h1
+  Заключение эксперта о выдаче сертификата от #{@conclusion.conc_sign_date.try(:strftime, '%d.%m.%Y')}
+= render partial: 'form', locals: { conclusion: @conclusion }
