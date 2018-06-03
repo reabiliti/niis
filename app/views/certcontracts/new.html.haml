@@ -1,6 +1,4 @@
 - provide(:title, 'Договор на проведение работ по сертификации')
-.link-stuck
-  = link_to t('link.back'), :back
-%br
+= render 'shared/links'
 %h1 Договор на проведение работ по сертификации
 = render partial: 'form', locals: { certcontract: @certcontract }

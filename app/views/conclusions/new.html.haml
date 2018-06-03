@@ -1,0 +1,4 @@
+- provide(:title, 'Заключение о выдаче сертификата')
+= render 'shared/links'
+%h1 Заключение эксперта о выдаче сертификата
+= render partial: 'form', locals: { conclusion: @conclusion }

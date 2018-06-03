@@ -37,11 +37,10 @@
       %hr.col-sm-12
       %h2 Данные об Исполнителе
       = f.input :cecon_exec_name, as: :text, input_html: {  rows: 3 }
-      = f.input :cecon_exec_named, collection: %w[именуемый именуемая именуемое], include_blank: false
+      = f.input :cecon_exec_named, collection: Certcontract::DECLENSION_NAME, include_blank: false
       = f.input :cecon_exec_chief_position
       = f.input :cecon_exec_chief_name
-      = f.input :cecon_exec_active, collection: %w[действующего действующей действующий действующее действующая],
-                                    include_blank: false
+      = f.input :cecon_exec_active, collection: Certcontract::DECLENSION_ACTIVE, include_blank: false
       = f.input :cecon_exec_based_doc
       = f.input :cecon_exec_address, as: :text, input_html: { rows: 3 }
       = f.input :cecon_exec_bank_details
@@ -50,16 +49,14 @@
       %hr.col-sm-12
       %h2 Данные о Заказчике
       = f.input :cecon_client_name, as: :text, input_html: { rows: 3 }
-      = f.input :cecon_client_named, collection: %w[именуемый именуемая именуемое], include_blank: false
+      = f.input :cecon_client_named, collection: Certcontract::DECLENSION_NAME, include_blank: false
       = f.input :cecon_client_chief_position
       = f.input :cecon_client_chief_name
-      = f.input :cecon_client_active, collection: %w[действующего действующей действующий действующее действующая],
-                                      include_blank: false
+      = f.input :cecon_client_active, collection: Certcontract::DECLENSION_ACTIVE, include_blank: false
       = f.input :cecon_client_based_doc
       = f.input :cecon_client_address, as: :text, input_html: { rows: 3 }
       = f.input :cecon_client_bank_details
       = f.input :cecon_client_chief_position_sign
       = f.input :cecon_client_chief_name_sign
       %hr.col-sm-12
-
       = f.button :submit, 'Сохранить договор на проведение работ по сертификации', class: 'btn btn-primary center-block'

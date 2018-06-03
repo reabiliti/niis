@@ -1,6 +1,4 @@
 - provide(:title, 'Сертификат')
-.link-stuck
-  = link_to t('link.back'), :back
-%br
+= render 'shared/links'
 %h1 Сертификат
 = render partial: 'form', locals: { certificate: @certificate }

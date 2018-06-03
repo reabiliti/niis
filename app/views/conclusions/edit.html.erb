@@ -1,7 +1,0 @@
-<% provide(:title, "Заключение эксперта о выдаче сертификата от #{@conclusion.conc_sign_date.try(:strftime, "%d.%m.%Y")}") %>
-<div class="link-stuck">
-  <%= link_to t('link.back'), :back %>
-</div>
-<br>
-<h1>Заключение эксперта о выдаче сертификата от <%= @conclusion.conc_sign_date.try(:strftime, "%d.%m.%Y") %></h1>
-<%= render 'form' %>

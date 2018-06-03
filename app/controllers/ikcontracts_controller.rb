@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Class to create ik contracts
 class IkcontractsController < ApplicationController
   before_action :ikcontract_find, only: %i[show edit update destroy]
   before_action :setting_find, only: %i[show new]
@@ -28,24 +29,33 @@ class IkcontractsController < ApplicationController
     @ikcontract.ikcon_client_name = @certificate.cert_manuf_name
     @ikcontract.ikcon_client_chief_name = @certificate.cert_manuf_name
     @ikcontract.ikcon_client_chief_name_sign = @certificate.cert_manuf_name
-    @ikcontract.ikcon_client_address = "#{@certificate.cert_manuf_address}, \
-                                        #{@certificate.cert_manuf_postcode}"
+    @ikcontract.ikcon_client_address = "#{@certificate.cert_manuf_address}, #{@certificate.cert_manuf_postcode}"
   end
 
   def create
     @ikcontract = Ikcontract.new(ikcontract_params)
-    @ikcontract.save ? (redirect_to @ikcontract) : (render 'new')
+    if @ikcontract.save
+      redirect_to @ikcontract, flash: { success: 'Договор на инспекционный контроль создан успешно' }
+    else
+      flash.now[:danger] = 'Не удалось создать договор на инспеционный контроль, проверьте вводимые данные'
+      render 'new'
+    end
   end
 
   def edit; end
 
   def update
-    @ikcontract.update(ikcontract_params) ? (redirect_to @ikcontract) : (render 'edit')
+    if @ikcontract.update(ikcontract_params)
+      redirect_to @ikcontract, flash: { success: 'Договор на инспекционный контроль успешно обновлен' }
+    else
+      flash.now[:danger] = 'Не удалось обновить договор на инспекционный контроль, проверьте вводимые данные'
+      render 'edit'
+    end
   end
 
   def destroy
     @ikcontract.destroy
-    redirect_to root_path
+    redirect_to root_path, flash: { success: 'Договор на инспекционные контроль успешно удален' }
   end
 
   private
