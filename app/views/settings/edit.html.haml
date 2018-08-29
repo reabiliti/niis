@@ -1,6 +1,6 @@
 - provide(:title, 'Настройки')
-.link-stuck
-  = link_to t('link.back'), :back
+.sticky-top
+  = link_to t('link.back'), @setting
 %br
-%h1 Настройки
+%h1 Редактироване настройки
 = render partial: 'form', locals: { setting: @setting }
