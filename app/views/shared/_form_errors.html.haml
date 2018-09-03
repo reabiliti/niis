@@ -1,6 +1,0 @@
-- if model.errors.any?
-  .error.text-danger
-    %p #{pluralize(model.errors.count, 'error')}:
-    %ul
-      - model.errors.full_messages.each do |msg|
-        %li= msg

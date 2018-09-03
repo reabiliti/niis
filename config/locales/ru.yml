@@ -1,6 +1,21 @@
 
 ru:
+  settings:
+    buttons:
+      new: Создать файл настроек
+      edit: Сохранить файл настроек
+    headers:
+      show: Файл настроек
+      new: Создать новый файл настроек
+      edit: Редактирование текущего файла настроек
   proposals:
+    headers:
+      show: Заявка на сертификат
+      new: Создать новую заявку на сертификат
+      edit: Редактирование заявки на сертификат
+    buttons:
+      new: Создать заявку
+      edit: Сохранить заявку
     notices:
       success:
         create: Заявка на сертификат успешно создана
@@ -10,33 +25,33 @@ ru:
         create: Заявку на сертификат не удалось создать, проверьте вводимые данные
         update: Заявку на сертификат не удалось обновить, проверьте вводимые данные
   link:
-    back: "Назад"
-    show: "Просмотр"
-    destroy: "Удалить"
-    new: "Создать"
-    new_proposal: "Создать Заявку"
-    new_solution_proposal: "Создать Решение по заявке"
-    new_protocol: "Создать Протокол"
-    new_conclusion: "Создать Заключение"
-    new_solution: "Создать Решение о выдаче"
-    new_certificate: "Создать Сертификат"
-    new_attachment: "Создать Приложение"
-    new_permission: "Создать Разрешение"
-    new_ikcontract: "Создать Договор ИК"
-    new_certcontract: "Создать Договор по Сертификации"
-    new_inventory: "Создать Опись документов"
-    edit: "Изменить"
-    home: "Главная"
-    print_PDF: "Печать PDF"
-    settings: "Настройки"
-    proposals: "Заявки"
-    solution_proposals: "Решения по заявкам"
-    certificates: "Сертификаты"
-    users: "Пользователи"
-    account: "Аккаунт"
-    profile: "Профиль"
-    login: "Войти"
-    logout: "Выйти"
+    back: Назад
+    show: Просмотр
+    destroy: Удалить
+    new: Создать
+    new_proposal: Заявка
+    new_solution_proposal: Решение по заявке
+    new_protocol: Протокол
+    new_conclusion: Заключение
+    new_solution: Решение о выдаче
+    new_certificate: Сертификат
+    new_attachment: Приложение
+    new_permission: Разрешение
+    new_ikcontract: Договор ИК
+    new_certcontract: Договор по Сертификации
+    new_inventory: Опись документов
+    edit: Изменить
+    home: Главная
+    print_PDF: Печать PDF
+    settings: Настройки
+    proposals: Заявки
+    solution_proposals: Решения по заявкам
+    certificates: Сертификаты
+    users: Пользователи
+    account: Аккаунт
+    profile: Профиль
+    login: Войти
+    logout: Выйти
   activerecord:
     errors:
       messages:
