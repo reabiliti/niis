@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This controller manage proposals
 class ProposalsController < ApplicationController
   before_action :proposal_find, only: %i[show edit update destroy]
   before_action :logged_in_user
@@ -16,37 +17,34 @@ class ProposalsController < ApplicationController
 
   def create
     @proposal = Proposal.new(proposal_params)
-    @proposal.save ? (redirect_to @proposal) : (render 'new')
+    if @proposal.save
+      redirect_to @proposal, flash: { success: t('proposals.notices.success.create') }
+    else
+      flash.now[:danger] = t('proposals.notices.danger.create')
+      render :new
+    end
   end
 
   def edit; end
 
   def update
-    @proposal.update(proposal_params) ? (redirect_to @proposal) : (render 'edit')
+    if @proposal.update(proposal_params)
+      redirect_to @proposal, flash: { success: t('proposals.notices.success.update') }
+    else
+      flash.now[:danger] = t('proposals.notices.danger.update')
+      render :edit
+    end
   end
 
   def destroy
     @proposal.destroy
-    redirect_to root_path
+    redirect_to root_path, flash: { success: t('proposals.notices.success.destroy') }
   end
 
   private
 
   def proposal_params
-    params.require(:proposal).permit(:prop_number, :prop_date_from, :prop_cert_system, :prop_applic_name,
-                                     :prop_applic_reg_doc, :prop_applic_address, :prop_applic_postcode,
-                                     :prop_applic_bank_detail, :prop_applic_phone, :prop_applic_fax,
-                                     :prop_applic_email, :prop_applic_code_okato, :prop_applic_type_own,
-                                     :prop_applic_code_okonh, :prop_applic_code_okved, :prop_applic_code_okpo,
-                                     :prop_applic_inn, :prop_applic_kpp, :prop_applic_chief,
-                                     :prop_applic_name_product, :prop_applic_code_okp, :prop_applic_code_tn_ved,
-                                     :prop_applic_from_issue, :prop_manuf_name, :prop_manuf_address,
-                                     :prop_manuf_postcode, :prop_manuf_doc, :prop_manuf_code_okato,
-                                     :prop_manuf_type_own, :prop_manuf_code_okonh, :prop_manuf_code_okved,
-                                     :prop_manuf_code_okpo, :prop_manuf_inn, :prop_manuf_regulations,
-                                     :prop_manuf_scheme_cert, :prop_manuf_count_sort_cert,
-                                     :prop_manuf_group_complexity, :prop_manuf_list_doc, :prop_manuf_add_info,
-                                     :prop_manuf_chief_org, :prop_manuf_chief_accountant)
+    params.require(:proposal).permit!
   end
 
   def proposal_find

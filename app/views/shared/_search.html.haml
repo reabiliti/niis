@@ -1,0 +1,7 @@
+.d-flex.justify-content-end
+  = simple_form_for :search, method: :get, html: { class: 'form-inline' } do |f|
+    = f.input :search,
+              placeholder: 'Search',
+              input_html: { name: :search, value: params[:search] },
+              label: false
+    = f.submit 'Search', class: 'btn btn-dark'

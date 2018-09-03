@@ -10,9 +10,8 @@ end
 ruby '~> 2.5.1'
 
 gem 'bcrypt'
-gem 'bootstrap-sass'
-gem 'coffee-rails', '~> 4.2'
-gem 'jbuilder', '~> 2.5'
+gem 'bootstrap'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
@@ -21,21 +20,22 @@ gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
-gem 'will_paginate', '>= 3.1'
+gem 'kaminari'
+gem 'pg'
+gem 'strong_migrations'
 
 gem 'haml-rails'
 gem 'prawn'
 gem 'responders'
 
 group :development, :test do
+  gem 'pry-rails'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'sqlite3'
 end
 
 group :production do
-  gem 'pg', '~> 0.18'
   gem 'rails_12factor'
   gem 'unicorn'
 end

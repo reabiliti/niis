@@ -1,63 +1,57 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
 
 ru:
+  settings:
+    buttons:
+      new: Создать файл настроек
+      edit: Сохранить файл настроек
+    headers:
+      show: Файл настроек
+      new: Создать новый файл настроек
+      edit: Редактирование текущего файла настроек
+  proposals:
+    headers:
+      show: Заявка на сертификат
+      new: Создать новую заявку на сертификат
+      edit: Редактирование заявки на сертификат
+    buttons:
+      new: Создать заявку
+      edit: Сохранить заявку
+    notices:
+      success:
+        create: Заявка на сертификат успешно создана
+        update: Заявка на сертификат успешно обновлена
+        destroy: Заявка на сертификат успешно удалена
+      danger:
+        create: Заявку на сертификат не удалось создать, проверьте вводимые данные
+        update: Заявку на сертификат не удалось обновить, проверьте вводимые данные
   link:
-    back: "Назад"
-    show: "Просмотр"
-    destroy: "Удалить"
-    new: "Создать"
-    new_proposal: "Создать Заявку"
-    new_solution_proposal: "Создать Решение по заявке"
-    new_protocol: "Создать Протокол"
-    new_conclusion: "Создать Заключение"
-    new_solution: "Создать Решение о выдаче"
-    new_certificate: "Создать Сертификат"
-    new_attachment: "Создать Приложение"
-    new_permission: "Создать Разрешение"
-    new_ikcontract: "Создать Договор ИК"
-    new_certcontract: "Создать Договор по Сертификации"
-    new_inventory: "Создать Опись документов"
-    edit: "Изменить"
-    home: "Главная"
-    print_PDF: "Печать PDF"
-    settings: "Настройки"
-    proposals: "Заявки"
-    solution_proposals: "Решения по заявкам"
-    certificates: "Сертификаты"
-    users: "Пользователи"
-    account: "Аккаунт"
-    profile: "Профиль"
-    login: "Войти"
-    logout: "Выйти"
+    back: Назад
+    show: Просмотр
+    destroy: Удалить
+    new: Создать
+    new_proposal: Заявка
+    new_solution_proposal: Решение по заявке
+    new_protocol: Протокол
+    new_conclusion: Заключение
+    new_solution: Решение о выдаче
+    new_certificate: Сертификат
+    new_attachment: Приложение
+    new_permission: Разрешение
+    new_ikcontract: Договор ИК
+    new_certcontract: Договор по Сертификации
+    new_inventory: Опись документов
+    edit: Изменить
+    home: Главная
+    print_PDF: Печать PDF
+    settings: Настройки
+    proposals: Заявки
+    solution_proposals: Решения по заявкам
+    certificates: Сертификаты
+    users: Пользователи
+    account: Аккаунт
+    profile: Профиль
+    login: Войти
+    logout: Выйти
   activerecord:
     errors:
       messages:
@@ -70,10 +64,11 @@ ru:
       setting: "Настройки"
       proposal: "Заявка"
       solution_proposal: "Решение по заявке"
-  will_paginate:
-    previous_label: "&#8592; Предыдущий"
-    next_label: "Следующий &#8594"
-    page_gap: "&hellip"
+  welcome:
+    headers:
+      index: Главная
+    links:
+      new_setting: Необходимо создать файл настроек
   simple_form:
     labels:
       setting:

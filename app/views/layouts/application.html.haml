@@ -2,15 +2,14 @@
 %html
   %head
     %meta{ content: 'text/html; charset=UTF-8', 'http-equiv': 'Content-Type' }/
-    %title
-      = yield(:title)
-      | Niis
+    %title #{yield :title} | Niis
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = render 'layouts/header'
-    .contant
+    .container
+      = render 'layouts/header'
       = render 'shared/flash'
-      = yield
+    = yield
+    .container
       = render 'layouts/footer'

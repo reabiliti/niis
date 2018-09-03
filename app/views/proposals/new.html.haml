@@ -1,0 +1,5 @@
+= render 'shared/links'
+
+- provide(:title, t('proposals.headers.new'))
+%h2.text-center.py-3= t('proposals.headers.new')
+= render partial: 'form', locals: { proposal: @proposal, button: 'new' }

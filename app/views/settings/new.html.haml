@@ -1,6 +1,3 @@
-- provide(:title, 'Настройки')
-.link-stuck
-  = link_to t('link.back'), :back
-%br
-%h1 Настройки
-= render partial: 'form', locals: { setting: @setting }
+- provide(:title, t('settings.headers.new'))
+%h2.text-center.py-3= t('settings.headers.new')
+= render partial: 'form', locals: { setting: @setting, button: 'new' }

@@ -1,106 +1,69 @@
-- provide(:title, "Настройка #{@setting.set_name}")
-= render partial: 'links', locals: { setting: @setting }
-%h1
-  Настройка
-  = @setting.set_name
-%br.no-print
-%br.no-print
+- provide(:title, "#{t('settings.headers.show')} #{@setting.set_name}")
+.col-md-2.fixed-top.mt-10.no-print
+  %ul.nav.flex-column
+    %li.nav-item
+      = link_to t('link.back'), root_path, class: 'nav-link'
+    %li.nav-item
+      = link_to t('link.edit'), edit_setting_path(@setting), class: 'nav-link'
+%h2.text-center.py-3 #{t('settings.headers.show')} #{@setting.set_name}
 .page-body
-  %hr.col-width-12
-  %h2 Сведения об аккредитации органа по сертификации
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-4.hr-light
-        Регистрационный номер
-      .div-table-col.col-width-8.hr-light
-        = @setting.set_os_registration_num
-    .div-table-row
-      .div-table-col.col-width-4.hr-light
-        Дата регистрации
-      .div-table-col.col-width-8.hr-light
-        = @setting.set_os_registration_date.strftime('%d.%m.%Y')
-    .div-table-row
-      .div-table-col.col-width-4.hr-light
-        Наименование
-      .div-table-col.col-width-8.hr-light
-        = @setting.set_os_name
-    .div-table-row
-      .div-table-col.col-width-4.hr-light
-        Адрес: Название улицы, номер дома, номер помещения; название населенного пункта (города, поселка и т.п.);
-        название района; название республики, края, области, автономного округа (области);
-        страна (для зарубежных ОС); почтовый индекс
-      .div-table-col.col-width-8.hr-light
-        = @setting.set_os_address
-    .div-table-row
-      .div-table-col.col-width-4.hr-light
-        Город
-      .div-table-col.col-width-8.hr-light
-        = @setting.set_os_city
-    .div-table-row
-      .div-table-col.col-width-4.hr-light
-        Должность руководителя ОС
-      .div-table-col.col-width-8.hr-light
-        = @setting.set_os_chief_position
-    .div-table-row
-      .div-table-col.col-width-4.hr-light
-        Инициалы, фамилия руководителя
-      .div-table-col.col-width-8.hr-light
-        = @setting.set_os_chief_name
-    .div-table-row
-      .div-table-col.col-width-4.hr-light
-        Действует на основании документа
-      .div-table-col.col-width-8.hr-light
-        = @setting.set_os_based_doc
-  %hr.col-width-12
-  %h2 Организация, на базе которой создан орган по сертификации
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-4.hr-light
-        Наименование
-      .div-table-col.col-width-8.hr-light
-        = @setting.set_org_name
-    .div-table-row
-      .div-table-col.col-width-4.hr-light
-        Адрес: Название улицы, номер дома, номер помещения; название населенного пункта (города, поселка и т.п.);
-        название района; название республики, края, области, автономного округа (области);
-        страна (для зарубежных ОС); почтовый индекс
-      .div-table-col.col-width-8.hr-light
-        = @setting.set_org_address
-    .div-table-row
-      .div-table-col.col-width-4.hr-light
-        Телефон
-      .div-table-col.col-width-8.hr-light
-        = @setting.set_org_phone
-    .div-table-row
-      .div-table-col.col-width-4.hr-light
-        Должность руководителя ОС
-      .div-table-col.col-width-8.hr-light
-        = @setting.set_org_chief_position
-    .div-table-row
-      .div-table-col.col-width-4.hr-light
-        Инициалы, фамилия руководителя
-      .div-table-col.col-width-8.hr-light
-        = @setting.set_org_chief_name
-    .div-table-row
-      .div-table-col.col-width-4.hr-light
-        Действует на основании документа
-      .div-table-col.col-width-8.hr-light
-        = @setting.set_org_based_doc
-    .div-table-row
-      .div-table-col.col-width-4.hr-light
-        Главный бухгалтер
-      .div-table-col.col-width-8.hr-light
-        = @setting.set_org_chief_accountant
-  %hr.col-width-12
-  %h2 Параметры печати сертификата
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-4.hr-light
-        Смещение по оси X
-      .div-table-col.col-width-8.hr-light
-        = @setting.set_at_x
-    .div-table-row
-      .div-table-col.col-width-4.hr-light
-        Смещение по оси Y
-      .div-table-col.col-width-8.hr-light
-        = @setting.set_at_y
+  %h2.py-3 Сведения об аккредитации органа по сертификации
+  .row
+    .col.col-md-4.border-bottom Регистрационный номер
+    .col.col-md-8.border-bottom= @setting.set_os_registration_num
+  .row
+    .col.col-md-4.border-bottom Дата регистрации
+    .col.col-md-8.border-bottom= @setting.set_os_registration_date.strftime('%d.%m.%Y')
+  .row
+    .col.col-md-4.border-bottom Наименование
+    .col.col-md-8.border-bottom= @setting.set_os_name
+  .row
+    .col.col-md-4.border-bottom
+      Адрес: Название улицы, номер дома, номер помещения; название населенного пункта (города, поселка и т.п.);
+      название района; название республики, края, области, автономного округа (области);
+      страна (для зарубежных ОС); почтовый индекс
+    .col.col-md-8.border-bottom= @setting.set_os_address
+  .row
+    .col.col-md-4.border-bottom Город
+    .col.col-md-8.border-bottom= @setting.set_os_city
+  .row
+    .col.col-md-4.border-bottom Должность руководителя ОС
+    .col.col-md-8.border-bottom= @setting.set_os_chief_position
+  .row
+    .col.col-md-4.border-bottom Инициалы, фамилия руководителя
+    .col.col-md-8.border-bottom= @setting.set_os_chief_name
+  .row
+    .col.col-md-4.border-bottom Действует на основании документа
+    .col.col-md-8.border-bottom= @setting.set_os_based_doc
+  %h2.py-3 Организация, на базе которой создан орган по сертификации
+  .row
+    .col.col-md-4.border-bottom Наименование
+    .col.col-md-8.border-bottom= @setting.set_org_name
+  .row
+    .col.col-md-4.border-bottom
+      Адрес: Название улицы, номер дома, номер помещения; название населенного пункта (города, поселка и т.п.);
+      название района; название республики, края, области, автономного округа (области);
+      страна (для зарубежных ОС); почтовый индекс
+    .col.col-md-8.border-bottom= @setting.set_org_address
+  .row
+    .col.col-md-4.border-bottom Телефон
+    .col.col-md-8.border-bottom= @setting.set_org_phone
+  .row
+    .col.col-md-4.border-bottom Должность руководителя ОС
+    .col.col-md-8.border-bottom= @setting.set_org_chief_position
+  .row
+    .col.col-md-4.border-bottom Инициалы, фамилия руководителя
+    .col.col-md-8.border-bottom= @setting.set_org_chief_name
+  .row
+    .col.col-md-4.border-bottom Действует на основании документа
+    .col.col-md-8.border-bottom= @setting.set_org_based_doc
+  .row
+    .col.col-md-4.border-bottom Главный бухгалтер
+    .col.col-md-8.border-bottom= @setting.set_org_chief_accountant
+  %h2.py-3 Параметры печати сертификата
+  .row
+    .col.col-md-4.border-bottom Смещение по оси X
+    .col.col-md-8.border-bottom= @setting.set_at_x
+  .row
+    .col.col-md-4.border-bottom Смещение по оси Y
+    .col.col-md-8.border-bottom= @setting.set_at_y
