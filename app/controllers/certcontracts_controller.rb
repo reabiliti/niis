@@ -4,7 +4,6 @@
 class CertcontractsController < ApplicationController
   before_action :cecon_find, only: %i[show edit update destroy]
   before_action :setting_find, only: %i[show new]
-  before_action :logged_in_user
 
   def show
     @proposal = Proposal.find(@certcontract.proposal_id)

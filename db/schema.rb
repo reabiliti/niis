@@ -10,10 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_29_181123) do
+ActiveRecord::Schema.define(version: 2018_09_14_125317) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "attachments", force: :cascade do |t|
-    t.integer "certificate_id"
+    t.bigint "certificate_id"
     t.string "att_blank_num"
     t.string "att_code_okp"
     t.string "att_code_tn_ved"
@@ -26,7 +29,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_181123) do
   end
 
   create_table "certcontracts", force: :cascade do |t|
-    t.integer "proposal_id"
+    t.bigint "proposal_id"
     t.string "cecon_exec_chief_name_sign"
     t.datetime "cecon_registration_date"
     t.string "cecon_registration_num"
@@ -61,7 +64,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_181123) do
   end
 
   create_table "certificates", force: :cascade do |t|
-    t.integer "solution_id"
+    t.bigint "solution_id"
     t.datetime "cert_expiry_date"
     t.string "cert_name_product"
     t.string "cert_manuf_regulations"
@@ -114,12 +117,12 @@ ActiveRecord::Schema.define(version: 2018_05_29_181123) do
     t.datetime "conc_sign_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "solution_proposal_id"
+    t.bigint "solution_proposal_id"
     t.index ["solution_proposal_id"], name: "index_conclusions_on_solution_proposal_id"
   end
 
   create_table "ikcontracts", force: :cascade do |t|
-    t.integer "certificate_id"
+    t.bigint "certificate_id"
     t.datetime "ikcon_registration_date"
     t.string "ikcon_registration_num"
     t.string "ikcon_exec_name"
@@ -153,7 +156,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_181123) do
   end
 
   create_table "inventories", force: :cascade do |t|
-    t.integer "proposal_id"
+    t.bigint "proposal_id"
     t.datetime "inv_date_from"
     t.string "inv_list_doc"
     t.string "inv_list_page"
@@ -165,7 +168,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_181123) do
   end
 
   create_table "permissions", force: :cascade do |t|
-    t.integer "certificate_id"
+    t.bigint "certificate_id"
     t.string "perm_registration_num"
     t.datetime "perm_registration_date"
     t.datetime "perm_expiry_date"
@@ -224,7 +227,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_181123) do
   end
 
   create_table "protocols", force: :cascade do |t|
-    t.integer "solution_proposal_id"
+    t.bigint "solution_proposal_id"
     t.datetime "prot_date_from"
     t.text "prot_applic_name_product"
     t.string "prot_applic_code_okp"
@@ -273,7 +276,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_181123) do
   end
 
   create_table "solution_proposals", force: :cascade do |t|
-    t.integer "proposal_id"
+    t.bigint "proposal_id"
     t.string "solprop_number"
     t.datetime "solprop_date_from"
     t.string "solprop_solution"
@@ -304,9 +307,8 @@ ActiveRecord::Schema.define(version: 2018_05_29_181123) do
   end
 
   create_table "solutions", force: :cascade do |t|
-    t.integer "conclusion_id"
+    t.bigint "conclusion_id"
     t.string "sol_number"
-    t.datetime "sol_date_from"
     t.string "sol_delivery"
     t.string "sol_solution_proposal_num"
     t.datetime "sol_solution_proposal_date"
@@ -336,16 +338,22 @@ ActiveRecord::Schema.define(version: 2018_05_29_181123) do
     t.string "sol_applic_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "sol_date_from"
     t.index ["conclusion_id"], name: "index_solutions_on_conclusion_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
+    t.string "email", null: false
+    t.string "name", null: false
+    t.datetime "remember_me_token_expires_at"
+    t.string "remember_me_token"
+    t.string "salt", null: false
+    t.string "crypted_password", null: false
+    t.string "role", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_digest"
-    t.string "name"
-    t.boolean "admin", default: false
+    t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "conclusions", "solution_proposals"
 end

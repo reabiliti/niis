@@ -9,7 +9,6 @@ end
 
 ruby '~> 2.5.1'
 
-gem 'bcrypt'
 gem 'bootstrap'
 gem 'coffee-rails'
 gem 'jquery-rails'
@@ -23,6 +22,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'kaminari'
 gem 'pg'
 gem 'strong_migrations'
+gem 'sorcery'
+gem 'validates_email_format_of'
 
 gem 'haml-rails'
 gem 'prawn'
@@ -41,6 +42,9 @@ group :production do
 end
 
 group :development do
+  gem 'annotate'
+  gem 'better_errors'
+  gem 'bullet'
   gem 'capistrano', '~> 3.7', '>= 3.7.1'
   gem 'capistrano-rails', '~> 1.2'
   gem 'capistrano-passenger', '~> 0.2.0'

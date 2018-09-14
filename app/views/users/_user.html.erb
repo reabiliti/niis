@@ -1,7 +1,0 @@
-<li>
-  <%= link_to user.name, user %>
-  <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to t('link.destroy'), user, method: :delete,
-                                           data: { confirm: "Вы уверены?" }%>
-  <% end %>
-</li>

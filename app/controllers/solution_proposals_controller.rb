@@ -2,7 +2,6 @@
 
 class SolutionProposalsController < ApplicationController
   before_action :solprop_find, only: %i[show edit update destroy]
-  before_action :logged_in_user
 
   def index; end
 

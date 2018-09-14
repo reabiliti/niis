@@ -4,7 +4,6 @@
 class CertificatesController < ApplicationController
   before_action :certificate_find, only: %i[show edit update destroy]
   before_action :setting_find, only: %i[show new]
-  before_action :logged_in_user
 
   def show
     @solution = Solution.find(@certificate.solution_id)

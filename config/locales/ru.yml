@@ -1,5 +1,17 @@
 
 ru:
+  sessions:
+    buttons:
+      create: Войти
+    headers:
+      new: Авторизация
+    links:
+      signup: Зарегистрироваться
+  users:
+    buttons:
+      create: Зарегистрироваться
+    headers:
+      new: Регистрация пользователя
   settings:
     buttons:
       new: Создать файл настроек

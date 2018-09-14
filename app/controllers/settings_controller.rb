@@ -3,7 +3,6 @@
 # This class settings application
 class SettingsController < ApplicationController
   before_action :setting_find, only: %i[show edit update]
-  before_action :logged_in_user
 
   def show; end
 
