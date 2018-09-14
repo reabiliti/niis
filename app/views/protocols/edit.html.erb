@@ -1,7 +1,0 @@
-<% provide(:title, "Протокол идентификации продукции от #{@protocol.prot_date_from.try(:strftime, "%d.%m.%Y")}") %>
-<div class="link-stuck">
-  <%= link_to t('link.back'), :back %>
-</div>
-<br>
-<h1>Протокол идентификации продукции от <%= @protocol.prot_date_from.try(:strftime, "%d.%m.%Y") %></h1>
-<%= render 'form' %>

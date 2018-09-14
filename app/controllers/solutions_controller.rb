@@ -4,8 +4,6 @@ class SolutionsController < ApplicationController
   before_action :sol_find, only: %i[show edit update destroy]
   before_action :setting_find, only: %i[show new]
 
-  def index; end
-
   def show
     @conclusion = Conclusion.find(@solution.conclusion_id)
     @solution_proposal = SolutionProposal.find(@conclusion.solution_proposal_id)

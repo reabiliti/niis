@@ -1,0 +1,11 @@
+.col-md-2.fixed-top.mt-10.no-print
+  %ul.nav.flex-column
+    %li.nav-item
+      = link_to t('link.back'), root_path, class: 'nav-link'
+    %li.nav-item
+      = link_to t('link.edit'), edit_protocol_path(protocol), class: 'nav-link'
+    %li.nav-item
+      = link_to t('link.destroy'), protocol,
+                                   method: :delete,
+                                   data: { confirm: 'Вы уверены?' },
+                                   class: 'nav-link'
