@@ -1,0 +1,51 @@
+.page-body
+  = simple_form_for solution_proposal do |f|
+
+    = f.input :proposal_id, as: :hidden
+
+    .row
+      .col-md-4
+        = f.input :solprop_number
+      .col-md-4
+        = f.input :solprop_date_from,
+                  as: :date, start_year: Date.today.year - 10,
+                  end_year: Date.today.year + 10,
+                  html5: true
+      .col-md-4
+        = f.input :solprop_solution, collection: SOLUTIONS, include_blank: false
+    = f.input :solprop_applic_name_product, as: :text, input_html: { rows: 5 }
+    .row
+      .col-md-6
+        = f.input :solprop_applic_code_okp, as: :text, input_html: { rows: 2 }
+      .col-md-6
+        = f.input :solprop_applic_code_tn_ved, as: :text, input_html: { rows: 2 }
+    = f.input :solprop_manuf_name, as: :text, input_html: { rows: 3 }
+    = f.input :solprop_manuf_address, as: :text, input_html: { rows: 6 }
+    = f.input :solprop_manuf_postcode
+    = f.input :solprop_manuf_doc, as: :text, input_html: { rows: 3 }
+    = f.input :solprop_manuf_list_doc, as: :text, input_html: { rows: 3 }
+    = f.input :solprop_regulations, as: :text, input_html: { rows: 1 }
+    = f.input :solprop_desc_scheme_cert, as: :text, input_html: { rows: 3 }
+    = f.input :solprop_test_lab, as: :text, input_html: { rows: 4 }
+    .row
+      .col-md-6
+        = f.input :solprop_sampling, collection: ORGANIZATION_SAMPLES, include_blank: false
+      .col-md-6
+        = f.input :solprop_basis_work
+    = f.input :solprop_list_doc_product, as: :text, input_html: { rows: 6 }
+    = f.input :solprop_add_info, as: :text, input_html: { rows: 3 }
+    .row
+      .col-md-6
+        = f.input :solprop_chief_name
+      .col-md-6
+        = f.input :solprop_chief_org
+    .row
+      .col-md-6
+        = f.input :solprop_expert
+      .col-md-6
+        = f.input :solprop_executor
+    = f.input :solprop_applic_sign
+    = f.input :solprop_applic_name
+
+    .col.pt-5
+      = f.submit t("solution_proposals.buttons.#{button}"), class: 'btn btn-dark btn-block'

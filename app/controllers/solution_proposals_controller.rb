@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
+# This controller for solution proposals certificate
 class SolutionProposalsController < ApplicationController
   before_action :solprop_find, only: %i[show edit update destroy]
-
-  def index; end
 
   def show
     @proposal = Proposal.find(@solution_proposal.proposal_id)
@@ -29,18 +28,28 @@ class SolutionProposalsController < ApplicationController
 
   def create
     @solution_proposal = SolutionProposal.new(solprop_params)
-    @solution_proposal.save ? (redirect_to @solution_proposal) : (render 'new')
+    if @solution_proposal.save
+      redirect_to @solution_proposal, flash: { success: t('solution_proposals.notices.success.create') }
+    else
+      flash.now[:danger] = t('solution_proposals.notices.danger.create')
+      render :new
+    end
   end
 
   def edit; end
 
   def update
-    @solution_proposal.update(solprop_params) ? (redirect_to @solution_proposal) : (render 'edit')
+    if @solution_proposal.update(solprop_params)
+      redirect_to @solution_proposal, flash: { success: t('solution_proposals.notices.success.update') }
+    else
+      flash.now[:danger] = t('solution_proposals.notices.danger.update')
+      render :edit
+    end
   end
 
   def destroy
     @solution_proposal.destroy
-    redirect_to root_path
+    redirect_to root_path, flash: { success: t('solution_proposals.notices.success.destroy') }
   end
 
   private
