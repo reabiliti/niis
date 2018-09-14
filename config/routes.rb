@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'users/new'
-
   root 'welcome#index'
   resources :settings, except: %i[index destroy]
   resources :certificates, except: :index
@@ -16,7 +14,8 @@ Rails.application.routes.draw do
   resources :certcontracts, except: :index
   resources :inventories, except: :index
   resources :attachments, except: :index
-  resources :users
+  resources :users, only: %i[new create]
+  resources :sessions, only: %i[new create destroy]
 
   get       '/signup',  to: 'users#new'
   get       '/login',   to: 'sessions#new'

@@ -1,0 +1,148 @@
+- provide(:title, "#{t('protocols.headers.show')} #{format_date(@protocol.prot_date_from)}")
+= render partial: 'links', locals: { protocol: @protocol }
+.page-body
+  .line
+    = @setting.set_os_name
+    рег. №
+    = @setting.set_os_registration_num
+  .hint
+    наименование органа по сертификации
+  .line
+    = @setting.set_os_address
+  .hint
+    адрес, телефон, факс
+  %br
+  .caption
+    Протокол идентификации продукции от
+    = format_date(@protocol.prot_date_from)
+  %br
+  %ol.ol-left
+    .paragraph
+      %li Наименование заявителя и его реквизиты:
+    .line
+      %b
+        = @proposal.prop_applic_name
+        = @proposal.prop_applic_reg_doc
+    .hint
+      наименование организации-изготовителя, продавца или индивидуального предпринимателя (далее - заявитель)
+    .paragraph
+      Юридический адрес:
+      %b #{@proposal.prop_applic_address}, #{@proposal.prop_applic_postcode}
+    .paragraph
+      .row
+        .col-md-4
+          Телефон:
+          %b= @proposal.prop_applic_phone
+        .col-md-4
+          Факс:
+          %b= @proposal.prop_applic_fax
+        .col-md-4
+          Почта:
+          %b= @proposal.prop_applic_email
+    .paragraph
+      Заявка
+      %b
+        №
+        = @proposal.prop_number
+        от
+        %b= format_date(@proposal.prop_date_from)
+    .paragraph
+      %li Заявленное наименование продукции:
+    .line
+      %b= @protocol.prot_applic_name_product
+    .hint
+      наименование продукции
+    .paragraph
+      .row
+        .col-md-2
+          Код ОКПД2
+        .col-md-2.line
+          %b= @protocol.prot_applic_code_okp
+        .col-md-2
+          Код ТН ВЭД
+        .col-md-2.line
+          %b= @protocol.prot_applic_code_tn_ved
+    .paragraph
+      %li Сведения об изготовителе продукции:
+    .line
+      %b= @protocol.prot_manuf_name
+    .hint
+      наименование изготовителя
+    .line
+      %b #{@protocol.prot_manuf_address}, #{@protocol.prot_manuf_postcode}
+    .hint
+      адрес
+    - unless @protocol.prot_origin_cert.blank?
+      .line
+        %b= @protocol.prot_origin_cert
+      .hint
+        сертификат происхождения
+    .paragraph
+      %li Сведения о продукции:
+    .line
+      %b= @protocol.prot_info_product
+    .hint
+      удостоверение о качестве, сертификат качества изготовителя, санитарный сертификат страны-изготовителя,
+      фитосанитарный сертификат, ветеринарный сертификат (свидетельство), сертификат хлебной инспекции,
+      гигиеническое заключение
+    - if @protocol.prot_date_issue_product
+      .paragraph
+        %li
+          Дата выпуска продукции:
+          %b= format_date(@protocol.prot_date_issue_product)
+    .paragraph
+      %li
+        Срок годности продукции, указанный изготовителем:
+        %b= @protocol.prot_shelf_life
+    .paragraph
+      %li Сведения об упаковке:
+    .line
+      %b= @protocol.prot_info_box
+    .hint
+      сведения об упаковке, масса, объем первичной упаковки
+    .paragraph
+      %li Оценка маркировки продукции:
+    .line
+      %b= @protocol.prot_label_product
+    .hint
+      соответствие информации на этикетке (упаковке) и прилагаемой сопроводительной документации требованиям
+      ГОСТ Р 51074-2003, анализ информации штрих-кода
+    .paragraph
+      %li Нормативная документация на заявленную продукцию:
+    .line
+      %b= @protocol.prot_regulations_product
+    .hint
+      наименование и обозначение НД. Для импортной продукции - наличие отечественных аналогов, возможность использования
+      отечественной НД для идентификации
+    .paragraph
+      %li Оценка органолептических показателей продукции:
+    .line
+      %b= @protocol.prot_evaluation_product
+    .hint
+      соответствие вкуса, цвета, запаха, консистенции, внешнего вида продукции заявленному наименованию, требованиям
+      нормативных и технических документов, рецептурам, приведенному пищевому составу, прилагаемой информации и (или)
+      традиционно сложившимся вкусам или привычкам населения
+    .paragraph
+      %li Проведение дополнительных испытаний по показателям, подтверждающим идентификацию продукции:
+      %b= @protocol.prot_requirement_test
+    .line
+      %b= @protocol.prot_list_indicators
+    .hint
+      перечень показателей, анализ результатов испытаний
+    .paragraph
+      %li
+        Заключение:
+        %b= @protocol.prot_conclusion
+  .paragraph
+    .row
+      .col-md-6
+        %b Эксперт
+      .col-md-2
+        .line
+        .hint
+          подпись
+      .col-md-3
+        .line
+          = @protocol.prot_expert
+        .hint
+          инициалы, фамилия

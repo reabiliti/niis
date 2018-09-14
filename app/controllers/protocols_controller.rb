@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
+# This controller manage protocols
 class ProtocolsController < ApplicationController
   before_action :protocol_find, only: %i[show edit update destroy]
-
-  def index
-    @protocols = Protocol.all
-  end
 
   def show
     @setting = Setting.first
@@ -28,18 +25,28 @@ class ProtocolsController < ApplicationController
 
   def create
     @protocol = Protocol.new(protocol_params)
-    @protocol.save ? (redirect_to @protocol) : (render 'new')
+    if @protocol.save
+      redirect_to @protocol, flash: { success: t('protocols.notices.success.create') }
+    else
+      flash.now[:danger] = t('protocols.notices.danger.create')
+      render :new
+    end
   end
 
   def edit; end
 
   def update
-    @protocol.update(protocol_params) ? (redirect_to @protocol) : (render 'edit')
+    if @protocol.update(protocol_params)
+      redirect_to @protocol, flash: { success: t('protocols.notices.success.update') }
+    else
+      flash.now[:danger] = t('protocols.notices.danger.update')
+      render :edit
+    end
   end
 
   def destroy
     @protocol.destroy
-    redirect_to root_path
+    redirect_to root_path, flash: { success: t('protocols.notices.success.destroy') }
   end
 
   private
