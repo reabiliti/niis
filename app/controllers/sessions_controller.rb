@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
+# This sessions controller for authorization users
 class SessionsController < ApplicationController
+  skip_before_action :require_login, except: :destroy
+
   def new; end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user&.authenticate(params[:session][:password])
-      log_in user
-      redirect_to root_path
+    if login(session_params[:email], session_params[:password], session_params[:remember_me])
+      redirect_to root_path, flash: { success: 'С возвращением!' }
     else
       flash.now[:danger] = 'Неверная комбинация имени/пароля'
       render 'new'
@@ -15,7 +16,13 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
-    redirect_to root_path
+    logout
+    redirect_to login_path, flash: { success: 'Увидимся еще!' }
+  end
+
+  private
+
+  def session_params
+    params.require(:session).permit(:email, :password, :remember_me)
   end
 end

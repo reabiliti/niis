@@ -3,7 +3,6 @@
 # Class to create solutions experts certificates
 class ConclusionsController < ApplicationController
   before_action :conc_find, only: %i[show edit update destroy]
-  before_action :logged_in_user
 
   def index; end
 

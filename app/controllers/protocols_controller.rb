@@ -2,7 +2,6 @@
 
 class ProtocolsController < ApplicationController
   before_action :protocol_find, only: %i[show edit update destroy]
-  before_action :logged_in_user
 
   def index
     @protocols = Protocol.all
