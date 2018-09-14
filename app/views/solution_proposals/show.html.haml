@@ -1,0 +1,187 @@
+- provide(:title, "#{t('solution_proposals.headers.show')} #{@solution_proposal.solprop_number}")
+= render partial: 'links', locals: { solution_proposal: @solution_proposal }
+.page-body
+  .line
+    #{@setting.set_os_name} рег. № #{@setting.set_os_registration_num}
+  .hint
+    наименование органа по сертификации:
+  .line
+    = @setting.set_os_address
+  .hint
+    адрес, телефон, факс
+  %br
+  .caption
+    РЕШЕНИЕ ПО ЗАЯВКЕ №
+    = @solution_proposal.solprop_number
+    от
+    = format_date(@solution_proposal.solprop_date_from)
+    = @solution_proposal.solprop_solution
+    сертификации продукции
+  %br
+  .paragraph
+    В результате рассмотрения заявки
+    %b № #{@proposal.prop_number}
+    от
+    %b= format_date(@proposal.prop_date_from)
+  .line
+    %b #{@proposal.prop_applic_name} #{@proposal.prop_applic_reg_doc}
+  .hint
+    наименование организации-изготовителя, продавца или индивидуального предпринимателя (далее - заявитель)
+  .paragraph
+    Юридический адрес:
+    %b #{@proposal.prop_applic_address}, #{@proposal.prop_applic_postcode}
+  .paragraph
+    .row
+      .col-md-4
+        Телефон:
+        %b= @proposal.prop_applic_phone
+      .col-md-4
+        Факс:
+        %b= @proposal.prop_applic_fax
+      .col-md-4
+        Почта:
+        %b= @proposal.prop_applic_email
+  .paragraph
+    На проведение
+    %b добровольной
+    сертификации продукции:
+  .line
+    %b= @solution_proposal.solprop_applic_name_product
+  .hint
+    наименование продукции
+  .paragraph
+    .row
+      .col-md-2
+        Код ОКПД2
+      .col-md-2.line
+        %b= @solution_proposal.solprop_applic_code_okp
+      .col-md-2
+        Код ТН ВЭД
+      .col-md-2.line
+        %b= @solution_proposal.solprop_applic_code_tn_ved
+  .line
+    %b= @proposal.prop_applic_from_issue
+  .hint
+    серийный выпуск, или партия определенного размера, или единица продукции
+  .paragraph
+    выпускаемой изготовителем
+  .line
+    %b= @solution_proposal.solprop_manuf_name
+  .hint
+    наименование изготовителя
+  .line
+    %b #{@solution_proposal.solprop_manuf_address}, #{@solution_proposal.solprop_manuf_postcode}
+  .hint
+    адрес
+  .line
+    по
+    %b= @solution_proposal.solprop_manuf_doc
+  .hint
+    наименование и обозначение документации изготовителя (стандарт, ТУ, КД, образец-эталон)
+  .paragraph
+    и представленных заявителем документов:
+  .line
+    %b= @solution_proposal.solprop_manuf_list_doc
+  .hint
+    перечень представленных заявителем документов, подтверждающих соответствие продукции установленным требованиям
+  %br
+  .paragraph
+    = @setting.set_os_name
+    рег. №
+    = @setting.set_os_registration_num
+  %br
+  .caption
+    ПРИНИМАЕТ РЕШЕНИЕ
+  %br
+  .paragraph
+    1. Добровольную сертификацию заявленной продукции провести на соответствие требованиям
+  .line
+    %b= @solution_proposal.solprop_regulations
+  .hint
+    наименование и обозначение нормативных документов
+  .paragraph
+    по схеме
+    %b= @proposal.prop_manuf_scheme_cert
+    , предусматривающей
+  .line
+    %b= @solution_proposal.solprop_desc_scheme_cert
+  .hint
+    описание схемы сертификации
+  .paragraph
+    2. Проведение анализа состояния производства (сертификации производства или системы качества)
+    заявленной продукции схемой сертификации не предусмотрено.
+  .paragraph
+    3. Для проведения сертификационных испытаний заявленной продукции определить следующие
+    аккредитованные испытательные лаборатории (выбор конкретной испытательной лаборатории осуществляет заявитель):
+  .line
+    %b= @solution_proposal.solprop_test_lab
+  .hint
+    для каждой испытательной лаборатории приводят: полное наименование, регистрационный номер, адрес, телефон
+  .paragraph<
+    4. Отбор образцов заявленной для проведения сертификационных испытаний проводит
+    = @solution_proposal.solprop_sampling
+    \.
+  .paragraph
+    5. Заявитель должен предоставить в орган по сертификации следующие документы:
+  .paragraph
+    %b= @solution_proposal.solprop_list_doc_product
+  .paragraph
+    6. Работы проводят на основе:
+  .paragraph
+    %b= @solution_proposal.solprop_basis_work
+  - unless @solution_proposal.solprop_add_info.blank?
+    .paragraph
+      7. Дополнительная информация:
+    .paragraph
+      %b= @solution_proposal.solprop_add_info
+  .paragraph.pt-3
+    .row
+      .col-md-6
+        = @solution_proposal.solprop_chief_name
+      .col-md-2
+        .line
+        .hint
+          подпись
+      .col-md-3
+        .line
+          = @solution_proposal.solprop_chief_org
+        .hint
+          инициалы, фамилия
+    .row
+      .col-md-6
+        Эксперт
+      .col-md-2
+        .line
+        .hint
+          подпись
+      .col-md-3
+        .line
+          = @solution_proposal.solprop_expert
+        .hint
+          инициалы, фамилия
+    - if @solution_proposal.solprop_executor
+      .row
+        .col-md-6
+          Исполнитель
+        .col-md-2
+          .line
+          .hint
+            подпись
+        .col-md-3
+          .line
+            = @solution_proposal.solprop_executor
+          .hint
+            инициалы, фамилия
+    - if @solution_proposal.solprop_applic_sign
+      .row
+        .col-md-6
+          С решением ознакомлен:
+        .col-md-2
+          .line
+          .hint
+            подпись
+        .col-md-3
+          .line
+            = @solution_proposal.solprop_applic_name
+          .hint
+            инициалы, фамилия

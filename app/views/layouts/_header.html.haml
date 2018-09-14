@@ -6,14 +6,11 @@
       - if logged_in?
         %ul.navbar-nav
           %li.nav-item= link_to t('link.new_proposal'), new_proposal_path, class: 'nav-link'
-          %li.nav-item= link_to t('link.users'), users_path, class: 'nav-link'
           %li.nav-item.dropdown
             %a.nav-link.dropdown-toggle#navbardrop{ href: '#', 'data-toggle': 'dropdown' }
               = t('link.account')
               %b.caret
             .dropdown-menu
-              = link_to t('link.profile'), current_user, class: 'dropdown-item'
-              = link_to t('link.settings'), edit_user_path(current_user), class: 'dropdown-item'
               = link_to t('link.logout'), logout_path, method: :delete, class: 'dropdown-item'
         .text-right
       - else

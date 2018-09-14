@@ -1,0 +1,7 @@
+.col-md-2.fixed-top.mt-10
+  %ul.nav.flex-column
+    %li.nav-item= link_to t('link.back'), solution_proposal_path(@solution_proposal), class: 'nav-link'
+
+- provide(:title, "#{t('solution_proposals.headers.edit')} #{@solution_proposal.solprop_number}")
+%h2.text-center.py-3 #{t('solution_proposals.headers.edit')} #{@solution_proposal.solprop_number}
+= render partial: 'form', locals: { solution_proposal: @solution_proposal, button: 'edit' }
