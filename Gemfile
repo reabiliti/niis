@@ -9,11 +9,11 @@ end
 
 ruby '~> 2.5.1'
 
-gem 'bootstrap'
-gem 'coffee-rails'
+gem 'bootstrap', '~> 4.1.3'
+gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'puma', '~> 3.11'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 5.2.1'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
@@ -32,7 +32,7 @@ gem 'responders'
 group :development, :test do
   gem 'pry-rails'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'capybara', '~> 2.13'
+  gem 'capybara'
   gem 'selenium-webdriver'
 end
 
@@ -45,9 +45,9 @@ group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'bullet'
-  gem 'capistrano', '~> 3.7', '>= 3.7.1'
-  gem 'capistrano-rails', '~> 1.2'
-  gem 'capistrano-passenger', '~> 0.2.0'
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'haml_lint', require: false
