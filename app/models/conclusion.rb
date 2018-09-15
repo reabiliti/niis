@@ -8,6 +8,4 @@ class Conclusion < ApplicationRecord
             :conc_cert_expiry_date, :conc_sign_date, presence: true
 
   has_one :solution, dependent: :destroy, inverse_of: :conclusion
-
-  MAY_BE_ISSUE = %w[может не\ может].freeze
 end

@@ -1,12 +1,13 @@
-.link-stuck.no-print
-  = link_to t('link.back'), root_path
-  |
-  = link_to t('link.edit'), edit_conclusion_path(conclusion)
-  |
-  = link_to t('link.destroy'), conclusion, method: :delete,
-                                           data: { confirm: 'Вы уверены?' }
-  - if conclusion.solution.nil?
-    |
-    = link_to t('link.new_solution'), new_solution_path(conclusion_id: conclusion.id)
-%br.no-print
-%br.no-print
+.col-md-2.fixed-top.mt-10.no-print
+  %ul.nav.flex-column
+    %li.nav-item
+      = link_to t('link.back'), root_path, class: 'nav-link'
+    %li.nav-item
+      = link_to t('link.edit'), edit_conclusion_path(conclusion), class: 'nav-link'
+    %li.nav-item
+      = link_to t('link.destroy'), conclusion,
+                                   method: :delete,
+                                   data: { confirm: 'Вы уверены?' },
+                                   class: 'nav-link'
+    %li.nav-item
+      = link_to t('link.new_solution'), new_solution_path(conclusion_id: conclusion.id), class: 'nav-link'

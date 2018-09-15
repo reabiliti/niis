@@ -1,18 +1,7 @@
-- provide(:title, "Заключение о выдаче сертификата от #{@conclusion.conc_sign_date.strftime('%d.%m.%Y')}")
+- provide(:title, "#{t('conclusions.headers.show')} #{format_date(@conclusion.conc_sign_date)}")
 = render partial: 'links', locals: { conclusion: @conclusion }
 .page-body
-  .line
-    = @setting.set_os_name
-    %br
-    рег. №
-    = @setting.set_os_registration_num
-  .hint
-    наименование органа по сертификации
-  .line
-    = @setting.set_os_address
-  .hint
-    адрес, телефон, факс
-  %br
+  = render partial: 'nested_components/settings', locals: { setting: @setting }
   .caption
     ЗАКЛЮЧЕНИЕ ЭКСПЕРТА
     %br по результатам проведения работ
@@ -26,7 +15,7 @@
     на проведение сертификации продукции
     %b № #{@proposal.prop_number}
     от
-    %b= @proposal.prop_date_from.strftime('%d.%m.%Y')
+    %b= format_date(@proposal.prop_date_from)
   .line
     %b
       = @proposal.prop_applic_name
@@ -37,15 +26,15 @@
   .paragraph
     Юридический адрес:
     %b #{@proposal.prop_applic_address} #{@proposal.prop_applic_postcode}
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-4
+  .paragraph
+    .row
+      .col-md-4
         Телефон:
         %b= @proposal.prop_applic_phone
-      .div-table-col.col-width-4
+      .col-md-4
         Факс:
         %b= @proposal.prop_applic_fax
-      .div-table-col.col-width-4
+      .col-md-4
         Почта:
         %b= @proposal.prop_applic_email
   .paragraph
@@ -53,20 +42,20 @@
     органа по сертификации
     %b № #{@conclusion.conc_solution_proposal_num}
     от
-    %b= @conclusion.conc_solution_proposal_date.strftime('%d.%m.%Y')
+    %b= format_date(@conclusion.conc_solution_proposal_date)
   .line
     %b= @conclusion.conc_name_product
   .hint
     наименование продукции
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-2
+  .paragraph
+    .row
+      .col-md-2
         Код ОКПД2
-      .div-table-col-hr.col-width-2
+      .col-md-2.line
         %b= @conclusion.conc_code_okp
-      .div-table-col.col-width-2
+      .col-md-2
         Код ТН ВЭД
-      .div-table-col-hr.col-width-2
+      .col-md-2.line
         %b= @conclusion.conc_code_tn_ved
   .line
     %b= @proposal.prop_applic_from_issue
@@ -95,8 +84,8 @@
     наименование и обозначение нормативных документов
   .paragraph
     по схеме
-    %b= @proposal.prop_manuf_scheme_cert
-    , предусматривающей
+    %b #{@proposal.prop_manuf_scheme_cert},
+    предусматривающей
   .line
     %b= @conclusion.conc_desc_scheme_cert
   .hint
@@ -127,26 +116,26 @@
     На заявленную продукцию
     = @conclusion.conc_may_be_issued
     быть выдан сертификат соответствия
-    %b сроком по #{@conclusion.conc_cert_expiry_date.strftime('%d.%m.%Y')}
+    %b сроком по #{format_date(@conclusion.conc_cert_expiry_date)}
   .line
     %b= @conclusion.conc_add_info
   .hint
     дополнительная информация
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-4.col-align-top
+  .paragraph
+    .row
+      .col-md-4
         Эксперт
-      .div-table-col.col-width-1.col-align-bot
+      .col-md-2
         .line
         .hint
           подпись
-      .div-table-col.col-width-3.col-align-bot
+      .col-md-4.text-center
         .line
           %b= @conclusion.conc_expert
         .hint
           инициалы, фамилия
-    .div-table-row
-      .div-table-col.col-width-4.col-align-top
-      .div-table-col.col-width-2.col-align-bot
-        %b= @conclusion.conc_sign_date.strftime('%d.%m.%Y')
-      .div-table-col.col-width-4.col-align-top
+    .row
+      .col-md-4
+      .col-md-2
+        %b= format_date(@conclusion.conc_sign_date)
+      .col-md-4

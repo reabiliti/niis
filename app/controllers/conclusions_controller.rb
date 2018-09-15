@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-# Class to create solutions experts certificates
+# Class to mabage conclusions experts certificates
 class ConclusionsController < ApplicationController
-  before_action :conc_find, only: %i[show edit update destroy]
-
-  def index; end
+  before_action :conclusion_find, only: %i[show edit update destroy]
 
   def show
     @setting = Setting.first
@@ -20,34 +18,34 @@ class ConclusionsController < ApplicationController
   end
 
   def create
-    @conclusion = Conclusion.new(conc_params)
+    @conclusion = Conclusion.new(conclusion_params)
     if @conclusion.save
-      redirect_to @conclusion, flash: { success: 'Заключение эксперта создано успешно' }
+      redirect_to @conclusion, flash: { success: t('conclusions.notices.success.create') }
     else
-      flash.now[:danger] = 'Не удалось создать заключение эксперта, проверьте вводимые данные'
-      render 'new'
+      flash.now[:danger] = t('conclusions.notices.danger.create')
+      render :new
     end
   end
 
   def edit; end
 
   def update
-    if @conclusion.update(conc_params)
-      redirect_to @conclusion, flash: { success: 'Заключение эксперта успешно обновлено' }
+    if @conclusion.update(conclusion_params)
+      redirect_to @conclusion, flash: { success: t('conclusions.notices.success.update') }
     else
-      flash.now[:danger] = 'Не удалось обновить заключение эксперта, проверьте вводимые данные'
-      render 'edit'
+      flash.now[:danger] = t('conclusions.notices.danger.update')
+      render :edit
     end
   end
 
   def destroy
     @conclusion.destroy
-    redirect_to root_path, flash: { success: 'Заключение эксперта успешно удалено' }
+    redirect_to root_path, flash: { success: t('conclusions.notices.success.destroy') }
   end
 
   private
 
-  def conc_params
+  def conclusion_params
     params.require(:conclusion).permit(:conc_solution_proposal_num, :conc_solution_proposal_date, :conc_contract_num,
                                        :conc_contract_date, :conc_directive_num, :conc_directive_date,
                                        :conc_name_product, :conc_code_okp, :conc_code_tn_ved, :conc_manuf_name,
@@ -58,7 +56,7 @@ class ConclusionsController < ApplicationController
                                        :solution_proposal_id)
   end
 
-  def conc_find
+  def conclusion_find
     @conclusion = Conclusion.find(params[:id])
   end
 

@@ -1,17 +1,7 @@
 - provide(:title, "#{t('protocols.headers.show')} #{format_date(@protocol.prot_date_from)}")
 = render partial: 'links', locals: { protocol: @protocol }
 .page-body
-  .line
-    = @setting.set_os_name
-    рег. №
-    = @setting.set_os_registration_num
-  .hint
-    наименование органа по сертификации
-  .line
-    = @setting.set_os_address
-  .hint
-    адрес, телефон, факс
-  %br
+  = render partial: 'nested_components/settings', locals: { setting: @setting }
   .caption
     Протокол идентификации продукции от
     = format_date(@protocol.prot_date_from)
@@ -141,7 +131,7 @@
         .line
         .hint
           подпись
-      .col-md-3
+      .col-md-3.text-center
         .line
           = @protocol.prot_expert
         .hint
