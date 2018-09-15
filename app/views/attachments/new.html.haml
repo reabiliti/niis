@@ -1,4 +1,7 @@
-- provide(:title, 'Приложение к сертификату')
-= render 'shared/links'
-%h1 Приложение к сертификату
-= render partial: 'form', locals: { attachment: @attachment }
+.col-md-2.fixed-top.mt-10
+  %ul.nav.flex-column
+    %li.nav-item= link_to t('link.back'), certificate_path(@attachment.certificate), class: 'nav-link'
+
+- provide(:title, t('attachments.headers.new'))
+%h2.text-center.py-3= t('attachments.headers.new')
+= render partial: 'form', locals: { attachment: @attachment, button: 'create' }

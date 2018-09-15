@@ -1,7 +1,7 @@
-- provide(:title, "Приложение к сертификату #{@certificate.cert_registration_num},
-                  бланк № #{@attachment.att_blank_num}")
-= render 'shared/links'
-%h1
-  Приложение к сертификату #{@certificate.cert_registration_num}, бланк №
-  = @attachment.att_blank_num
-= render partial: 'form', locals: { attachment: @attachment }
+.col-md-2.fixed-top.mt-10
+  %ul.nav.flex-column
+    %li.nav-item= link_to t('link.back'), attachment_path(@attachment), class: 'nav-link'
+
+- provide(:title, "#{t('attachments.headers.edit')} #{@certificate.cert_registration_num}")
+%h2.text-center.py-3 #{t('attachments.headers.edit')} #{@certificate.cert_registration_num}
+= render partial: 'form', locals: { attachment: @attachment, button: 'edit' }

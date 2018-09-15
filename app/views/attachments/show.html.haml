@@ -1,78 +1,75 @@
-- provide(:title, "Приложение к сертификату #{@certificate.cert_registration_num},
-                  бланк № #{@attachment.att_blank_num}")
+- provide(:title, "#{t('attachments.headers.show')} #{@certificate.cert_registration_num}")
 = render partial: 'links', locals: { attachment: @attachment }
 .page-body
   .caption
     СИСТЕМА СЕРТИФИКАЦИИ ГОСТ Р
     %br
     ГОССТАНДАРТ РОССИИ
-  .paragraph.right.red-text
+  .paragraph.text-right.text-danger
     %b
       №
       = @attachment.att_blank_num
   .caption
     ПРИЛОЖЕНИЕ
   %br
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-2
-      .div-table-col.col-width-4
-        К сертификату соответствия №
-      .div-table-col-hr.col-width-4
+  .row
+    .col-md-2
+    .col-md-4
+      К сертификату соответствия №
+    .col-md-4
+      .line
         %b= @certificate.cert_registration_num
-      .div-table-col.col-width-2
+    .col-md-2
   %br
-  .paragraph.center
+  .paragraph.text-center
     %b Перечень конкретной продукции, на которую распространяется действие сертификата соответствия
   %br
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-3.border-lt
-        %b Код ОКПД2
+  .row.border.border-dark
+    .col-md-3.border-right.border-dark
+      %b Код ОКПД2
+      %br
+      %b Код ТН ВЭД
+    .col-md-5.border-right.border-dark
+      %b Наименование и обозначение продукции, изготовитель
+    .col-md-4
+      %b Обозначение документации, по которой выпускается продукция
+  .row.border.border-top-0.border-dark
+    .col-md-3.border-right.border-dark
+      = @attachment.att_code_okp
+      %br
+      = @attachment.att_code_tn_ved
+    .col-md-5.border-right.border-dark
+      - @attachment.att_name_product.split("\r\n").each do |att_name_product|
+        = att_name_product
         %br
-        %b Код ТН ВЭД
-      .div-table-col.col-width-5.border-lt
-        %b Наименование и обозначение продукции, изготовитель
-      .div-table-col.col-width-4.border-ltr
-        %b Обозначение документации, по которой выпускается продукция
-    .div-table-row
-      .div-table-col.col-width-3.border-ltb
-        = @attachment.att_code_okp
-        %br
-        = @attachment.att_code_tn_ved
-      .div-table-col.col-width-5.border-ltb
-        - if @attachment&.att_name_product
-          - @attachment.att_name_product.split("\r\n").each do |att_name_product|
-            = att_name_product
-            %br
-        %br
-        %br
-        ИЗГОТОВИТЕЛЬ:
-        = @attachment.att_manuf_name
-      .div-table-col.col-width-4.border
-        = @attachment.att_regulations
+      %br
+      %br
+      ИЗГОТОВИТЕЛЬ:
+      = @attachment.att_manuf_name
+    .col-md-4
+      = @attachment.att_regulations
   %br
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-4
+  .paragraph
+    .row
+      .col-md-6
         Руководитель органа
-      .div-table-col.col-width-2.col-align-bot
+      .col-md-2
         .line
         .hint
           подпись
-      .div-table-col.col-width-3
+      .col-md-4.text-center
         .line
           %b= @certificate.cert_chief_org
         .hint
           инициалы, фамилия
-    .div-table-row
-      .div-table-col.col-width-4
+    .row
+      .col-md-6
         Эксперт
-      .div-table-col.col-width-2.col-align-bot
+      .col-md-2
         .line
         .hint
           подпись
-      .div-table-col.col-width-3
+      .col-md-4.text-center
         .line
           %b= @certificate.cert_expert
         .hint
