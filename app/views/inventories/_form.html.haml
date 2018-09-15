@@ -1,0 +1,19 @@
+.page-body
+  = simple_form_for inventory do |f|
+    = f.input :proposal_id, as: :hidden
+    .row
+      .col-md-6
+        = f.input :inv_date_from,
+                  as: :date, start_year: Date.today.year - 10,
+                  end_year: Date.today.year + 10,
+                  html5: true
+    = f.input :inv_list_doc, as: :text, input_html: { rows: 10 }
+    = f.input :inv_list_page, as: :text, input_html: { rows: 10 }
+    .row
+      .col-md-6
+        = f.input :inv_exec_name
+      .col-md-6
+        = f.input :inv_chief_name
+
+    .col.pt-5
+      = f.submit t("inventories.buttons.#{button}"), class: 'btn btn-dark btn-block'

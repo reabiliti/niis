@@ -15,6 +15,8 @@ $spacer: 1rem;
   box-sizing:         border-box;
 }
 
+// Bootstrap
+
 // Kaminari
 
 .page-item.active .page-link {
@@ -41,6 +43,12 @@ $spacer: 1rem;
   &:hover {
     color: #000;
   }
+}
+
+// Brand
+
+.navbar-brand {
+  font-size: 1.5rem;
 }
 
 /* universal */

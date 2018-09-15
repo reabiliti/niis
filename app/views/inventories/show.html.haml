@@ -1,0 +1,47 @@
+- provide(:title, "#{t('inventories.headers.show')} #{format_date(@inventory.inv_date_from)}")
+= render partial: 'links', locals: { inventory: @inventory }
+.page-body
+  .caption
+    ОПИСЬ ДОКУМЕНТОВ
+  %br
+  .row.border.border-dark
+    .col-md-9.border-right.border-dark
+      Наименование документа
+    .col-md-3
+      № страницы
+  .row.border.border-top-0.border-dark
+    .col-md-9.border-right.border-dark
+      %ol.ol-table
+        - @inventory.inv_list_doc.split("\r\n").each do |inv_list_doc|
+          %li= inv_list_doc
+    .col-md-3
+      %ol.ol-table
+        - @inventory.inv_list_page.split("\r\n").each do |inv_list_page|
+          %li.li-none
+            = inv_list_page
+  %br
+  .paragraph
+    .row
+      .col-md-6
+        Исполнитель
+      .col-md-2
+        .line
+        .hint
+          подпись
+      .col-md-4.text-center
+        .line
+          %b= @inventory.inv_exec_name
+        .hint
+          инициалы, фамилия
+    .row
+      .col-md-6
+        Начальник отдела
+      .col-md-2
+        .line
+        .hint
+          подпись
+      .col-md-4.text-center
+        .line
+          %b= @inventory.inv_chief_name
+        .hint
+          инициалы, фамилия
