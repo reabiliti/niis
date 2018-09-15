@@ -1,4 +1,4 @@
-- provide(:title, "Сертификат #{@certificate.cert_registration_num}")
+- provide(:title, "#{t('certificates.headers.show')} #{@certificate.cert_registration_num}")
 = render partial: 'links', locals: { certificate: @certificate }
 .page-body
   .caption
@@ -6,22 +6,22 @@
     %br ГОССТАНДАРТ РОССИИ
     %br СЕРТИФИКАТ СООТВЕТСТВИЯ
   %br
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-4
-      .div-table-col.col-width-6
+  .paragraph
+    .row
+      .col-md-4
+      .col-md-6
         №
         %b= @certificate.cert_registration_num
         %br
         Срок действия с
-        %b= @certificate.cert_registration_date.strftime('%d.%m.%Y')
+        %b= format_date(@certificate.cert_registration_date)
         по
-        %b= @certificate.cert_expiry_date.strftime('%d.%m.%Y')
-      .div-table-col.col-width-2
-    .div-table-row
-      .div-table-col.col-width-4
-      .div-table-col.col-width-6
-      .div-table-col.col-width-2.red-text
+        %b= format_date(@certificate.cert_expiry_date)
+      .col-md-2
+    .row
+      .col-md-4
+      .col-md-6
+      .col-md-2.text-danger
         №
         %b= @certificate.cert_blank_num
   .paragraph
@@ -32,34 +32,34 @@
   .paragraph
     %b= @setting.set_os_address
   %br
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-9
+  .paragraph
+    .row
+      .col-md-9
         ПРОДУКЦИЯ
         %b= @certificate.cert_name_product
-      .div-table-col.col-width-2.center
+      .col-md-3.text-center
         Код ОКПД2
-    .div-table-row
-      .div-table-col.col-width-9
+    .row
+      .col-md-9
         %b= @certificate.cert_manuf_doc
-      .div-table-col.col-width-3.center
+      .col-md-3.text-center
         %b= @certificate.cert_code_okp
-    .div-table-row
-      .div-table-col.col-width-9
+    .row
+      .col-md-9
         %b= @proposal.prop_applic_from_issue
-      .div-table-col.col-width-3.center
+      .col-md-3
   %br
   .paragraph
     СООТВЕТСТВУЕТ ТРЕБОВАНИЯМ НОРМАТИВНЫХ ДОКУМЕНТОВ
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-9
+  .paragraph
+    .row
+      .col-md-9
         %b= @certificate.cert_manuf_regulations
-      .div-table-col.col-width-3.center
+      .col-md-3.text-center
         Код ТН ВЭД
-    .div-table-row
-      .div-table-col.col-width-9
-      .div-table-col.col-width-3.center
+    .row
+      .col-md-9
+      .col-md-3.text-center
         %b= @certificate.cert_code_tn_ved
   %br
   %br
@@ -103,14 +103,28 @@
     Схема сертификации
     %b #{@proposal.prop_manuf_scheme_cert}.
   %br
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-7
+  .paragraph
+    .row
+      .col-md-6
         Руководитель органа
-      .div-table-col.col-width-5
-        %b= @certificate.cert_chief_org
-    .div-table-row
-      .div-table-col.col-width-7
+      .col-md-2
+        .line
+        .hint
+          подпись
+      .col-md-4.text-center
+        .line
+          %b= @certificate.cert_chief_org
+        .hint
+          инициалы, фамилия
+    .row
+      .col-md-6
         Эксперт
-      .div-table-col.col-width-5
-        %b= @certificate.cert_expert
+      .col-md-2
+        .line
+        .hint
+          подпись
+      .col-md-4.text-center
+        .line
+          %b= @certificate.cert_expert
+        .hint
+          инициалы, фамилия

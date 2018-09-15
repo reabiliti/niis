@@ -1,18 +1,18 @@
 %header.no-print
   %nav.navbar.navbar-expand-md.bg-dark.navbar-dark.fixed-top
-    .col.d-flex.justify-content-start
-      = link_to 'CERTIFICATION', root_path, class: 'navbar-brand'
-    .col.d-flex.justify-content-end
-      - if logged_in?
+    %b= link_to 'CERTIFICATION', root_path, class: 'navbar-brand'
+    - if logged_in?
+      %ul.navbar-nav
+        %li.nav-item
+          = link_to t('link.new_proposal'), new_proposal_path, class: 'nav-link'
+      .col.d-flex.justify-content-end
         %ul.navbar-nav
-          %li.nav-item= link_to t('link.new_proposal'), new_proposal_path, class: 'nav-link'
           %li.nav-item.dropdown
             %a.nav-link.dropdown-toggle#navbardrop{ href: '#', 'data-toggle': 'dropdown' }
               = t('link.account')
               %b.caret
             .dropdown-menu
               = link_to t('link.logout'), logout_path, method: :delete, class: 'dropdown-item'
-        .text-right
-      - else
-        %ul.navbar-nav
-          %li.nav-item= link_to t('link.login'), login_path, class: 'nav-link'
+    - else
+      %ul.navbar-nav
+        %li.nav-item= link_to t('link.login'), login_path, class: 'nav-link'

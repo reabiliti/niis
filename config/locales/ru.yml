@@ -100,6 +100,22 @@ ru:
       danger:
         create: Решение о выдачи сертификата не удалось создать, проверьте вводимые данные
         update: Решение о выдачи сертификата не удалось обновить, проверьте вводимые данные
+  certificates:
+    headers:
+      show: Сертифика
+      new: Создать сертификат
+      edit: Сертификат
+    buttons:
+      create: Создать сертификат
+      edit: Сохранить сертификат
+    notices:
+      success:
+        create: Сертификат успешно создан
+        update: Сертификат успешно обновлен
+        destroy: Сертификат успешно удален
+      danger:
+        create: Сертификат не удалось создать, проверьте вводимые данные
+        update: Сертификат не удалось обновить, проверьте вводимые данные
   link:
     back: Назад
     show: Просмотр
@@ -118,7 +134,7 @@ ru:
     new_inventory: Создать опись документов
     edit: Изменить
     home: Главная
-    print_PDF: Печать PDF
+    print_pdf: Печать PDF
     settings: Настройки
     proposals: Заявки
     solution_proposals: Решения по заявкам
@@ -315,7 +331,7 @@ ru:
         sol_applic_sign: "Подпись заявителя"
         sol_applic_name: "Заявитель"
       certificate:
-        cert_expiry_date: "Дата истечения сертификата"
+        cert_expiry_date: "Дата истечения"
         cert_name_product_size_font: "Размер шрифта"
         cert_name_product: "Наименование продукции"
         cert_manuf_doc: "Наименование и обозначение документации изготовителя (стандарт, ТУ, КД, образец-эталон)"
@@ -338,8 +354,8 @@ ru:
         cert_place_marking: "Место нанесения знака соответствия"
         cert_chief_org: "Руководитель"
         cert_expert: "Эксперт"
-        cert_registration_date: "Дата регистрации сертификата"
-        cert_registration_num: "Номер регистрации сертификата"
+        cert_registration_date: "Дата регистрации"
+        cert_registration_num: "Номер регистрации"
         cert_blank_num: "Номер бланка"
       permission:
         perm_registration_num: "Регистрационный номер"

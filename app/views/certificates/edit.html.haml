@@ -1,5 +1,7 @@
-- provide(:title, "Редактирование Сертификата #{@certificate.cert_registration_num}")
-= render 'shared/links'
-%h1
-  Редактирование сертификата #{@certificate.cert_registration_num}
-= render partial: 'form', locals: { certificate: @certificate }
+.col-md-2.fixed-top.mt-10
+  %ul.nav.flex-column
+    %li.nav-item= link_to t('link.back'), certificate_path(@certificate), class: 'nav-link'
+
+- provide(:title, "#{t('certificates.headers.edit')} #{@certificate.cert_registration_num}")
+%h2.text-center.py-3 #{t('certificates.headers.edit')} #{@certificate.cert_registration_num}
+= render partial: 'form', locals: { certificate: @certificate, button: 'edit' }
