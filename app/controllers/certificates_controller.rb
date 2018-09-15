@@ -54,10 +54,10 @@ class CertificatesController < ApplicationController
   def create
     @certificate = Certificate.new(certificate_params)
     if @certificate.save
-      redirect_to @certificate, flash: { success: 'Сертификат создан успешно' }
+      redirect_to @certificate, flash: { success: t('certificates.notices.success.create') }
     else
-      flash.now[:danger] = 'Не удалось создать сертификат, проверьте вводимые данные'
-      render 'new'
+      flash.now[:danger] = t('certificates.notices.danger.create')
+      render :new
     end
   end
 
@@ -65,16 +65,16 @@ class CertificatesController < ApplicationController
 
   def update
     if @certificate.update(certificate_params)
-      redirect_to @certificate, flash: { success: 'Сертификат успешно обновлен' }
+      redirect_to @certificate, flash: { success: t('certificates.notices.success.update') }
     else
-      flash.now[:danger] = 'Не удалось обновить сертификат, проверьте вводимые данные'
-      render 'edit'
+      flash.now[:danger] = t('certificates.notices.danger.update')
+      render :edit
     end
   end
 
   def destroy
     @certificate.destroy
-    redirect_to root_path, flash: { success: 'Сертификат успешно удален' }
+    redirect_to root_path, flash: { success: t('certificates.notices.success.destroy') }
   end
 
   private
