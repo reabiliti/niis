@@ -1,60 +1,59 @@
-.page-body
-  = simple_form_for certificate do |f|
-    = f.input :solution_id, as: :hidden
-    .row
-      .col-md-6
-        = f.input :cert_expiry_date,
-                  as: :date, start_year: Date.today.year - 10,
-                  end_year: Date.today.year + 10,
-                  html5: true
-      .col-md-6
-        = f.input :cert_name_product_size_font, collection: FONT_SIZES, include_blank: false
-    = f.input :cert_name_product, as: :text, input_html: { rows: 2 }
-    = f.input :cert_manuf_doc, as: :text, input_html: { rows: 5 }
-    .row
-      .col-md-6
-        = f.input :cert_code_okp, as: :text, input_html: { rows: 2 }
-      .col-md-6
-        = f.input :cert_code_tn_ved, as: :text, input_html: { rows: 2 }
-    = f.input :cert_manuf_regulations, as: :text, input_html: { rows: 3 }
-    %h2.py-3 Изготовитель
-    = f.input :cert_manuf_name, as: :text, input_html: { rows: 5 }
-    .row
-      .col-md-6
-        = f.input :cert_manuf_inn
-      .col-md-6
-        = f.input :cert_manuf_postcode
-    = f.input :cert_manuf_address, as: :text, input_html: { rows: 9 }
-    %h2.py-3 Заявитель
-    = f.input :cert_applic_name, as: :text, input_html: { rows: 5 }
-    .row
-      .col-md-4
-        = f.input :cert_applic_inn
-      .col-md-4
-        = f.input :cert_applic_phone
-      .col-md-4
-        = f.input :cert_applic_postcode
-    = f.input :cert_applic_address, as: :text, input_html: { rows: 9 }
-    %br
-    = f.input :cert_test_report, as: :text, input_html: { rows: 2 }
-    = f.input :cert_add_info, as: :text, input_html: { rows: 4 }
-    = f.input :cert_place_marking
-    .row
-      .col-md-6
-        = f.input :cert_chief_org
-      .col-md-6
-        = f.input :cert_expert
-    %h2.py-3 Регистрация
-    .row
-      .col-md-4
-        = f.input :cert_registration_date,
-                  as: :date, start_year: Date.today.year - 10,
-                  end_year: Date.today.year + 10,
-                  html5: true
-      .col-md-4
-        = f.input :cert_registration_num
-      .col-md-4
-        = f.input :cert_blank_num
+= simple_form_for certificate do |f|
+  = f.input :solution_id, as: :hidden
+  .row
+    .col-md-6
+      = f.input :cert_expiry_date,
+                as: :date, start_year: Date.today.year - 10,
+                end_year: Date.today.year + 10,
+                html5: true
+    .col-md-6
+      = f.input :cert_name_product_size_font, collection: FONT_SIZES, include_blank: false
+  = f.input :cert_name_product, as: :text, input_html: { rows: 2 }
+  = f.input :cert_manuf_doc, as: :text, input_html: { rows: 5 }
+  .row
+    .col-md-6
+      = f.input :cert_code_okp, as: :text, input_html: { rows: 2 }
+    .col-md-6
+      = f.input :cert_code_tn_ved, as: :text, input_html: { rows: 2 }
+  = f.input :cert_manuf_regulations, as: :text, input_html: { rows: 3 }
+  %h2.py-3 Изготовитель
+  = f.input :cert_manuf_name, as: :text, input_html: { rows: 5 }
+  .row
+    .col-md-6
+      = f.input :cert_manuf_inn
+    .col-md-6
+      = f.input :cert_manuf_postcode
+  = f.input :cert_manuf_address, as: :text, input_html: { rows: 9 }
+  %h2.py-3 Заявитель
+  = f.input :cert_applic_name, as: :text, input_html: { rows: 5 }
+  .row
+    .col-md-4
+      = f.input :cert_applic_inn
+    .col-md-4
+      = f.input :cert_applic_phone
+    .col-md-4
+      = f.input :cert_applic_postcode
+  = f.input :cert_applic_address, as: :text, input_html: { rows: 9 }
+  %br
+  = f.input :cert_test_report, as: :text, input_html: { rows: 2 }
+  = f.input :cert_add_info, as: :text, input_html: { rows: 4 }
+  = f.input :cert_place_marking
+  .row
+    .col-md-6
+      = f.input :cert_chief_org
+    .col-md-6
+      = f.input :cert_expert
+  %h2.py-3 Регистрация
+  .row
+    .col-md-4
+      = f.input :cert_registration_date,
+                as: :date, start_year: Date.today.year - 10,
+                end_year: Date.today.year + 10,
+                html5: true
+    .col-md-4
+      = f.input :cert_registration_num
+    .col-md-4
+      = f.input :cert_blank_num
 
-    .col.pt-5
-      = f.submit t("certificates.buttons.#{button}"), class: 'btn btn-dark btn-block'
+  .col.pt-5
+    = f.submit t("certificates.buttons.#{button}"), class: 'btn btn-dark btn-block'

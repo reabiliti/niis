@@ -1,4 +1,4 @@
 .row
-  .col-md-8.offset-md-2.py-3.text-center.no-print
+  .col-md-8.offset-md-2.py-3.text-center
     - flash.each do |name, msg|
       %div{ class: "no-print alert alert-#{name}" }= msg

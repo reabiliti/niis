@@ -3,5 +3,6 @@
     %li.nav-item= link_to t('link.back'), conclusion_path(@conclusion), class: 'nav-link'
 
 - provide(:title, "#{t('conclusions.headers.edit')} #{format_date(@conclusion.conc_sign_date)}")
-%h2.text-center.py-3 #{t('conclusions.headers.edit')} #{format_date(@conclusion.conc_sign_date)}
-= render partial: 'form', locals: { conclusion: @conclusion, button: 'edit' }
+.page-body
+  %h2.text-center.py-3 #{t('conclusions.headers.edit')} #{format_date(@conclusion.conc_sign_date)}
+  = render partial: 'form', locals: { conclusion: @conclusion, button: 'edit' }

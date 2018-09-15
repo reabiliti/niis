@@ -3,5 +3,6 @@
     %li.nav-item= link_to t('link.back'), solution_path(@certificate.solution), class: 'nav-link'
 
 - provide(:title, t('certificates.headers.new'))
-%h2.text-center.py-3= t('certificates.headers.new')
-= render partial: 'form', locals: { certificate: @certificate, button: 'create' }
+.page-body
+  %h2.text-center.py-3= t('certificates.headers.new')
+  = render partial: 'form', locals: { certificate: @certificate, button: 'create' }

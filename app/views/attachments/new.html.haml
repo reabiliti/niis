@@ -3,5 +3,6 @@
     %li.nav-item= link_to t('link.back'), certificate_path(@attachment.certificate), class: 'nav-link'
 
 - provide(:title, t('attachments.headers.new'))
-%h2.text-center.py-3= t('attachments.headers.new')
-= render partial: 'form', locals: { attachment: @attachment, button: 'create' }
+.page-body
+  %h2.text-center.py-3= t('attachments.headers.new')
+  = render partial: 'form', locals: { attachment: @attachment, button: 'create' }

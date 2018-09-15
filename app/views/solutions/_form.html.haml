@@ -1,66 +1,65 @@
-.page-body
-  = simple_form_for solution do |f|
+= simple_form_for solution do |f|
 
-    = f.input :conclusion_id, as: :hidden
-    .row
-      .col-md-6
-        = f.input :sol_number
-      .col-md-6
-        = f.input :sol_date_from,
-                  as: :date, start_year: Date.today.year - 10,
-                  end_year: Date.today.year + 10,
-                  html5: true
-    = f.input :sol_delivery, collection: SOLUTION_DELIVERY, include_blank: false
-    .row
-      .col-md-6
-        = f.input :sol_solution_proposal_num
-      .col-md-6
-        = f.input :sol_solution_proposal_date,
-                  as: :date, start_year: Date.today.year - 10,
-                  end_year: Date.today.year + 10,
-                  html5: true
-    = f.input :sol_name_product, as: :text, input_html: { rows: 5 }
-    .row
-      .col-md-6
-        = f.input :sol_code_okp, as: :text, input_html: { rows: 2 }
-      .col-md-6
-        = f.input :sol_code_tn_ved, as: :text, input_html: { rows: 2 }
-    = f.input :sol_manuf_name
-    = f.input :sol_manuf_address, as: :text, input_html: { rows: 6 }
-    = f.input :sol_manuf_postcode
-    = f.input :sol_manuf_doc, as: :text, input_html: { rows: 3 }
-    = f.input :sol_manuf_regulations, as: :text, input_html: { rows: 1 }
-    = f.input :sol_desc_scheme_cert, as: :text, input_html: { rows: 5 }
-    = f.input :sol_test_report, as: :text, input_html: { rows: 5 }
-    = f.input :sol_list_doc, as: :text, input_html: { rows: 4 }
-    .row
-      .col-md-6
-        = f.input :sol_conclusion_date,
-                  as: :date, start_year: Date.today.year - 10,
-                  end_year: Date.today.year + 10,
-                  html5: true
-      .col-md-6
-        = f.input :sol_cert_expiry_date,
-                  as: :date, start_year: Date.today.year - 10,
-                  end_year: Date.today.year + 10,
-                  html5: true
-    = f.input :sol_place_marking
-    = f.input :sol_inspection_period, collection: INSPECTION_PERIODS, include_blank: false
-    = f.input :sol_inspection_method
-    = f.input :sol_inspection_work_basis, as: :text, input_html: { rows: 3 }
-    = f.input :sol_add_info, as: :text, input_html: { rows: 5 }
-    .row
-      .col
-        = f.input :sol_chief_name
-      .col
-        = f.input :sol_chief_org
-    .row
-      .col
-        = f.input :sol_expert
-      .col
-        = f.input :sol_executor
-    = f.input :sol_applic_sign
-    = f.input :sol_applic_name
+  = f.input :conclusion_id, as: :hidden
+  .row
+    .col-md-6
+      = f.input :sol_number
+    .col-md-6
+      = f.input :sol_date_from,
+                as: :date, start_year: Date.today.year - 10,
+                end_year: Date.today.year + 10,
+                html5: true
+  = f.input :sol_delivery, collection: SOLUTION_DELIVERY, include_blank: false
+  .row
+    .col-md-6
+      = f.input :sol_solution_proposal_num
+    .col-md-6
+      = f.input :sol_solution_proposal_date,
+                as: :date, start_year: Date.today.year - 10,
+                end_year: Date.today.year + 10,
+                html5: true
+  = f.input :sol_name_product, as: :text, input_html: { rows: 5 }
+  .row
+    .col-md-6
+      = f.input :sol_code_okp, as: :text, input_html: { rows: 2 }
+    .col-md-6
+      = f.input :sol_code_tn_ved, as: :text, input_html: { rows: 2 }
+  = f.input :sol_manuf_name
+  = f.input :sol_manuf_address, as: :text, input_html: { rows: 6 }
+  = f.input :sol_manuf_postcode
+  = f.input :sol_manuf_doc, as: :text, input_html: { rows: 3 }
+  = f.input :sol_manuf_regulations, as: :text, input_html: { rows: 1 }
+  = f.input :sol_desc_scheme_cert, as: :text, input_html: { rows: 5 }
+  = f.input :sol_test_report, as: :text, input_html: { rows: 5 }
+  = f.input :sol_list_doc, as: :text, input_html: { rows: 4 }
+  .row
+    .col-md-6
+      = f.input :sol_conclusion_date,
+                as: :date, start_year: Date.today.year - 10,
+                end_year: Date.today.year + 10,
+                html5: true
+    .col-md-6
+      = f.input :sol_cert_expiry_date,
+                as: :date, start_year: Date.today.year - 10,
+                end_year: Date.today.year + 10,
+                html5: true
+  = f.input :sol_place_marking
+  = f.input :sol_inspection_period, collection: INSPECTION_PERIODS, include_blank: false
+  = f.input :sol_inspection_method
+  = f.input :sol_inspection_work_basis, as: :text, input_html: { rows: 3 }
+  = f.input :sol_add_info, as: :text, input_html: { rows: 5 }
+  .row
+    .col
+      = f.input :sol_chief_name
+    .col
+      = f.input :sol_chief_org
+  .row
+    .col
+      = f.input :sol_expert
+    .col
+      = f.input :sol_executor
+  = f.input :sol_applic_sign
+  = f.input :sol_applic_name
 
-    .col.pt-5
-      = f.submit t("solutions.buttons.#{button}"), class: 'btn btn-dark btn-block'
+  .col.pt-5
+    = f.submit t("solutions.buttons.#{button}"), class: 'btn btn-dark btn-block'

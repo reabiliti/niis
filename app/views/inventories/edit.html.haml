@@ -3,5 +3,6 @@
     %li.nav-item= link_to t('link.back'), inventory_path(@inventory), class: 'nav-link'
 
 - provide(:title, "#{t('inventories.headers.edit')} #{format_date(@inventory.inv_date_from)}")
-%h2.text-center.py-3 #{t('inventories.headers.edit')} #{format_date(@inventory.inv_date_from)}
-= render partial: 'form', locals: { inventory: @inventory, button: 'edit' }
+.page-body
+  %h2.text-center.py-3 #{t('inventories.headers.edit')} #{format_date(@inventory.inv_date_from)}
+  = render partial: 'form', locals: { inventory: @inventory, button: 'edit' }

@@ -1,48 +1,47 @@
-.page-body
-  = simple_form_for setting do |f|
-    .row
-      .col-md-4
-        = f.input :set_name
-    %h2.py-3 Сведения об аккредитации органа по сертификации
-    .row
-      .col-md-9
-        = f.input :set_os_registration_num
-      .col-md-3
-        = f.input :set_os_registration_date,
-                  as: :date, start_year: Date.today.year - 10,
-                  end_year: Date.today.year + 10,
-                  html5: true
-    = f.input :set_os_name, as: :text, input_html: { rows: 4 }
-    = f.input :set_os_address, as: :text, input_html: { rows: 4 }
-    .row
-      .col-md-6
-        = f.input :set_os_city
-      .col-md-6
-        = f.input :set_os_chief_position
-    .row
-      .col-md-6
-        = f.input :set_os_chief_name
-      .col-md-6
-        = f.input :set_os_based_doc
-    %h2.py-3 Организация, на базе которой создан орган по сертификации
-    = f.input :set_org_name, as: :text, input_html: { rows: 4 }
-    = f.input :set_org_address, as: :text, input_html: { rows: 7 }
-    .row
-      .col-md-6
-        = f.input :set_org_chief_position
-      .col-md-6
-        = f.input :set_org_phone
-    .row
-      .col-md-6
-        = f.input :set_org_chief_name
-      .col-md-6
-        = f.input :set_org_based_doc
-        = f.input :set_org_chief_accountant
-    %h2.py-3 Параметры печати сертификата
-    .row
-      .col-md-6
-        = f.input :set_at_x
-      .col-md-6
-        = f.input :set_at_y
-    .pt-5
-      = f.submit t("settings.buttons.#{button}"), class: 'btn btn-dark btn-block'
+= simple_form_for setting do |f|
+  .row
+    .col-md-4
+      = f.input :set_name
+  %h2.py-3 Сведения об аккредитации органа по сертификации
+  .row
+    .col-md-9
+      = f.input :set_os_registration_num
+    .col-md-3
+      = f.input :set_os_registration_date,
+                as: :date, start_year: Date.today.year - 10,
+                end_year: Date.today.year + 10,
+                html5: true
+  = f.input :set_os_name, as: :text, input_html: { rows: 4 }
+  = f.input :set_os_address, as: :text, input_html: { rows: 4 }
+  .row
+    .col-md-6
+      = f.input :set_os_city
+    .col-md-6
+      = f.input :set_os_chief_position
+  .row
+    .col-md-6
+      = f.input :set_os_chief_name
+    .col-md-6
+      = f.input :set_os_based_doc
+  %h2.py-3 Организация, на базе которой создан орган по сертификации
+  = f.input :set_org_name, as: :text, input_html: { rows: 4 }
+  = f.input :set_org_address, as: :text, input_html: { rows: 7 }
+  .row
+    .col-md-6
+      = f.input :set_org_chief_position
+    .col-md-6
+      = f.input :set_org_phone
+  .row
+    .col-md-6
+      = f.input :set_org_chief_name
+    .col-md-6
+      = f.input :set_org_based_doc
+      = f.input :set_org_chief_accountant
+  %h2.py-3 Параметры печати сертификата
+  .row
+    .col-md-6
+      = f.input :set_at_x
+    .col-md-6
+      = f.input :set_at_y
+  .pt-5
+    = f.submit t("settings.buttons.#{button}"), class: 'btn btn-dark btn-block'

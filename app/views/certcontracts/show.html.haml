@@ -1,6 +1,8 @@
-- provide(:title, "Договор на проведение работ по сертификации от,
-                  #{@certcontract.cecon_registration_date.strftime('%d.%m.%Y')},
-                  № #{@certcontract.cecon_registration_num}")
+- provide :title do
+  = t('certcontracts.headers.edit')
+  = format_date(@certcontract.cecon_registration_date)
+  №
+  = @certcontract.cecon_registration_num
 = render partial: 'links', locals: { certcontract: @certcontract }
 .page-body
   .caption
@@ -8,15 +10,14 @@
     %br
     на проведение работ по сертификации продукции
   %br
-  .div-table
-    .div-table-row
-      .div-table-colcol-width-1
-        %b= @certcontract.cecon_registration_date.strftime('%d.%m.%Y')
-      .div-table-col.col-width-2
+  .paragraph
+    .row
+      .col-md-4
         %b
+          = format_date(@certcontract.cecon_registration_date)
           №
           = @certcontract.cecon_registration_num
-      .div-table-col.col-width-9.right
+      .col-md-8.text-right
         %b= @certcontract.cecon_registration_city
   %br
   .line
@@ -225,66 +226,66 @@
     6.2. Срок действия договора заканчивается
     = @certcontract.cecon_date_expiry.strftime('%d.%m.%Y')
   %br
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-3
+  .paragraph
+    .row
+      .col-md-3
         %b Исполнитель:
-      .div-table-col.col-width-9
+      .col-md-9
         .line
           = @certcontract.cecon_exec_address
         .hint
           юридический адрес исполнителя
-    .div-table-row
-      .div-table-col.col-width-3
-      .div-table-col.col-width-9
+    .row
+      .col-md-3
+      .col-md-9
         .line
           = @certcontract.cecon_exec_bank_details
         .hint
           расчетный счет исполнителя, реквизиты банка
-    .div-table-row
-      .div-table-col.col-width-3
+    .row
+      .col-md-3
         %b Заказчик:
-      .div-table-col.col-width-9
+      .col-md-9
         .line
           = @certcontract.cecon_client_address
         .hint
           юридический адрес заказчика
-    .div-table-row
-      .div-table-col.col-width-3
-      .div-table-col.col-width-9
+    .row
+      .col-md-3
+      .col-md-9
         .line
           = @certcontract.cecon_client_bank_details
         .hint
           расчетный счет заказчика, реквизиты банка
   %br
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-5
+  .paragraph
+    .row
+      .col-md-5
         %b От Исполнителя
-      .div-table-col.col-width-2
-      .div-table-col.col-width-5
+      .col-md-2
+      .col-md-5
         %b От Заказчика
-    .div-table-row
-      .div-table-col.col-width-5
+    .row
+      .col-md-5
         %b= @certcontract.cecon_exec_chief_position_sign
-      .div-table-col.col-width-2
-      .div-table-col.col-width-5
+      .col-md-2
+      .col-md-5
         %b= @certcontract.cecon_client_chief_position_sign
-    .div-table-row
-      .div-table-col.col-width-5
+    .row
+      .col-md-5
         .line
-      .div-table-col.col-width-2
-      .div-table-col.col-width-5
+      .col-md-2
+      .col-md-5
         .line
-    .div-table-row
-      .div-table-col.col-width-5.center
+    .row
+      .col-md-5.text-center
         = @certcontract.cecon_exec_chief_name_sign
-      .div-table-col.col-width-2
-      .div-table-col.col-width-5.center
+      .col-md-2
+      .col-md-5.text-center
         = @certcontract.cecon_client_chief_name_sign
-    .div-table-row
-      .div-table-col.col-width-5.center
+    .row
+      .col-md-5.text-center
         М.П.
-      .div-table-col.col-width-2
-      .div-table-col.col-width-5.center
+      .col-md-2
+      .col-md-5.text-center
         М.П.
