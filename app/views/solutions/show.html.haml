@@ -1,0 +1,216 @@
+- provide(:title, "#{t('solutions.headers.show')} #{format_date(@solution.sol_date_from)}")
+= render partial: 'links', locals: { solution: @solution }
+.page-body
+  = render partial: 'nested_components/settings', locals: { setting: @setting }
+  .caption
+    РЕШЕНИЕ №
+    = @solution.sol_number
+    от
+    = format_date(@solution.sol_date_from)
+    %br= @solution.sol_delivery
+    сертификата соответствия
+  %br
+  .paragraph
+    %b На основании
+    следующих документов:
+  .paragraph
+    %b - заявки
+    на проведение сертификации продукции
+    %b № #{@proposal.prop_number}
+    от
+    %b= format_date(@proposal.prop_date_from)
+  .line
+    %b= @proposal.prop_applic_name
+    = @proposal.prop_applic_reg_doc
+  .hint
+    наименование организации-изготовителя, продавца или индивидуального предпринимателя (далее - заявитель)
+  .paragraph
+    Юридический адрес:
+    %b #{@proposal.prop_applic_address}, #{@proposal.prop_applic_postcode}
+  .paragraph
+    .row
+      .col-md-4
+        Телефон:
+        %b= @proposal.prop_applic_phone
+      .col-md-4
+        Факс:
+        %b= @proposal.prop_applic_fax
+      .col-md-4
+        Почта:
+        %b= @proposal.prop_applic_email
+  .paragraph
+    %b- решения
+    органа по сертификации
+    %b № #{@solution.sol_solution_proposal_num}
+    от
+    %b= format_date(@solution.sol_solution_proposal_date)
+  .paragraph
+    проведена работа по
+    %b добровольной
+    сертификации продукции:
+  .line
+    %b= @solution.sol_name_product
+  .hint
+    наименование продукции
+  .paragraph
+    .row
+      .col-md-2
+        Код ОКПД2
+      .col-md-2.line
+        %b= @solution.sol_code_okp
+      .col-md-2
+        Код ТН ВЭД
+      .col-md-2.line
+        %b= @solution.sol_code_tn_ved
+  .line
+    %b= @proposal.prop_applic_from_issue
+  .hint
+    серийный выпуск, или партия определенного размера, или единица продукции
+  .paragraph
+    выпускаемой изготовителем
+  .line
+    %b= @solution.sol_manuf_name
+  .hint
+    наименование изготовителя
+  .line
+    %b #{@solution.sol_manuf_address}, #{@solution.sol_manuf_postcode}
+  .hint
+    адрес
+  .line
+    по
+    %b= @solution.sol_manuf_doc
+  .hint
+    наименование и обозначение документации изготовителя (стандарт, ТУ, КД, образец-эталон)
+  .paragraph
+    Сертификация проводилась на соответствие требованиям:
+  .line
+    %b= @solution.sol_manuf_regulations
+  .hint
+    наименование и обозначение нормативных документов
+  .paragraph
+    по схеме
+    %b #{@proposal.prop_manuf_scheme_cert},
+    предусматривающей
+  .line
+    %b= @solution.sol_desc_scheme_cert
+  .hint
+    описание схемы сертификации
+  %br
+  .caption
+    НА ОСНОВАНИИ
+  %br
+  .line
+    %b= @solution.sol_test_report
+  .hint
+    протоколы испытаний и др.
+  .line
+    %b= @solution.sol_list_doc
+  .hint
+    перечень представленных заявителем документов, подтверждающих соответствие продукции установленным требованиям
+  .paragraph
+    и
+    %b заключения эксперта от #{format_date(@solution.sol_conclusion_date)}
+    о соответствии продукции установленным требованиям
+  %br
+  .paragraph
+    = @setting.set_os_name
+    %br
+    рег. №
+    = @setting.set_os_registration_num
+  %br
+  .caption
+    ПРИНИМАЕТ РЕШЕНИЕ
+  %br
+  .paragraph
+    %b 1.
+    Выдать заявителю сертификат соответствия продукции
+    %b сроком по #{format_date(@solution.sol_cert_expiry_date)}
+  .paragraph
+    %b 2.
+    Заявитель осуществляет маркирование сертифицированной продукции знаком соответствия в соответствии
+    с Правилами Системы сертификации ГОСТ Р. Место нанесения знака соответствия:
+  .line
+    %b= @solution.sol_place_marking
+  .paragraph
+    %b 3.
+    Проводить инспекционный контроль за сертифицированной продукцией в течение всего срока действия сертификата
+  .line
+    %b= @solution.sol_inspection_period
+  .hint
+    указать периодичность инспекционного контроля
+  .paragraph
+    в форме периодических и внеплановых проверок, включающих:
+  .line
+    %b= @solution.sol_inspection_method
+  .hint
+    указать вид (способ) инспекционного контроля
+  .paragraph
+    Работы по инспекционному контролю проводятся на основе:
+  .line
+    %b= @solution.sol_inspection_work_basis
+  .hint
+    договор на инспекционных контроль, порядок (правила) сертификации однородной продукции
+  .paragraph
+    %b 4.
+    Дополнительная информация:
+  .line
+    %b= @solution.sol_add_info
+  %br
+  .paragraph
+    .row
+      .col-md-6
+        = @solution.sol_chief_name
+      .col-md-2
+        .line
+        .hint
+          подпись
+      .col-md-4.text-center
+        .line
+          = @solution.sol_chief_org
+        .hint
+          инициалы, фамилия
+    .row
+      .col-md-6
+        Эксперт
+      .col-md-2
+        .line
+        .hint
+          подпись
+      .col-md-4.text-center
+        .line
+          = @solution.sol_expert
+        .hint
+          инициалы, фамилия
+    - unless @solution.sol_executor.blank?
+      .row
+        .col-md-6
+          Исполнитель
+        .col-md-2
+          .line
+          .hint
+            подпись
+        .col-md-4.text-center
+          .line
+            = @solution.sol_executor
+          .hint
+            инициалы, фамилия
+  - if @solution.sol_applic_sign
+    %br
+    .paragraph
+      .row
+        .d-inline
+          Сертификат (бланк №
+        .col-md-2.line.d-inline
+        .d-inline
+          ) получил:
+      .row
+        .col-md-6
+        .col-md-2
+          .line
+          .hint
+            подпись
+        .col-md-4.text-center
+          .line
+            = @solution.sol_applic_name
+          .hint
+            инициалы, фамилия
