@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
+# This controller manage solutions
 class SolutionsController < ApplicationController
-  before_action :sol_find, only: %i[show edit update destroy]
+  before_action :solution_find, only: %i[show edit update destroy]
   before_action :setting_find, only: %i[show new]
 
   def show
@@ -35,24 +36,34 @@ class SolutionsController < ApplicationController
   end
 
   def create
-    @solution = Solution.new(sol_params)
-    @solution.save ? (redirect_to @solution) : (render 'new')
+    @solution = Solution.new(solution_params)
+    if @solution.save
+      redirect_to @solution, flash: { success: t('solutions.notices.success.create') }
+    else
+      flash.now[:danger] = t('solutions.notices.danger.create')
+      render :new
+    end
   end
 
   def edit; end
 
   def update
-    @solution.update(sol_params) ? (redirect_to @solution) : (render 'new')
+    if @solution.update(solution_params)
+      redirect_to @solution, flash: { success: t('solutions.notices.success.update') }
+    else
+      flash.now[:danger] = t('solutions.notices.danger.update')
+      render :edit
+    end
   end
 
   def destroy
     @solution.destroy
-    redirect_to root_path
+    redirect_to root_path, flash: { success: t('solutions.notices.success.destroy') }
   end
 
   private
 
-  def sol_params
+  def solution_params
     params.require(:solution).permit(:conclusion_id, :sol_number, :sol_date_from, :sol_delivery,
                                      :sol_solution_proposal_num, :sol_solution_proposal_date,
                                      :sol_contract_num, :sol_contract_date, :sol_directive_num,
@@ -66,7 +77,7 @@ class SolutionsController < ApplicationController
                                      :sol_executor, :sol_applic_sign, :sol_applic_name)
   end
 
-  def sol_find
+  def solution_find
     @solution = Solution.find(params[:id])
   end
 
