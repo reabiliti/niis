@@ -1,7 +1,10 @@
-.d-flex.justify-content-end
-  = simple_form_for :search, method: :get, html: { class: 'form-inline' } do |f|
-    = f.input :search,
-              placeholder: 'Search',
-              input_html: { name: :search, value: params[:search] },
-              label: false
-    = f.submit 'Search', class: 'btn btn-dark'
+.row.pb-5
+  .col.d-flex.justify-content-start
+    = link_to t('link.new_proposal'), new_proposal_path, class: 'btn btn-dark'
+  .col.d-flex.justify-content-end
+    = simple_form_for :search, method: :get, html: { class: 'form-inline' } do |f|
+      = f.input :search,
+                placeholder: t('search.placeholder'),
+                input_html: { name: :search, value: params[:search] },
+                label: false
+      = f.submit t('search.button'), class: 'btn btn-dark'
