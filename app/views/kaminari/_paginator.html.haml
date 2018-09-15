@@ -1,6 +1,6 @@
 = paginator.render do
   %nav
-    %ul.pagination.pg-dark.pt-3.justify-content-center
+    %ul.pagination.pagination-sm.pt-3.justify-content-center
       = first_page_tag unless current_page.first?
       = prev_page_tag unless current_page.first?
       - each_page do |page|
