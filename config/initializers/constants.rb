@@ -15,3 +15,5 @@ INSPECTION_PERIODS = %w[один\ раз\ в\ месяц
                         один\ раз\ в\ полгода
                         один\ раз\ в\ год].freeze
 FONT_SIZES = %w[10 11 12 13 14].freeze
+DECLENSION_NAME = %w[именуемый именуемая именуемое].freeze
+DECLENSION_ACTIVE = %w[действующего действующей действующий действующее действующая].freeze

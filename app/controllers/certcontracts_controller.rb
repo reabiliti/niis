@@ -2,7 +2,7 @@
 
 # This class to contracts certificates
 class CertcontractsController < ApplicationController
-  before_action :cecon_find, only: %i[show edit update destroy]
+  before_action :certcontract_find, only: %i[show edit update destroy]
   before_action :setting_find, only: %i[show new]
 
   def show
@@ -29,34 +29,34 @@ class CertcontractsController < ApplicationController
   end
 
   def create
-    @certcontract = Certcontract.new(cecon_params)
+    @certcontract = Certcontract.new(certcontract_params)
     if @certcontract.save
-      redirect_to @certcontract, flash: { success: 'Договор на проведение работ по сертификации создан успешно' }
+      redirect_to @certcontract, flash: { success: t('certcontracts.notices.success.create') }
     else
-      flash.now[:danger] = 'Не удалось создать договор на проведение работ по сертификации, проверьте вводимые данные'
-      render 'new'
+      flash.now[:danger] = t('certcontracts.notices.danger.create')
+      render :new
     end
   end
 
   def edit; end
 
   def update
-    if @certcontract.update(cecon_params)
-      redirect_to @certcontract, flash: { success: 'Договор на проведение работ по сертификации успешно обновлен' }
+    if @certcontract.update(certcontract_params)
+      redirect_to @certcontract, flash: { success: t('certcontracts.notices.success.update') }
     else
-      flash.now[:danger] = 'Не удалось обновить договор на проведение работ по сертификации, проверьте вводимые данные'
-      render 'new'
+      flash.now[:danger] = t('certcontracts.notices.danger.update')
+      render :edit
     end
   end
 
   def destroy
     @certcontract.destroy
-    redirect_to root_path, flash: { success: 'Договор на проведение работ по сертификации удален успешно' }
+    redirect_to root_path, flash: { success: t('certcontracts.notices.success.destroy') }
   end
 
   private
 
-  def cecon_params
+  def certcontract_params
     params.require(:certcontract).permit(:proposal_id, :cecon_exec_chief_name_sign,
                                          :cecon_registration_date, :cecon_registration_num,
                                          :cecon_registration_city, :cecon_exec_name, :cecon_exec_named,
@@ -71,7 +71,7 @@ class CertcontractsController < ApplicationController
                                          :cecon_price_work, :cecon_price_work_total)
   end
 
-  def cecon_find
+  def certcontract_find
     @certcontract = Certcontract.find(params[:id])
   end
 

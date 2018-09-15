@@ -7,9 +7,9 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    .container
+    .container.d-print-none
       = render 'layouts/header'
       = render 'shared/flash'
     = yield
-    .container
+    .container.d-print-none
       = render 'layouts/footer'

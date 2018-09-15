@@ -1,15 +1,14 @@
-.page-body
-  = simple_form_for attachment do |f|
-    = f.input :certificate_id, as: :hidden
-    = f.input :att_blank_num
-    .row
-      .col-md-6
-        = f.input :att_code_okp, as: :text, input_html: { rows: 2 }
-      .col-md-6
-        = f.input :att_code_tn_ved, as: :text, input_html: { rows: 2 }
-    = f.input :att_name_product, as: :text, input_html: { rows: 6 }
-    = f.input :att_manuf_name, as: :text, input_html: { rows: 4 }
-    = f.input :att_regulations
+= simple_form_for attachment do |f|
+  = f.input :certificate_id, as: :hidden
+  = f.input :att_blank_num
+  .row
+    .col-md-6
+      = f.input :att_code_okp, as: :text, input_html: { rows: 2 }
+    .col-md-6
+      = f.input :att_code_tn_ved, as: :text, input_html: { rows: 2 }
+  = f.input :att_name_product, as: :text, input_html: { rows: 6 }
+  = f.input :att_manuf_name, as: :text, input_html: { rows: 4 }
+  = f.input :att_regulations
 
-    .col.pt-5
-      = f.submit t("attachments.buttons.#{button}"), class: 'btn btn-dark btn-block'
+  .col.pt-5
+    = f.submit t("attachments.buttons.#{button}"), class: 'btn btn-dark btn-block'

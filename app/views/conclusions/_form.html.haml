@@ -1,46 +1,45 @@
-.page-body
-  = simple_form_for conclusion do |f|
-    = f.input :solution_proposal_id, as: :hidden
-    .row
-      .col-md-6
-        = f.input :conc_solution_proposal_num
-      .col-md-6
-        = f.input :conc_solution_proposal_date,
-                  as: :date, start_year: Date.today.year - 10,
-                  end_year: Date.today.year + 10,
-                  html5: true
-    = f.input :conc_name_product, as: :text, input_html: { rows: 5 }
-    .row
-      .col-md-6
-        = f.input :conc_code_okp, as: :text, input_html: { rows: 2 }
-      .col-md-6
-        = f.input :conc_code_tn_ved, as: :text, input_html: { rows: 2 }
-    = f.input :conc_manuf_name
-    = f.input :conc_manuf_address, as: :text, input_html: { rows: 6 }
-    = f.input :conc_manuf_postcode
-    = f.input :conc_manuf_doc, as: :text, input_html: { rows: 3 }
-    = f.input :conc_manuf_regulations, as: :text, input_html: { rows: 1 }
-    = f.input :conc_desc_scheme_cert, as: :text, input_html: { rows: 5 }
-    = f.input :conc_test_report, as: :text, input_html: { rows: 5 }
-    = f.input :conc_list_doc, as: :text, input_html: { rows: 4 }
-    = f.input :conc_conformity, as: :text, input_html: { rows: 2 }
-    = f.input :conc_may_be_issued, collection: MAY_BE_ISSUE, include_blank: false
-    .row
-      .col-md-5
-        = f.input :conc_cert_expiry_date,
-                  as: :date, start_year: Date.today.year - 10,
-                  end_year: Date.today.year + 10,
-                  html5: true
-    = f.input :conc_add_info, as: :text, input_html: { rows: 5 }
-    = f.input :conc_attachment
-    .row
-      .col-md-6
-        = f.input :conc_expert
-      .col-md-6
-        = f.input :conc_sign_date,
-                  as: :date, start_year: Date.today.year - 10,
-                  end_year: Date.today.year + 10,
-                  html5: true
+= simple_form_for conclusion do |f|
+  = f.input :solution_proposal_id, as: :hidden
+  .row
+    .col-md-6
+      = f.input :conc_solution_proposal_num
+    .col-md-6
+      = f.input :conc_solution_proposal_date,
+                as: :date, start_year: Date.today.year - 10,
+                end_year: Date.today.year + 10,
+                html5: true
+  = f.input :conc_name_product, as: :text, input_html: { rows: 5 }
+  .row
+    .col-md-6
+      = f.input :conc_code_okp, as: :text, input_html: { rows: 2 }
+    .col-md-6
+      = f.input :conc_code_tn_ved, as: :text, input_html: { rows: 2 }
+  = f.input :conc_manuf_name
+  = f.input :conc_manuf_address, as: :text, input_html: { rows: 6 }
+  = f.input :conc_manuf_postcode
+  = f.input :conc_manuf_doc, as: :text, input_html: { rows: 3 }
+  = f.input :conc_manuf_regulations, as: :text, input_html: { rows: 1 }
+  = f.input :conc_desc_scheme_cert, as: :text, input_html: { rows: 5 }
+  = f.input :conc_test_report, as: :text, input_html: { rows: 5 }
+  = f.input :conc_list_doc, as: :text, input_html: { rows: 4 }
+  = f.input :conc_conformity, as: :text, input_html: { rows: 2 }
+  = f.input :conc_may_be_issued, collection: MAY_BE_ISSUE, include_blank: false
+  .row
+    .col-md-5
+      = f.input :conc_cert_expiry_date,
+                as: :date, start_year: Date.today.year - 10,
+                end_year: Date.today.year + 10,
+                html5: true
+  = f.input :conc_add_info, as: :text, input_html: { rows: 5 }
+  = f.input :conc_attachment
+  .row
+    .col-md-6
+      = f.input :conc_expert
+    .col-md-6
+      = f.input :conc_sign_date,
+                as: :date, start_year: Date.today.year - 10,
+                end_year: Date.today.year + 10,
+                html5: true
 
-    .col.pt-5
-      = f.submit t("conclusions.buttons.#{button}"), class: 'btn btn-dark btn-block'
+  .col.pt-5
+    = f.submit t("conclusions.buttons.#{button}"), class: 'btn btn-dark btn-block'

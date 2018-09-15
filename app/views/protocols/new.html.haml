@@ -3,5 +3,6 @@
     %li.nav-item= link_to t('link.back'), solution_proposal_path(@protocol.solution_proposal), class: 'nav-link'
 
 - provide(:title, t('protocols.headers.new'))
-%h2.text-center.py-3= t('protocols.headers.new')
-= render partial: 'form', locals: { protocol: @protocol, button: 'create' }
+.page-body
+  %h2.text-center.py-3= t('protocols.headers.new')
+  = render partial: 'form', locals: { protocol: @protocol, button: 'create' }

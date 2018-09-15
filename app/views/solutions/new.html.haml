@@ -3,5 +3,6 @@
     %li.nav-item= link_to t('link.back'), conclusion_path(@solution.conclusion), class: 'nav-link'
 
 - provide(:title, t('solutions.headers.new'))
-%h2.text-center.py-3= t('solutions.headers.new')
-= render partial: 'form', locals: { solution: @solution, button: 'create' }
+.page-body
+  %h2.text-center.py-3= t('solutions.headers.new')
+  = render partial: 'form', locals: { solution: @solution, button: 'create' }

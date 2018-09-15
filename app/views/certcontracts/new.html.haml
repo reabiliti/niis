@@ -1,4 +1,8 @@
-- provide(:title, 'Договор на проведение работ по сертификации')
-= render 'shared/links'
-%h1 Договор на проведение работ по сертификации
-= render partial: 'form', locals: { certcontract: @certcontract }
+.col-md-2.fixed-top.mt-10
+  %ul.nav.flex-column
+    %li.nav-item= link_to t('link.back'), proposal_path(@certcontract.proposal), class: 'nav-link'
+
+- provide(:title, t('certcontracts.headers.new'))
+.page-body
+  %h2.text-center.py-3= t('certcontracts.headers.new')
+  = render partial: 'form', locals: { certcontract: @certcontract, button: 'create' }

@@ -3,5 +3,6 @@
     %li.nav-item= link_to t('link.back'), solution_path(@solution), class: 'nav-link'
 
 - provide(:title, "#{t('solutions.headers.edit')} #{format_date(@solution.sol_date_from)}")
-%h2.text-center.py-3 #{t('solutions.headers.edit')} #{format_date(@solution.sol_date_from)}
-= render partial: 'form', locals: { solution: @solution, button: 'edit' }
+.page-body
+  %h2.text-center.py-3 #{t('solutions.headers.edit')} #{format_date(@solution.sol_date_from)}
+  = render partial: 'form', locals: { solution: @solution, button: 'edit' }

@@ -4,5 +4,6 @@
       = link_to t('link.back'), setting_path(@setting), class: 'nav-link'
 
 - provide(:title, t('settings.headers.edit'))
-%h2.text-center.py-3= t('settings.headers.edit')
-= render partial: 'form', locals: { setting: @setting, button: 'edit' }
+.page-body
+  %h2.text-center.py-3= t('settings.headers.edit')
+  = render partial: 'form', locals: { setting: @setting, button: 'edit' }

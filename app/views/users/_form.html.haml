@@ -1,10 +1,9 @@
-.page-body
-  .col-md-6.offset-md-3
-    = simple_form_for @user do |f|
-      = f.input :name
-      = f.input :email
-      = f.input :password
-      = f.input :password_confirmation
-      = f.input :role, label: 'ROLE', collection: User::REGISTRATION_ROLES, include_blank: false
+.col-md-6.offset-md-3
+  = simple_form_for @user do |f|
+    = f.input :name
+    = f.input :email
+    = f.input :password
+    = f.input :password_confirmation
+    = f.input :role, label: 'ROLE', collection: User::REGISTRATION_ROLES, include_blank: false
 
-      = f.submit t('users.buttons.create'), class: 'btn btn-dark btn-block'
+    = f.submit t('users.buttons.create'), class: 'btn btn-dark btn-block'

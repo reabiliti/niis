@@ -1,40 +1,39 @@
-.page-body
-  = simple_form_for protocol do |f|
+= simple_form_for protocol do |f|
 
-    = f.input :solution_proposal_id, as: :hidden
-    .row
-      .col-md-4
-        = f.input :prot_date_from,
-                  as: :date, start_year: Date.today.year - 10,
-                  end_year: Date.today.year + 10,
-                  html5: true
-    = f.input :prot_applic_name_product, as: :text, input_html: { rows: 5 }
-    .row
-      .col-md-6
-        = f.input :prot_applic_code_okp, as: :text, input_html: { rows: 2 }
-      .col-md-6
-        = f.input :prot_applic_code_tn_ved, as: :text, input_html: { rows: 2 }
-    = f.input :prot_manuf_name
-    = f.input :prot_manuf_address, as: :text, input_html: { rows: 6 }
-    = f.input :prot_manuf_postcode
-    = f.input :prot_origin_cert
-    = f.input :prot_info_product
-    .row
-      .col-md-4
-        = f.input :prot_date_issue_product,
-                  as: :date, start_year: Date.today.year - 10,
-                  end_year: Date.today.year + 10,
-                  html5: true
-      .col-md-8
-        = f.input :prot_shelf_life
-    = f.input :prot_info_box
-    = f.input :prot_label_product
-    = f.input :prot_regulations_product
-    = f.input :prot_evaluation_product, as: :text, input_html: { rows: 5 }
-    = f.input :prot_requirement_test, collection: NEED_TESTS, include_blank: false
-    = f.input :prot_list_indicators, as: :text, input_html: { rows: 5 }
-    = f.input :prot_conclusion, as: :text, input_html: { rows: 2 }
-    = f.input :prot_expert
+  = f.input :solution_proposal_id, as: :hidden
+  .row
+    .col-md-4
+      = f.input :prot_date_from,
+                as: :date, start_year: Date.today.year - 10,
+                end_year: Date.today.year + 10,
+                html5: true
+  = f.input :prot_applic_name_product, as: :text, input_html: { rows: 5 }
+  .row
+    .col-md-6
+      = f.input :prot_applic_code_okp, as: :text, input_html: { rows: 2 }
+    .col-md-6
+      = f.input :prot_applic_code_tn_ved, as: :text, input_html: { rows: 2 }
+  = f.input :prot_manuf_name
+  = f.input :prot_manuf_address, as: :text, input_html: { rows: 6 }
+  = f.input :prot_manuf_postcode
+  = f.input :prot_origin_cert
+  = f.input :prot_info_product
+  .row
+    .col-md-4
+      = f.input :prot_date_issue_product,
+                as: :date, start_year: Date.today.year - 10,
+                end_year: Date.today.year + 10,
+                html5: true
+    .col-md-8
+      = f.input :prot_shelf_life
+  = f.input :prot_info_box
+  = f.input :prot_label_product
+  = f.input :prot_regulations_product
+  = f.input :prot_evaluation_product, as: :text, input_html: { rows: 5 }
+  = f.input :prot_requirement_test, collection: NEED_TESTS, include_blank: false
+  = f.input :prot_list_indicators, as: :text, input_html: { rows: 5 }
+  = f.input :prot_conclusion, as: :text, input_html: { rows: 2 }
+  = f.input :prot_expert
 
-    .col.pt-5
-      = f.submit t("protocols.buttons.#{button}"), class: 'btn btn-dark btn-block'
+  .col.pt-5
+    = f.submit t("protocols.buttons.#{button}"), class: 'btn btn-dark btn-block'
