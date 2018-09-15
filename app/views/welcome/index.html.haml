@@ -1,98 +1,99 @@
 = provide :title, t('welcome.headers.index')
 .col.col-md-10.offset-md-1
   = render 'shared/search'
-  %ul
-    %li
-      - if @setting
-        = link_to @setting.set_name, setting_path(@setting), class: 'text-secondary'
-      - else
-        = link_to t('welcome.links.new_setting'), new_setting_path, class: 'text-secondary'
-    - @proposals.each do |proposal|
-      %hr.hr-light
-      %ul
-        = link_to proposal_path(proposal), class: 'text-secondary' do
-          .row
-            .col-md-2
-              %li= proposal.prop_date_from.strftime('%d.%m.%Y')
-            .col-md-2
-              %b= proposal.prop_number
-            .col-md-7
-              = proposal.prop_applic_name
-        - if (solution_proposal = proposal.solution_proposal)
-          %ul
-            %li
-              = link_to solution_proposal_path(solution_proposal), class: 'text-secondary' do
-                1.3 Решение по заявке о проведении сертификации от
-                = solution_proposal.solprop_date_from.strftime('%d.%m.%Y')
-                №
-                = solution_proposal.solprop_number
-            - if (protocols = solution_proposal.protocols)
-              %ul
-                - protocols.each do |protocol|
-                  %li
-                    = link_to "2.2.1 Протокол идентификации от #{protocol.prot_date_from.strftime('%d.%m.%Y')}",
-                              protocol_path(protocol),
-                              class: 'text-secondary'
-            - if (conclusion = solution_proposal.conclusion)
-              %ul
-                %li
-                  = link_to conclusion_path(conclusion), class: 'text-secondary' do
-                    3.1 Заключение эксперта о выдаче сертификата от
-                    = conclusion.conc_sign_date.strftime('%d.%m.%Y')
-                - if (solution = conclusion.solution)
-                  %ul
+  .tree-links
+    %ul
+      %li
+        - if @setting
+          = link_to @setting.set_name, setting_path(@setting), class: 'text-secondary'
+        - else
+          = link_to t('welcome.links.new_setting'), new_setting_path, class: 'text-secondary'
+      - @proposals.each do |proposal|
+        %hr.hr-light
+        %ul
+          = link_to proposal_path(proposal), class: 'text-secondary' do
+            .row
+              .col-md-2
+                %li= proposal.prop_date_from.strftime('%d.%m.%Y')
+              .col-md-2
+                %b= proposal.prop_number
+              .col-md-7
+                = proposal.prop_applic_name
+          - if (solution_proposal = proposal.solution_proposal)
+            %ul
+              %li
+                = link_to solution_proposal_path(solution_proposal), class: 'text-secondary' do
+                  1.3 Решение по заявке о проведении сертификации от
+                  = solution_proposal.solprop_date_from.strftime('%d.%m.%Y')
+                  №
+                  = solution_proposal.solprop_number
+              - if (protocols = solution_proposal.protocols)
+                %ul
+                  - protocols.each do |protocol|
                     %li
-                      = link_to solution_path(solution), class: 'text-secondary' do
-                        3.2 Решение о выдаче сертификата от
-                        = solution.sol_date_from.strftime('%d.%m.%Y')
-                        №
-                        = solution.sol_number
-                    - if (certificates = solution.certificates)
-                      %ul
-                        - certificates.each do |certificate|
-                          %li
-                            = link_to certificate_path(certificate), class: 'text-secondary' do
-                              4.1 Сертификат соответствия от
-                              = certificate.cert_registration_date.strftime('%d.%m.%Y')
-                              №
-                              = certificate.cert_registration_num
-                          - if (attachments = certificate.attachments)
-                            %ul
-                              - attachments.each do |attachment|
+                      = link_to "2.2.1 Протокол идентификации от #{protocol.prot_date_from.strftime('%d.%m.%Y')}",
+                                protocol_path(protocol),
+                                class: 'text-secondary'
+              - if (conclusion = solution_proposal.conclusion)
+                %ul
+                  %li
+                    = link_to conclusion_path(conclusion), class: 'text-secondary' do
+                      3.1 Заключение эксперта о выдаче сертификата от
+                      = conclusion.conc_sign_date.strftime('%d.%m.%Y')
+                  - if (solution = conclusion.solution)
+                    %ul
+                      %li
+                        = link_to solution_path(solution), class: 'text-secondary' do
+                          3.2 Решение о выдаче сертификата от
+                          = solution.sol_date_from.strftime('%d.%m.%Y')
+                          №
+                          = solution.sol_number
+                      - if (certificates = solution.certificates)
+                        %ul
+                          - certificates.each do |certificate|
+                            %li
+                              = link_to certificate_path(certificate), class: 'text-secondary' do
+                                4.1 Сертификат соответствия от
+                                = certificate.cert_registration_date.strftime('%d.%m.%Y')
+                                №
+                                = certificate.cert_registration_num
+                            - if (attachments = certificate.attachments)
+                              %ul
+                                - attachments.each do |attachment|
+                                  %li
+                                    = link_to attachment_path(attachment), class: 'text-secondary' do
+                                      4.2 Приложение к сертификату
+                                      = certificate.cert_registration_num
+                                      бланк №
+                                      = attachment.att_blank_num
+                            - if (permission = certificate.permission)
+                              %ul
                                 %li
-                                  = link_to attachment_path(attachment), class: 'text-secondary' do
-                                    4.2 Приложение к сертификату
-                                    = certificate.cert_registration_num
-                                    бланк №
-                                    = attachment.att_blank_num
-                          - if (permission = certificate.permission)
-                            %ul
-                              %li
-                                = link_to permission_path(permission), class: 'text-secondary' do
-                                  4.3 Разрешение на применение знака соответствия от
-                                  = permission.perm_registration_date.strftime('%d.%m.%Y')
-                                  №
-                                  = permission.perm_registration_num
-                          - if (ikcontract = certificate.ikcontract)
-                            %ul
-                              %li
-                                = link_to ikcontract_path(ikcontract), class: 'text-secondary' do
-                                  5.1 Договор на инспекционный контроль от
-                                  = ikcontract.ikcon_registration_date.strftime('%d.%m.%Y')
-                                  №
-                                  = ikcontract.ikcon_registration_num
-        - if (certcontract = proposal.certcontract)
-          %ul
-            %li
-              = link_to certcontract_path(certcontract), class: 'text-secondary' do
-                1.5 Договор на проведение работ по сертификации от
-                = certcontract.cecon_registration_date.strftime('%d.%m.%Y')
-                №
-                = certcontract.cecon_registration_num
-        - if (inventory = proposal.inventory)
-          %ul
-            %li
-              = link_to "1.9 Опись документов от #{inventory.inv_date_from.strftime('%d.%m.%Y')}",
-                        inventory_path(inventory), class: 'text-secondary'
-  .text-center
-    = paginate @proposals
+                                  = link_to permission_path(permission), class: 'text-secondary' do
+                                    4.3 Разрешение на применение знака соответствия от
+                                    = permission.perm_registration_date.strftime('%d.%m.%Y')
+                                    №
+                                    = permission.perm_registration_num
+                            - if (ikcontract = certificate.ikcontract)
+                              %ul
+                                %li
+                                  = link_to ikcontract_path(ikcontract), class: 'text-secondary' do
+                                    5.1 Договор на инспекционный контроль от
+                                    = ikcontract.ikcon_registration_date.strftime('%d.%m.%Y')
+                                    №
+                                    = ikcontract.ikcon_registration_num
+          - if (certcontract = proposal.certcontract)
+            %ul
+              %li
+                = link_to certcontract_path(certcontract), class: 'text-secondary' do
+                  1.5 Договор на проведение работ по сертификации от
+                  = certcontract.cecon_registration_date.strftime('%d.%m.%Y')
+                  №
+                  = certcontract.cecon_registration_num
+          - if (inventory = proposal.inventory)
+            %ul
+              %li
+                = link_to "1.9 Опись документов от #{inventory.inv_date_from.strftime('%d.%m.%Y')}",
+                          inventory_path(inventory), class: 'text-secondary'
+    .text-center
+      = paginate @proposals
