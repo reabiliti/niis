@@ -1,5 +1,10 @@
-
 ru:
+  views:
+    pagination:
+      first: Первая
+      last: Последняя
+      next: Следующая
+      previous: Предыдущая
   sessions:
     buttons:
       create: Войти
