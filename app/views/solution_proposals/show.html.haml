@@ -1,15 +1,7 @@
 - provide(:title, "#{t('solution_proposals.headers.show')} #{@solution_proposal.solprop_number}")
 = render partial: 'links', locals: { solution_proposal: @solution_proposal }
 .page-body
-  .line
-    #{@setting.set_os_name} рег. № #{@setting.set_os_registration_num}
-  .hint
-    наименование органа по сертификации:
-  .line
-    = @setting.set_os_address
-  .hint
-    адрес, телефон, факс
-  %br
+  = render partial: 'nested_components/settings', locals: { setting: @setting }
   .caption
     РЕШЕНИЕ ПО ЗАЯВКЕ №
     = @solution_proposal.solprop_number
@@ -142,7 +134,7 @@
         .line
         .hint
           подпись
-      .col-md-3
+      .col-md-3.text-center
         .line
           = @solution_proposal.solprop_chief_org
         .hint
@@ -154,7 +146,7 @@
         .line
         .hint
           подпись
-      .col-md-3
+      .col-md-3.text-center
         .line
           = @solution_proposal.solprop_expert
         .hint
@@ -167,7 +159,7 @@
           .line
           .hint
             подпись
-        .col-md-3
+        .col-md-3.text-center
           .line
             = @solution_proposal.solprop_executor
           .hint
@@ -180,7 +172,7 @@
           .line
           .hint
             подпись
-        .col-md-3
+        .col-md-3.text-center
           .line
             = @solution_proposal.solprop_applic_name
           .hint

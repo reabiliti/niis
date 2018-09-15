@@ -1,15 +1,7 @@
 - provide(:title, "#{t('proposals.headers.show')} № #{@proposal.prop_number}")
 = render partial: 'links', locals: { proposal: @proposal }
 .page-body
-  .line
-    #{@setting.set_os_name} рег. № #{@setting.set_os_registration_num}
-  .hint
-    наименование органа по сертификации
-  .line
-    = @setting.set_os_address
-  .hint
-    адрес, телефон, факс
-  %br
+  = render partial: 'nested_components/settings', locals: { setting: @setting }
   .caption.py-3
     ЗАЯВКА №
     = @proposal.prop_number
@@ -199,7 +191,7 @@
         .line
         .hint
           подпись
-      .col-md-4
+      .col-md-4.text-center
         .line
           %b= @proposal.prop_manuf_chief_org
         .hint
@@ -211,7 +203,7 @@
         .line
         .hint
           подпись
-      .col-md-4
+      .col-md-4.text-center
         .line
           %b= @proposal.prop_manuf_chief_accountant
         .hint

@@ -2,6 +2,6 @@
   %ul.nav.flex-column
     %li.nav-item= link_to t('link.back'), proposal_path(@solution_proposal.proposal), class: 'nav-link'
 
-- provide(:title, "#{t('solution_proposals.headers.new')} #{@solution_proposal.solprop_number}")
-%h2.text-center.py-3 #{t('solution_proposals.headers.new')} #{@solution_proposal.solprop_number}
+- provide(:title, t('solution_proposals.headers.new'))
+%h2.text-center.py-3= t('solution_proposals.headers.new')
 = render partial: 'form', locals: { solution_proposal: @solution_proposal, button: 'create' }

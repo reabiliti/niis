@@ -1,4 +1,7 @@
-- provide(:title, 'Заключение о выдаче сертификата')
-= render 'shared/links'
-%h1 Заключение эксперта о выдаче сертификата
-= render partial: 'form', locals: { conclusion: @conclusion }
+.col-md-2.fixed-top.mt-10
+  %ul.nav.flex-column
+    %li.nav-item= link_to t('link.back'), solution_proposal_path(@conclusion.solution_proposal), class: 'nav-link'
+
+- provide(:title, t('conclusions.headers.new'))
+%h2.text-center.py-3= t('conclusions.headers.new')
+= render partial: 'form', locals: { conclusion: @conclusion, button: 'create' }

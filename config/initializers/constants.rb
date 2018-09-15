@@ -7,3 +7,4 @@ COMPLIXITY_GROUP = %w[1 2 3].freeze
 SOLUTIONS = %w[о\ проведении об\ отказе\ в\ проведении].freeze
 ORGANIZATION_SAMPLES = %w[орган\ по\ сертификации испытательная\ лаборатория].freeze
 NEED_TESTS = %w[требуется не\ требуется].freeze
+MAY_BE_ISSUE = %w[может не\ может].freeze
