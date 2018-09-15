@@ -2,7 +2,7 @@
 
 # This class to attachments certificates
 class AttachmentsController < ApplicationController
-  before_action :attach_find, only: %i[show edit update destroy]
+  before_action :attachment_find, only: %i[show edit update destroy]
   before_action :setting_find, only: [:show]
 
   def show
@@ -12,7 +12,9 @@ class AttachmentsController < ApplicationController
       format.pdf do
         pdf = AttachmentPdf.new(@attachment, @setting, @certificate)
         send_data pdf.render, filename: "attachment_#{@certificate.cert_registration_num}",
-                              type: 'application/pdf', disposition: 'inline', page_layout: 'landscape'
+                              type: 'application/pdf',
+                              disposition: 'inline',
+                              page_layout: 'landscape'
       end
     end
   end
@@ -29,12 +31,12 @@ class AttachmentsController < ApplicationController
   end
 
   def create
-    @attachment = Attachment.new(attach_params)
+    @attachment = Attachment.new(attachment_params)
     if @attachment.save
-      redirect_to @attachment, flash: { success: 'Приложение к сертификату создано успешно' }
+      redirect_to @attachment, flash: { success: t('attachments.notices.success.create') }
     else
-      flash.now[:danger] = 'Не получилось создать приложение к сертификату, проверьте вводимые данные'
-      render 'new'
+      flash.now[:danger] = t('attachments.notices.danger.create')
+      render :new
     end
   end
 
@@ -43,29 +45,29 @@ class AttachmentsController < ApplicationController
   end
 
   def update
-    if @attachment.update(attach_params)
-      redirect_to @attachment, flash: { success: 'Приложение к сертификату обновлено успешно' }
+    if @attachment.update(attachment_params)
+      redirect_to @attachment, flash: { success: t('attachments.notices.success.update') }
     else
-      flash.now[:danger] = 'Приложение к сертификату не удалось обновить, проверьте вводимые данные'
-      render 'new'
+      flash.now[:danger] = t('attachments.notices.danger.update')
+      render :edit
     end
   end
 
   def destroy
     @attachment.destroy
-    redirect_to root_path, flash: { success: 'Приложение к сертификату удалено' }
+    redirect_to root_path, flash: { success: t('attachments.notices.success.destroy') }
   end
 
   private
 
-  def attach_params
+  def attachment_params
     params.require(:attachment).permit(:certificate_id, :att_blank_num,
                                        :att_code_okp, :att_code_tn_ved,
                                        :att_name_product, :att_manuf_name,
                                        :att_regulations)
   end
 
-  def attach_find
+  def attachment_find
     @attachment = Attachment.find(params[:id])
   end
 
