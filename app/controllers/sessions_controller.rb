@@ -2,6 +2,7 @@
 
 # This sessions controller for authorization users
 class SessionsController < ApplicationController
+  before_action :check_auth, except: :destroy
   skip_before_action :require_login, except: :destroy
 
   def new; end

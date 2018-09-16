@@ -8,7 +8,11 @@ class ApplicationController < ActionController::Base
   private
 
   def not_authenticated
-    flash[:warning] = 'Чтобы получить доступ к данной странице вы должны авторизоваться'
-    redirect_to login_path
+    redirect_to login_path, flash: { warning: t('sessions.notices.warning.not_authenticated') }
+  end
+
+  def check_auth
+    return unless current_user
+    redirect_to root_path, flash: { warning: t('sessions.notices.warning.check_auth') }
   end
 end

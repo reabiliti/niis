@@ -2,6 +2,7 @@
 
 # This controller for sign up users
 class UsersController < ApplicationController
+  before_action :check_auth
   skip_before_action :require_login, only: %i[new create]
 
   def new
@@ -11,10 +12,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Добро пожаловать, #{@user.name}"
-      redirect_to login_path
+      redirect_to login_path, flash: { success: t('users.notices.success.create') }
     else
-      render 'new'
+      render :new
     end
   end
 

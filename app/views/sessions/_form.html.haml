@@ -1,10 +1,14 @@
 .col-md-6.offset-md-3
   = simple_form_for :session, url: login_path do |f|
-    = f.input :email
-    = f.input :password, label: 'Пароль'
-    = f.input :remember_me, label: 'Запомнить', as: :boolean
+    = f.input :email, label: t('sessions.form.email')
+    = f.input :password, label: t('sessions.form.password')
+    = f.input :remember_me, label: t('sessions.form.remember_me'),
+                            as: :boolean,
+                            input_html: { 'data-tooltip': true,
+                                          class: 'has-tip',
+                                          title: t('sessions.form.data_tooltip.remember_me') }
 
     = f.submit t('sessions.buttons.create'), class: 'btn btn-dark btn-block'
   %p.pt-3
     Новый пользователь?
-    = link_to t('sessions.links.signup'), signup_path
+    = link_to t('sessions.links.signup'), signup_path, class: 'text-secondary'

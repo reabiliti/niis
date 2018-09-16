@@ -9,13 +9,29 @@ ru:
       next: Следующая
       previous: Предыдущая
   sessions:
+    notices:
+      warning:
+        not_authenticated: Чтобы получить доступ к данной странице вы должны авторизоваться
+        check_auth: Вы уже вошли в систему
+    form:
+      name: Имя пользователя
+      email: Почта
+      password: Пароль
+      password_confirmation: Подтверждение пароля
+      role: Роль пользователя
+      remember_me: запомнить меня
+      data_tooltip:
+        remember_me: после закрытия браузера пользователь останется залогиненным
     buttons:
       create: Войти
     headers:
-      new: Авторизация
+      new: Вход
     links:
       signup: Зарегистрироваться
   users:
+    notices:
+      success:
+        create: Регистрация прошла успешно, теперь можно войти в систему
     buttons:
       create: Зарегистрироваться
     headers:
@@ -248,6 +264,18 @@ ru:
     links:
       new_setting: Необходимо создать файл настроек
   simple_form:
+    "yes": 'Да'
+    "no": 'Нет'
+    required:
+      text: 'обязательное поле'
+      mark: '*'
+    error_notification:
+      default_message: "Пожалуйста, просмотрите приведенные ниже проблемы:"
+    options:
+      user:
+        role:
+          member: 'Administrator'
+          editor: 'Editor'
     labels:
       setting:
         set_name: "Наименование настройки"

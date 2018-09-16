@@ -1,9 +1,9 @@
 .col-md-6.offset-md-3
   = simple_form_for @user do |f|
-    = f.input :name
-    = f.input :email
-    = f.input :password
-    = f.input :password_confirmation
-    = f.input :role, label: 'ROLE', collection: User::REGISTRATION_ROLES, include_blank: false
+    = f.input :name, label: t('sessions.form.name')
+    = f.input :email, label: t('sessions.form.email')
+    = f.input :password, label: t('sessions.form.password'), required: true
+    = f.input :password_confirmation, label: t('sessions.form.password_confirmation')
+    = f.input :role, label: t('sessions.form.role'), collection: REGISTRATION_ROLES.sort.map { |k,v| [v,k] }, include_blank: false
 
     = f.submit t('users.buttons.create'), class: 'btn btn-dark btn-block'
