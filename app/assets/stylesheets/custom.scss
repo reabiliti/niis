@@ -3,7 +3,7 @@
 $gray-medium-light: #eaeaea;
 $gray-light: #eaeaea;
 $gray: grey;
-$gray-darker: grey;
+$gray-dark: #454545;
 $gray-lighter: grey;
 $black-line: #262626;
 $width-page: 710px;
@@ -96,7 +96,7 @@ footer {
   a {
     color: $gray;
     &:hover {
-      color: $gray-darker;
+      color: $gray-dark;
     }
   }
   ul {
@@ -111,19 +111,7 @@ footer {
 
 /* forms */
 
-.red-text {
-  color: red;
-}
-
-.contant {
-  width: 80%;
-  margin-right: auto;
-  margin-left: auto;
-
-}
-
 .page-body {
-  font-family: TimesNewRoman, Times New Roman, Times, Baskerville, Georgia, serif;
   width: $width-page;
   font-size: 16px;
   margin-right: auto;
@@ -146,7 +134,7 @@ footer {
     letter-spacing: -1px;
     text-align: center;
     font-weight: normal;
-    color: $gray;
+    color: $gray-dark;
   }
 }
 
