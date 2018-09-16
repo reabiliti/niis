@@ -31,8 +31,8 @@ class SolutionsController < ApplicationController
     @solution.sol_conclusion_date = @conclusion.conc_sign_date
     @solution.sol_cert_expiry_date = @conclusion.conc_cert_expiry_date
     @solution.sol_add_info = @conclusion.conc_add_info
-    @solution.sol_chief_name = @setting.set_os_chief_position
-    @solution.sol_chief_org = @setting.set_os_chief_name
+    @solution.sol_chief_name = @setting.os_chief_position
+    @solution.sol_chief_org = @setting.os_chief_name
   end
 
   def create

@@ -41,7 +41,19 @@ class ProposalsController < ApplicationController
   private
 
   def proposal_params
-    params.require(:proposal).permit!
+    params.require(:proposal).permit(:number, :date_from, :cert_system, :applic_name,
+                                     :applic_reg_doc, :applic_address, :applic_bank_detail,
+                                     :applic_phone, :applic_fax, :applic_email, :applic_code_okato,
+                                     :applic_type_own, :applic_code_okonh, :applic_code_okved,
+                                     :applic_code_okpo, :applic_chief, :applic_name_product,
+                                     :applic_from_issue, :manuf_name, :manuf_address, :manuf_doc,
+                                     :manuf_code_okato, :manuf_type_own, :manuf_code_okonh,
+                                     :manuf_code_okved, :manuf_code_okpo, :manuf_regulations,
+                                     :manuf_list_doc, :manuf_add_info, :manuf_chief_org,
+                                     :manuf_chief_accountant, :applic_postcode, :applic_inn,
+                                     :applic_kpp, :applic_code_okp, :applic_code_tn_ved,
+                                     :manuf_postcode, :manuf_inn, :manuf_scheme_cert,
+                                     :manuf_count_sort_cert, :manuf_group_complexity)
   end
 
   def proposal_find

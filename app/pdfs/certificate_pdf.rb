@@ -30,11 +30,11 @@ class CertificatePdf < Prawn::Document
 
     at_x_indent = at_x_set(230)
     at_y = at_y_set(625)
-    registration_number = "рег. № #{@setting.set_os_registration_num}"
+    registration_number = "рег. № #{@setting.os_registration_num}"
     draw_text registration_number, at: [at_x_indent, at_y], size: size, style: :bold
 
     at_y = at_y_set(620)
-    os_name = "#{@setting.set_os_name.gsub 'ОРГАН ПО СЕРТИФИКАЦИИ ', ''}\n #{@setting.set_os_address}"
+    os_name = "#{@setting.os_name.gsub 'ОРГАН ПО СЕРТИФИКАЦИИ ', ''}\n #{@setting.os_address}"
     text_box os_name, at: [at_x, at_y], size: size, style: :bold, width: 450
 
     at_x_indent = at_x_set(135)
@@ -175,10 +175,10 @@ class CertificatePdf < Prawn::Document
   end
 
   def at_x_set(at_x)
-    at_x + @setting.set_at_x
+    at_x + @setting.at_x
   end
 
   def at_y_set(at_y)
-    at_y + @setting.set_at_y
+    at_y + @setting.at_y
   end
 end

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This query for rendering root with childrens
 class ProposalsQuery
   def call
     Proposal.includes(
@@ -9,10 +10,10 @@ class ProposalsQuery
         :protocols,
         conclusion: [
           solution: [
-            certificates: [
-              :permission,
-              :ikcontract,
-              :attachments
+            certificates: %i[
+              permission
+              ikcontract
+              attachments
             ]
           ]
         ]

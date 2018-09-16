@@ -22,6 +22,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'kaminari'
 gem 'pg'
 gem 'strong_migrations'
+gem 'data_migrate'
 gem 'sorcery'
 gem 'validates_email_format_of'
 

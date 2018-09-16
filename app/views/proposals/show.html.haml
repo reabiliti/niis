@@ -1,81 +1,81 @@
-- provide(:title, "#{t('proposals.headers.show')} № #{@proposal.prop_number}")
+- provide(:title, "#{t('proposals.headers.show')} № #{@proposal.number}")
 = render partial: 'links', locals: { proposal: @proposal }
 .page-body
   = render partial: 'nested_components/settings', locals: { setting: @setting }
   .caption.py-3
     ЗАЯВКА №
-    = @proposal.prop_number
+    = @proposal.number
     от
-    = @proposal.prop_date_from.strftime('%d.%m.%Y')
+    = format_date(@proposal.date_from)
     на проведение сертификации продукции в системе сертификации
-    = @proposal.prop_cert_system
+    = @proposal.cert_system
   %br
   .line
-    %b= @proposal.prop_applic_name
+    %b= @proposal.applic_name
   .hint
     наименование организации-изготовителя, продавца или индивидуального предпринимателя (далее - заявитель)
   .line
-    %b= @proposal.prop_applic_reg_doc
+    %b= @proposal.applic_reg_doc
   .hint
     код по ОКПО или номер регистрационного документа индивидуального предпринимателя
   .paragraph
     Юридический адрес:
-    %b #{@proposal.prop_applic_address}, #{@proposal.prop_applic_postcode}
+    %b #{@proposal.applic_address}, #{@proposal.applic_postcode}
   .paragraph
     Банковские реквизиты:
-    %b= @proposal.prop_applic_bank_detail
+    %b= @proposal.applic_bank_detail
   .paragraph
     .row.px-10
       .col-md-4
         Телефон:
-        %b= @proposal.prop_applic_phone
+        %b= @proposal.applic_phone
       .col-md-4
         Факс:
-        %b= @proposal.prop_applic_fax
+        %b= @proposal.applic_fax
       .col-md-4
         Почта:
-        %b= @proposal.prop_applic_email
+        %b= @proposal.applic_email
   %h2.py-3.no-print Поисковые реквизиты заявителя
   .paragraph
     .row.no-print
       .col-md-4.line-light
         код по ОКАТО
       .col-md-8.line-light
-        = @proposal.prop_applic_code_okato
+        = @proposal.applic_code_okato
     .row.no-print
       .col-md-4.line-light
         Форма собственности
       .col-md-8.line-light
-        = @proposal.prop_applic_type_own
+        = @proposal.applic_type_own
     .row.no-print
       .col-md-4.line-light
         код по ОКОНХ
       .col-md-8.line-light
-        = @proposal.prop_applic_code_okonh
+        = @proposal.applic_code_okonh
     .row.no-print
       .col-md-4.line-light
         код по ОКВЭД
       .col-md-8.line-light
-        = @proposal.prop_applic_code_okved
+        = @proposal.applic_code_okved
     .row.no-print
       .col-md-4.line-light
         код по ОКПО
       .col-md-8.line-light
-        = @proposal.prop_applic_code_okpo
+        = @proposal.applic_code_okpo
     .row.no-print
       .col-md-4.line-light
         ИНН
       .col-md-8.line-light
-        = @proposal.prop_applic_inn
+        = @proposal.applic_inn
     .row.no-print
       .col-md-4.line-light
         КПП
       .col-md-8.line-light
-        = @proposal.prop_applic_kpp
+        = @proposal.applic_kpp
   %br.no-print
   .line
     в лице
-    %b= @proposal.prop_applic_chief
+    %b= @proposal.applic_chief
   .hint
     фамилия, имя, отчество руководителя
   .paragraph
@@ -83,7 +83,7 @@
     %b добровольную
     сертификацию продукции
   .line
-    %b= @proposal.prop_applic_name_product
+    %b= @proposal.applic_name_product
   .hint
     наименование продукции
   .paragraph
@@ -91,26 +91,26 @@
       .col-md-2
         Код ОКПД2
       .col-md-2.line
-        %b= @proposal.prop_applic_code_okp
+        %b= @proposal.applic_code_okp
       .col-md-2
         Код ТН ВЭД
       .col-md-2.line
-        %b= @proposal.prop_applic_code_tn_ved
+        %b= @proposal.applic_code_tn_ved
   .line
-    %b= @proposal.prop_applic_from_issue
+    %b= @proposal.applic_from_issue
   .hint
     серийный выпуск, или партия определенного размера, или единица продукции
   .paragraph
     выпускаемой изготовителем
   .line
-    %b= @proposal.prop_manuf_name
+    %b= @proposal.manuf_name
   .line
-    %b #{@proposal.prop_manuf_address}, #{@proposal.prop_manuf_postcode}
+    %b #{@proposal.manuf_address}, #{@proposal.manuf_postcode}
   .hint
     адрес
   .line
     по
-    %b= @proposal.prop_manuf_doc
+    %b= @proposal.manuf_doc
   .hint
     наименование и обозначение документацииизготовителя (стандарт, ТУ, КД, образец-эталон)
   %h2.py-3.no-print Поисковые реквизиты изготовителя
@@ -119,54 +119,54 @@
       .col-md-4.line-light
         код по ОКАТО
       .col-md-8.line-light
-        = @proposal.prop_manuf_code_okato
+        = @proposal.manuf_code_okato
     .row.no-print
       .col-md-4.line-light
         Форма собственности
       .col-md-8.line-light
-        = @proposal.prop_manuf_type_own
+        = @proposal.manuf_type_own
     .row.no-print
       .col-md-4.line-light
         код по ОКОНХ
       .col-md-8.line-light
-        = @proposal.prop_manuf_code_okonh
+        = @proposal.manuf_code_okonh
     .row.no-print
       .col-md-4.line-light
         код по ОКВЭД
       .col-md-8.line-light
-        = @proposal.prop_manuf_code_okved
+        = @proposal.manuf_code_okved
     .row.no-print
       .col-md-4.line-light
         код по ОКПО
       .col-md-8.line-light
-        = @proposal.prop_manuf_code_okpo
+        = @proposal.manuf_code_okpo
     .row.no-print
       .col-md-4.line-light
         ИНН
       .col-md-8.line-light
-        = @proposal.prop_manuf_inn
+        = @proposal.manuf_inn
   %br.no-print
   .paragraph
     на соответствие требованиям
   .line
-    %b= @proposal.prop_manuf_regulations
+    %b= @proposal.manuf_regulations
   .hint
     наименование и обозначение нормативных документов
   .paragraph
     по схеме
-    %b #{@proposal.prop_manuf_scheme_cert}.
+    %b #{@proposal.manuf_scheme_cert}.
   %h2.py-3.no-print Дополнительные сведения о продукции и заявителе
   .paragraph
     .row.no-print
       .col-md-8.line-light
         Количество видов сертифицируемой продукции
       .col-md-4.line-light
-        = @proposal.prop_manuf_count_sort_cert
+        = @proposal.manuf_count_sort_cert
     .row.no-print
       .col-md-8.line-light
         Группа сложности сертификации продукции
       .col-md-4.line-light
-        = @proposal.prop_manuf_group_complexity
+        = @proposal.manuf_group_complexity
         .hint
           См. "Правила по сертификации. Оплата работ по сертификации продукции и услуг", п. 4.4.
   %br
@@ -176,11 +176,11 @@
   .paragraph
     Дополнительные сведения:
   .line
-    %b= @proposal.prop_manuf_list_doc
+    %b= @proposal.manuf_list_doc
   .hint
     перечень представленных заявителем документов, подтверждающих соответствие продукции установленным требованиям
   .line
-    %b= @proposal.prop_manuf_add_info
+    %b= @proposal.manuf_add_info
   .hint
     дополнительная информация
   .paragraph.pt-3
@@ -193,7 +193,7 @@
           подпись
       .col-md-4.text-center
         .line
-          %b= @proposal.prop_manuf_chief_org
+          %b= @proposal.manuf_chief_org
         .hint
           инициалы, фамилия
     .row
@@ -205,11 +205,11 @@
           подпись
       .col-md-4.text-center
         .line
-          %b= @proposal.prop_manuf_chief_accountant
+          %b= @proposal.manuf_chief_accountant
         .hint
           инициалы, фамилия
     .row
       .col-md-4
         М.П.
       .col-md-4
-        %b= @proposal.prop_date_from.strftime('%d.%m.%Y')
+        %b= format_date(@proposal.date_from)

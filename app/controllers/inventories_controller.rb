@@ -12,7 +12,7 @@ class InventoriesController < ApplicationController
     @proposal = Proposal.find(params[:proposal_id])
     @inventory = Inventory.new
     @inventory.proposal_id = @proposal.id
-    @inventory.inv_chief_name = @setting.set_os_chief_name
+    @inventory.inv_chief_name = @setting.os_chief_name
   end
 
   def create

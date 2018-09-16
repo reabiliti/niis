@@ -7,7 +7,7 @@
     %ul
       %li
         - if @setting
-          = link_to @setting.set_name, setting_path(@setting), class: 'text-secondary'
+          = link_to @setting.name, setting_path(@setting), class: 'text-secondary'
         - else
           = link_to t('welcome.links.new_setting'), new_setting_path, class: 'text-secondary'
       - @proposals.each do |proposal|
@@ -16,19 +16,19 @@
           = link_to proposal_path(proposal), class: 'text-secondary' do
             .row
               .col-md-2
-                %li= proposal.prop_date_from.strftime('%d.%m.%Y')
+                %li= format_date(proposal.date_from)
               .col-md-2
-                %b= proposal.prop_number
+                %b= proposal.number
               .col-md-7
-                = proposal.prop_applic_name
+                = proposal.applic_name
           - if (solution_proposal = proposal.solution_proposal)
             %ul
               %li
                 = link_to solution_proposal_path(solution_proposal), class: 'text-secondary' do
                   1.3 Решение по заявке о проведении сертификации от
-                  = solution_proposal.solprop_date_from.strftime('%d.%m.%Y')
+                  = format_date(solution_proposal.date_from)
                   №
-                  = solution_proposal.solprop_number
+                  = solution_proposal.number
               - if (protocols = solution_proposal.protocols)
                 %ul
                   - protocols.each do |protocol|
@@ -41,13 +41,13 @@
                   %li
                     = link_to conclusion_path(conclusion), class: 'text-secondary' do
                       3.1 Заключение эксперта о выдаче сертификата от
-                      = conclusion.conc_sign_date.strftime('%d.%m.%Y')
+                      = format_date(conclusion.conc_sign_date)
                   - if (solution = conclusion.solution)
                     %ul
                       %li
                         = link_to solution_path(solution), class: 'text-secondary' do
                           3.2 Решение о выдаче сертификата от
-                          = solution.sol_date_from.strftime('%d.%m.%Y')
+                          = format_date(solution.sol_date_from)
                           №
                           = solution.sol_number
                       - if (certificates = solution.certificates)
@@ -56,7 +56,7 @@
                             %li
                               = link_to certificate_path(certificate), class: 'text-secondary' do
                                 4.1 Сертификат соответствия от
-                                = certificate.cert_registration_date.strftime('%d.%m.%Y')
+                                = format_date(certificate.cert_registration_date)
                                 №
                                 = certificate.cert_registration_num
                             - if (attachments = certificate.attachments)
@@ -73,7 +73,7 @@
                                 %li
                                   = link_to permission_path(permission), class: 'text-secondary' do
                                     4.3 Разрешение на применение знака соответствия от
-                                    = permission.perm_registration_date.strftime('%d.%m.%Y')
+                                    = format_date(permission.perm_registration_date)
                                     №
                                     = permission.perm_registration_num
                             - if (ikcontract = certificate.ikcontract)
@@ -81,7 +81,7 @@
                                 %li
                                   = link_to ikcontract_path(ikcontract), class: 'text-secondary' do
                                     5.1 Договор на инспекционный контроль от
-                                    = ikcontract.ikcon_registration_date.strftime('%d.%m.%Y')
+                                    = format_date(ikcontract.ikcon_registration_date)
                                     №
                                     = ikcontract.ikcon_registration_num
           - if (certcontract = proposal.certcontract)
@@ -89,13 +89,13 @@
               %li
                 = link_to certcontract_path(certcontract), class: 'text-secondary' do
                   1.5 Договор на проведение работ по сертификации от
-                  = certcontract.cecon_registration_date.strftime('%d.%m.%Y')
+                  = format_date(certcontract.cecon_registration_date)
                   №
                   = certcontract.cecon_registration_num
           - if (inventory = proposal.inventory)
             %ul
               %li
-                = link_to "1.9 Опись документов от #{inventory.inv_date_from.strftime('%d.%m.%Y')}",
+                = link_to "1.9 Опись документов от #{format_date(inventory.inv_date_from)}",
                           inventory_path(inventory), class: 'text-secondary'
     .text-center
       = paginate @proposals

@@ -62,20 +62,20 @@ class ConclusionsController < ApplicationController
 
   def fill_with_data_proposal
     @conclusion.solution_proposal_id = @solution_proposal.id
-    @conclusion.conc_solution_proposal_num = @solution_proposal.solprop_number
-    @conclusion.conc_solution_proposal_date = @solution_proposal.solprop_date_from
+    @conclusion.conc_solution_proposal_num = @solution_proposal.number
+    @conclusion.conc_solution_proposal_date = @solution_proposal.date_from
   end
 
   def fill_with_data_manuf
-    @conclusion.conc_name_product = @solution_proposal.solprop_applic_name_product
-    @conclusion.conc_code_okp = @solution_proposal.solprop_applic_code_okp
-    @conclusion.conc_code_tn_ved = @solution_proposal.solprop_applic_code_tn_ved
-    @conclusion.conc_manuf_name = @solution_proposal.solprop_manuf_name
-    @conclusion.conc_manuf_address = @solution_proposal.solprop_manuf_address
-    @conclusion.conc_manuf_postcode = @solution_proposal.solprop_manuf_postcode
-    @conclusion.conc_manuf_doc = @solution_proposal.solprop_manuf_doc
-    @conclusion.conc_manuf_regulations = @solution_proposal.solprop_regulations
-    @conclusion.conc_desc_scheme_cert = @solution_proposal.solprop_desc_scheme_cert
-    @conclusion.conc_list_doc = @solution_proposal.solprop_list_doc_product
+    @conclusion.conc_name_product = @solution_proposal.applic_name_product
+    @conclusion.conc_code_okp = @solution_proposal.applic_code_okp
+    @conclusion.conc_code_tn_ved = @solution_proposal.applic_code_tn_ved
+    @conclusion.conc_manuf_name = @solution_proposal.manuf_name
+    @conclusion.conc_manuf_address = @solution_proposal.manuf_address
+    @conclusion.conc_manuf_postcode = @solution_proposal.manuf_postcode
+    @conclusion.conc_manuf_doc = @solution_proposal.manuf_doc
+    @conclusion.conc_manuf_regulations = @solution_proposal.manuf_regulations
+    @conclusion.conc_desc_scheme_cert = @solution_proposal.desc_scheme_cert
+    @conclusion.conc_list_doc = @solution_proposal.list_doc_product
   end
 end
