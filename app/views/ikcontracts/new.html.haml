@@ -1,4 +1,8 @@
-- provide(:title, 'Договор на инспекционный контроль')
-= render 'shared/links'
-%h1 Договор на инспекционный контроль
-= render partial: 'form', locals: { ikcontract: @ikcontract }
+.col-md-2.fixed-top.mt-10
+  %ul.nav.flex-column
+    %li.nav-item= link_to t('link.back'), certificate_path(@ikcontract.certificate), class: 'nav-link'
+
+- provide(:title, t('ikcontracts.headers.new'))
+.page-body
+  %h2.text-center.py-3= t('ikcontracts.headers.new')
+  = render partial: 'form', locals: { ikcontract: @ikcontract, button: 'create' }

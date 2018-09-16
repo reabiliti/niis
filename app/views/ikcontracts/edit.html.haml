@@ -1,8 +1,16 @@
-- provide(:title, "Договор на проведение инспекционного контроля от,
-                  #{@ikcontract.ikcon_registration_date.try(:strftime, '%d.%m.%Y')},
-                  № #{@ikcontract.ikcon_registration_num}")
-= render 'shared/links'
-%h1
-  Договор на проведение инспекционного контроля от
-  #{@ikcontract.ikcon_registration_date.try(:strftime, '%d.%m.%Y')} № #{@ikcontract.ikcon_registration_num}
-= render partial: 'form', locals: { ikcontract: @ikcontract }
+.col-md-2.fixed-top.mt-10
+  %ul.nav.flex-column
+    %li.nav-item= link_to t('link.back'), ikcontract_path(@ikcontract), class: 'nav-link'
+
+- provide :title do
+  = t('ikcontracts.headers.edit')
+  = format_date(@ikcontract.ikcon_registration_date)
+  №
+  = @ikcontract.ikcon_registration_num
+.page-body
+  %h2.text-center.py-3
+    = t('certcontracts.headers.edit')
+    = format_date(@ikcontract.ikcon_registration_date)
+    №
+    = @ikcontract.ikcon_registration_num
+  = render partial: 'form', locals: { ikcontract: @ikcontract, button: 'edit' }
