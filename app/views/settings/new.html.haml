@@ -1,7 +1,4 @@
-.col-md-2.fixed-top.mt-10
-  %ul.nav.flex-column
-    %li.nav-item
-      = link_to t('link.back'), root_path, class: 'nav-link'
+= render 'shared/links'
 
 - provide(:title, t('settings.headers.new'))
 .page-body

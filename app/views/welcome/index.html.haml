@@ -1,5 +1,7 @@
+%ul.sidebar-nav.d-print-none
+  %li= link_to t('link.new_proposal'), new_proposal_path
 = provide :title, t('welcome.headers.index')
-.col.col-md-10.offset-md-1
+.col.col-md-10.offset-md-2
   = render 'shared/search'
   .tree-links
     %ul

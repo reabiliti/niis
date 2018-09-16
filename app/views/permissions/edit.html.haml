@@ -1,6 +1,5 @@
-.col-md-2.fixed-top.mt-10
-  %ul.nav.flex-column
-    %li.nav-item= link_to t('link.back'), permission_path(@permission), class: 'nav-link'
+%ul.sidebar-nav.d-print-none
+  %li= link_to t('link.back'), permission_path(@permission)
 
 - provide :title do
   = t('permissions.headers.edit')

@@ -1,6 +1,5 @@
-.col-md-2.fixed-top.mt-10
-  %ul.nav.flex-column
-    %li.nav-item= link_to t('link.back'), conclusion_path(@conclusion), class: 'nav-link'
+%ul.sidebar-nav.d-print-none
+  %li= link_to t('link.back'), conclusion_path(@conclusion)
 
 - provide(:title, "#{t('conclusions.headers.edit')} #{format_date(@conclusion.conc_sign_date)}")
 .page-body

@@ -1,6 +1,5 @@
-.col-md-2.fixed-top.mt-10
-  %ul.nav.flex-column
-    %li.nav-item= link_to t('link.back'), solution_path(@certificate.solution), class: 'nav-link'
+%ul.sidebar-nav.d-print-none
+  %li= link_to t('link.back'), solution_path(@certificate.solution)
 
 - provide(:title, t('certificates.headers.new'))
 .page-body

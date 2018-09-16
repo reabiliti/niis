@@ -45,6 +45,36 @@ $spacer: 1rem;
   }
 }
 
+// Sidebar Styles
+
+.sidebar-nav {
+  position: fixed;
+  top: 6 * $spacer;
+  width: 170px;
+  margin: 0 10px;
+  padding: 0;
+  list-style: none;
+  z-index: 1030;
+}
+
+.sidebar-nav li a {
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+  color: #5c5d5f;
+  border-radius: 0.25rem !important;
+}
+
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: #fff;
+  background: #abadae;
+}
+
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
 // Brand
 
 .navbar-brand {

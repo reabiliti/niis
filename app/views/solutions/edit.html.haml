@@ -1,6 +1,5 @@
-.col-md-2.fixed-top.mt-10
-  %ul.nav.flex-column
-    %li.nav-item= link_to t('link.back'), solution_path(@solution), class: 'nav-link'
+%ul.sidebar-nav.d-print-none
+  %li= link_to t('link.back'), solution_path(@solution)
 
 - provide(:title, "#{t('solutions.headers.edit')} #{format_date(@solution.sol_date_from)}")
 .page-body

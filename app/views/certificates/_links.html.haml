@@ -1,21 +1,19 @@
-.col-md-2.fixed-top.mt-10.no-print
-  %ul.nav.flex-column
-    %li.nav-item
-      = link_to t('link.back'), root_path, class: 'nav-link'
-    %li.nav-item
-      = link_to t('link.print_pdf'), certificate_path(certificate, format: 'pdf'), target: '_blank', class: 'nav-link'
-    %li.nav-item
-      = link_to t('link.edit'), edit_certificate_path(certificate), class: 'nav-link'
-    %li.nav-item
-      = link_to t('link.destroy'), certificate,
-                                   method: :delete,
-                                   data: { confirm: 'Вы уверены?' },
-                                   class: 'nav-link'
-    %li.nav-item
-      = link_to t('link.new_attachment'), new_attachment_path(certificate_id: certificate.id), class: 'nav-link'
-    - unless certificate.permission
-      %li.nav-item
-        = link_to t('link.new_permission'), new_permission_path(certificate_id: certificate.id), class: 'nav-link'
-    - unless certificate.ikcontract
-      %li.nav-item
-        = link_to t('link.new_ikcontract'), new_ikcontract_path(certificate_id: certificate.id), class: 'nav-link'
+%ul.sidebar-nav.d-print-none
+  %li
+    = link_to t('link.back'), root_path
+  %li
+    = link_to t('link.print_pdf'), certificate_path(certificate, format: 'pdf'), target: '_blank'
+  %li
+    = link_to t('link.edit'), edit_certificate_path(certificate)
+  %li
+    = link_to t('link.destroy'), certificate,
+                                 method: :delete,
+                                 data: { confirm: 'Вы уверены?' }
+  %li
+    = link_to t('link.new_attachment'), new_attachment_path(certificate_id: certificate.id)
+  - unless certificate.permission
+    %li
+      = link_to t('link.new_permission'), new_permission_path(certificate_id: certificate.id)
+  - unless certificate.ikcontract
+    %li
+      = link_to t('link.new_ikcontract'), new_ikcontract_path(certificate_id: certificate.id)

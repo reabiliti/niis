@@ -1,6 +1,5 @@
-.col-md-2.fixed-top.mt-10
-  %ul.nav.flex-column
-    %li.nav-item= link_to t('link.back'), proposal_path(@solution_proposal.proposal), class: 'nav-link'
+%ul.sidebar-nav.d-print-none
+  %li= link_to t('link.back'), proposal_path(@solution_proposal.proposal)
 
 - provide(:title, t('solution_proposals.headers.new'))
 .page-body

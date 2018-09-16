@@ -1,22 +1,18 @@
-.col-md-2.fixed-top.mt-10.no-print
-  %ul.nav.flex-column
-    %li.nav-item
-      = link_to t('link.back'), root_path, class: 'nav-link'
-    %li.nav-item
-      = link_to t('link.edit'), edit_proposal_path(proposal), class: 'nav-link'
-    %li.nav-item
-      = link_to t('link.destroy'), proposal,
-                                   method: :delete,
-                                   data: { confirm: 'Вы уверены?' },
-                                   class: 'nav-link'
-    - unless proposal.certcontract
-      %li.nav-item
-        = link_to t('link.new_certcontract'), new_certcontract_path(proposal_id: proposal.id),
-                                              class: 'nav-link'
-    - unless proposal.solution_proposal
-      %li.nav-item
-        = link_to t('link.new_solution_proposal'), new_solution_proposal_path(proposal_id: proposal.id),
-                                                   class: 'nav-link'
-    - unless proposal.inventory
-      %li.nav-item
-        = link_to t('link.new_inventory'), new_inventory_path(proposal_id: proposal.id), class: 'nav-link'
+%ul.sidebar-nav.d-print-none
+  %li
+    = link_to t('link.back'), root_path
+  %li
+    = link_to t('link.edit'), edit_proposal_path(proposal)
+  %li
+    = link_to t('link.destroy'), proposal,
+                                 method: :delete,
+                                 data: { confirm: 'Вы уверены?' }
+  - unless proposal.certcontract
+    %li
+      = link_to t('link.new_certcontract'), new_certcontract_path(proposal_id: proposal.id)
+  - unless proposal.solution_proposal
+    %li
+      = link_to t('link.new_solution_proposal'), new_solution_proposal_path(proposal_id: proposal.id)
+  - unless proposal.inventory
+    %li
+      = link_to t('link.new_inventory'), new_inventory_path(proposal_id: proposal.id)
