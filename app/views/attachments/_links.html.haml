@@ -1,13 +1,11 @@
-.col-md-2.fixed-top.mt-10.no-print
-  %ul.nav.flex-column
-    %li.nav-item
-      = link_to t('link.back'), root_path, class: 'nav-link'
-    %li.nav-item
-      = link_to t('link.print_pdf'), attachment_path(attachment, format: 'pdf'), target: '_blank', class: 'nav-link'
-    %li.nav-item
-      = link_to t('link.edit'), edit_attachment_path(attachment), class: 'nav-link'
-    %li.nav-item
-      = link_to t('link.destroy'), attachment,
-                                   method: :delete,
-                                   data: { confirm: 'Вы уверены?' },
-                                   class: 'nav-link'
+%ul.sidebar-nav.d-print-none
+  %li
+    = link_to t('link.back'), root_path
+  %li
+    = link_to t('link.print_pdf'), attachment_path(attachment, format: 'pdf'), target: '_blank'
+  %li
+    = link_to t('link.edit'), edit_attachment_path(attachment)
+  %li
+    = link_to t('link.destroy'), attachment,
+                                 method: :delete,
+                                 data: { confirm: 'Вы уверены?' }

@@ -1,6 +1,4 @@
 .row.pb-5
-  .col.d-flex.justify-content-start
-    = link_to t('link.new_proposal'), new_proposal_path, class: 'btn btn-dark'
   .col.d-flex.justify-content-end
     = simple_form_for :search, method: :get, html: { class: 'form-inline' } do |f|
       = f.input :search,

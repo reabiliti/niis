@@ -1,6 +1,5 @@
-.col-md-2.fixed-top.mt-10
-  %ul.nav.flex-column
-    %li.nav-item= link_to t('link.back'), protocol_path(@protocol), class: 'nav-link'
+%ul.sidebar-nav.d-print-none
+  %li= link_to t('link.back'), protocol_path(@protocol)
 
 - provide(:title, "#{t('protocols.headers.edit')} #{format_date(@protocol.prot_date_from)}")
 .page-body

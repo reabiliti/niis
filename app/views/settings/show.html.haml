@@ -1,10 +1,7 @@
+%ul.sidebar-nav.d-print-none
+  %li= link_to t('link.back'), root_path
+  %li= link_to t('link.edit'), edit_setting_path(@setting)
 - provide(:title, "#{t('settings.headers.show')} #{@setting.set_name}")
-.col-md-2.fixed-top.mt-10.no-print
-  %ul.nav.flex-column
-    %li.nav-item
-      = link_to t('link.back'), root_path, class: 'nav-link'
-    %li.nav-item
-      = link_to t('link.edit'), edit_setting_path(@setting), class: 'nav-link'
 %h2.text-center.py-3 #{t('settings.headers.show')} #{@setting.set_name}
 .page-body
   %h2.py-3 Сведения об аккредитации органа по сертификации
