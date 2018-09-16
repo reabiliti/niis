@@ -75,6 +75,13 @@ $spacer: 1rem;
   text-decoration: none;
 }
 
+// Dropdown-menu
+
+.dropdown-item.active, .dropdown-item:active {
+  color: #16181b;
+  background-color: #f8f9fa;
+}
+
 // Brand
 
 .navbar-brand {
