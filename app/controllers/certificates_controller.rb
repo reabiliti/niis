@@ -47,7 +47,7 @@ class CertificatesController < ApplicationController
     @certificate.cert_test_report = @solution.sol_test_report
     @certificate.cert_add_info = @solution.sol_add_info
     @certificate.cert_place_marking = @solution.sol_place_marking
-    @certificate.cert_chief_org = @setting.set_os_chief_name
+    @certificate.cert_chief_org = @setting.os_chief_name
     @certificate.cert_expert = @solution.sol_expert
   end
 

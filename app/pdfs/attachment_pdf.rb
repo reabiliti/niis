@@ -61,10 +61,10 @@ class AttachmentPdf < Prawn::Document
   private
 
   def at_x_set(at_x)
-    at_x + @setting.set_at_x
+    at_x + @setting.at_x
   end
 
   def at_y_set(at_y)
-    at_y + @setting.set_at_y
+    at_y + @setting.at_y
   end
 end

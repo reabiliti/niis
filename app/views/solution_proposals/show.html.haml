@@ -1,13 +1,13 @@
-- provide(:title, "#{t('solution_proposals.headers.show')} #{@solution_proposal.solprop_number}")
+- provide(:title, "#{t('solution_proposals.headers.show')} #{@solution_proposal.number}")
 = render partial: 'links', locals: { solution_proposal: @solution_proposal }
 .page-body
   = render partial: 'nested_components/settings', locals: { setting: @setting }
   .caption
     РЕШЕНИЕ ПО ЗАЯВКЕ №
-    = @solution_proposal.solprop_number
+    = @solution_proposal.number
     от
-    = format_date(@solution_proposal.solprop_date_from)
-    = @solution_proposal.solprop_solution
+    = format_date(@solution_proposal.date_from)
+    = @solution_proposal.solution
     сертификации продукции
   %br
   .paragraph
@@ -38,7 +38,7 @@
     %b добровольной
     сертификации продукции:
   .line
-    %b= @solution_proposal.solprop_applic_name_product
+    %b= @solution_proposal.applic_name_product
   .hint
     наименование продукции
   .paragraph
@@ -46,11 +46,11 @@
       .col-md-2
         Код ОКПД2
       .col-md-2.line
-        %b= @solution_proposal.solprop_applic_code_okp
+        %b= @solution_proposal.applic_code_okp
       .col-md-2
         Код ТН ВЭД
       .col-md-2.line
-        %b= @solution_proposal.solprop_applic_code_tn_ved
+        %b= @solution_proposal.applic_code_tn_ved
   .line
     %b= @proposal.prop_applic_from_issue
   .hint
@@ -58,29 +58,29 @@
   .paragraph
     выпускаемой изготовителем
   .line
-    %b= @solution_proposal.solprop_manuf_name
+    %b= @solution_proposal.manuf_name
   .hint
     наименование изготовителя
   .line
-    %b #{@solution_proposal.solprop_manuf_address}, #{@solution_proposal.solprop_manuf_postcode}
+    %b #{@solution_proposal.manuf_address}, #{@solution_proposal.manuf_postcode}
   .hint
     адрес
   .line
     по
-    %b= @solution_proposal.solprop_manuf_doc
+    %b= @solution_proposal.manuf_doc
   .hint
     наименование и обозначение документации изготовителя (стандарт, ТУ, КД, образец-эталон)
   .paragraph
     и представленных заявителем документов:
   .line
-    %b= @solution_proposal.solprop_manuf_list_doc
+    %b= @solution_proposal.manuf_list_doc
   .hint
     перечень представленных заявителем документов, подтверждающих соответствие продукции установленным требованиям
   %br
   .paragraph
-    = @setting.set_os_name
+    = @setting.os_name
     рег. №
-    = @setting.set_os_registration_num
+    = @setting.os_registration_num
   %br
   .caption
     ПРИНИМАЕТ РЕШЕНИЕ
@@ -88,7 +88,7 @@
   .paragraph
     1. Добровольную сертификацию заявленной продукции провести на соответствие требованиям
   .line
-    %b= @solution_proposal.solprop_regulations
+    %b= @solution_proposal.manuf_regulations
   .hint
     наименование и обозначение нормативных документов
   .paragraph
@@ -96,7 +96,7 @@
     %b= @proposal.prop_manuf_scheme_cert
     , предусматривающей
   .line
-    %b= @solution_proposal.solprop_desc_scheme_cert
+    %b= @solution_proposal.desc_scheme_cert
   .hint
     описание схемы сертификации
   .paragraph
@@ -106,37 +106,37 @@
     3. Для проведения сертификационных испытаний заявленной продукции определить следующие
     аккредитованные испытательные лаборатории (выбор конкретной испытательной лаборатории осуществляет заявитель):
   .line
-    %b= @solution_proposal.solprop_test_lab
+    %b= @solution_proposal.test_lab
   .hint
     для каждой испытательной лаборатории приводят: полное наименование, регистрационный номер, адрес, телефон
   .paragraph<
     4. Отбор образцов заявленной для проведения сертификационных испытаний проводит
-    = @solution_proposal.solprop_sampling
+    = @solution_proposal.sampling
     \.
   .paragraph
     5. Заявитель должен предоставить в орган по сертификации следующие документы:
   .paragraph
-    %b= @solution_proposal.solprop_list_doc_product
+    %b= @solution_proposal.list_doc_product
   .paragraph
     6. Работы проводят на основе:
   .paragraph
-    %b= @solution_proposal.solprop_basis_work
-  - unless @solution_proposal.solprop_add_info.blank?
+    %b= @solution_proposal.basis_work
+  - unless @solution_proposal.add_info.blank?
     .paragraph
       7. Дополнительная информация:
     .paragraph
-      %b= @solution_proposal.solprop_add_info
+      %b= @solution_proposal.add_info
   .paragraph.pt-3
     .row
       .col-md-6
-        = @solution_proposal.solprop_chief_name
+        = @solution_proposal.os_chief_position
       .col-md-2
         .line
         .hint
           подпись
       .col-md-3.text-center
         .line
-          = @solution_proposal.solprop_chief_org
+          = @solution_proposal.os_chief_name
         .hint
           инициалы, фамилия
     .row
@@ -148,10 +148,10 @@
           подпись
       .col-md-3.text-center
         .line
-          = @solution_proposal.solprop_expert
+          = @solution_proposal.expert
         .hint
           инициалы, фамилия
-    - if @solution_proposal.solprop_executor
+    - if @solution_proposal.executor
       .row
         .col-md-6
           Исполнитель
@@ -161,10 +161,10 @@
             подпись
         .col-md-3.text-center
           .line
-            = @solution_proposal.solprop_executor
+            = @solution_proposal.executor
           .hint
             инициалы, фамилия
-    - if @solution_proposal.solprop_applic_sign
+    - if @solution_proposal.applic_sign
       .row
         .col-md-6
           С решением ознакомлен:
@@ -174,6 +174,6 @@
             подпись
         .col-md-3.text-center
           .line
-            = @solution_proposal.solprop_applic_name
+            = @solution_proposal.applic_name
           .hint
             инициалы, фамилия

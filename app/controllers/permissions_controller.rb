@@ -18,8 +18,8 @@ class PermissionsController < ApplicationController
     @permission = Permission.new
     @permission.certificate_id = @certificate.id
     @permission.perm_place_marking = @solution.sol_place_marking
-    @permission.perm_chief_name = @setting.set_os_chief_position
-    @permission.perm_chief_org = @setting.set_os_chief_name
+    @permission.perm_chief_name = @setting.os_chief_position
+    @permission.perm_chief_org = @setting.os_chief_name
   end
 
   def create

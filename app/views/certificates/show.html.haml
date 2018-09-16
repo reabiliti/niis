@@ -26,11 +26,11 @@
         %b= @certificate.cert_blank_num
   .paragraph
     ОРГАН ПО СЕРТИФИКАЦИИ
-    %b= @setting.set_os_registration_num
+    %b= @setting.os_registration_num
   .paragraph
-    %b= @setting.set_os_name.gsub 'ОРГАН ПО СЕРТИФИКАЦИИ ', ''
+    %b= @setting.os_name.gsub 'ОРГАН ПО СЕРТИФИКАЦИИ ', ''
   .paragraph
-    %b= @setting.set_os_address
+    %b= @setting.os_address
   %br
   .paragraph
     .row

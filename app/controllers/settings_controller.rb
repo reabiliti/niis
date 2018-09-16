@@ -34,12 +34,12 @@ class SettingsController < ApplicationController
   private
 
   def setting_params
-    params.require(:setting).permit(:set_name, :set_os_registration_num, :set_os_registration_date,
-                                    :set_os_name, :set_os_address, :set_os_chief_position,
-                                    :set_os_chief_name, :set_os_based_doc, :set_org_name,
-                                    :set_org_address, :set_os_city, :set_org_phone, :set_org_chief_position,
-                                    :set_org_chief_name, :set_org_based_doc, :set_org_chief_accountant,
-                                    :set_at_x, :set_at_y)
+    params.require(:setting).permit(:name, :os_registration_num, :os_registration_date,
+                                    :os_name, :os_address, :os_chief_position,
+                                    :os_chief_name, :os_based_doc, :org_name,
+                                    :org_address, :os_city, :org_phone, :org_chief_position,
+                                    :org_chief_name, :org_based_doc, :org_chief_accountant,
+                                    :at_x, :at_y)
   end
 
   def setting_find

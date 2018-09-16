@@ -1,7 +1,7 @@
 %ul.sidebar-nav.d-print-none
   %li= link_to t('link.back'), proposal_path(@proposal)
 
-- provide(:title, "#{t('proposals.headers.edit')} #{@proposal.prop_number}")
+- provide(:title, "#{t('proposals.headers.edit')} #{@proposal.number}")
 .page-body
-  %h2.text-center.py-3 #{t('proposals.headers.edit')} #{@proposal.prop_number}
+  %h2.text-center.py-3 #{t('proposals.headers.edit')} #{@proposal.number}
   = render partial: 'form', locals: { proposal: @proposal, button: 'edit' }

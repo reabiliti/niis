@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_14_125317) do
+ActiveRecord::Schema.define(version: 2018_09_16_181238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,6 +121,9 @@ ActiveRecord::Schema.define(version: 2018_09_14_125317) do
     t.index ["solution_proposal_id"], name: "index_conclusions_on_solution_proposal_id"
   end
 
+  create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
+  end
+
   create_table "ikcontracts", force: :cascade do |t|
     t.bigint "certificate_id"
     t.datetime "ikcon_registration_date"
@@ -224,6 +227,48 @@ ActiveRecord::Schema.define(version: 2018_09_14_125317) do
     t.string "prop_manuf_scheme_cert"
     t.string "prop_manuf_count_sort_cert"
     t.string "prop_manuf_group_complexity"
+    t.string "number"
+    t.datetime "date_from"
+    t.string "cert_system"
+    t.string "applic_name"
+    t.string "applic_reg_doc"
+    t.string "applic_address"
+    t.string "applic_postcode"
+    t.string "applic_inn"
+    t.string "applic_kpp"
+    t.string "applic_code_okp"
+    t.string "applic_code_tn_ved"
+    t.text "applic_bank_detail"
+    t.string "applic_phone"
+    t.string "applic_fax"
+    t.string "applic_email"
+    t.string "applic_code_okato"
+    t.string "applic_type_own"
+    t.string "applic_code_okonh"
+    t.string "applic_code_okved"
+    t.string "applic_code_okpo"
+    t.string "applic_chief"
+    t.text "applic_name_product"
+    t.string "applic_from_issue"
+    t.string "manuf_name"
+    t.string "manuf_address"
+    t.string "manuf_postcode"
+    t.string "manuf_inn"
+    t.string "manuf_doc"
+    t.string "manuf_code_okato"
+    t.string "manuf_type_own"
+    t.string "manuf_code_okonh"
+    t.string "manuf_code_okved"
+    t.string "manuf_code_okpo"
+    t.string "manuf_regulations"
+    t.text "manuf_list_doc"
+    t.text "manuf_add_info"
+    t.string "manuf_chief_org"
+    t.string "manuf_chief_accountant"
+    t.string "manuf_scheme_cert"
+    t.string "manuf_count_sort_cert"
+    t.string "manuf_group_complexity"
+    t.index ["id"], name: "index_proposals_on_id"
   end
 
   create_table "protocols", force: :cascade do |t|
@@ -273,6 +318,24 @@ ActiveRecord::Schema.define(version: 2018_09_14_125317) do
     t.string "set_org_based_doc"
     t.string "set_org_chief_accountant"
     t.string "set_os_city"
+    t.string "name"
+    t.integer "at_x"
+    t.integer "at_y"
+    t.string "os_registration_num"
+    t.datetime "os_registration_date"
+    t.string "os_name"
+    t.string "os_address"
+    t.string "os_city"
+    t.string "os_chief_position"
+    t.string "os_chief_name"
+    t.string "os_based_doc"
+    t.string "org_name"
+    t.string "org_address"
+    t.string "org_phone"
+    t.string "org_chief_position"
+    t.string "org_chief_name"
+    t.string "org_based_doc"
+    t.string "org_chief_accountant"
   end
 
   create_table "solution_proposals", force: :cascade do |t|
@@ -297,12 +360,36 @@ ActiveRecord::Schema.define(version: 2018_09_14_125317) do
     t.string "solprop_chief_org"
     t.string "solprop_expert"
     t.string "solprop_executor"
-    t.boolean "solprop_applic_sign", null: false
     t.string "solprop_applic_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "solprop_manuf_name"
     t.text "solprop_manuf_list_doc"
+    t.string "number"
+    t.datetime "date_from"
+    t.string "solution"
+    t.text "applic_name_product"
+    t.string "applic_code_okp"
+    t.string "applic_code_tn_ved"
+    t.string "manuf_address"
+    t.string "manuf_postcode"
+    t.string "manuf_doc"
+    t.string "manuf_regulations"
+    t.string "desc_scheme_cert"
+    t.string "test_lab"
+    t.string "sampling"
+    t.string "list_doc_product"
+    t.string "basis_work"
+    t.string "add_info"
+    t.string "os_chief_position"
+    t.string "os_chief_name"
+    t.string "expert"
+    t.string "executor"
+    t.boolean "applic_sign", default: false
+    t.string "applic_name"
+    t.text "manuf_name"
+    t.text "manuf_list_doc"
+    t.index ["id"], name: "index_solution_proposals_on_id"
     t.index ["proposal_id"], name: "index_solution_proposals_on_proposal_id"
   end
 
@@ -356,4 +443,5 @@ ActiveRecord::Schema.define(version: 2018_09_14_125317) do
   end
 
   add_foreign_key "conclusions", "solution_proposals"
+  add_foreign_key "solution_proposals", "proposals"
 end
