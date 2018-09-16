@@ -1,0 +1,8 @@
+.col-md-2.fixed-top.mt-10
+  %ul.nav.flex-column
+    %li.nav-item= link_to t('link.back'), certificate_path(@permission.certificate), class: 'nav-link'
+
+- provide(:title, t('permissions.headers.new'))
+.page-body
+  %h2.text-center.py-3= t('permissions.headers.new')
+  = render partial: 'form', locals: { permission: @permission, button: 'create' }

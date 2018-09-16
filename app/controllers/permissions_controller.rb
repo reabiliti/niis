@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 class PermissionsController < ApplicationController
-  before_action :perm_find, only: %i[show edit update destroy]
+  before_action :permission_find, only: %i[show edit update destroy]
   before_action :setting_find, only: %i[show new]
-
-  def index; end
 
   def show
     @certificate = Certificate.find(@permission.certificate_id)
@@ -26,18 +24,28 @@ class PermissionsController < ApplicationController
 
   def create
     @permission = Permission.new(permission_params)
-    @permission.save ? (redirect_to @permission) : (render 'new')
+    if @permission.save
+      redirect_to @permission, flash: { success: t('permissions.notices.success.create') }
+    else
+      flash.now[:danger] = t('permissions.notices.danger.create')
+      render :new
+    end
   end
 
   def edit; end
 
   def update
-    @permission.update(permission_params) ? (redirect_to @permission) : (render 'new')
+    if @permission.update(permission_params)
+      redirect_to @permission, flash: { success: t('permissions.notices.success.update') }
+    else
+      flash.now[:danger] = t('permissions.notices.danger.update')
+      render :edit
+    end
   end
 
   def destroy
     @permission.destroy
-    redirect_to root_path
+    redirect_to root_path, flash: { success: t('permissions.notices.success.destroy') }
   end
 
   private
@@ -48,7 +56,7 @@ class PermissionsController < ApplicationController
                                        :perm_chief_org)
   end
 
-  def perm_find
+  def permission_find
     @permission = Permission.find(params[:id])
   end
 

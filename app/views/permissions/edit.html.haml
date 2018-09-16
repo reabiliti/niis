@@ -1,0 +1,16 @@
+.col-md-2.fixed-top.mt-10
+  %ul.nav.flex-column
+    %li.nav-item= link_to t('link.back'), permission_path(@permission), class: 'nav-link'
+
+- provide :title do
+  = t('permissions.headers.edit')
+  = format_date(@permission.perm_registration_date)
+  №
+  = @permission.perm_registration_num
+.page-body
+  %h2.text-center.py-3
+    = t('permissions.headers.edit')
+    = format_date(@permission.perm_registration_date)
+    №
+    = @permission.perm_registration_num
+  = render partial: 'form', locals: { permission: @permission, button: 'edit' }
