@@ -5,8 +5,6 @@ class IkcontractsController < ApplicationController
   before_action :ikcontract_find, only: %i[show edit update destroy]
   before_action :setting_find, only: %i[show new]
 
-  def index; end
-
   def show
     @certificate = Certificate.find(@ikcontract.certificate_id)
   end
@@ -34,10 +32,10 @@ class IkcontractsController < ApplicationController
   def create
     @ikcontract = Ikcontract.new(ikcontract_params)
     if @ikcontract.save
-      redirect_to @ikcontract, flash: { success: 'Договор на инспекционный контроль создан успешно' }
+      redirect_to @ikcontract, flash: { success: t('ikcontracts.notices.success.create') }
     else
-      flash.now[:danger] = 'Не удалось создать договор на инспеционный контроль, проверьте вводимые данные'
-      render 'new'
+      flash.now[:danger] = t('certcontracts.notices.danger.create')
+      render :new
     end
   end
 
@@ -45,16 +43,16 @@ class IkcontractsController < ApplicationController
 
   def update
     if @ikcontract.update(ikcontract_params)
-      redirect_to @ikcontract, flash: { success: 'Договор на инспекционный контроль успешно обновлен' }
+      redirect_to @ikcontract, flash: { success: t('certcontracts.notices.success.update') }
     else
-      flash.now[:danger] = 'Не удалось обновить договор на инспекционный контроль, проверьте вводимые данные'
-      render 'edit'
+      flash.now[:danger] = t('certcontracts.notices.danger.update')
+      render :edit
     end
   end
 
   def destroy
     @ikcontract.destroy
-    redirect_to root_path, flash: { success: 'Договор на инспекционные контроль успешно удален' }
+    redirect_to root_path, flash: { success: t('certcontracts.notices.success.destroy') }
   end
 
   private

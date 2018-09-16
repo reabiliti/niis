@@ -1,6 +1,8 @@
-- provide(:title, "Договор на проведение инспекционного контроля от,
-                  #{@ikcontract.ikcon_registration_date.strftime('%d.%m.%Y')},
-                  № #{@ikcontract.ikcon_registration_num}")
+- provide :title do
+  = t('ikcontracts.headers.edit')
+  = format_date(@ikcontract.ikcon_registration_date)
+  №
+  = @ikcontract.ikcon_registration_num
 = render partial: 'links', locals: { ikcontract: @ikcontract }
 .page-body
   .caption
@@ -8,13 +10,14 @@
     %br на проведение инспекционного контроля
     за сертифицированной продукцией
   %br
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-1
-        %b= @ikcontract.ikcon_registration_date.strftime('%d.%m.%Y')
-      .div-table-col.col-width-2
-        %b № #{@ikcontract.ikcon_registration_num}
-      .div-table-col.col-width-9.right
+  .paragraph
+    .row
+      .col-md-4
+        %b
+          = format_date(@ikcontract.ikcon_registration_date)
+          №
+          = @ikcontract.ikcon_registration_num
+      .col-md-8.text-right
         %b= @ikcontract.ikcon_registration_city
   %br
   .line
@@ -52,7 +55,9 @@
     1. ПРЕДМЕТ ДОГОВОРА И ОБЯЗАТЕЛЬСТВА СТОРОН
   %br
   .paragraph
-    1.1. Проведение <b>Исполнителем</b> инспекционного контроля за сертифицированной продукцией
+    1.1. Проведение
+    %b Исполнителем
+    инспекционного контроля за сертифицированной продукцией
   .line
     %b= @ikcontract.ikcon_name_product
   .hint
@@ -188,151 +193,66 @@
   %br
   .paragraph
     6.2. Юридические адреса сторон:
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-3
+  .paragraph
+    .row
+      .col-md-3
         %b Исполнитель:
-      .div-table-col.col-width-9
+      .col-md-9
         .line
           = @ikcontract.ikcon_exec_address
         .hint
           юридический адрес исполнителя
-    .div-table-row
-      .div-table-col.col-width-3
-      .div-table-col.col-width-9
+    .row
+      .col-md-3
+      .col-md-9
         .line
           = @ikcontract.ikcon_exec_bank_details
         .hint
           расчетный счет исполнителя, реквизиты банка
-    .div-table-row
-      .div-table-col.col-width-3
+    .row
+      .col-md-3
         %b Заказчик:
-      .div-table-col.col-width-9
+      .col-md-9
         .line
-          = @ikcontract.ikcon_client_address
+          = @ikcontract.ikcon_client_bank_details
         .hint
           юридический адрес заказчика
-    .div-table-row
-      .div-table-col.col-width-3
-      .div-table-col.col-width-9
+    .row
+      .col-md-3
+      .col-md-9
         .line
           = @ikcontract.ikcon_client_bank_details
         .hint
           расчетный счет заказчика, реквизиты банка
   %br
-  .div-table.more
-    .div-table-row
-      .div-table-col.col-width-5
+  .paragraph
+    .row
+      .col-md-5
         %b От Исполнителя
-      .div-table-col.col-width-2
-      .div-table-col.col-width-5
+      .col-md-2
+      .col-md-5
         %b От Заказчика
-    .div-table-row
-      .div-table-col.col-width-5
+    .row
+      .col-md-5
         %b= @ikcontract.ikcon_exec_chief_position_sign
-      .div-table-col.col-width-2
-      .div-table-col.col-width-5
+      .col-md-2
+      .col-md-5
         %b= @ikcontract.ikcon_client_chief_position_sign
-    .div-table-row
-      .div-table-col.col-width-5
+    .row
+      .col-md-5
         .line
-      .div-table-col.col-width-2
-      .div-table-col.col-width-5
+      .col-md-2
+      .col-md-5
         .line
-    .div-table-row
-      .div-table-col.col-width-5.center
+    .row
+      .col-md-5.text-center
         = @ikcontract.ikcon_exec_chief_name_sign
-      .div-table-col.col-width-2
-      .div-table-col.col-width-5.center
+      .col-md-2
+      .col-md-5.text-center
         = @ikcontract.ikcon_client_chief_name_sign
-    .div-table-row
-      .div-table-col.col-width-5.center
+    .row
+      .col-md-5.text-center
         М.П.
-      .div-table-col.col-width-2
-      .div-table-col.col-width-5.center
+      .col-md-2
+      .col-md-5.text-center
         М.П.
-  %br.no-print
-  %hr.col-width-12.hr-light.no-print
-  %br.no-print
-  .paragraph.center
-    Приложение № 1 к Договору на проведение инспекционного контроля за сертифицированной продукцией от
-    = @ikcontract.ikcon_registration_date.strftime('%d.%m.%Y')
-    №
-    = @ikcontract.ikcon_registration_num
-  %br
-  .caption
-    КАЛЕНДАРНЫЙ ПЛАН РАБОТ
-    %br проведения инспекционной проверки сертифицированной продукции
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-6.center.border-lt
-        Наименование работ по договору*
-      .div-table-col.col-width-2.center.border-lt
-        Трудоемкость (чел. дн.) на одну группу продукции
-      .div-table-col.col-width-2.center.border-lt
-        Трудоемкость (чел. дн.) всего
-      .div-table-col.col-width-2.center.border-ltr
-        Примечание
-    .div-table-row
-      .div-table-col.col-width-6.center.border-lt
-        %b 1
-      .div-table-col.col-width-2.center.border-lt
-        %b 2
-      .div-table-col.col-width-2.center.border-lt
-        %b 3
-      .div-table-col.col-width-2.center.border-ltr
-        %b 4
-    .div-table-row
-      .div-table-col.col-width-6.border-lt
-        %ol.ol-table
-          %li
-            Анализ нормативной документации, информации от потребителей, контролирующих органов о сертифицированной
-            продукции. Составление программы проверки (при необходимости).
-          %li Проверка производства или проверка хранения и порядка реализации продукции (при необходимости).
-          %li Отбор образцов продукции в соответствии с НТД для проведения испытаний. Оформление акта отбора образцов.
-          %li Проведение испытаний образцов. Оформление протоколов испытаний.
-          %li Анализ результатов испытаний. Оформление акта инспекционной проверки.
-          %li Оформление акта сдачи-приемки работ по проведенной инспекционной проверке.
-          %li Разработка Заявителем и согласование с Исполнителем Плана корректирующих мероприятий (при необходимости).
-          %li
-            Проверка выполнения работ, предусмотренных Планом корректирующих мероприятий (при необходимости).
-            Составление акта проверки.
-      .div-table-col.col-width-2.center.border-lt
-      .div-table-col.col-width-2.center.border-lt
-      .div-table-col.col-width-2.center.border-ltr
-    .div-table-row
-      .div-table-col.col-width-6.border-ltb
-        %b ИТОГО:
-      .div-table-col.col-width-2.center.border-ltb
-      .div-table-col.col-width-2.center.border-ltb
-      .div-table-col.col-width-2.center.border
-  .note
-    * Примечание: этапы работ, невыполняемые для указанной схемы сертификации, сопровождаются прочерком в графе 3.
-    Если при сертификации нескольких групп продукции трудоемкость сертификации для первой и последующих групп продукции
-    отличаются, то в соответствующих строках во 2-й графе таблицы указываются два значения трудоемкости (для первой
-    группы продукции и для каждой последующей), разделенные наклонной чертой "/".
-  %br
-  .div-table
-    .div-table-row
-      .div-table-col.col-width-5
-        Ответственный исполнитель работ:
-      .div-table-col.col-width-1
-      .div-table-col-hr.col-width-2
-      .div-table-col.col-width-1
-      .div-table-col.col-width-2
-    .div-table-row
-      .div-table-col.col-width-5
-        Начальник отдела:
-      .div-table-col.col-width-1
-      .div-table-col-hr.col-width-2
-      .div-table-col.col-width-1
-      .div-table-col.col-width-2
-        = @setting.set_os_chief_name
-    .div-table-row
-      .div-table-col.col-width-5
-        Согласовано с заказчиком:
-      .div-table-col.col-width-1
-      .div-table-col-hr.col-width-2
-      .div-table-col.col-width-1
-      .div-table-col.col-width-2
-        = @ikcontract.ikcon_client_chief_name

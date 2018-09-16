@@ -220,11 +220,11 @@
   %br
   .paragraph
     6.1. Договор вступает в силу с
-    = @certcontract.cecon_date_from.strftime('%d.%m.%Y')
+    = format_date(@certcontract.cecon_date_from)
   %br
   .paragraph
     6.2. Срок действия договора заканчивается
-    = @certcontract.cecon_date_expiry.strftime('%d.%m.%Y')
+    = format_date(@certcontract.cecon_date_expiry)
   %br
   .paragraph
     .row
