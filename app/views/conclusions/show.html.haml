@@ -13,30 +13,30 @@
   .paragraph
     %b - заявки
     на проведение сертификации продукции
-    %b № #{@proposal.prop_number}
+    %b № #{@proposal.number}
     от
-    %b= format_date(@proposal.prop_date_from)
+    %b= format_date(@proposal.date_from)
   .line
     %b
-      = @proposal.prop_applic_name
+      = @proposal.applic_name
       %br
-      = @proposal.prop_applic_reg_doc
+      = @proposal.applic_reg_doc
   .hint
     наименование организации-изготовителя, продавца или индивидуального предпринимателя (далее - заявитель)
   .paragraph
     Юридический адрес:
-    %b #{@proposal.prop_applic_address} #{@proposal.prop_applic_postcode}
+    %b #{@proposal.applic_address} #{@proposal.applic_postcode}
   .paragraph
     .row
       .col-md-4
         Телефон:
-        %b= @proposal.prop_applic_phone
+        %b= @proposal.applic_phone
       .col-md-4
         Факс:
-        %b= @proposal.prop_applic_fax
+        %b= @proposal.applic_fax
       .col-md-4
         Почта:
-        %b= @proposal.prop_applic_email
+        %b= @proposal.applic_email
   .paragraph
     %b - решения
     органа по сертификации
@@ -58,7 +58,7 @@
       .col-md-2.line
         %b= @conclusion.conc_code_tn_ved
   .line
-    %b= @proposal.prop_applic_from_issue
+    %b= @proposal.applic_from_issue
   .hint
     серийный выпуск, или партия определенного размера, или единица продукции
   .paragraph
@@ -84,7 +84,7 @@
     наименование и обозначение нормативных документов
   .paragraph
     по схеме
-    %b #{@proposal.prop_manuf_scheme_cert},
+    %b #{@proposal.manuf_scheme_cert},
     предусматривающей
   .line
     %b= @conclusion.conc_desc_scheme_cert

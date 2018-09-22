@@ -3,13 +3,13 @@
 
 - provide :title do
   = t('certcontracts.headers.edit')
-  = format_date(@certcontract.cecon_registration_date)
+  = format_date(@certcontract.registration_date)
   №
-  = @certcontract.cecon_registration_num
+  = @certcontract.registration_num
 .page-body
   %h2.text-center.py-3
     = t('certcontracts.headers.edit')
-    = format_date(@certcontract.cecon_registration_date)
+    = format_date(@certcontract.registration_date)
     №
-    = @certcontract.cecon_registration_num
+    = @certcontract.registration_num
   = render partial: 'form', locals: { certcontract: @certcontract, button: 'edit' }

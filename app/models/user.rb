@@ -5,15 +5,19 @@
 # Table name: users
 #
 #  id                           :bigint(8)        not null, primary key
+#  crypted_password             :string           not null
 #  email                        :string           not null
 #  name                         :string           not null
-#  remember_me_token_expires_at :datetime
 #  remember_me_token            :string
-#  salt                         :string           not null
-#  crypted_password             :string           not null
+#  remember_me_token_expires_at :datetime
 #  role                         :string           not null
+#  salt                         :string           not null
 #  created_at                   :datetime         not null
 #  updated_at                   :datetime         not null
+#
+# Indexes
+#
+#  index_users_on_email  (email)
 #
 
 class User < ApplicationRecord
