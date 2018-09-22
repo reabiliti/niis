@@ -39,7 +39,7 @@ class CertificatePdf < Prawn::Document
 
     at_x_indent = at_x_set(135)
     at_y = at_y_set(548)
-    docs_product = "#{@certificate.cert_manuf_doc}\n#{@proposal.prop_applic_from_issue}"
+    docs_product = "#{@certificate.cert_manuf_doc}\n#{@proposal.applic_from_issue}"
     if @certificate.cert_name_product.split("\r\n").length > 1
       @certificate.cert_name_product.split("\r\n").each_with_index do |cert_name_product, index|
         if index.zero?
@@ -138,14 +138,14 @@ class CertificatePdf < Prawn::Document
           draw_text cert_add_info, at: [at_x_indent, at_y], size: size, style: :bold
           at_y -= 5
         else
-          text = "#{cert_add_info}\n#{@certificate.cert_place_marking}\nСхема сертификации #{@proposal.prop_manuf_scheme_cert}"
+          text = "#{cert_add_info}\n#{@certificate.cert_place_marking}\nСхема сертификации #{@proposal.manuf_scheme_cert}"
           text_box text, at: [at_x, at_y], size: size, style: :bold, width: 520
         end
       end
     else
       draw_text @certificate.cert_add_info, at: [at_x_indent, at_y], size: size, style: :bold
       at_y -= 5
-      text = "#{@certificate.cert_place_marking}\nСхема сертификации #{@proposal.prop_manuf_scheme_cert}"
+      text = "#{@certificate.cert_place_marking}\nСхема сертификации #{@proposal.manuf_scheme_cert}"
       text_box text, at: [at_x, at_y], size: size, style: :bold, width: 520
     end
 

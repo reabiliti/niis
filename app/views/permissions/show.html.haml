@@ -37,26 +37,26 @@
     Разрешение выдано
   .line
     %b
-      = @proposal.prop_applic_name
-      = @proposal.prop_applic_reg_doc
+      = @proposal.applic_name
+      = @proposal.applic_reg_doc
   .hint
     указывается наименование организации
   %br
   .paragraph
     Юридический адрес
   .line
-    %b= "#{@proposal.prop_applic_address}, #{@proposal.prop_applic_postcode}"
+    %b= "#{@proposal.applic_address}, #{@proposal.applic_postcode}"
   .paragraph
     .row
       .col-md-4
         Телефон:
-        %b= @proposal.prop_applic_phone
+        %b= @proposal.applic_phone
       .col-md-4
         Факс:
-        %b= @proposal.prop_applic_fax
+        %b= @proposal.applic_fax
       .col-md-4
         Почта:
-        %b= @proposal.prop_applic_email
+        %b= @proposal.applic_email
   %br
   .paragraph
     на основании сертификата соответствия рег. номер

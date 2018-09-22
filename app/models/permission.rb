@@ -5,15 +5,19 @@
 # Table name: permissions
 #
 #  id                     :bigint(8)        not null, primary key
-#  certificate_id         :bigint(8)
-#  perm_registration_num  :string
-#  perm_registration_date :datetime
-#  perm_expiry_date       :datetime
-#  perm_place_marking     :string
 #  perm_chief_name        :string
 #  perm_chief_org         :string
+#  perm_expiry_date       :datetime
+#  perm_place_marking     :string
+#  perm_registration_date :datetime
+#  perm_registration_num  :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  certificate_id         :bigint(8)
+#
+# Indexes
+#
+#  index_permissions_on_certificate_id  (certificate_id)
 #
 
 class Permission < ApplicationRecord

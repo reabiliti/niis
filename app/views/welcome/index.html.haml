@@ -89,9 +89,9 @@
               %li
                 = link_to certcontract_path(certcontract), class: 'text-secondary' do
                   1.5 Договор на проведение работ по сертификации от
-                  = format_date(certcontract.cecon_registration_date)
+                  = format_date(certcontract.registration_date)
                   №
-                  = certcontract.cecon_registration_num
+                  = certcontract.registration_num
           - if (inventory = proposal.inventory)
             %ul
               %li

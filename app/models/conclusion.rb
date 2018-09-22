@@ -5,29 +5,37 @@
 # Table name: conclusions
 #
 #  id                          :bigint(8)        not null, primary key
-#  conc_solution_proposal_num  :string
-#  conc_solution_proposal_date :datetime
-#  conc_name_product           :text
-#  conc_code_okp               :string
-#  conc_code_tn_ved            :string
-#  conc_manuf_name             :string
-#  conc_manuf_address          :string
-#  conc_manuf_postcode         :string
-#  conc_manuf_doc              :string
-#  conc_manuf_regulations      :string
-#  conc_desc_scheme_cert       :text
-#  conc_test_report            :text
-#  conc_list_doc               :string
-#  conc_conformity             :string
-#  conc_may_be_issued          :string
-#  conc_cert_expiry_date       :datetime
 #  conc_add_info               :text
 #  conc_attachment             :string
+#  conc_cert_expiry_date       :datetime
+#  conc_code_okp               :string
+#  conc_code_tn_ved            :string
+#  conc_conformity             :string
+#  conc_desc_scheme_cert       :text
 #  conc_expert                 :string
+#  conc_list_doc               :string
+#  conc_manuf_address          :string
+#  conc_manuf_doc              :string
+#  conc_manuf_name             :string
+#  conc_manuf_postcode         :string
+#  conc_manuf_regulations      :string
+#  conc_may_be_issued          :string
+#  conc_name_product           :text
 #  conc_sign_date              :datetime
+#  conc_solution_proposal_date :datetime
+#  conc_solution_proposal_num  :string
+#  conc_test_report            :text
 #  created_at                  :datetime         not null
 #  updated_at                  :datetime         not null
 #  solution_proposal_id        :bigint(8)
+#
+# Indexes
+#
+#  index_conclusions_on_solution_proposal_id  (solution_proposal_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (solution_proposal_id => solution_proposals.id)
 #
 
 # Model conclusions
