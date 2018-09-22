@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_22_032255) do
+ActiveRecord::Schema.define(version: 2018_09_22_224101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,26 @@ ActiveRecord::Schema.define(version: 2018_09_22_032255) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "solution_proposal_id"
+    t.text "add_info"
+    t.string "attachment"
+    t.datetime "cert_expiry_date"
+    t.string "code_okp"
+    t.string "code_tn_ved"
+    t.string "conformity"
+    t.text "desc_scheme_cert"
+    t.string "expert"
+    t.string "list_doc_product"
+    t.string "manuf_address"
+    t.string "manuf_doc"
+    t.string "manuf_name"
+    t.string "manuf_postcode"
+    t.string "manuf_regulations"
+    t.string "may_be_issued"
+    t.text "name_product"
+    t.datetime "sign_date"
+    t.datetime "date_from"
+    t.string "number"
+    t.text "test_report"
     t.index ["solution_proposal_id"], name: "index_conclusions_on_solution_proposal_id"
   end
 
@@ -169,6 +189,11 @@ ActiveRecord::Schema.define(version: 2018_09_22_032255) do
     t.string "inv_chief_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "os_chief_name"
+    t.datetime "date_from"
+    t.string "exec_name"
+    t.string "list_doc"
+    t.string "list_page"
     t.index ["proposal_id"], name: "index_inventories_on_proposal_id"
   end
 
@@ -257,6 +282,25 @@ ActiveRecord::Schema.define(version: 2018_09_22_032255) do
     t.string "prot_manuf_name"
     t.string "prot_manuf_address"
     t.string "prot_manuf_postcode"
+    t.string "applic_code_okp"
+    t.string "applic_code_tn_ved"
+    t.text "applic_name_product"
+    t.string "conclusion"
+    t.datetime "date_from"
+    t.datetime "date_issue_product"
+    t.text "evaluation_product"
+    t.string "expert"
+    t.string "info_box"
+    t.string "info_product"
+    t.string "label_product"
+    t.text "list_indicators"
+    t.string "manuf_address"
+    t.string "manuf_name"
+    t.string "manuf_postcode"
+    t.string "origin_cert"
+    t.string "manuf_regulations"
+    t.string "requirement_test"
+    t.string "shelf_life"
     t.index ["solution_proposal_id"], name: "index_protocols_on_solution_proposal_id"
   end
 
@@ -368,5 +412,7 @@ ActiveRecord::Schema.define(version: 2018_09_22_032255) do
 
   add_foreign_key "certcontracts", "proposals"
   add_foreign_key "conclusions", "solution_proposals"
+  add_foreign_key "inventories", "proposals"
+  add_foreign_key "protocols", "solution_proposals"
   add_foreign_key "solution_proposals", "proposals"
 end

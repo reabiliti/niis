@@ -5,6 +5,11 @@
 # Table name: conclusions
 #
 #  id                          :bigint(8)        not null, primary key
+#  add_info                    :text
+#  attachment                  :string
+#  cert_expiry_date            :datetime
+#  code_okp                    :string
+#  code_tn_ved                 :string
 #  conc_add_info               :text
 #  conc_attachment             :string
 #  conc_cert_expiry_date       :datetime
@@ -25,6 +30,21 @@
 #  conc_solution_proposal_date :datetime
 #  conc_solution_proposal_num  :string
 #  conc_test_report            :text
+#  conformity                  :string
+#  date_from                   :datetime
+#  desc_scheme_cert            :text
+#  expert                      :string
+#  list_doc_product            :string
+#  manuf_address               :string
+#  manuf_doc                   :string
+#  manuf_name                  :string
+#  manuf_postcode              :string
+#  manuf_regulations           :string
+#  may_be_issued               :string
+#  name_product                :text
+#  number                      :string
+#  sign_date                   :datetime
+#  test_report                 :text
 #  created_at                  :datetime         not null
 #  updated_at                  :datetime         not null
 #  solution_proposal_id        :bigint(8)
