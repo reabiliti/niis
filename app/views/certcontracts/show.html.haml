@@ -1,8 +1,8 @@
 - provide :title do
   = t('certcontracts.headers.edit')
-  = format_date(@certcontract.cecon_registration_date)
+  = format_date(@certcontract.registration_date)
   №
-  = @certcontract.cecon_registration_num
+  = @certcontract.registration_num
 = render partial: 'links', locals: { certcontract: @certcontract }
 .page-body
   .caption
@@ -14,49 +14,49 @@
     .row
       .col-md-4
         %b
-          = format_date(@certcontract.cecon_registration_date)
+          = format_date(@certcontract.registration_date)
           №
-          = @certcontract.cecon_registration_num
+          = @certcontract.registration_num
       .col-md-8.text-right
-        %b= @certcontract.cecon_registration_city
+        %b= @certcontract.os_city
   %br
   .line
-    = @certcontract.cecon_exec_name
+    = @certcontract.org_name
   .hint
     наименование организации (органа по сертификации)
   .paragraph
-    = @certcontract.cecon_exec_named
+    = @certcontract.org_named
     в дальнейшем
     %b Исполнитель
     в лице
   .line
-    = @certcontract.cecon_exec_chief_position
-    = @certcontract.cecon_exec_chief_name
+    = @certcontract.org_chief_position
+    = @certcontract.org_chief_name
   .hint
     должность, фамилия, имя, отчество руководителя
   .paragraph
-    = @certcontract.cecon_exec_active
+    = @certcontract.org_active
     на основании
-    = @certcontract.cecon_exec_based_doc
+    = @certcontract.org_based_doc
     с одной стороны, и
   .line
-    = @certcontract.cecon_client_name
+    = @certcontract.applic_name
   .hint
     наименование организации-изготовителя (продавца)
   .paragraph
-    = @certcontract.cecon_client_named
+    = @certcontract.applic_named
     в дальнейшем
     %b Заказчик
     в лице
   .line
-    = @certcontract.cecon_client_chief_position
-    = @certcontract.cecon_client_chief_name
+    = @certcontract.applic_chief_position
+    = @certcontract.applic_chief_name
   .hint
     должность, фамилия, имя, отчество руководителя
   .paragraph
-    = @certcontract.cecon_client_active
+    = @certcontract.applic_active
     на основании
-    = @certcontract.cecon_client_based_doc
+    = @certcontract.applic_based_doc
     с другой стороны, заключили настоящий договор о нижеследующем:
   %br
   .caption
@@ -66,7 +66,7 @@
     1.1. Заказчик поручает, а Исполнитель принимает на себя
     проведение сертификации в системе сертификации ГОСТ Р продукции:
   .line
-    %b= @certcontract.cecon_name_product
+    %b= @certcontract.applic_name_product
   .hint
     наименование сертифицированной продукции
   .paragraph
@@ -129,7 +129,7 @@
     продукции и услуг" и изложены на стр.4 настоящего договора.
   %br
   .paragraph
-    1.4. Испытания  продукции проходят в испытательных лабораториях по отдельным договорам, сроки и стоимости которых
+    1.4. Испытания продукции проходят в испытательных лабораториях по отдельным договорам, сроки и стоимости которых
     устанавливаются лабораториями самостоятельно.
   %br
   .paragraph
@@ -146,11 +146,11 @@
     "Правилами по сертификации. Оплата работ по сертификации продукции
     и услуг" (рег. № РОСС RU.0001.00ДД01), составляет:
   .line
-    %b #{@certcontract.cecon_price_work} рублей
+    %b #{@certcontract.price_work} рублей
   .hint
     указать стоимость работ в рублях (прописью)
   .line
-    %b ИТОГО: #{@certcontract.cecon_price_work_total} рублей
+    %b ИТОГО: #{@certcontract.price_work_total} рублей
   .hint
     указать полную стоимость в рублях (прописью)
   .paragraph
@@ -220,11 +220,11 @@
   %br
   .paragraph
     6.1. Договор вступает в силу с
-    = format_date(@certcontract.cecon_date_from)
+    = format_date(@certcontract.date_from)
   %br
   .paragraph
     6.2. Срок действия договора заканчивается
-    = format_date(@certcontract.cecon_date_expiry)
+    = format_date(@certcontract.date_expiry)
   %br
   .paragraph
     .row
@@ -232,14 +232,14 @@
         %b Исполнитель:
       .col-md-9
         .line
-          = @certcontract.cecon_exec_address
+          = full_org_address(@certcontract)
         .hint
           юридический адрес исполнителя
     .row
       .col-md-3
       .col-md-9
         .line
-          = @certcontract.cecon_exec_bank_details
+          = @certcontract.org_bank_details
         .hint
           расчетный счет исполнителя, реквизиты банка
     .row
@@ -247,14 +247,14 @@
         %b Заказчик:
       .col-md-9
         .line
-          = @certcontract.cecon_client_address
+          = full_applic_address(@certcontract)
         .hint
           юридический адрес заказчика
     .row
       .col-md-3
       .col-md-9
         .line
-          = @certcontract.cecon_client_bank_details
+          = @certcontract.applic_bank_details
         .hint
           расчетный счет заказчика, реквизиты банка
   %br
@@ -267,10 +267,10 @@
         %b От Заказчика
     .row
       .col-md-5
-        %b= @certcontract.cecon_exec_chief_position_sign
+        %b= @certcontract.org_chief_position_sign
       .col-md-2
       .col-md-5
-        %b= @certcontract.cecon_client_chief_position_sign
+        %b= @certcontract.applic_chief_position_sign
     .row
       .col-md-5
         .line
@@ -279,10 +279,10 @@
         .line
     .row
       .col-md-5.text-center
-        = @certcontract.cecon_exec_chief_name_sign
+        = @certcontract.org_chief_name_sign
       .col-md-2
       .col-md-5.text-center
-        = @certcontract.cecon_client_chief_name_sign
+        = @certcontract.applic_chief_name_sign
     .row
       .col-md-5.text-center
         М.П.
