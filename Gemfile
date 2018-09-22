@@ -25,10 +25,10 @@ gem 'strong_migrations'
 gem 'data_migrate'
 gem 'sorcery'
 gem 'validates_email_format_of'
+gem 'dotenv-rails'
 
 gem 'haml-rails'
 gem 'prawn'
-gem 'responders'
 
 group :development, :test do
   gem 'pry-rails'

@@ -6,61 +6,93 @@
 .page-body
   %h2.py-3 Сведения об аккредитации органа по сертификации
   .row
-    .col.col-md-4.border-bottom Регистрационный номер
-    .col.col-md-8.border-bottom= @setting.os_registration_num
+    .col.col-md-4.border-bottom
+      Регистрационный номер
+    .col.col-md-8.border-bottom
+      = @setting.os_registration_num
   .row
-    .col.col-md-4.border-bottom Дата регистрации
-    .col.col-md-8.border-bottom= @setting.os_registration_date.strftime('%d.%m.%Y')
+    .col.col-md-4.border-bottom
+      Дата регистрации
+    .col.col-md-8.border-bottom
+      = @setting.os_registration_date.strftime('%d.%m.%Y')
   .row
-    .col.col-md-4.border-bottom Наименование
-    .col.col-md-8.border-bottom= @setting.os_name
+    .col.col-md-4.border-bottom
+      Наименование
+    .col.col-md-8.border-bottom
+      = @setting.os_name
   .row
     .col.col-md-4.border-bottom
       Адрес: Название улицы, номер дома, номер помещения; название населенного пункта (города, поселка и т.п.);
       название района; название республики, края, области, автономного округа (области);
       страна (для зарубежных ОС); почтовый индекс
-    .col.col-md-8.border-bottom= @setting.os_address
+    .col.col-md-8.border-bottom
+      = full_os_address(@setting)
   .row
-    .col.col-md-4.border-bottom Город
-    .col.col-md-8.border-bottom= @setting.os_city
+    .col.col-md-4.border-bottom
+      Город
+    .col.col-md-8.border-bottom
+      = @setting.os_city
   .row
-    .col.col-md-4.border-bottom Должность руководителя ОС
-    .col.col-md-8.border-bottom= @setting.os_chief_position
+    .col.col-md-4.border-bottom
+      Должность руководителя ОС
+    .col.col-md-8.border-bottom
+      = @setting.os_chief_position
   .row
-    .col.col-md-4.border-bottom Инициалы, фамилия руководителя
-    .col.col-md-8.border-bottom= @setting.os_chief_name
+    .col.col-md-4.border-bottom
+      Инициалы, фамилия руководителя
+    .col.col-md-8.border-bottom
+      = @setting.os_chief_name
   .row
-    .col.col-md-4.border-bottom Действует на основании документа
-    .col.col-md-8.border-bottom= @setting.os_based_doc
+    .col.col-md-4.border-bottom
+      Действует на основании документа
+    .col.col-md-8.border-bottom
+      = @setting.os_based_doc
   %h2.py-3 Организация, на базе которой создан орган по сертификации
   .row
-    .col.col-md-4.border-bottom Наименование
-    .col.col-md-8.border-bottom= @setting.org_name
+    .col.col-md-4.border-bottom
+      Наименование
+    .col.col-md-8.border-bottom
+      = @setting.org_name
   .row
     .col.col-md-4.border-bottom
       Адрес: Название улицы, номер дома, номер помещения; название населенного пункта (города, поселка и т.п.);
       название района; название республики, края, области, автономного округа (области);
       страна (для зарубежных ОС); почтовый индекс
-    .col.col-md-8.border-bottom= @setting.org_address
+    .col.col-md-8.border-bottom
+      = full_org_address(@setting)
   .row
-    .col.col-md-4.border-bottom Телефон
-    .col.col-md-8.border-bottom= @setting.org_phone
+    .col.col-md-4.border-bottom
+      Телефон
+    .col.col-md-8.border-bottom
+      = @setting.org_phone
   .row
-    .col.col-md-4.border-bottom Должность руководителя ОС
-    .col.col-md-8.border-bottom= @setting.org_chief_position
+    .col.col-md-4.border-bottom
+      Должность руководителя ОС
+    .col.col-md-8.border-bottom
+      = @setting.org_chief_position
   .row
-    .col.col-md-4.border-bottom Инициалы, фамилия руководителя
-    .col.col-md-8.border-bottom= @setting.org_chief_name
+    .col.col-md-4.border-bottom
+      Инициалы, фамилия руководителя
+    .col.col-md-8.border-bottom
+      = @setting.org_chief_name
   .row
-    .col.col-md-4.border-bottom Действует на основании документа
-    .col.col-md-8.border-bottom= @setting.org_based_doc
+    .col.col-md-4.border-bottom
+      Действует на основании документа
+    .col.col-md-8.border-bottom
+      = @setting.org_based_doc
   .row
-    .col.col-md-4.border-bottom Главный бухгалтер
-    .col.col-md-8.border-bottom= @setting.org_chief_accountant
+    .col.col-md-4.border-bottom
+      Главный бухгалтер
+    .col.col-md-8.border-bottom
+      = @setting.org_chief_accountant
   %h2.py-3 Параметры печати сертификата и приложения к сертификату
   .row
-    .col.col-md-4.border-bottom Смещение по оси X
-    .col.col-md-8.border-bottom= @setting.at_x
+    .col.col-md-4.border-bottom
+      Смещение по оси X
+    .col.col-md-8.border-bottom
+      = @setting.at_x
   .row
-    .col.col-md-4.border-bottom Смещение по оси Y
-    .col.col-md-8.border-bottom= @setting.at_y
+    .col.col-md-4.border-bottom
+      Смещение по оси Y
+    .col.col-md-8.border-bottom
+      = @setting.at_y

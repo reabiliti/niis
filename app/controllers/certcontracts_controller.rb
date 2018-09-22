@@ -10,22 +10,7 @@ class CertcontractsController < ApplicationController
   end
 
   def new
-    @proposal = Proposal.find(params[:proposal_id])
-    @certcontract = Certcontract.new
-    @certcontract.proposal_id = @proposal.id
-    @certcontract.cecon_registration_city = @setting.os_city
-    @certcontract.cecon_name_product = @proposal.prop_applic_name_product
-    @certcontract.cecon_exec_name = @setting.org_name
-    @certcontract.cecon_exec_chief_position = @setting.org_chief_position
-    @certcontract.cecon_exec_chief_position_sign = @setting.org_chief_position
-    @certcontract.cecon_exec_chief_name = @setting.org_chief_name
-    @certcontract.cecon_exec_chief_name_sign = @setting.org_chief_name
-    @certcontract.cecon_exec_based_doc = @setting.org_based_doc
-    @certcontract.cecon_exec_address = @setting.org_address
-    @certcontract.cecon_client_name = @proposal.prop_applic_name
-    @certcontract.cecon_client_chief_name = @proposal.prop_applic_chief
-    @certcontract.cecon_client_chief_name_sign = @proposal.prop_applic_chief
-    @certcontract.cecon_client_address = "#{@proposal.prop_applic_address}, #{@proposal.prop_manuf_postcode}"
+    @certcontract = Certcontract.initialize_object(proposal_params)
   end
 
   def create
@@ -56,19 +41,29 @@ class CertcontractsController < ApplicationController
 
   private
 
+  def proposal_params
+    proposal = Proposal.find(params[:proposal_id])
+    proposal.attributes.merge(proposal_id: proposal.id,
+                              org_chief_name_sign: @setting.org_chief_name,
+                              org_chief_position_sign: @setting.org_chief_position,
+                              applic_chief_name_sign: proposal.applic_chief_name,
+                              applic_chief_position_sign: proposal.applic_chief_position
+                             ).merge(@setting.attributes)
+  end
+
   def certcontract_params
-    params.require(:certcontract).permit(:proposal_id, :cecon_exec_chief_name_sign,
-                                         :cecon_registration_date, :cecon_registration_num,
-                                         :cecon_registration_city, :cecon_exec_name, :cecon_exec_named,
-                                         :cecon_exec_chief_position, :cecon_exec_chief_name, :cecon_exec_active,
-                                         :cecon_exec_based_doc, :cecon_client_name, :cecon_client_named,
-                                         :cecon_client_chief_position, :cecon_client_chief_name,
-                                         :cecon_client_active, :cecon_client_based_doc, :cecon_name_product,
-                                         :cecon_date_from, :cecon_date_expiry, :cecon_exec_address,
-                                         :cecon_exec_bank_details, :cecon_client_address, :cecon_client_bank_details,
-                                         :cecon_exec_chief_position_sign, :cecon_exec_chief_name_sign,
-                                         :cecon_client_chief_position_sign, :cecon_client_chief_name_sign,
-                                         :cecon_price_work, :cecon_price_work_total)
+    params.require(:certcontract).permit(:proposal_id, :org_chief_name_sign,
+                                         :registration_date, :registration_num,
+                                         :os_city, :org_name, :org_named,
+                                         :org_chief_position, :org_chief_name, :org_active,
+                                         :org_based_doc, :applic_name, :applic_named,
+                                         :applic_chief_position, :applic_chief_name,
+                                         :applic_active, :applic_based_doc, :applic_name_product,
+                                         :date_from, :date_expiry, :org_address, :org_postcode,
+                                         :org_bank_details, :applic_address, :applic_postcode,
+                                         :applic_bank_details, :org_chief_position_sign,
+                                         :org_chief_name_sign, :applic_chief_position_sign,
+                                         :applic_chief_name_sign, :price_work, :price_work_total)
   end
 
   def certcontract_find

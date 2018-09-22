@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_16_181238) do
+ActiveRecord::Schema.define(version: 2018_09_22_001659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,36 @@ ActiveRecord::Schema.define(version: 2018_09_16_181238) do
     t.datetime "updated_at", null: false
     t.string "cecon_price_work"
     t.string "cecon_price_work_total"
+    t.string "org_chief_name_sign"
+    t.datetime "registration_date"
+    t.string "registration_num"
+    t.string "os_city"
+    t.string "org_name"
+    t.string "org_named"
+    t.string "org_chief_position"
+    t.string "org_chief_name"
+    t.string "org_active"
+    t.string "org_based_doc"
+    t.string "applic_name"
+    t.string "applic_named"
+    t.string "applic_chief_position"
+    t.string "applic_chief_name"
+    t.string "applic_active"
+    t.string "applic_based_doc"
+    t.string "applic_name_product"
+    t.datetime "date_from"
+    t.datetime "date_expiry"
+    t.string "org_address"
+    t.string "org_postcode"
+    t.string "org_bank_details"
+    t.string "applic_address"
+    t.string "applic_postcode"
+    t.string "applic_bank_details"
+    t.string "org_chief_position_sign"
+    t.string "applic_chief_position_sign"
+    t.string "applic_chief_name_sign"
+    t.string "price_work"
+    t.string "price_work_total"
     t.index ["proposal_id"], name: "index_certcontracts_on_proposal_id"
   end
 
@@ -268,6 +298,10 @@ ActiveRecord::Schema.define(version: 2018_09_16_181238) do
     t.string "manuf_scheme_cert"
     t.string "manuf_count_sort_cert"
     t.string "manuf_group_complexity"
+    t.string "applic_chief_position"
+    t.string "applic_chief_name"
+    t.string "manuf_chief_position"
+    t.string "manuf_chief_name"
     t.index ["id"], name: "index_proposals_on_id"
   end
 
@@ -336,6 +370,8 @@ ActiveRecord::Schema.define(version: 2018_09_16_181238) do
     t.string "org_chief_name"
     t.string "org_based_doc"
     t.string "org_chief_accountant"
+    t.string "os_postcode"
+    t.string "org_postcode"
   end
 
   create_table "solution_proposals", force: :cascade do |t|
@@ -442,6 +478,7 @@ ActiveRecord::Schema.define(version: 2018_09_16_181238) do
     t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "certcontracts", "proposals"
   add_foreign_key "conclusions", "solution_proposals"
   add_foreign_key "solution_proposals", "proposals"
 end

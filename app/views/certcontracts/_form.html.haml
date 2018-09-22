@@ -2,69 +2,71 @@
   = f.input :proposal_id, as: :hidden
   .row
     .col-md-4
-      = f.input :cecon_registration_num
+      = f.input :registration_num
     .col-md-4
-      = f.input :cecon_registration_date,
+      = f.input :registration_date,
                 as: :date, start_year: Date.today.year - 10,
                 end_year: Date.today.year + 10,
                 html5: true
     .col-md-4
-      = f.input :cecon_registration_city
-  = f.input :cecon_name_product, as: :text, input_html: { rows: 3 }
+      = f.input :os_city
+  = f.input :applic_name_product, as: :text, input_html: { rows: 3 }
   .row
     .col-md-6
-      = f.input :cecon_date_from,
+      = f.input :date_from,
                 as: :date, start_year: Date.today.year - 10,
                 end_year: Date.today.year + 10,
                 html5: true
     .col-md-6
-      = f.input :cecon_date_expiry,
+      = f.input :date_expiry,
                 as: :date, start_year: Date.today.year - 10,
                 end_year: Date.today.year + 10,
                 html5: true
   %h2.py-3 Стоимость работ
-  = f.input :cecon_price_work
-  = f.input :cecon_price_work_total
+  = f.input :price_work
+  = f.input :price_work_total
   %h2.py-3 Данные об Исполнителе
-  = f.input :cecon_exec_name, as: :text, input_html: { rows: 3 }
-  = f.input :cecon_exec_named, collection: DECLENSION_NAME, include_blank: false
+  = f.input :org_name, as: :text, input_html: { rows: 3 }
+  = f.input :org_named, collection: DECLENSION_NAME, include_blank: false
   .row
     .col-md-6
-      = f.input :cecon_exec_chief_position
+      = f.input :org_chief_position
     .col-md-6
-      = f.input :cecon_exec_chief_name
+      = f.input :org_chief_name
   .row
     .col-md-6
-      = f.input :cecon_exec_active, collection: DECLENSION_ACTIVE, include_blank: false
+      = f.input :org_active, collection: DECLENSION_ACTIVE, include_blank: false
     .col-md-6
-      = f.input :cecon_exec_based_doc
-  = f.input :cecon_exec_address, as: :text, input_html: { rows: 3 }
-  = f.input :cecon_exec_bank_details
+      = f.input :org_based_doc
+  = f.input :org_address, as: :text, input_html: { rows: 3 }
+  = f.input :org_postcode
+  = f.input :org_bank_details
   .row
     .col-md-6
-      = f.input :cecon_exec_chief_position_sign
+      = f.input :org_chief_position_sign
     .col-md-6
-      = f.input :cecon_exec_chief_name_sign
+      = f.input :org_chief_name_sign
   %h2.py-3 Данные о Заказчике
-  = f.input :cecon_client_name, as: :text, input_html: { rows: 3 }
-  = f.input :cecon_client_named, collection: DECLENSION_NAME, include_blank: false
+  = f.input :applic_name, as: :text, input_html: { rows: 3 }
+  = f.input :applic_named, collection: DECLENSION_NAME, include_blank: false
   .row
     .col-md-6
-      = f.input :cecon_client_chief_position
+      = f.input :applic_chief_position
     .col-md-6
-      = f.input :cecon_client_chief_name
+      = f.input :applic_chief_name
   .row
     .col-md-6
-      = f.input :cecon_client_active, collection: DECLENSION_ACTIVE, include_blank: false
+      = f.input :applic_active, collection: DECLENSION_ACTIVE, include_blank: false
     .col-md-6
-      = f.input :cecon_client_based_doc
-  = f.input :cecon_client_address, as: :text, input_html: { rows: 3 }
-  = f.input :cecon_client_bank_details
+      = f.input :applic_based_doc
+  = f.input :applic_address, as: :text, input_html: { rows: 3 }
+  = f.input :applic_postcode
+  = f.input :applic_bank_details
   .row
     .col-md-6
-      = f.input :cecon_client_chief_position_sign
+      = f.input :applic_chief_position_sign
     .col-md-6
-      = f.input :cecon_client_chief_name_sign
+      = f.input :applic_chief_name_sign
 
   .col.pt-5
     = f.submit t("certcontracts.buttons.#{button}"), class: 'btn btn-dark btn-block'

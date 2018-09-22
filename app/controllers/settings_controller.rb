@@ -35,9 +35,9 @@ class SettingsController < ApplicationController
 
   def setting_params
     params.require(:setting).permit(:name, :os_registration_num, :os_registration_date,
-                                    :os_name, :os_address, :os_chief_position,
+                                    :os_name, :os_address, :os_postcode, :os_chief_position,
                                     :os_chief_name, :os_based_doc, :org_name,
-                                    :org_address, :os_city, :org_phone, :org_chief_position,
+                                    :org_address, :org_postcode, :os_city, :org_phone, :org_chief_position,
                                     :org_chief_name, :org_based_doc, :org_chief_accountant,
                                     :at_x, :at_y)
   end

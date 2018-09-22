@@ -39,7 +39,11 @@
       = f.input :applic_inn
     .col-md-4
       = f.input :applic_kpp
-  = f.input :applic_chief
+  .row
+    .col-md-6
+      = f.input :applic_chief_position
+    .col-md-6
+      = f.input :applic_chief_name
   = f.input :applic_name_product, as: :text, input_html: { rows: 7 }
   .row
     .col-md-6
@@ -78,9 +82,13 @@
   = f.input :manuf_list_doc, as: :text, input_html: { rows: 3 }
   = f.input :manuf_add_info, as: :text, input_html: { rows: 3 }
   .row
-    .col-md-6
-      = f.input :manuf_chief_org
-    .col-md-6
+    .col-md-4
+      = f.input :manuf_chief_position
+    .col-md-4
+      = f.input :manuf_chief_name
+  .row
+    .col-md-4
+    .col-md-4
       = f.input :manuf_chief_accountant
   .col.pt-5
     = f.submit t("proposals.buttons.#{button}"), class: 'btn btn-dark btn-block'
