@@ -11,10 +11,7 @@ class ConclusionsController < ApplicationController
   end
 
   def new
-    @solution_proposal = SolutionProposal.find(params[:solution_proposal_id])
-    @conclusion = Conclusion.new
-    fill_with_data_proposal
-    fill_with_data_manuf
+    @conclusion = Conclusion.initialize_object(solution_proposal_params)
   end
 
   def create
@@ -45,37 +42,23 @@ class ConclusionsController < ApplicationController
 
   private
 
+  def solution_proposal_params
+    solution_proposal = SolutionProposal.find(params[:solution_proposal_id])
+    solution_proposal.attributes.merge(solution_proposal_id: solution_proposal.id)
+  end
+
   def conclusion_params
-    params.require(:conclusion).permit(:conc_solution_proposal_num, :conc_solution_proposal_date, :conc_contract_num,
-                                       :conc_contract_date, :conc_directive_num, :conc_directive_date,
-                                       :conc_name_product, :conc_code_okp, :conc_code_tn_ved, :conc_manuf_name,
-                                       :conc_manuf_address, :conc_manuf_postcode, :conc_manuf_doc,
-                                       :conc_manuf_regulations, :conc_desc_scheme_cert, :conc_test_report,
-                                       :conc_list_doc, :conc_conformity, :conc_may_be_issued, :conc_cert_expiry_date,
-                                       :conc_add_info, :conc_attachment, :conc_expert, :conc_sign_date,
+    params.require(:conclusion).permit(:number, :date_from, :contract_num,
+                                       :contract_date, :directive_num, :directive_date,
+                                       :applic_name_product, :applic_code_okp, :applic_code_tn_ved,
+                                       :manuf_name, :manuf_address, :manuf_postcode, :manuf_doc,
+                                       :manuf_regulations, :desc_scheme_cert, :test_report,
+                                       :list_doc_product, :conformity, :may_be_issued, :cert_expiry_date,
+                                       :add_info, :attachment, :expert, :sign_date,
                                        :solution_proposal_id)
   end
 
   def conclusion_find
     @conclusion = Conclusion.find(params[:id])
-  end
-
-  def fill_with_data_proposal
-    @conclusion.solution_proposal_id = @solution_proposal.id
-    @conclusion.conc_solution_proposal_num = @solution_proposal.number
-    @conclusion.conc_solution_proposal_date = @solution_proposal.date_from
-  end
-
-  def fill_with_data_manuf
-    @conclusion.conc_name_product = @solution_proposal.applic_name_product
-    @conclusion.conc_code_okp = @solution_proposal.applic_code_okp
-    @conclusion.conc_code_tn_ved = @solution_proposal.applic_code_tn_ved
-    @conclusion.conc_manuf_name = @solution_proposal.manuf_name
-    @conclusion.conc_manuf_address = @solution_proposal.manuf_address
-    @conclusion.conc_manuf_postcode = @solution_proposal.manuf_postcode
-    @conclusion.conc_manuf_doc = @solution_proposal.manuf_doc
-    @conclusion.conc_manuf_regulations = @solution_proposal.manuf_regulations
-    @conclusion.conc_desc_scheme_cert = @solution_proposal.desc_scheme_cert
-    @conclusion.conc_list_doc = @solution_proposal.list_doc_product
   end
 end

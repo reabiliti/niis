@@ -1,4 +1,4 @@
-- provide(:title, "#{t('conclusions.headers.show')} #{format_date(@conclusion.conc_sign_date)}")
+- provide(:title, "#{t('conclusions.headers.show')} #{format_date(@conclusion.sign_date)}")
 = render partial: 'links', locals: { conclusion: @conclusion }
 .page-body
   = render partial: 'nested_components/settings', locals: { setting: @setting }
@@ -40,11 +40,11 @@
   .paragraph
     %b - решения
     органа по сертификации
-    %b № #{@conclusion.conc_solution_proposal_num}
+    %b № #{@conclusion.number}
     от
-    %b= format_date(@conclusion.conc_solution_proposal_date)
+    %b= format_date(@conclusion.date_from)
   .line
-    %b= @conclusion.conc_name_product
+    %b= @conclusion.applic_name_product
   .hint
     наименование продукции
   .paragraph
@@ -52,11 +52,11 @@
       .col-md-2
         Код ОКПД2
       .col-md-2.line
-        %b= @conclusion.conc_code_okp
+        %b= @conclusion.applic_code_okp
       .col-md-2
         Код ТН ВЭД
       .col-md-2.line
-        %b= @conclusion.conc_code_tn_ved
+        %b= @conclusion.applic_code_tn_ved
   .line
     %b= @proposal.applic_from_issue
   .hint
@@ -64,22 +64,22 @@
   .paragraph
     выпускаемой изготовителем
   .line
-    %b= @conclusion.conc_manuf_name
+    %b= @conclusion.manuf_name
   .hint
     наименование изготовителя
   .line
-    %b #{@conclusion.conc_manuf_address}, #{@conclusion.conc_manuf_postcode}
+    %b #{@conclusion.manuf_address}, #{@conclusion.manuf_postcode}
   .hint
     адрес
   .line
     по
-    %b= @conclusion.conc_manuf_doc
+    %b= @conclusion.manuf_doc
   .hint
     наименование и обозначение документации изготовителя (стандарт, ТУ, КД, образец-эталон)
   .paragraph
     Сертификация проводилась на соответствие требованиям:
   .line
-    %b= @conclusion.conc_manuf_regulations
+    %b= @conclusion.manuf_regulations
   .hint
     наименование и обозначение нормативных документов
   .paragraph
@@ -87,17 +87,17 @@
     %b #{@proposal.manuf_scheme_cert},
     предусматривающей
   .line
-    %b= @conclusion.conc_desc_scheme_cert
+    %b= @conclusion.desc_scheme_cert
   .hint
     описание схемы сертификации
   .paragraph
     В результате анализа документов:
   .line
-    %b= @conclusion.conc_test_report
+    %b= @conclusion.test_report
   .hint
     протоколы испытаний, акт анализа состояния производства и др.
   .line
-    %b= @conclusion.conc_list_doc
+    %b= @conclusion.list_doc_product
   .hint
     перечень представленных заявителем документов, подтверждающих соответствие продукции установленным требованиям
   %br
@@ -105,7 +105,7 @@
     УСТАНОВЛЕНО
   %br
   .line
-    %b= @conclusion.conc_conformity
+    %b= @conclusion.conformity
   .hint
     оценка соответствия продукции установленным требованиям
   %br
@@ -114,11 +114,11 @@
   %br
   .paragraph
     На заявленную продукцию
-    = @conclusion.conc_may_be_issued
+    = @conclusion.may_be_issued
     быть выдан сертификат соответствия
-    %b сроком по #{format_date(@conclusion.conc_cert_expiry_date)}
+    %b сроком по #{format_date(@conclusion.cert_expiry_date)}
   .line
-    %b= @conclusion.conc_add_info
+    %b= @conclusion.add_info
   .hint
     дополнительная информация
   .paragraph
@@ -131,11 +131,11 @@
           подпись
       .col-md-4.text-center
         .line
-          %b= @conclusion.conc_expert
+          %b= @conclusion.expert
         .hint
           инициалы, фамилия
     .row
       .col-md-4
       .col-md-2
-        %b= format_date(@conclusion.conc_sign_date)
+        %b= format_date(@conclusion.sign_date)
       .col-md-4

@@ -7,5 +7,6 @@
     = link_to t('link.destroy'), conclusion,
                                  method: :delete,
                                  data: { confirm: 'Вы уверены?' }
-  %li
-    = link_to t('link.new_solution'), new_solution_path(conclusion_id: conclusion.id)
+  - unless conclusion.solution
+    %li
+      = link_to t('link.new_solution'), new_solution_path(conclusion_id: conclusion.id)

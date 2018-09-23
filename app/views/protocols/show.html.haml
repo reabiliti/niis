@@ -1,10 +1,10 @@
-- provide(:title, "#{t('protocols.headers.show')} #{format_date(@protocol.prot_date_from)}")
+- provide(:title, "#{t('protocols.headers.show')} #{format_date(@protocol.date_from)}")
 = render partial: 'links', locals: { protocol: @protocol }
 .page-body
   = render partial: 'nested_components/settings', locals: { setting: @setting }
   .caption
     Протокол идентификации продукции от
-    = format_date(@protocol.prot_date_from)
+    = format_date(@protocol.date_from)
   %br
   %ol.ol-left
     .paragraph
@@ -39,7 +39,7 @@
     .paragraph
       %li Заявленное наименование продукции:
     .line
-      %b= @protocol.prot_applic_name_product
+      %b= @protocol.applic_name_product
     .hint
       наименование продукции
     .paragraph
@@ -47,82 +47,82 @@
         .col-md-2
           Код ОКПД2
         .col-md-2.line
-          %b= @protocol.prot_applic_code_okp
+          %b= @protocol.applic_code_okp
         .col-md-2
           Код ТН ВЭД
         .col-md-2.line
-          %b= @protocol.prot_applic_code_tn_ved
+          %b= @protocol.applic_code_tn_ved
     .paragraph
       %li Сведения об изготовителе продукции:
     .line
-      %b= @protocol.prot_manuf_name
+      %b= @protocol.manuf_name
     .hint
       наименование изготовителя
     .line
-      %b #{@protocol.prot_manuf_address}, #{@protocol.prot_manuf_postcode}
+      %b #{@protocol.manuf_address}, #{@protocol.manuf_postcode}
     .hint
       адрес
-    - unless @protocol.prot_origin_cert.blank?
+    - unless @protocol.origin_cert.blank?
       .line
-        %b= @protocol.prot_origin_cert
+        %b= @protocol.origin_cert
       .hint
         сертификат происхождения
     .paragraph
       %li Сведения о продукции:
     .line
-      %b= @protocol.prot_info_product
+      %b= @protocol.info_product
     .hint
       удостоверение о качестве, сертификат качества изготовителя, санитарный сертификат страны-изготовителя,
       фитосанитарный сертификат, ветеринарный сертификат (свидетельство), сертификат хлебной инспекции,
       гигиеническое заключение
-    - if @protocol.prot_date_issue_product
+    - if @protocol.date_issue_product
       .paragraph
         %li
           Дата выпуска продукции:
-          %b= format_date(@protocol.prot_date_issue_product)
+          %b= format_date(@protocol.date_issue_product)
     .paragraph
       %li
         Срок годности продукции, указанный изготовителем:
-        %b= @protocol.prot_shelf_life
+        %b= @protocol.shelf_life
     .paragraph
       %li Сведения об упаковке:
     .line
-      %b= @protocol.prot_info_box
+      %b= @protocol.info_box
     .hint
       сведения об упаковке, масса, объем первичной упаковки
     .paragraph
       %li Оценка маркировки продукции:
     .line
-      %b= @protocol.prot_label_product
+      %b= @protocol.label_product
     .hint
       соответствие информации на этикетке (упаковке) и прилагаемой сопроводительной документации требованиям
       ГОСТ Р 51074-2003, анализ информации штрих-кода
     .paragraph
       %li Нормативная документация на заявленную продукцию:
     .line
-      %b= @protocol.prot_regulations_product
+      %b= @protocol.manuf_regulations
     .hint
       наименование и обозначение НД. Для импортной продукции - наличие отечественных аналогов, возможность использования
       отечественной НД для идентификации
     .paragraph
       %li Оценка органолептических показателей продукции:
     .line
-      %b= @protocol.prot_evaluation_product
+      %b= @protocol.evaluation_product
     .hint
       соответствие вкуса, цвета, запаха, консистенции, внешнего вида продукции заявленному наименованию, требованиям
       нормативных и технических документов, рецептурам, приведенному пищевому составу, прилагаемой информации и (или)
       традиционно сложившимся вкусам или привычкам населения
     .paragraph
       %li Проведение дополнительных испытаний по показателям, подтверждающим идентификацию продукции:
-      %b= @protocol.prot_requirement_test
+      %b= @protocol.requirement_test
     .line
-      %b= @protocol.prot_list_indicators
+      %b= @protocol.list_indicators
     .hint
       перечень показателей, анализ результатов испытаний
     .paragraph
       %li
         Заключение:
-        %b= @protocol.prot_conclusion
+        %b= @protocol.conclusion
   .paragraph
     .row
       .col-md-6
@@ -133,6 +133,6 @@
           подпись
       .col-md-3.text-center
         .line
-          = @protocol.prot_expert
+          = @protocol.expert
         .hint
           инициалы, фамилия

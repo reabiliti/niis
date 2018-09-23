@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This controller manage inventories
 class InventoriesController < ApplicationController
   before_action :inventory_find, only: %i[show edit update destroy]
   before_action :setting_find, only: %i[show new]
@@ -9,10 +10,7 @@ class InventoriesController < ApplicationController
   end
 
   def new
-    @proposal = Proposal.find(params[:proposal_id])
-    @inventory = Inventory.new
-    @inventory.proposal_id = @proposal.id
-    @inventory.inv_chief_name = @setting.os_chief_name
+    @inventory = Inventory.initialize_object(proposal_params)
   end
 
   def create
@@ -32,7 +30,7 @@ class InventoriesController < ApplicationController
       redirect_to @inventory, flash: { success: t('inventories.notices.success.update') }
     else
       flash.now[:danger] = t('inventories.notices.danger.update')
-      render :new
+      render :edit
     end
   end
 
@@ -43,9 +41,13 @@ class InventoriesController < ApplicationController
 
   private
 
+  def proposal_params
+    proposal = Proposal.find(params[:proposal_id])
+    proposal.attributes.merge(proposal_id: proposal.id).merge(@setting.attributes)
+  end
+
   def inventory_params
-    params.require(:inventory).permit(:proposal_id, :inv_date_from, :inv_list_doc,
-                                      :inv_list_page, :inv_exec_name, :inv_chief_name)
+    params.require(:inventory).permit(:proposal_id, :date_from, :list_doc, :list_page, :exec_name, :os_chief_name)
   end
 
   def inventory_find

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_22_032255) do
+ActiveRecord::Schema.define(version: 2018_09_23_011653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,29 +97,29 @@ ActiveRecord::Schema.define(version: 2018_09_22_032255) do
   end
 
   create_table "conclusions", force: :cascade do |t|
-    t.string "conc_solution_proposal_num"
-    t.datetime "conc_solution_proposal_date"
-    t.text "conc_name_product"
-    t.string "conc_code_okp"
-    t.string "conc_code_tn_ved"
-    t.string "conc_manuf_name"
-    t.string "conc_manuf_address"
-    t.string "conc_manuf_postcode"
-    t.string "conc_manuf_doc"
-    t.string "conc_manuf_regulations"
-    t.text "conc_desc_scheme_cert"
-    t.text "conc_test_report"
-    t.string "conc_list_doc"
-    t.string "conc_conformity"
-    t.string "conc_may_be_issued"
-    t.datetime "conc_cert_expiry_date"
-    t.text "conc_add_info"
-    t.string "conc_attachment"
-    t.string "conc_expert"
-    t.datetime "conc_sign_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "solution_proposal_id"
+    t.text "add_info"
+    t.string "attachment"
+    t.datetime "cert_expiry_date"
+    t.string "applic_code_okp"
+    t.string "applic_code_tn_ved"
+    t.string "conformity"
+    t.text "desc_scheme_cert"
+    t.string "expert"
+    t.string "list_doc_product"
+    t.string "manuf_address"
+    t.string "manuf_doc"
+    t.string "manuf_name"
+    t.string "manuf_postcode"
+    t.string "manuf_regulations"
+    t.string "may_be_issued"
+    t.text "applic_name_product"
+    t.datetime "sign_date"
+    t.datetime "date_from"
+    t.string "number"
+    t.text "test_report"
     t.index ["solution_proposal_id"], name: "index_conclusions_on_solution_proposal_id"
   end
 
@@ -162,13 +162,13 @@ ActiveRecord::Schema.define(version: 2018_09_22_032255) do
 
   create_table "inventories", force: :cascade do |t|
     t.bigint "proposal_id"
-    t.datetime "inv_date_from"
-    t.string "inv_list_doc"
-    t.string "inv_list_page"
-    t.string "inv_exec_name"
-    t.string "inv_chief_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "os_chief_name"
+    t.datetime "date_from"
+    t.string "exec_name"
+    t.string "list_doc"
+    t.string "list_page"
     t.index ["proposal_id"], name: "index_inventories_on_proposal_id"
   end
 
@@ -236,27 +236,27 @@ ActiveRecord::Schema.define(version: 2018_09_22_032255) do
 
   create_table "protocols", force: :cascade do |t|
     t.bigint "solution_proposal_id"
-    t.datetime "prot_date_from"
-    t.text "prot_applic_name_product"
-    t.string "prot_applic_code_okp"
-    t.string "prot_applic_code_tn_ved"
-    t.string "prot_origin_cert"
-    t.string "prot_info_product"
-    t.datetime "prot_date_issue_product"
-    t.string "prot_shelf_life"
-    t.string "prot_info_box"
-    t.string "prot_label_product"
-    t.string "prot_regulations_product"
-    t.text "prot_evaluation_product"
-    t.string "prot_requirement_test"
-    t.text "prot_list_indicators"
-    t.string "prot_conclusion"
-    t.string "prot_expert"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "prot_manuf_name"
-    t.string "prot_manuf_address"
-    t.string "prot_manuf_postcode"
+    t.string "applic_code_okp"
+    t.string "applic_code_tn_ved"
+    t.text "applic_name_product"
+    t.string "conclusion"
+    t.datetime "date_from"
+    t.datetime "date_issue_product"
+    t.text "evaluation_product"
+    t.string "expert"
+    t.string "info_box"
+    t.string "info_product"
+    t.string "label_product"
+    t.text "list_indicators"
+    t.string "manuf_address"
+    t.string "manuf_name"
+    t.string "manuf_postcode"
+    t.string "origin_cert"
+    t.string "manuf_regulations"
+    t.string "requirement_test"
+    t.string "shelf_life"
     t.index ["solution_proposal_id"], name: "index_protocols_on_solution_proposal_id"
   end
 
@@ -291,7 +291,6 @@ ActiveRecord::Schema.define(version: 2018_09_22_032255) do
     t.datetime "updated_at", null: false
     t.string "number"
     t.datetime "date_from"
-    t.string "solution"
     t.text "applic_name_product"
     t.string "applic_code_okp"
     t.string "applic_code_tn_ved"
@@ -313,6 +312,7 @@ ActiveRecord::Schema.define(version: 2018_09_22_032255) do
     t.string "applic_name"
     t.text "manuf_name"
     t.text "manuf_list_doc"
+    t.string "decision_was_made"
     t.index ["id"], name: "index_solution_proposals_on_id"
     t.index ["proposal_id"], name: "index_solution_proposals_on_proposal_id"
   end
@@ -368,5 +368,7 @@ ActiveRecord::Schema.define(version: 2018_09_22_032255) do
 
   add_foreign_key "certcontracts", "proposals"
   add_foreign_key "conclusions", "solution_proposals"
+  add_foreign_key "inventories", "proposals"
+  add_foreign_key "protocols", "solution_proposals"
   add_foreign_key "solution_proposals", "proposals"
 end

@@ -13,6 +13,7 @@
 #  applic_sign         :boolean          default(FALSE)
 #  basis_work          :string
 #  date_from           :datetime
+#  decision_was_made   :string
 #  desc_scheme_cert    :string
 #  executor            :string
 #  expert              :string
@@ -27,7 +28,6 @@
 #  os_chief_name       :string
 #  os_chief_position   :string
 #  sampling            :string
-#  solution            :string
 #  test_lab            :string
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null

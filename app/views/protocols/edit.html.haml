@@ -1,7 +1,7 @@
 %ul.sidebar-nav.d-print-none
   %li= link_to t('link.back'), protocol_path(@protocol)
 
-- provide(:title, "#{t('protocols.headers.edit')} #{format_date(@protocol.prot_date_from)}")
+- provide(:title, "#{t('protocols.headers.edit')} #{format_date(@protocol.date_from)}")
 .page-body
-  %h2.text-center.py-3 #{t('protocols.headers.edit')} #{format_date(@protocol.prot_date_from)}
+  %h2.text-center.py-3 #{t('protocols.headers.edit')} #{format_date(@protocol.date_from)}
   = render partial: 'form', locals: { protocol: @protocol, button: 'edit' }
