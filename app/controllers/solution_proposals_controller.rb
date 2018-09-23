@@ -47,7 +47,7 @@ class SolutionProposalsController < ApplicationController
   end
 
   def solution_proposal_params
-    params.require(:solution_proposal).permit(:proposal_id, :number, :date_from, :solution,
+    params.require(:solution_proposal).permit(:proposal_id, :number, :date_from, :decision_was_made,
                                               :applic_name_product, :applic_code_okp,
                                               :applic_code_tn_ved, :manuf_name,
                                               :manuf_address, :manuf_postcode,

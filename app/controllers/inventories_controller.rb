@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This controller manage inventories
 class InventoriesController < ApplicationController
   before_action :inventory_find, only: %i[show edit update destroy]
   before_action :setting_find, only: %i[show new]

@@ -11,7 +11,7 @@
                 end_year: Date.today.year + 10,
                 html5: true
     .col-md-4
-      = f.input :solution, collection: SOLUTIONS, include_blank: false
+      = f.input :decision_was_made, collection: DECISIONS, include_blank: false
   = f.input :applic_name_product, as: :text, input_html: { rows: 5 }
   .row
     .col-md-6

@@ -24,7 +24,7 @@ FactoryBot.define do
     os_chief_name { 'os_chief_name' }
     os_chief_position { 'os_chief_position' }
     sampling { 'sampling' }
-    solution { 'solution' }
+    decision_was_made { 'solution' }
     test_lab { 'test_lab' }
     proposal
   end

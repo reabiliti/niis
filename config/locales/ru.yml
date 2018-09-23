@@ -351,7 +351,7 @@ ru:
       solution_proposal:
         number: "Решение по заявке №"
         date_from: "от"
-        solution: "Принято решение"
+        decision_was_made: "Принято решение"
         applic_name_product: "Наименование продукции"
         applic_code_okp: "Код ОКПД2"
         applic_code_tn_ved: "код ТН ВЭД"

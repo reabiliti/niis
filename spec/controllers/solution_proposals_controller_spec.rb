@@ -33,7 +33,7 @@ describe SolutionProposalsController, type: :controller do
       os_chief_name: 'new_os_chief_name',
       os_chief_position: 'new_os_chief_position',
       sampling: 'new_sampling',
-      solution: 'new_solution',
+      decision_was_made: 'new_solution',
       test_lab: 'new_test_lab',
       proposal_id: proposal.id
     }
@@ -62,7 +62,7 @@ describe SolutionProposalsController, type: :controller do
       os_chief_name: 'new_os_chief_name',
       os_chief_position: 'new_os_chief_position',
       sampling: 'new_sampling',
-      solution: 'new_solution',
+      decision_was_made: 'new_solution',
       test_lab: 'new_test_lab',
       proposal_id: proposal.id
     }
@@ -157,7 +157,7 @@ describe SolutionProposalsController, type: :controller do
           expect(solution_proposal.os_chief_name).to eq valid_params[:os_chief_name]
           expect(solution_proposal.os_chief_position).to eq valid_params[:os_chief_position]
           expect(solution_proposal.sampling).to eq valid_params[:sampling]
-          expect(solution_proposal.solution).to eq valid_params[:solution]
+          expect(solution_proposal.decision_was_made).to eq valid_params[:decision_was_made]
           expect(solution_proposal.test_lab).to eq valid_params[:test_lab]
         end
       end

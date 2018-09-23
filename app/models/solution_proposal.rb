@@ -28,7 +28,6 @@
 #  os_chief_name       :string
 #  os_chief_position   :string
 #  sampling            :string
-#  solution            :string
 #  test_lab            :string
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null

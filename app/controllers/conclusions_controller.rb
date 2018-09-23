@@ -53,7 +53,7 @@ class ConclusionsController < ApplicationController
                                        :applic_name_product, :applic_code_okp, :applic_code_tn_ved,
                                        :manuf_name, :manuf_address, :manuf_postcode, :manuf_doc,
                                        :manuf_regulations, :desc_scheme_cert, :test_report,
-                                       :list_doc, :conformity, :may_be_issued, :cert_expiry_date,
+                                       :list_doc_product, :conformity, :may_be_issued, :cert_expiry_date,
                                        :add_info, :attachment, :expert, :sign_date,
                                        :solution_proposal_id)
   end
