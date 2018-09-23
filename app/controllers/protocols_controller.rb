@@ -11,16 +11,7 @@ class ProtocolsController < ApplicationController
   end
 
   def new
-    @solution_proposal = SolutionProposal.find(params[:solution_proposal_id])
-    @protocol = Protocol.new
-    @protocol.solution_proposal_id = @solution_proposal.id
-    @protocol.prot_applic_name_product = @solution_proposal.applic_name_product
-    @protocol.prot_applic_code_okp = @solution_proposal.applic_code_okp
-    @protocol.prot_applic_code_tn_ved = @solution_proposal.applic_code_tn_ved
-    @protocol.prot_manuf_name = @solution_proposal.manuf_name
-    @protocol.prot_manuf_address = @solution_proposal.manuf_address
-    @protocol.prot_manuf_postcode = @solution_proposal.manuf_postcode
-    @protocol.prot_regulations_product = @solution_proposal.manuf_regulations
+    @protocol = Protocol.initialize_object(solution_proposal_params)
   end
 
   def create
@@ -51,14 +42,20 @@ class ProtocolsController < ApplicationController
 
   private
 
+  def solution_proposal_params
+    solution_proposal = SolutionProposal.find(params[:solution_proposal_id])
+    solution_proposal.attributes
+                     .merge(solution_proposal_id: solution_proposal.id)
+  end
+
   def protocol_params
-    params.require(:protocol).permit(:solution_proposal_id, :prot_date_from, :prot_applic_name_product,
-                                     :prot_applic_code_okp, :prot_applic_code_tn_ved, :prot_manuf_name,
-                                     :prot_manuf_address, :prot_manuf_postcode, :prot_origin_cert,
-                                     :prot_info_product, :prot_date_issue_product, :prot_shelf_life,
-                                     :prot_info_box, :prot_label_product, :prot_regulations_product,
-                                     :prot_evaluation_product, :prot_requirement_test, :prot_list_indicators,
-                                     :prot_conclusion, :prot_expert)
+    params.require(:protocol).permit(:solution_proposal_id, :date_from, :applic_name_product,
+                                     :applic_code_okp, :applic_code_tn_ved, :manuf_name,
+                                     :manuf_address, :manuf_postcode, :origin_cert,
+                                     :info_product, :date_issue_product, :shelf_life,
+                                     :info_box, :label_product, :manuf_regulations,
+                                     :evaluation_product, :requirement_test, :list_indicators,
+                                     :conclusion, :expert)
   end
 
   def protocol_find

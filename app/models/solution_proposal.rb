@@ -13,6 +13,7 @@
 #  applic_sign         :boolean          default(FALSE)
 #  basis_work          :string
 #  date_from           :datetime
+#  decision_was_made   :string
 #  desc_scheme_cert    :string
 #  executor            :string
 #  expert              :string

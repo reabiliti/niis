@@ -33,7 +33,7 @@
                 %ul
                   - protocols.each do |protocol|
                     %li
-                      = link_to "2.2.1 Протокол идентификации от #{protocol.prot_date_from.strftime('%d.%m.%Y')}",
+                      = link_to "2.2.1 Протокол идентификации от #{format_date(protocol.date_from)}",
                                 protocol_path(protocol),
                                 class: 'text-secondary'
               - if (conclusion = solution_proposal.conclusion)
@@ -41,7 +41,7 @@
                   %li
                     = link_to conclusion_path(conclusion), class: 'text-secondary' do
                       3.1 Заключение эксперта о выдаче сертификата от
-                      = format_date(conclusion.conc_sign_date)
+                      = format_date(conclusion.sign_date)
                   - if (solution = conclusion.solution)
                     %ul
                       %li
@@ -95,7 +95,7 @@
           - if (inventory = proposal.inventory)
             %ul
               %li
-                = link_to "1.9 Опись документов от #{format_date(inventory.inv_date_from)}",
+                = link_to "1.9 Опись документов от #{format_date(inventory.date_from)}",
                           inventory_path(inventory), class: 'text-secondary'
     .text-center
       = paginate @proposals

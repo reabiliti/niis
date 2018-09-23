@@ -1,4 +1,4 @@
-- provide(:title, "#{t('inventories.headers.show')} #{format_date(@inventory.inv_date_from)}")
+- provide(:title, "#{t('inventories.headers.show')} #{format_date(@inventory.date_from)}")
 = render partial: 'links', locals: { inventory: @inventory }
 .page-body
   .caption
@@ -12,13 +12,13 @@
   .row.border.border-top-0.border-dark
     .col-md-9.border-right.border-dark
       %ol.ol-table
-        - @inventory.inv_list_doc.split("\r\n").each do |inv_list_doc|
-          %li= inv_list_doc
+        - @inventory.list_doc.split("\r\n").each do |list_doc|
+          %li= list_doc
     .col-md-3
       %ol.ol-table
-        - @inventory.inv_list_page.split("\r\n").each do |inv_list_page|
+        - @inventory.list_page.split("\r\n").each do |list_page|
           %li.li-none
-            = inv_list_page
+            = list_page
   %br
   .paragraph
     .row
@@ -30,7 +30,7 @@
           подпись
       .col-md-4.text-center
         .line
-          %b= @inventory.inv_exec_name
+          %b= @inventory.exec_name
         .hint
           инициалы, фамилия
     .row
@@ -42,6 +42,6 @@
           подпись
       .col-md-4.text-center
         .line
-          %b= @inventory.inv_chief_name
+          %b= @inventory.os_chief_name
         .hint
           инициалы, фамилия
