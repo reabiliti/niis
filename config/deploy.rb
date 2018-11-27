@@ -2,7 +2,7 @@
 lock '~> 3.11.0'
 
 set :application, 'niis'
-set :repo_url, 'https://github.com/reabiliti/niis.git'
+set :repo_url, 'https://github.com/reabiliti/certification.git'
 
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
