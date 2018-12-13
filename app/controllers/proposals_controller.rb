@@ -6,6 +6,13 @@ class ProposalsController < ApplicationController
 
   def show
     @setting = Setting.first
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "proposal_#{@proposal.id}",
+               template: 'proposals/show.html.haml'
+      end
+    end
   end
 
   def new

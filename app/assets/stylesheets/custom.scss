@@ -6,7 +6,7 @@ $gray: grey;
 $gray-dark: #454545;
 $gray-lighter: grey;
 $black-line: #262626;
-$width-page: 710px;
+$width-page: 768px;
 $spacer: 1rem;
 
 @mixin box_sizing {
@@ -186,8 +186,7 @@ footer {
 
 .line {
   border-bottom: 1px solid $black-line;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 0 10px;
   min-height: 24px;
   min-width: 10%;
   width: 100%;
@@ -235,128 +234,8 @@ footer {
   background-color: $gray-light;
 }
 
-.border {
-  border: 1px solid $black-line;
-}
-
-.border-b {
-  border-bottom: 1px solid $black-line;
-}
-
-.border-lt {
-  border-left: 1px solid $black-line;
-  border-top: 1px solid $black-line;
-}
-
-.border-ltb {
-  border-left: 1px solid $black-line;
-  border-top: 1px solid $black-line;
-  border-bottom: 1px solid $black-line;
-}
-
-.border-ltr {
-  border-left: 1px solid $black-line;
-  border-top: 1px solid $black-line;
-  border-right: 1px solid $black-line;
-}
-
-.div-table {
-  display: table;
-}
-
-.div-table-row {
-  display: table-row;
-}
-
-.div-table-col-l {
-  display: table-cell;
-  background-color: $gray-lighter;
-  color: #00008b;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-bottom: 1px solid $black-line;
-}
-
-.div-table-col-r {
-  display: table-cell;
-  background-color: $gray-lighter;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-bottom: 1px solid $black-line;
-}
-
-.div-table-col {
-  display: table-cell;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.div-table-col-hr {
-  display: table-cell;
-  border-bottom: 1px solid $black-line;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-
-.col-align-bot {
-  vertical-align: bottom;
-}
-
-.col-align-top {
-  vertical-align: top;
-}
-
-.col-width-12 {
-  width: $width-page;
-}
-
-.col-width-11 {
-  width: 11/12*$width-page;
-}
-
-.col-width-10 {
-  width: 10/12*$width-page;
-}
-
-.col-width-9 {
-  width: 9/12*$width-page;
-}
-
-.col-width-8 {
-  width: 8/12*$width-page;
-}
-
-.col-width-7 {
-  width: 7/12*$width-page;
-}
-
-.col-width-6 {
-  width: 6/12*$width-page;
-}
-
-.col-width-5 {
-  width: 5/12*$width-page;
-}
-
-.col-width-4 {
-  width: 4/12*$width-page;
-}
-
-.col-width-3 {
-  width: 3/12*$width-page;
-}
-
-.col-width-2 {
-  width: 2/12*$width-page;
-}
-
-.col-width-1 {
-  width: 1/12*$width-page;
-}
-
 .ol-left {
-  padding-left: 0px;
+  padding-left: 0;
   list-style-position: inside;
 }
 
@@ -389,10 +268,77 @@ footer {
   margin-top: 6 * $spacer;
 }
 
+// Grid for wicked pdf
+
+.block-row {
+  display: block;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.block-col-1, .block-col-2, .block-col-3, .block-col-4, .block-col-5, .block-col-6,
+.block-col-7, .block-col-8, .block-col-9, .block-col-10, .block-col-11, .block-col-12 {
+  display: inline-block;
+  margin-right: -4px;
+  width: 100%;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.block-col-1 {
+  max-width: 8.3333333333%;
+}
+
+.block-col-2 {
+  max-width: 16.6666666667%;
+}
+
+.block-col-3 {
+  max-width: 25%;
+}
+
+.block-col-4 {
+  max-width: 33.3333333333%;
+}
+
+.block-col-5 {
+  max-width: 41.6666666667%;
+}
+
+.block-col-6 {
+  max-width: 50%;
+}
+
+.block-col-7 {
+  max-width: 58.3333333333%;
+}
+
+.block-col-8 {
+  max-width: 66.6666666667%;
+}
+
+.block-col-9 {
+  max-width: 75%;
+}
+
+.block-col-10 {
+  max-width: 83.3333333333%;
+}
+
+.block-col-11 {
+  max-width: 91.6666666667%;
+}
+
+.block-col-12 {
+  max-width: 100%;
+}
+
 @media print
 {
   body, .page-body {
-    width: 710px;
+    width: 100%;
     margin: 0;
     padding: 0;
   }
