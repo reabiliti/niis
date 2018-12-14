@@ -8,6 +8,13 @@ class ProtocolsController < ApplicationController
     @setting = Setting.first
     @solution_proposal = SolutionProposal.find(@protocol.solution_proposal_id)
     @proposal = Proposal.find(@solution_proposal.proposal_id)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "protocol_#{@protocol.id}",
+               template: 'protocols/show.html.haml'
+      end
+    end
   end
 
   def new
