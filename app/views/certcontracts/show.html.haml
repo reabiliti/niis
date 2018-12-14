@@ -11,7 +11,7 @@
     на проведение работ по сертификации продукции
   %br
   .paragraph
-    .bloc-row
+    .block-row
       .block-col-4
         %b
           = format_date(@certcontract.registration_date)
@@ -227,7 +227,7 @@
     = format_date(@certcontract.date_expiry)
   %br
   .paragraph
-    .bloc-row
+    .block-row
       .block-col-3
         %b Исполнитель:
       .block-col-9
@@ -235,14 +235,14 @@
           = full_org_address(@certcontract)
         .hint
           юридический адрес исполнителя
-    .bloc-row
+    .block-row
       .block-col-3
       .block-col-9
         .line
           = @certcontract.org_bank_details
         .hint
           расчетный счет исполнителя, реквизиты банка
-    .bloc-row
+    .block-row
       .block-col-3
         %b Заказчик:
       .block-col-9
@@ -250,7 +250,7 @@
           = full_applic_address(@certcontract)
         .hint
           юридический адрес заказчика
-    .bloc-row
+    .block-row
       .block-col-3
       .block-col-9
         .line
@@ -259,31 +259,31 @@
           расчетный счет заказчика, реквизиты банка
   %br
   .paragraph
-    .bloc-row
+    .block-row
       .block-col-5
         %b От Исполнителя
       .block-col-2
       .block-col-5
         %b От Заказчика
-    .bloc-row
+    .block-row
       .block-col-5
         %b= @certcontract.org_chief_position_sign
       .block-col-2
       .block-col-5
         %b= @certcontract.applic_chief_position_sign
-    .bloc-row
+    .block-row
       .block-col-5
         .line
       .block-col-2
       .block-col-5
         .line
-    .bloc-row
+    .block-row
       .block-col-5.text-center
         = @certcontract.org_chief_name_sign
       .block-col-2
       .block-col-5.text-center
         = @certcontract.applic_chief_name_sign
-    .bloc-row
+    .block-row
       .block-col-5.text-center
         М.П.
       .block-col-2

@@ -27,14 +27,14 @@
     Юридический адрес:
     %b #{@proposal.applic_address} #{@proposal.applic_postcode}
   .paragraph
-    .row
-      .col-md-4
+    .block-row
+      .block-col-4
         Телефон:
         %b= @proposal.applic_phone
-      .col-md-4
+      .block-col-4
         Факс:
         %b= @proposal.applic_fax
-      .col-md-4
+      .block-col-4
         Почта:
         %b= @proposal.applic_email
   .paragraph
@@ -48,14 +48,14 @@
   .hint
     наименование продукции
   .paragraph
-    .row
-      .col-md-2
+    .block-row
+      .block-col-2
         Код ОКПД2
-      .col-md-2.line
+      .block-col-2.line
         %b= @conclusion.applic_code_okp
-      .col-md-2
+      .block-col-2
         Код ТН ВЭД
-      .col-md-2.line
+      .block-col-2.line
         %b= @conclusion.applic_code_tn_ved
   .line
     %b= @proposal.applic_from_issue
@@ -122,20 +122,20 @@
   .hint
     дополнительная информация
   .paragraph
-    .row
-      .col-md-4
+    .block-row
+      .block-col-4
         Эксперт
-      .col-md-2
+      .block-col-2
         .line
         .hint
           подпись
-      .col-md-4.text-center
+      .block-col-4.text-center
         .line
           %b= @conclusion.expert
         .hint
           инициалы, фамилия
-    .row
-      .col-md-4
-      .col-md-2
+    .block-row
+      .block-col-4
+      .block-col-2
         %b= format_date(@conclusion.sign_date)
-      .col-md-4
+      .block-col-4

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Class to mabage conclusions experts certificates
 class ConclusionsController < ApplicationController
   before_action :conclusion_find, only: %i[show edit update destroy]
 
@@ -8,6 +7,13 @@ class ConclusionsController < ApplicationController
     @setting = Setting.first
     @solution_proposal = SolutionProposal.find(@conclusion.solution_proposal_id)
     @proposal = Proposal.find(@solution_proposal.proposal_id)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "conclusion_#{@conclusion.id}",
+               template: 'conclusions/show.html.haml'
+      end
+    end
   end
 
   def new

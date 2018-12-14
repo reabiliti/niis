@@ -25,7 +25,7 @@
     Банковские реквизиты:
     %b= @proposal.applic_bank_detail
   .paragraph
-    .bloc-row.px-10
+    .block-row.px-10
       .block-col-4
         Телефон:
         %b= @proposal.applic_phone
@@ -37,37 +37,37 @@
         %b= @proposal.applic_email
   %h2.py-3.no-print Поисковые реквизиты заявителя
   .paragraph
-    .bloc-row.no-print
+    .block-row.no-print
       .block-col-4.line-light
         код по ОКАТО
       .block-col-8.line-light
         = @proposal.applic_code_okato
-    .bloc-row.no-print
+    .block-row.no-print
       .block-col-4.line-light
         Форма собственности
       .block-col-8.line-light
         = @proposal.applic_type_own
-    .bloc-row.no-print
+    .block-row.no-print
       .block-col-4.line-light
         код по ОКОНХ
       .block-col-8.line-light
         = @proposal.applic_code_okonh
-    .bloc-row.no-print
+    .block-row.no-print
       .block-col-4.line-light
         код по ОКВЭД
       .block-col-8.line-light
         = @proposal.applic_code_okved
-    .bloc-row.no-print
+    .block-row.no-print
       .block-col-4.line-light
         код по ОКПО
       .block-col-8.line-light
         = @proposal.applic_code_okpo
-    .bloc-row.no-print
+    .block-row.no-print
       .block-col-4.line-light
         ИНН
       .block-col-8.line-light
         = @proposal.applic_inn
-    .bloc-row.no-print
+    .block-row.no-print
       .block-col-4.line-light
         КПП
       .block-col-8.line-light
@@ -87,7 +87,7 @@
   .hint
     наименование продукции
   .paragraph
-    .bloc-row
+    .block-row
       .block-col-2
         Код ОКПД2
       .block-col-2.line
@@ -115,32 +115,32 @@
     наименование и обозначение документацииизготовителя (стандарт, ТУ, КД, образец-эталон)
   %h2.py-3.no-print Поисковые реквизиты изготовителя
   .paragraph
-    .bloc-row.no-print
+    .block-row.no-print
       .block-col-4.line-light
         код по ОКАТО
       .block-col-8.line-light
         = @proposal.manuf_code_okato
-    .bloc-row.no-print
+    .block-row.no-print
       .block-col-4.line-light
         Форма собственности
       .block-col-8.line-light
         = @proposal.manuf_type_own
-    .bloc-row.no-print
+    .block-row.no-print
       .block-col-4.line-light
         код по ОКОНХ
       .block-col-8.line-light
         = @proposal.manuf_code_okonh
-    .bloc-row.no-print
+    .block-row.no-print
       .block-col-4.line-light
         код по ОКВЭД
       .block-col-8.line-light
         = @proposal.manuf_code_okved
-    .bloc-row.no-print
+    .block-row.no-print
       .block-col-4.line-light
         код по ОКПО
       .block-col-8.line-light
         = @proposal.manuf_code_okpo
-    .bloc-row.no-print
+    .block-row.no-print
       .block-col-4.line-light
         ИНН
       .block-col-8.line-light
@@ -157,12 +157,12 @@
     %b #{@proposal.manuf_scheme_cert}.
   %h2.py-3.no-print Дополнительные сведения о продукции и заявителе
   .paragraph
-    .bloc-row.no-print
+    .block-row.no-print
       .block-col-8.line-light
         Количество видов сертифицируемой продукции
       .block-col-4.line-light
         = @proposal.manuf_count_sort_cert
-    .bloc-row.no-print
+    .block-row.no-print
       .block-col-8.line-light
         Группа сложности сертификации продукции
       .block-col-4.line-light
@@ -184,7 +184,7 @@
   .hint
     дополнительная информация
   .paragraph.pt-3
-    .bloc-row
+    .block-row
       .block-col-4
         Руководитель организации
       .block-col-2
@@ -196,7 +196,7 @@
           %b= @proposal.manuf_chief_name
         .hint
           инициалы, фамилия
-    .bloc-row
+    .block-row
       .block-col-4
         Главный бухгалтер
       .block-col-2
@@ -208,7 +208,7 @@
           %b= @proposal.manuf_chief_accountant
         .hint
           инициалы, фамилия
-    .bloc-row
+    .block-row
       .block-col-4
         М.П.
       .block-col-4
