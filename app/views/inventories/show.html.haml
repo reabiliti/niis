@@ -4,43 +4,44 @@
   .caption
     ОПИСЬ ДОКУМЕНТОВ
   %br
-  .row.border.border-dark
-    .col-md-9.border-right.border-dark
-      Наименование документа
-    .col-md-3
-      № страницы
-  .row.border.border-top-0.border-dark
-    .col-md-9.border-right.border-dark
-      %ol.ol-table
-        - @inventory.list_doc.split("\r\n").each do |list_doc|
-          %li= list_doc
-    .col-md-3
-      %ol.ol-table
-        - @inventory.list_page.split("\r\n").each do |list_page|
-          %li.li-none
-            = list_page
+  .paragraph.p-3
+    .block-row.border.border-dark
+      .block-col-9.border-right.border-dark
+        Наименование документа
+      .block-col-3
+        № страницы
+    .block-row.border.border-top-0.border-dark
+      .block-col-9.border-right.border-dark
+        %ol.ol-table
+          - @inventory.list_doc.split("\r\n").each do |list_doc|
+            %li= list_doc
+      .block-col-3
+        %ol.ol-table
+          - @inventory.list_page.split("\r\n").each do |list_page|
+            %li.li-none
+              = list_page
   %br
   .paragraph
-    .row
-      .col-md-6
+    .block-row
+      .block-col-6
         Исполнитель
-      .col-md-2
+      .block-col-2
         .line
         .hint
           подпись
-      .col-md-4.text-center
+      .block-col-4.text-center
         .line
           %b= @inventory.exec_name
         .hint
           инициалы, фамилия
-    .row
-      .col-md-6
+    .block-row
+      .block-col-6
         Начальник отдела
-      .col-md-2
+      .block-col-2
         .line
         .hint
           подпись
-      .col-md-4.text-center
+      .block-col-4.text-center
         .line
           %b= @inventory.os_chief_name
         .hint

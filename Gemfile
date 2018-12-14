@@ -29,6 +29,8 @@ gem 'dotenv-rails'
 
 gem 'haml-rails'
 gem 'prawn'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   gem 'pry-rails'

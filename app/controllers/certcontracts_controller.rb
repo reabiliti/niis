@@ -7,6 +7,13 @@ class CertcontractsController < ApplicationController
 
   def show
     @proposal = Proposal.find(@certcontract.proposal_id)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "certcontract_#{@certcontract.id}",
+               template: 'certcontracts/show.html.haml'
+      end
+    end
   end
 
   def new

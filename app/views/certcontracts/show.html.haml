@@ -11,13 +11,13 @@
     на проведение работ по сертификации продукции
   %br
   .paragraph
-    .row
-      .col-md-4
+    .block-row
+      .block-col-4
         %b
           = format_date(@certcontract.registration_date)
           №
           = @certcontract.registration_num
-      .col-md-8.text-right
+      .block-col-8.text-right
         %b= @certcontract.os_city
   %br
   .line
@@ -83,7 +83,7 @@
         обеспечивать соответствие сертифицированной продукции требованиям на которые она была
         сертифицирована;
   .paragraph
-    принимать необходимые меры для:
+    Принимать необходимые меры для:
     %ul
       %li
         оценивая, включая возможность изучения документации и записей, а также доступ к оборудованным
@@ -227,65 +227,65 @@
     = format_date(@certcontract.date_expiry)
   %br
   .paragraph
-    .row
-      .col-md-3
+    .block-row
+      .block-col-3
         %b Исполнитель:
-      .col-md-9
+      .block-col-9
         .line
           = full_org_address(@certcontract)
         .hint
           юридический адрес исполнителя
-    .row
-      .col-md-3
-      .col-md-9
+    .block-row
+      .block-col-3
+      .block-col-9
         .line
           = @certcontract.org_bank_details
         .hint
           расчетный счет исполнителя, реквизиты банка
-    .row
-      .col-md-3
+    .block-row
+      .block-col-3
         %b Заказчик:
-      .col-md-9
+      .block-col-9
         .line
           = full_applic_address(@certcontract)
         .hint
           юридический адрес заказчика
-    .row
-      .col-md-3
-      .col-md-9
+    .block-row
+      .block-col-3
+      .block-col-9
         .line
           = @certcontract.applic_bank_details
         .hint
           расчетный счет заказчика, реквизиты банка
   %br
   .paragraph
-    .row
-      .col-md-5
+    .block-row
+      .block-col-5
         %b От Исполнителя
-      .col-md-2
-      .col-md-5
+      .block-col-2
+      .block-col-5
         %b От Заказчика
-    .row
-      .col-md-5
+    .block-row
+      .block-col-5
         %b= @certcontract.org_chief_position_sign
-      .col-md-2
-      .col-md-5
+      .block-col-2
+      .block-col-5
         %b= @certcontract.applic_chief_position_sign
-    .row
-      .col-md-5
+    .block-row
+      .block-col-5
         .line
-      .col-md-2
-      .col-md-5
+      .block-col-2
+      .block-col-5
         .line
-    .row
-      .col-md-5.text-center
+    .block-row
+      .block-col-5.text-center
         = @certcontract.org_chief_name_sign
-      .col-md-2
-      .col-md-5.text-center
+      .block-col-2
+      .block-col-5.text-center
         = @certcontract.applic_chief_name_sign
-    .row
-      .col-md-5.text-center
+    .block-row
+      .block-col-5.text-center
         М.П.
-      .col-md-2
-      .col-md-5.text-center
+      .block-col-2
+      .block-col-5.text-center
         М.П.

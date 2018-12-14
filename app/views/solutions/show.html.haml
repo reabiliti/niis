@@ -28,14 +28,14 @@
     Юридический адрес:
     %b #{@proposal.applic_address}, #{@proposal.applic_postcode}
   .paragraph
-    .row
-      .col-md-4
+    .block-row
+      .block-col-4
         Телефон:
         %b= @proposal.applic_phone
-      .col-md-4
+      .block-col-4
         Факс:
         %b= @proposal.applic_fax
-      .col-md-4
+      .block-col-4
         Почта:
         %b= @proposal.applic_email
   .paragraph
@@ -53,14 +53,14 @@
   .hint
     наименование продукции
   .paragraph
-    .row
-      .col-md-2
+    .block-row
+      .block-col-2
         Код ОКПД2
-      .col-md-2.line
+      .block-col-2.line
         %b= @solution.sol_code_okp
-      .col-md-2
+      .block-col-2
         Код ТН ВЭД
-      .col-md-2.line
+      .block-col-2.line
         %b= @solution.sol_code_tn_ved
   .line
     %b= @proposal.applic_from_issue
@@ -157,39 +157,39 @@
     %b= @solution.sol_add_info
   %br
   .paragraph
-    .row
-      .col-md-6
+    .block-row
+      .block-col-6
         = @solution.sol_chief_name
-      .col-md-2
+      .block-col-2
         .line
         .hint
           подпись
-      .col-md-4.text-center
+      .block-col-4.text-center
         .line
           = @solution.sol_chief_org
         .hint
           инициалы, фамилия
-    .row
-      .col-md-6
+    .block-row
+      .block-col-6
         Эксперт
-      .col-md-2
+      .block-col-2
         .line
         .hint
           подпись
-      .col-md-4.text-center
+      .block-col-4.text-center
         .line
           = @solution.sol_expert
         .hint
           инициалы, фамилия
     - unless @solution.sol_executor.blank?
-      .row
-        .col-md-6
+      .block-row
+        .block-col-6
           Исполнитель
-        .col-md-2
+        .block-col-2
           .line
           .hint
             подпись
-        .col-md-4.text-center
+        .block-col-4.text-center
           .line
             = @solution.sol_executor
           .hint
@@ -197,19 +197,20 @@
   - if @solution.sol_applic_sign
     %br
     .paragraph
-      .row
-        .d-inline
-          Сертификат (бланк №
-        .col-md-2.line.d-inline
-        .d-inline
-          ) получил:
-      .row
-        .col-md-6
-        .col-md-2
+      .block-row
+        .block-col-12
+          .d-inline
+            Сертификат (бланк №
+          .block-col-2.line.d-inline
+          .d-inline
+            ) получил:
+      .block-row
+        .block-col-6
+        .block-col-2
           .line
           .hint
             подпись
-        .col-md-4.text-center
+        .block-col-4.text-center
           .line
             = @solution.sol_applic_name
           .hint

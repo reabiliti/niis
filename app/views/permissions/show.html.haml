@@ -47,14 +47,14 @@
   .line
     %b= "#{@proposal.applic_address}, #{@proposal.applic_postcode}"
   .paragraph
-    .row
-      .col-md-4
+    .block-row
+      .block-col-4
         Телефон:
         %b= @proposal.applic_phone
-      .col-md-4
+      .block-col-4
         Факс:
         %b= @proposal.applic_fax
-      .col-md-4
+      .block-col-4
         Почта:
         %b= @proposal.applic_email
   %br
@@ -78,24 +78,24 @@
     место нанесения знака, прочие условия
   %br
   .paragraph
-    .row
-      .col-md-6
+    .block-row
+      .block-col-6
         Руководитель органа по сертификации
-      .col-md-6.text-center
+      .block-col-6.text-center
         .line
           %b= @permission.perm_chief_name
         .hint
           должность
-    .row
-      .col-md-2
+    .block-row
+      .block-col-2
         М.П.
-      .col-md-1
-      .col-md-2
+      .block-col-1
+      .block-col-2
         .line
         .hint
           подпись
-      .col-md-1
-      .col-md-6.text-center
+      .block-col-1
+      .block-col-6.text-center
         .line
           %b= @permission.perm_chief_org
         .hint

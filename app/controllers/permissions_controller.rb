@@ -10,6 +10,13 @@ class PermissionsController < ApplicationController
     @conclusion = Conclusion.find(@solution.conclusion_id)
     @solution_proposal = SolutionProposal.find(@conclusion.solution_proposal_id)
     @proposal = Proposal.find(@solution_proposal.proposal_id)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "permission_#{@permission.id}",
+               template: 'permissions/show.html.haml'
+      end
+    end
   end
 
   def new

@@ -25,52 +25,52 @@
     Банковские реквизиты:
     %b= @proposal.applic_bank_detail
   .paragraph
-    .row.px-10
-      .col-md-4
+    .block-row.px-10
+      .block-col-4
         Телефон:
         %b= @proposal.applic_phone
-      .col-md-4
+      .block-col-4
         Факс:
         %b= @proposal.applic_fax
-      .col-md-4
+      .block-col-4
         Почта:
         %b= @proposal.applic_email
   %h2.py-3.no-print Поисковые реквизиты заявителя
   .paragraph
-    .row.no-print
-      .col-md-4.line-light
+    .block-row.no-print
+      .block-col-4.line-light
         код по ОКАТО
-      .col-md-8.line-light
+      .block-col-8.line-light
         = @proposal.applic_code_okato
-    .row.no-print
-      .col-md-4.line-light
+    .block-row.no-print
+      .block-col-4.line-light
         Форма собственности
-      .col-md-8.line-light
+      .block-col-8.line-light
         = @proposal.applic_type_own
-    .row.no-print
-      .col-md-4.line-light
+    .block-row.no-print
+      .block-col-4.line-light
         код по ОКОНХ
-      .col-md-8.line-light
+      .block-col-8.line-light
         = @proposal.applic_code_okonh
-    .row.no-print
-      .col-md-4.line-light
+    .block-row.no-print
+      .block-col-4.line-light
         код по ОКВЭД
-      .col-md-8.line-light
+      .block-col-8.line-light
         = @proposal.applic_code_okved
-    .row.no-print
-      .col-md-4.line-light
+    .block-row.no-print
+      .block-col-4.line-light
         код по ОКПО
-      .col-md-8.line-light
+      .block-col-8.line-light
         = @proposal.applic_code_okpo
-    .row.no-print
-      .col-md-4.line-light
+    .block-row.no-print
+      .block-col-4.line-light
         ИНН
-      .col-md-8.line-light
+      .block-col-8.line-light
         = @proposal.applic_inn
-    .row.no-print
-      .col-md-4.line-light
+    .block-row.no-print
+      .block-col-4.line-light
         КПП
-      .col-md-8.line-light
+      .block-col-8.line-light
         = @proposal.applic_kpp
   %br.no-print
   .line
@@ -87,14 +87,14 @@
   .hint
     наименование продукции
   .paragraph
-    .row
-      .col-md-2
+    .block-row
+      .block-col-2
         Код ОКПД2
-      .col-md-2.line
+      .block-col-2.line
         %b= @proposal.applic_code_okp
-      .col-md-2
+      .block-col-2
         Код ТН ВЭД
-      .col-md-2.line
+      .block-col-2.line
         %b= @proposal.applic_code_tn_ved
   .line
     %b= @proposal.applic_from_issue
@@ -115,35 +115,35 @@
     наименование и обозначение документацииизготовителя (стандарт, ТУ, КД, образец-эталон)
   %h2.py-3.no-print Поисковые реквизиты изготовителя
   .paragraph
-    .row.no-print
-      .col-md-4.line-light
+    .block-row.no-print
+      .block-col-4.line-light
         код по ОКАТО
-      .col-md-8.line-light
+      .block-col-8.line-light
         = @proposal.manuf_code_okato
-    .row.no-print
-      .col-md-4.line-light
+    .block-row.no-print
+      .block-col-4.line-light
         Форма собственности
-      .col-md-8.line-light
+      .block-col-8.line-light
         = @proposal.manuf_type_own
-    .row.no-print
-      .col-md-4.line-light
+    .block-row.no-print
+      .block-col-4.line-light
         код по ОКОНХ
-      .col-md-8.line-light
+      .block-col-8.line-light
         = @proposal.manuf_code_okonh
-    .row.no-print
-      .col-md-4.line-light
+    .block-row.no-print
+      .block-col-4.line-light
         код по ОКВЭД
-      .col-md-8.line-light
+      .block-col-8.line-light
         = @proposal.manuf_code_okved
-    .row.no-print
-      .col-md-4.line-light
+    .block-row.no-print
+      .block-col-4.line-light
         код по ОКПО
-      .col-md-8.line-light
+      .block-col-8.line-light
         = @proposal.manuf_code_okpo
-    .row.no-print
-      .col-md-4.line-light
+    .block-row.no-print
+      .block-col-4.line-light
         ИНН
-      .col-md-8.line-light
+      .block-col-8.line-light
         = @proposal.manuf_inn
   %br.no-print
   .paragraph
@@ -157,15 +157,15 @@
     %b #{@proposal.manuf_scheme_cert}.
   %h2.py-3.no-print Дополнительные сведения о продукции и заявителе
   .paragraph
-    .row.no-print
-      .col-md-8.line-light
+    .block-row.no-print
+      .block-col-8.line-light
         Количество видов сертифицируемой продукции
-      .col-md-4.line-light
+      .block-col-4.line-light
         = @proposal.manuf_count_sort_cert
-    .row.no-print
-      .col-md-8.line-light
+    .block-row.no-print
+      .block-col-8.line-light
         Группа сложности сертификации продукции
-      .col-md-4.line-light
+      .block-col-4.line-light
         = @proposal.manuf_group_complexity
         .hint
           См. "Правила по сертификации. Оплата работ по сертификации продукции и услуг", п. 4.4.
@@ -184,32 +184,32 @@
   .hint
     дополнительная информация
   .paragraph.pt-3
-    .row
-      .col-md-4
+    .block-row
+      .block-col-4
         Руководитель организации
-      .col-md-2
+      .block-col-2
         .line
         .hint
           подпись
-      .col-md-4.text-center
+      .block-col-4.text-center
         .line
           %b= @proposal.manuf_chief_name
         .hint
           инициалы, фамилия
-    .row
-      .col-md-4
+    .block-row
+      .block-col-4
         Главный бухгалтер
-      .col-md-2
+      .block-col-2
         .line
         .hint
           подпись
-      .col-md-4.text-center
+      .block-col-4.text-center
         .line
           %b= @proposal.manuf_chief_accountant
         .hint
           инициалы, фамилия
-    .row
-      .col-md-4
+    .block-row
+      .block-col-4
         М.П.
-      .col-md-4
+      .block-col-4
         %b= format_date(@proposal.date_from)

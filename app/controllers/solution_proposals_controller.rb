@@ -7,6 +7,13 @@ class SolutionProposalsController < ApplicationController
 
   def show
     @proposal = Proposal.find(@solution_proposal.proposal_id)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "solution_proposal_#{@solution_proposal.id}",
+               template: 'solution_proposals/show.html.haml'
+      end
+    end
   end
 
   def new
