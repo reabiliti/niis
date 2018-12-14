@@ -7,6 +7,13 @@ class IkcontractsController < ApplicationController
 
   def show
     @certificate = Certificate.find(@ikcontract.certificate_id)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "ikcontract_#{@ikcontract.id}",
+               template: 'ikcontracts/show.html.haml'
+      end
+    end
   end
 
   def new
