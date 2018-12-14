@@ -7,6 +7,13 @@ class InventoriesController < ApplicationController
 
   def show
     @proposal = Proposal.find(@inventory.proposal_id)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "inventory_#{@inventory.id}",
+               template: 'inventories/show.html.haml'
+      end
+    end
   end
 
   def new
