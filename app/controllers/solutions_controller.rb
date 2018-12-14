@@ -9,6 +9,13 @@ class SolutionsController < ApplicationController
     @conclusion = Conclusion.find(@solution.conclusion_id)
     @solution_proposal = SolutionProposal.find(@conclusion.solution_proposal_id)
     @proposal = Proposal.find(@solution_proposal.proposal_id)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "solution_#{@solution.id}",
+               template: 'solutions/show.html.haml'
+      end
+    end
   end
 
   def new

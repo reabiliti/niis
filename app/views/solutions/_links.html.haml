@@ -2,6 +2,8 @@
   %li
     = link_to t('link.back'), root_path
   %li
+    = link_to t('link.print'), solution_path(solution, format: 'pdf'), target: '_blank', rel: 'noopener noreferrer'
+  %li
     = link_to t('link.edit'), edit_solution_path(solution)
   %li
     = link_to t('link.destroy'), solution,
