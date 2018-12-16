@@ -5,7 +5,7 @@ module InitializeObject
 
   class_methods do
     def initialize_object(params = {})
-      new(params.select { |k| attribute_method?(k) })
+      new(params.select { |key| attribute_method?(key) })
     end
   end
 end

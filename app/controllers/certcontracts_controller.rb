@@ -6,7 +6,6 @@ class CertcontractsController < ApplicationController
   before_action :setting_find, only: %i[show new]
 
   def show
-    @proposal = Proposal.find(@certcontract.proposal_id)
     respond_to do |format|
       format.html
       format.pdf do
@@ -50,12 +49,16 @@ class CertcontractsController < ApplicationController
 
   def proposal_params
     proposal = Proposal.find(params[:proposal_id])
-    proposal.attributes.merge(proposal_id: proposal.id,
-                              org_chief_name_sign: @setting.org_chief_name,
-                              org_chief_position_sign: @setting.org_chief_position,
-                              applic_chief_name_sign: proposal.applic_chief_name,
-                              applic_chief_position_sign: proposal.applic_chief_position
-                             ).merge(@setting.attributes)
+    proposal
+      .attributes
+      .merge(
+        proposal_id: proposal.id,
+        org_chief_name_sign: @setting.org_chief_name,
+        org_chief_position_sign: @setting.org_chief_position,
+        applic_chief_name_sign: proposal.applic_chief_name,
+        applic_chief_position_sign: proposal.applic_chief_position
+      )
+      .merge(@setting.attributes)
   end
 
   def certcontract_params

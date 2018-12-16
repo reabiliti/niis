@@ -6,7 +6,7 @@ class SolutionProposalsController < ApplicationController
   before_action :setting_find, only: %i[show new]
 
   def show
-    @proposal = Proposal.find(@solution_proposal.proposal_id)
+    @proposal = @solution_proposal.proposal
     respond_to do |format|
       format.html
       format.pdf do

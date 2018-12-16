@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # This query for rendering root with childrens
-class ProposalsQuery
+class AllProposalsQuery
   def call
     Proposal.includes(
       :certcontract,
@@ -18,6 +18,6 @@ class ProposalsQuery
           ]
         ]
       ]
-    )
+    ).all
   end
 end

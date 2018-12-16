@@ -6,9 +6,9 @@ class SolutionsController < ApplicationController
   before_action :setting_find, only: %i[show new]
 
   def show
-    @conclusion = Conclusion.find(@solution.conclusion_id)
-    @solution_proposal = SolutionProposal.find(@conclusion.solution_proposal_id)
-    @proposal = Proposal.find(@solution_proposal.proposal_id)
+    @conclusion = @solution.conclusion
+    @solution_proposal = @conclusion.solution_proposal
+    @proposal = @solution_proposal.proposal
     respond_to do |format|
       format.html
       format.pdf do

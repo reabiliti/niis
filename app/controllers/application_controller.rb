@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
 
   def check_auth
     return unless current_user
+
     redirect_to root_path, flash: { warning: t('sessions.notices.warning.check_auth') }
   end
 end

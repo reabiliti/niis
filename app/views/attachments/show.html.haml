@@ -1,4 +1,4 @@
-- provide(:title, "#{t('attachments.headers.show')} #{@certificate.cert_registration_num}")
+- provide(:title, "#{t('attachments.headers.show')} #{@attachment.certificate.cert_registration_num}")
 = render partial: 'links', locals: { attachment: @attachment }
 .page-body
   .caption
@@ -18,7 +18,7 @@
       К сертификату соответствия №
     .col-md-4
       .line
-        %b= @certificate.cert_registration_num
+        %b= @attachment.certificate.cert_registration_num
     .col-md-2
   %br
   .paragraph.text-center
@@ -59,7 +59,7 @@
           подпись
       .col-md-4.text-center
         .line
-          %b= @certificate.cert_chief_org
+          %b= @attachment.certificate.cert_chief_org
         .hint
           инициалы, фамилия
     .row
@@ -71,6 +71,6 @@
           подпись
       .col-md-4.text-center
         .line
-          %b= @certificate.cert_expert
+          %b= @attachment.certificate.cert_expert
         .hint
           инициалы, фамилия
