@@ -5,11 +5,11 @@ class PermissionsController < ApplicationController
   before_action :setting_find, only: %i[show new]
 
   def show
-    @certificate = Certificate.find(@permission.certificate_id)
-    @solution = Solution.find(@certificate.solution_id)
-    @conclusion = Conclusion.find(@solution.conclusion_id)
-    @solution_proposal = SolutionProposal.find(@conclusion.solution_proposal_id)
-    @proposal = Proposal.find(@solution_proposal.proposal_id)
+    @certificate = @permission.certificate
+    @solution = @certificate.solution
+    @conclusion = @solution.conclusion
+    @solution_proposal = @conclusion.solution_proposal
+    @proposal = @solution_proposal.proposal
     respond_to do |format|
       format.html
       format.pdf do
@@ -21,7 +21,7 @@ class PermissionsController < ApplicationController
 
   def new
     @certificate = Certificate.find(params[:certificate_id])
-    @solution = Solution.find(@certificate.solution_id)
+    @solution = @certificate.solution
     @permission = Permission.new
     @permission.certificate_id = @certificate.id
     @permission.perm_place_marking = @solution.sol_place_marking

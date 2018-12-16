@@ -40,7 +40,8 @@
 
 # Model certificates
 class Certificate < ApplicationRecord
-  belongs_to :solution, inverse_of: :certificates
+  belongs_to :solution
+
   validates :cert_blank_num, uniqueness: true
   validates :cert_expiry_date, :cert_registration_date, :cert_registration_num,
             :cert_blank_num, :cert_applic_name, :cert_manuf_name, presence: true

@@ -1,7 +1,7 @@
 %ul.sidebar-nav.d-print-none
   %li= link_to t('link.back'), attachment_path(@attachment)
 
-- provide(:title, "#{t('attachments.headers.edit')} #{@certificate.cert_registration_num}")
+- provide(:title, "#{t('attachments.headers.edit')} #{@attachment.certificate.cert_registration_num}")
 .page-body
-  %h2.text-center.py-3 #{t('attachments.headers.edit')} #{@certificate.cert_registration_num}
+  %h2.text-center.py-3 #{t('attachments.headers.edit')} #{@attachment.certificate.cert_registration_num}
   = render partial: 'form', locals: { attachment: @attachment, button: 'edit' }

@@ -5,8 +5,8 @@ class ConclusionsController < ApplicationController
 
   def show
     @setting = Setting.first
-    @solution_proposal = SolutionProposal.find(@conclusion.solution_proposal_id)
-    @proposal = Proposal.find(@solution_proposal.proposal_id)
+    @solution_proposal = @conclusion.solution_proposal
+    @proposal = @solution_proposal.proposal
     respond_to do |format|
       format.html
       format.pdf do

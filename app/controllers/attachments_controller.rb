@@ -6,7 +6,6 @@ class AttachmentsController < ApplicationController
   before_action :setting_find, only: [:show]
 
   def show
-    @certificate = Certificate.find(@attachment.certificate_id)
     respond_to do |format|
       format.html
       format.pdf do
@@ -40,9 +39,7 @@ class AttachmentsController < ApplicationController
     end
   end
 
-  def edit
-    @certificate = Certificate.find(@attachment.certificate_id)
-  end
+  def edit; end
 
   def update
     if @attachment.update(attachment_params)

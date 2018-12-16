@@ -6,10 +6,10 @@ class CertificatesController < ApplicationController
   before_action :setting_find, only: %i[show new]
 
   def show
-    @solution = Solution.find(@certificate.solution_id)
-    @conclusion = Conclusion.find(@solution.conclusion_id)
-    @solution_proposal = SolutionProposal.find(@conclusion.solution_proposal_id)
-    @proposal = Proposal.find(@solution_proposal.proposal_id)
+    @solution = @certificate.solution
+    @conclusion = @solution.conclusion
+    @solution_proposal = @conclusion.solution_proposal
+    @proposal = @solution_proposal.proposal
     respond_to do |format|
       format.html
       format.pdf do
@@ -25,9 +25,9 @@ class CertificatesController < ApplicationController
 
   def new
     @solution = Solution.find(params[:solution_id])
-    @conclusion = Conclusion.find(@solution.conclusion_id)
-    @solution_proposal = SolutionProposal.find(@conclusion.solution_proposal_id)
-    @proposal = Proposal.find(@solution_proposal.proposal_id)
+    @conclusion = @solution.conclusion
+    @solution_proposal = @conclusion.solution_proposal
+    @proposal = @solution_proposal.proposal
     @certificate = Certificate.new
     @certificate.solution_id = @solution.id
     @certificate.cert_expiry_date = @solution.sol_cert_expiry_date

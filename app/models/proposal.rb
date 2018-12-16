@@ -63,10 +63,4 @@ class Proposal < ApplicationRecord
   has_one :inventory, dependent: :destroy
   validates :number, uniqueness: true
   validates :date_from, :number, presence: true
-
-  def self.search(search, page)
-    return page(page).order(created_at: :desc) unless search
-
-    where('number LIKE ?', "%#{search}%").page(page).order(created_at: :desc)
-  end
 end

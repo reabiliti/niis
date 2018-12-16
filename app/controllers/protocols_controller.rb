@@ -6,8 +6,8 @@ class ProtocolsController < ApplicationController
 
   def show
     @setting = Setting.first
-    @solution_proposal = SolutionProposal.find(@protocol.solution_proposal_id)
-    @proposal = Proposal.find(@solution_proposal.proposal_id)
+    @solution_proposal = @protocol.solution_proposal
+    @proposal = @solution_proposal.proposal
     respond_to do |format|
       format.html
       format.pdf do

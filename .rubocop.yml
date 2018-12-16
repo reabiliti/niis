@@ -1455,7 +1455,7 @@ Style/Dir:
 
 Style/Documentation:
   Description: 'Document classes and non-namespace modules.'
-  Enabled: true
+  Enabled: false
   Exclude:
     - 'spec/**/*'
     - 'test/**/*'
