@@ -31,7 +31,7 @@ class IkcontractsController < ApplicationController
     @ikcontract.ikcon_exec_based_doc = @setting.org_based_doc
     @ikcontract.ikcon_exec_address = @setting.org_address
     @ikcontract.ikcon_client_name = @certificate.cert_manuf_name
-    @ikcontract.ikcon_client_chief_name = @certificate.cert_manuf_name
+    @ikcontract.ikcon_clientapplic_chief_name_sign_chief_name = @certificate.cert_manuf_name
     @ikcontract.ikcon_client_chief_name_sign = @certificate.cert_manuf_name
     @ikcontract.ikcon_client_address = "#{@certificate.cert_manuf_address}, #{@certificate.cert_manuf_postcode}"
   end

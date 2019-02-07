@@ -138,14 +138,14 @@ class CertificatePdf < Prawn::Document
           draw_text cert_add_info, at: [at_x_indent, at_y], size: size, style: :bold
           at_y -= 5
         else
-          text = "#{cert_add_info}\n#{@certificate.cert_place_marking}\nСхема сертификации #{@proposal.manuf_scheme_cert}"
+          text = "#{cert_add_info}\n#{@certificate.cert_place_marking}"
           text_box text, at: [at_x, at_y], size: size, style: :bold, width: 520
         end
       end
     else
       draw_text @certificate.cert_add_info, at: [at_x_indent, at_y], size: size, style: :bold
       at_y -= 5
-      text = "#{@certificate.cert_place_marking}\nСхема сертификации #{@proposal.manuf_scheme_cert}"
+      text = @certificate.cert_place_marking
       text_box text, at: [at_x, at_y], size: size, style: :bold, width: 520
     end
 
