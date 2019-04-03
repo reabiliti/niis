@@ -35,7 +35,7 @@ class CertificatePdf < Prawn::Document
 
     at_y = at_y_set(620)
     os_name = "#{@setting.os_name.gsub 'ОРГАН ПО СЕРТИФИКАЦИИ ', ''}\n #{@setting.os_address}"
-    text_box os_name, at: [at_x, at_y], size: size, style: :bold, width: 450
+    text_box os_name, at: [at_x, at_y], size: size, style: :bold, width: 530
 
     at_x_indent = at_x_set(135)
     at_y = at_y_set(548)

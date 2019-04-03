@@ -187,7 +187,7 @@ footer {
 .line {
   border-bottom: 1px solid $black-line;
   padding: 0 10px;
-  min-height: 24px;
+  min-height: 24px !important;
   min-width: 10%;
   width: 100%;
 }
@@ -285,6 +285,7 @@ footer {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+  vertical-align: top;
 }
 
 .block-col-1 {
