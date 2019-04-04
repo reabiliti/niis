@@ -8,4 +8,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(name: 'Admin', role: 'member', email: 'admin@gmail.com', password: '1qaz2wsx3edc*', password_confirmation: '1qaz2wsx3edc*')
+puts '*** Admin user ***'
+admin_user = User.find_by_email('admin@gmail.com')
+if admin_user
+  puts 'Admin user already created'
+else
+  User.create!(name: 'Admin', role: 'member', email: 'admin@gmail.com', password: '1qaz2wsx3edc*', password_confirmation: '1qaz2wsx3edc*')
+  puts 'Admin user created'
+end
