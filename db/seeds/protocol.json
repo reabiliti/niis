@@ -1,0 +1,22 @@
+{
+  "solution_proposal_id": 1,
+  "applic_code_okp": "Код ОКПД2",
+  "applic_code_tn_ved": "Код ТН ВЭД",
+  "applic_name_product": "Наименование продукции",
+  "conclusion": "",
+  "date_from": "2018-12-12 00:00:00 UTC",
+  "date_issue_product": "2018-12-06 00:00:00 UTC",
+  "evaluation_product": "rerere",
+  "expert": "rere",
+  "info_box": "reer",
+  "info_product": "erere",
+  "label_product": "rere",
+  "list_indicators": "rere",
+  "manuf_address": "Название улицы, номер дома, номер помещения; название населенного пункта (города, поселка и т.п.); название района; название республики, края, области, автономного округа (области)",
+  "manuf_name": "Наименование изготовителя",
+  "manuf_postcode": "Почтовый индекс",
+  "origin_cert": "rerer",
+  "manuf_regulations": "Наименование и обозначение нормативных документов",
+  "requirement_test": "требуется",
+  "shelf_life": "rerere"
+}
