@@ -9,8 +9,9 @@ class AttachmentsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = AttachmentPdf.new(@attachment, @setting, @certificate)
-        send_data pdf.render, filename: "attachment_#{@certificate.cert_registration_num}",
+        certificate = @attachment.certificate
+        pdf = AttachmentPdf.new(@attachment, @setting, certificate)
+        send_data pdf.render, filename: "attachment_#{certificate.cert_registration_num}",
                               type: 'application/pdf',
                               disposition: 'inline',
                               page_layout: 'landscape'
