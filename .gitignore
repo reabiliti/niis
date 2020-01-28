@@ -21,3 +21,5 @@ config/database.yml
 .idea/
 
 /public/assets
+/.rakeTasks
+/.generators
