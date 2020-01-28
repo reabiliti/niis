@@ -34,11 +34,11 @@ class AttachmentPdf < Prawn::Document
                                           style: :bold, width: 150
 
     at_x = at_x_set(428)
-    at_y = at_y_set(42)
+    at_y = at_y_set(50)
     draw_text @certificate.cert_chief_org, at: [at_x, at_y],
                                            size: size, style: :bold
 
-    at_y = at_y_set(18)
+    at_y = at_y_set(26)
     draw_text @certificate.cert_expert, at: [at_x, at_y],
                                         size: size, style: :bold
   end
