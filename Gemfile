@@ -62,7 +62,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'haml_lint', require: false
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen', '>= 3.0.5', '< 3.3'
   gem 'rubocop'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
