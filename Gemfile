@@ -29,7 +29,7 @@ gem 'validates_email_format_of'
 
 gem 'haml-rails'
 gem 'prawn'
-gem 'wicked_pdf', '~> 1.1.0'
+gem 'wicked_pdf', '~> 1.4.0'
 gem 'wkhtmltopdf-binary'
 
 group :development, :test do
