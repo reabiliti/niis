@@ -33,7 +33,6 @@ gem 'wicked_pdf', '~> 1.1.0'
 gem 'wkhtmltopdf-binary'
 
 group :development, :test do
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara'
   gem 'pry-rails'
   gem 'selenium-webdriver'
@@ -66,5 +65,3 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
 end
-
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
