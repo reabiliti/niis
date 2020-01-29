@@ -10,7 +10,7 @@ end
 ruby '~> 2.6.1'
 
 gem 'bootstrap', '~> 4.4.1'
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 5.0'
 gem 'data_migrate'
 gem 'dotenv-rails'
 gem 'jquery-rails'
