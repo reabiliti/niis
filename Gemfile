@@ -43,7 +43,7 @@ group :test do
   gem 'faker'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.9'
-  gem 'shoulda-matchers', '~> 3.1'
+  gem 'shoulda-matchers'
 end
 
 group :development do
