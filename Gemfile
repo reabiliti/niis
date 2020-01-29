@@ -9,7 +9,7 @@ end
 
 ruby '~> 2.6.1'
 
-gem 'bootstrap', '~> 4.3.1'
+gem 'bootstrap', '~> 4.4.1'
 gem 'coffee-rails', '~> 4.2'
 gem 'data_migrate'
 gem 'dotenv-rails'
@@ -33,15 +33,9 @@ gem 'wicked_pdf', '~> 1.1.0'
 gem 'wkhtmltopdf-binary'
 
 group :development, :test do
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara'
   gem 'pry-rails'
   gem 'selenium-webdriver'
-end
-
-group :production do
-  gem 'rails_12factor'
-  gem 'unicorn'
 end
 
 group :test do
@@ -49,7 +43,7 @@ group :test do
   gem 'faker'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.9'
-  gem 'shoulda-matchers', '~> 3.1'
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -71,5 +65,3 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
 end
-
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
