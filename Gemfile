@@ -9,7 +9,7 @@ end
 
 ruby '~> 2.6.1'
 
-gem 'bootstrap', '~> 4.3.1'
+gem 'bootstrap', '~> 4.4.1'
 gem 'coffee-rails', '~> 4.2'
 gem 'data_migrate'
 gem 'dotenv-rails'
@@ -37,11 +37,6 @@ group :development, :test do
   gem 'capybara'
   gem 'pry-rails'
   gem 'selenium-webdriver'
-end
-
-group :production do
-  gem 'rails_12factor'
-  gem 'unicorn'
 end
 
 group :test do
