@@ -99,7 +99,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.5)
+    concurrent-ruby (1.1.6)
     crass (1.0.6)
     data_migrate (6.2.0)
       rails (>= 5.0)
@@ -322,7 +322,7 @@ GEM
     sshkit (1.20.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    strong_migrations (0.6.1)
+    strong_migrations (0.6.4)
       activerecord (>= 5)
     sysexits (1.2.0)
     temple (0.8.2)
@@ -333,7 +333,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (1.2.6)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
